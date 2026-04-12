@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الضمان لإدارة المبيعات | Al-Daman Sales Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0A4D68;
+            --secondary-blue: #088395;
+            --light-blue: #EBF8FF;
+            --dark-text: #2D3748;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-blue);
+            color: var(--dark-text);
+            line-height: 1.8;
+            transition: var(--transition);
+        }
+
+        /* Language Toggle Logic */
+        html[lang="ar"] .lang-en { display: none !important; }
+        html[lang="en"] .lang-ar { display: none !important; }
+
+        /* Navbar */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+
+        .lang-btn {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            border: 1px solid var(--secondary-blue);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .lang-btn:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 2rem;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero .slogan {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: #E2F1E7;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 5rem 5%;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background-color: var(--light-blue);
+            padding: 2.5rem 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.03);
+            border-bottom: 4px solid var(--secondary-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--dark-text);
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Developer Story Section */
+        .developer-section {
+            padding: 5rem 5%;
+            background-color: var(--light-blue);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .developer-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+        }
+
+        .dev-card {
+            background-color: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            max-width: 900px;
+            border-top: 5px solid var(--secondary-blue);
+            text-align: start;
+        }
+
+        .dev-card p {
+            font-size: 1.15rem;
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 5%;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-numbers {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .number-card {
+            background-color: rgba(255,255,255,0.1);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
+        }
+
+        .number-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #052a3a;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero .slogan { font-size: 1.4rem; }
+            .contact-numbers { flex-direction: column; gap: 1rem; }
+            .header-right { flex-direction: column-reverse; gap: 10px; align-items: flex-end; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-placeholder lang-ar">ض</div>
+            <div class="logo-placeholder lang-en">D</div>
+            <div class="logo-text lang-ar">الضمان</div>
+            <div class="logo-text lang-en">Al-Daman</div>
+        </div>
+        <div class="header-right">
+            <div style="font-weight: 700; color: var(--secondary-blue);" class="lang-ar">
+                نظام إدارة المبيعات
+            </div>
+            <div style="font-weight: 700; color: var(--secondary-blue);" class="lang-en">
+                Sales Management System
+            </div>
+            <button class="lang-btn" onclick="toggleLanguage()">
+                <span class="lang-ar">English</span>
+                <span class="lang-en">العربية</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1 class="lang-ar">الضمان لإدارة المبيعات</h1>
+        <h1 class="lang-en">Al-Daman Sales Management</h1>
+        
+        <div class="slogan lang-ar">الضمان... دقة وأمان</div>
+        <div class="slogan lang-en">Al-Daman... Safety and Accuracy</div>
+        
+        <p class="lang-ar">تطبيق سطح مكتب قوي ومحمي محلياً، مصمم هندسياً لتسهيل عمليات نقاط البيع، تتبع المخزون، والمحاسبة المعقدة دون الحاجة للاتصال الدائم بالإنترنت.</p>
+        <p class="lang-en">A powerful, locally-secured desktop application engineered for seamless point-of-sale operations, inventory tracking, and complex accounting without relying on an active internet connection.</p>
+    </section>
+
+    <section class="features-section">
+        <h2 class="lang-ar">ميزات النظام الأساسية</h2>
+        <h2 class="lang-en">Core System Features</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="lang-ar">لوحة تحكم وإحصائيات شاملة</h3>
+                <h3 class="lang-en">Comprehensive Statistics Dashboard</h3>
+                <p class="lang-ar">شاشة رئيسية تفاعلية تقدم لك نظرة عامة وفورية على أداء عملك، لتتخذ قراراتك بناءً على بيانات دقيقة.</p>
+                <p class="lang-en">An interactive main screen providing an immediate overview of your business performance to help you make data-driven decisions.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3 class="lang-ar">تقارير أسبوعية وشهرية</h3>
+                <h3 class="lang-en">Weekly & Monthly Reports</h3>
+                <p class="lang-ar">توليد تقارير مالية ومبيعات مفصلة بشكل أسبوعي أو شهري لمتابعة النمو والتدفقات النقدية بدقة.</p>
+                <p class="lang-en">Generate detailed financial and sales reports on a weekly or monthly basis to accurately track growth and cash flow.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3 class="lang-ar">إدارة المنتجات والأصناف</h3>
+                <h3 class="lang-en">Products & Categories Management</h3>
+                <p class="lang-ar">تنظيم مرن لقاعدة بيانات المنتجات، مع إمكانية تقسيمها إلى تصنيفات متعددة لتسهيل الوصول والبحث.</p>
+                <p class="lang-en">Flexible organization of your product database, with the ability to divide items into multiple categories for easy access and search.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🛒</div>
+                <h3 class="lang-ar">سجل حركات المبيعات ونقاط البيع</h3>
+                <h3 class="lang-en">Sales Transactions & POS</h3>
+                <p class="lang-ar">واجهة سريعة لإضافة المبيعات الجديدة بسهولة، مع الاحتفاظ بسجل كامل لجميع الحركات السابقة للرجوع إليها.</p>
+                <p class="lang-en">A fast interface for easily adding new sales, while maintaining a complete, searchable log of all past transactions.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3 class="lang-ar">مراقبة حالة المخزون</h3>
+                <h3 class="lang-en">Real-time Inventory Status</h3>
+                <p class="lang-ar">تتبع دقيق للكميات المتبقية والتنبيه عند انخفاض المخزون لضمان عدم توقف عمليات البيع.</p>
+                <p class="lang-en">Accurate tracking of remaining quantities and low-stock alerts to ensure your sales operations never stop.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📟</div>
+                <h3 class="lang-ar">دعم متكامل لقارئ الباركود</h3>
+                <h3 class="lang-en">Barcode Scanner Integration</h3>
+                <p class="lang-ar">تسريع عملية البيع وإدخال البيانات من خلال التوافق التام مع أجهزة قراءة الباركود بأنواعها.</p>
+                <p class="lang-en">Speed up sales and data entry through seamless compatibility with standard physical barcode scanners.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="developer-section">
+        <h2 class="lang-ar">عن مهندس النظام</h2>
+        <h2 class="lang-en">About the Architect</h2>
+        
+        <div class="dev-card">
+            <div class="lang-ar">
+                <p>
+                    تم بناء "الضمان" انطلاقاً من فهم عميق لمتطلبات البرمجيات على مستوى الشركات الكبرى والواقع العملي للأسواق المحلية. مطور النظام هو مهندس برمجيات أول (Senior Software Engineer) يمتلك خبرة تتجاوز 8 سنوات في بناء حلول برمجية قوية وقابلة للتوسع. يمتلك المطور أساساً متيناً في معمارية النظم المعقدة، والذي تطور لإتقان أحدث التقنيات – وتحديداً ربط الواجهات الخلفية الآمنة مع الواجهات الأمامية التفاعلية وتجميعها في تطبيقات سطح مكتب فائقة السرعة وعالية الأداء.
+                </p>
+                <p>
+                    يعمل المطور حالياً مع عملاء عبر عدة دول، ليجمع بين احتياجات الأسواق المختلفة وأعلى المعايير الهندسية العالمية. كل سطر برمجي في "الضمان" يعكس الالتزام بتقديم برنامج ليس فقط فعالاً، بل موثوقاً وآمناً بشكل صارم ومقفل على مستوى الأجهزة (Hardware-locked).
+                </p>
+            </div>
+
+            <div class="lang-en">
+                <p>
+                    Al-Daman was forged from a deep understanding of enterprise-level software requirements and the practical realities of local businesses. The architect behind the system is a Senior Software Engineer with over 8 years of dedicated experience in building robust, highly scalable software solutions. This background translates into a mastery of the modern tech stack—specifically bridging secure backends with dynamic frontends and compiling them into lightning-fast, high-performance desktop applications.
+                </p>
+                <p>
+                    Currently operating across multiple countries, the developer combines international market insights with world-class engineering standards. Every line of code in Al-Daman reflects a commitment to delivering software that is not just functional, but genuinely reliable and strictly secure at the hardware level.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h2 class="lang-ar">أرقام التواصل</h2>
+        <h2 class="lang-en">Contact Numbers</h2>
+        
+        <p class="lang-ar">هل أنت مستعد لتأمين عمليات مؤسستك؟ تواصل معنا اليوم للحصول على رخصتك المخصصة والمحمية.</p>
+        <p class="lang-en">Ready to secure your business operations? Reach out to get your customized, hardware-locked license today.</p>
+        
+        <div class="contact-numbers">
+            <div class="number-card" dir="ltr">
+                📞 +971 55 196 2296
+            </div>
+            <div class="number-card" dir="ltr">
+                📞 +963 994 065 899
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="lang-ar">&copy; 2026 الضمان لإدارة المبيعات. جميع الحقوق محفوظة.</span>
+        <span class="lang-en">&copy; 2026 Al-Daman Sales Management. All rights reserved.</span>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const htmlElement = document.documentElement;
+            const currentLang = htmlElement.getAttribute('lang');
+
+            if (currentLang === 'ar') {
+                htmlElement.setAttribute('lang', 'en');
+                htmlElement.setAttribute('dir', 'ltr');
+            } else {
+                htmlElement.setAttribute('lang', 'ar');
+                htmlElement.setAttribute('dir', 'rtl');
+            }
+        }
+    </script>
+</body>
+</html>
