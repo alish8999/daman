@@ -365,6 +365,86 @@
             .contact-numbers { flex-direction: column; gap: 1rem; }
             .header-right { flex-direction: column-reverse; gap: 10px; align-items: flex-end; }
         }
+                    /* Animated Showcase Section */
+.showcase-section {
+    padding: 5rem 5%;
+    background-color: var(--light-blue);
+    text-align: center;
+}
+
+.showcase-title {
+    font-size: 2.2rem;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+}
+
+.placeholder-instruction {
+    font-size: 1.1rem;
+    color: #E53E3E; /* A subtle alert color */
+    font-weight: bold;
+    margin-bottom: 3rem;
+    padding: 10px;
+    background-color: rgba(229, 62, 62, 0.1);
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.showcase-item {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.showcase-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+    border-color: var(--secondary-blue);
+}
+
+.showcase-visual {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden; /* For clean rounded corners on the animation */
+}
+
+/* Sample animation placeholder style */
+.showcase-visual.generated-placeholder {
+    aspect-ratio: 16 / 10; /* Common dashboard/login ratio */
+    background: linear-gradient(135deg, #0A4D68 0%, #088395 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Once you have real images, use this class and remove 'generated-placeholder' */
+.showcase-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.showcase-item h3 {
+    color: var(--primary-blue);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
     </style>
 </head>
 <body>
@@ -427,7 +507,51 @@
             </div>
         </div>
     </section>
+<section class="showcase-section">
+        <h2 class="showcase-title lang-ar">لمحات سريعة من داخل النظام</h2>
+        <h2 class="showcase-title lang-en">System Glimpses: Watch Al-Daman in Action</h2>
 
+        <div class="placeholder-instruction lang-ar">
+            💡 ملاحظة للمطور: استبدل مقاطع الفيديو التوضيحية أدناه بتسجيلات حقيقية لشاشتك (GIF أو MP4) عند جاهزيتها.
+        </div>
+        <div class="placeholder-instruction lang-en">
+            💡 Developer Note: Replace the generated placeholder animations below with real screen recordings (GIF or MP4) when ready.
+        </div>
+
+        <div class="showcase-grid">
+            <div class="showcase-item">
+                <div class="showcase-visual generated-placeholder lang-ar">أنيميشن شاشة تسجيل الدخول...</div>
+                <div class="showcase-visual generated-placeholder lang-en">Login Page Animation...</div>
+                
+                <h3 class="lang-ar">الوصول الآمن</h3>
+                <h3 class="lang-en">Secure Access</h3>
+            </div>
+
+            <div class="showcase-item">
+                <div class="showcase-visual generated-placeholder lang-ar">أنيميشن لوحة التحكم...</div>
+                <div class="showcase-visual generated-placeholder lang-en">Dashboard Animation...</div>
+                
+                <h3 class="lang-ar">نظرة عامة حية</h3>
+                <h3 class="lang-en">Live Overview</h3>
+            </div>
+
+            <div class="showcase-item">
+                <div class="showcase-visual generated-placeholder lang-ar">أنيميشن ملخص الفاتورة...</div>
+                <div class="showcase-visual generated-placeholder lang-en">Invoice Animation...</div>
+                
+                <h3 class="lang-ar">إصدار الفواتير الفوري</h3>
+                <h3 class="lang-en">Instant Invoicing</h3>
+            </div>
+
+            <div class="showcase-item">
+                <div class="showcase-visual generated-placeholder lang-ar">أنيميشن عملية المسح...</div>
+                <div class="showcase-visual generated-placeholder lang-en">Scanning Animation...</div>
+                
+                <h3 class="lang-ar">البيع الذكي بالباركود</h3>
+                <h3 class="lang-en">Smart Barcode Selling</h3>
+            </div>
+        </div>
+    </section>
     <section class="pricing-section">
         <h2 class="section-title lang-ar">الباقات والأسعار</h2>
         <h2 class="section-title lang-en">Pricing & Packages</h2>
