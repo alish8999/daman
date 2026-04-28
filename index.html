@@ -123,17 +123,19 @@
             opacity: 0.9;
         }
 
+        /* Shared Section Title */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
         /* Features Section */
         .features-section {
             padding: 5rem 5%;
             background-color: var(--white);
             text-align: center;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 3rem;
         }
 
         .features-grid {
@@ -168,6 +170,257 @@
             font-size: 1.4rem;
             margin-bottom: 1rem;
         }
+
+        /* Animated Showcase Section (CSS Animations) */
+        .showcase-section {
+            padding: 5rem 5%;
+            background-color: var(--light-blue);
+            text-align: center;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .showcase-item {
+            background-color: var(--white);
+            padding: 2.5rem 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 4px solid var(--secondary-blue);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+        }
+
+        .showcase-item h3 {
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+        }
+
+        .anim-container {
+            width: 120px;
+            height: 120px;
+            background-color: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(8, 131, 149, 0.2);
+        }
+
+        .anim-lock {
+            width: 40px;
+            height: 30px;
+            background-color: var(--primary-blue);
+            border-radius: 4px;
+            position: relative;
+        }
+        .anim-lock::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 4px solid var(--primary-blue);
+            border-bottom: none;
+            border-radius: 12px 12px 0 0;
+            top: -24px;
+            left: 6px;
+            transform-origin: left bottom;
+            animation: unlock 2s infinite alternate ease-in-out;
+        }
+        @keyframes unlock {
+            0%, 20% { transform: rotate(0deg); }
+            80%, 100% { transform: rotate(-45deg); }
+        }
+
+        .anim-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 6px;
+            height: 50px;
+        }
+        .anim-bar {
+            width: 12px;
+            background-color: var(--secondary-blue);
+            border-radius: 2px 2px 0 0;
+            animation: growBar 1.5s infinite alternate ease-in-out;
+        }
+        .anim-bar:nth-child(1) { height: 20px; animation-delay: 0.1s; }
+        .anim-bar:nth-child(2) { height: 40px; animation-delay: 0.3s; background-color: var(--primary-blue); }
+        .anim-bar:nth-child(3) { height: 30px; animation-delay: 0.5s; }
+        .anim-bar:nth-child(4) { height: 50px; animation-delay: 0.7s; background-color: var(--accent-gold); }
+        @keyframes growBar {
+            0% { transform: scaleY(0.2); }
+            100% { transform: scaleY(1); }
+        }
+
+        .anim-invoice {
+            width: 50px;
+            height: 60px;
+            background-color: white;
+            border: 2px solid var(--primary-blue);
+            border-radius: 4px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 8px;
+            gap: 6px;
+            animation: slideUp 3s infinite ease-in-out;
+        }
+        .anim-line {
+            width: 30px;
+            height: 4px;
+            background-color: #CBD5E1;
+            border-radius: 2px;
+        }
+        .anim-line.short { width: 15px; }
+        .anim-line.total { background-color: var(--secondary-blue); width: 35px; margin-top: auto; margin-bottom: 8px;}
+        @keyframes slideUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            20%, 80% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-20px); opacity: 0; }
+        }
+
+        .anim-barcode-wrapper {
+            position: relative;
+            width: 60px;
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .anim-barcode-line { height: 100%; background-color: var(--primary-blue); }
+        .anim-barcode-line:nth-child(1) { width: 4px; }
+        .anim-barcode-line:nth-child(2) { width: 2px; }
+        .anim-barcode-line:nth-child(3) { width: 6px; }
+        .anim-barcode-line:nth-child(4) { width: 3px; }
+        .anim-barcode-line:nth-child(5) { width: 5px; }
+        .anim-barcode-line:nth-child(6) { width: 2px; }
+        .anim-laser {
+            position: absolute;
+            width: 120%;
+            height: 2px;
+            background-color: #EF4444;
+            left: -10%;
+            box-shadow: 0 0 8px #EF4444;
+            animation: scanLaser 1.5s infinite alternate linear;
+        }
+        @keyframes scanLaser {
+            0% { top: -5px; }
+            100% { top: 45px; }
+        }
+
+        /* NEW: Image Slider Section */
+        .slider-section {
+            padding: 5rem 5%;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .slider-container {
+            max-width: 900px;
+            position: relative;
+            margin: auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border: 4px solid var(--light-blue);
+        }
+
+        .slide {
+            display: none;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 16/9; /* يحافظ على نسبة عرض الصور */
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(10, 77, 104, 0.85); /* خلفية شفافة فوق الصورة */
+            color: var(--white);
+            padding: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        /* Slider Controls */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.3s ease;
+            user-select: none;
+            background-color: rgba(0,0,0,0.4);
+            text-decoration: none;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: var(--primary-blue);
+        }
+
+        /* Handle RTL and LTR for slider arrows */
+        html[dir="ltr"] .prev { left: 0; border-radius: 0 5px 5px 0; }
+        html[dir="ltr"] .next { right: 0; border-radius: 5px 0 0 5px; }
+        html[dir="rtl"] .prev { right: 0; border-radius: 5px 0 0 5px; }
+        html[dir="rtl"] .next { left: 0; border-radius: 0 5px 5px 0; }
+
+        .dot-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #CBD5E1;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active, .dot:hover {
+            background-color: var(--primary-blue);
+        }
+
+        /* Fading animation for slides */
+        .fade {
+            animation-name: fadeAnim;
+            animation-duration: 1.5s;
+        }
+        @keyframes fadeAnim {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
 
         /* Pricing Section */
         .pricing-section {
@@ -314,6 +567,13 @@
             text-align: start;
         }
 
+        .dev-card p {
+            font-size: 1.15rem;
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
         /* Contact Section */
         .contact-section {
             padding: 4rem 5%;
@@ -345,6 +605,7 @@
             background-color: rgba(255,255,255,0.2);
         }
 
+        /* Footer */
         footer {
             background-color: #052a3a;
             color: rgba(255,255,255,0.6);
@@ -365,327 +626,333 @@
             .contact-numbers { flex-direction: column; gap: 1rem; }
             .header-right { flex-direction: column-reverse; gap: 10px; align-items: flex-end; }
         }
-                    /* Animated Showcase Section */
-.showcase-section {
-    padding: 5rem 5%;
-    background-color: var(--light-blue);
-    text-align: center;
-}
-
-.showcase-title {
-    font-size: 2.2rem;
-    color: var(--primary-blue);
-    margin-bottom: 2rem;
-}
-
-.placeholder-instruction {
-    font-size: 1.1rem;
-    color: #E53E3E; /* A subtle alert color */
-    font-weight: bold;
-    margin-bottom: 3rem;
-    padding: 10px;
-    background-color: rgba(229, 62, 62, 0.1);
-    border-radius: 8px;
-    display: inline-block;
-}
-
-.showcase-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.showcase-item {
-    background-color: var(--white);
-    padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.03);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.showcase-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.08);
-    border-color: var(--secondary-blue);
-}
-
-.showcase-visual {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    overflow: hidden; /* For clean rounded corners on the animation */
-}
-
-/* Sample animation placeholder style */
-.showcase-visual.generated-placeholder {
-    aspect-ratio: 16 / 10; /* Common dashboard/login ratio */
-    background: linear-gradient(135deg, #0A4D68 0%, #088395 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-/* Once you have real images, use this class and remove 'generated-placeholder' */
-.showcase-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.showcase-item h3 {
-    color: var(--primary-blue);
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-}
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <div class="logo-placeholder lang-ar">ض</div>
-            <div class="logo-placeholder lang-en">D</div>
-            <div class="logo-text lang-ar">الضمان</div>
-            <div class="logo-text lang-en">Al-Daman</div>
+<header>
+    <div class="logo-container">
+        <div class="logo-placeholder lang-ar">ض</div>
+        <div class="logo-placeholder lang-en">D</div>
+        <div class="logo-text lang-ar">الضمان</div>
+        <div class="logo-text lang-en">Al-Daman</div>
+    </div>
+    <div class="header-right">
+        <div style="font-weight: 700; color: var(--secondary-blue);" class="lang-ar">نظام إدارة المبيعات</div>
+        <div style="font-weight: 700; color: var(--secondary-blue);" class="lang-en">Sales Management System</div>
+        <button class="lang-btn" onclick="toggleLanguage()">
+            <span class="lang-ar">English</span>
+            <span class="lang-en">العربية</span>
+        </button>
+    </div>
+</header>
+
+<section class="hero">
+    <h1 class="lang-ar">الضمان لإدارة المبيعات</h1>
+    <h1 class="lang-en">Al-Daman Sales Management</h1>
+
+    <div class="slogan lang-ar">الضمان... دقة وأمان</div>
+    <div class="slogan lang-en">Al-Daman... Safety and Accuracy</div>
+
+    <p class="lang-ar">تطبيق سطح مكتب قوي ومحمي محلياً، مصمم هندسياً لتسهيل عمليات نقاط البيع، تتبع المخزون، والمحاسبة المعقدة دون الحاجة للاتصال الدائم بالإنترنت.</p>
+    <p class="lang-en">A powerful, locally-secured desktop application engineered for seamless point-of-sale operations, inventory tracking, and complex accounting without relying on an active internet connection.</p>
+</section>
+
+<section class="features-section">
+    <h2 class="section-title lang-ar">ميزات النظام الأساسية</h2>
+    <h2 class="section-title lang-en">Core System Features</h2>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 class="lang-ar">لوحة تحكم وإحصائيات شاملة</h3>
+            <h3 class="lang-en">Comprehensive Statistics Dashboard</h3>
+            <p class="lang-ar">شاشة رئيسية تفاعلية تقدم لك نظرة عامة وفورية على أداء عملك، لتتخذ قراراتك بناءً على بيانات دقيقة.</p>
+            <p class="lang-en">An interactive main screen providing an immediate overview of your business performance to help you make data-driven decisions.</p>
         </div>
-        <div class="header-right">
-            <div style="font-weight: 700; color: var(--secondary-blue);" class="lang-ar">نظام إدارة المبيعات</div>
-            <div style="font-weight: 700; color: var(--secondary-blue);" class="lang-en">Sales Management System</div>
-            <button class="lang-btn" onclick="toggleLanguage()">
-                <span class="lang-ar">English</span>
-                <span class="lang-en">العربية</span>
-            </button>
+
+        <div class="feature-card">
+            <div class="feature-icon">📅</div>
+            <h3 class="lang-ar">تقارير أسبوعية وشهرية</h3>
+            <h3 class="lang-en">Weekly & Monthly Reports</h3>
+            <p class="lang-ar">توليد تقارير مالية ومبيعات مفصلة بشكل أسبوعي أو شهري لمتابعة النمو والتدفقات النقدية بدقة.</p>
+            <p class="lang-en">Generate detailed financial and sales reports on a weekly or monthly basis to accurately track growth and cash flow.</p>
         </div>
-    </header>
 
-    <section class="hero">
-        <h1 class="lang-ar">الضمان لإدارة المبيعات</h1>
-        <h1 class="lang-en">Al-Daman Sales Management</h1>
-        
-        <div class="slogan lang-ar">الضمان... دقة وأمان</div>
-        <div class="slogan lang-en">Al-Daman... Safety and Accuracy</div>
-        
-        <p class="lang-ar">تطبيق سطح مكتب قوي ومحمي محلياً، مصمم هندسياً لتسهيل عمليات نقاط البيع، تتبع المخزون، والمحاسبة المعقدة دون الحاجة للاتصال الدائم بالإنترنت.</p>
-        <p class="lang-en">A powerful, locally-secured desktop application engineered for seamless point-of-sale operations, inventory tracking, and complex accounting without relying on an active internet connection.</p>
-    </section>
-
-    <section class="features-section">
-        <h2 class="section-title lang-ar">ميزات النظام الأساسية</h2>
-        <h2 class="section-title lang-en">Core System Features</h2>
-        
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3 class="lang-ar">لوحة تحكم وإحصائيات شاملة</h3>
-                <h3 class="lang-en">Comprehensive Statistics Dashboard</h3>
-                <p class="lang-ar">شاشة رئيسية تفاعلية تقدم لك نظرة عامة وفورية على أداء عملك، لتتخذ قراراتك بناءً على بيانات دقيقة.</p>
-                <p class="lang-en">An interactive main screen providing an immediate overview of your business performance to help you make data-driven decisions.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">📅</div>
-                <h3 class="lang-ar">تقارير أسبوعية وشهرية</h3>
-                <h3 class="lang-en">Weekly & Monthly Reports</h3>
-                <p class="lang-ar">توليد تقارير مالية ومبيعات مفصلة بشكل أسبوعي أو شهري لمتابعة النمو والتدفقات النقدية بدقة.</p>
-                <p class="lang-en">Generate detailed financial and sales reports on a weekly or monthly basis to accurately track growth and cash flow.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">📦</div>
-                <h3 class="lang-ar">إدارة المنتجات والأصناف</h3>
-                <h3 class="lang-en">Products & Categories Management</h3>
-                <p class="lang-ar">تنظيم مرن لقاعدة بيانات المنتجات، مع إمكانية تقسيمها إلى تصنيفات متعددة لتسهيل الوصول والبحث.</p>
-                <p class="lang-en">Flexible organization of your product database, with the ability to divide items into multiple categories for easy access and search.</p>
-            </div>
+        <div class="feature-card">
+            <div class="feature-icon">📦</div>
+            <h3 class="lang-ar">إدارة المنتجات والأصناف</h3>
+            <h3 class="lang-en">Products & Categories Management</h3>
+            <p class="lang-ar">تنظيم مرن لقاعدة بيانات المنتجات، مع إمكانية تقسيمها إلى تصنيفات متعددة لتسهيل الوصول والبحث.</p>
+            <p class="lang-en">Flexible organization of your product database, with the ability to divide items into multiple categories for easy access and search.</p>
         </div>
-    </section>
+    </div>
+</section>
+
 <section class="showcase-section">
-        <h2 class="showcase-title lang-ar">لمحات سريعة من داخل النظام</h2>
-        <h2 class="showcase-title lang-en">System Glimpses: Watch Al-Daman in Action</h2>
+    <h2 class="section-title lang-ar">كيف يعمل النظام؟ (أنيميشن CSS)</h2>
+    <h2 class="section-title lang-en">How The System Works (CSS Animation)</h2>
 
-        <div class="placeholder-instruction lang-ar">
-            💡 ملاحظة للمطور: استبدل مقاطع الفيديو التوضيحية أدناه بتسجيلات حقيقية لشاشتك (GIF أو MP4) عند جاهزيتها.
+    <div class="showcase-grid">
+        <div class="showcase-item">
+            <div class="anim-container">
+                <div class="anim-lock"></div>
+            </div>
+            <h3 class="lang-ar">تسجيل دخول مشفر وآمن</h3>
+            <h3 class="lang-en">Secure & Encrypted Login</h3>
         </div>
-        <div class="placeholder-instruction lang-en">
-            💡 Developer Note: Replace the generated placeholder animations below with real screen recordings (GIF or MP4) when ready.
-        </div>
 
-        <div class="showcase-grid">
-            <div class="showcase-item">
-                <div class="showcase-visual generated-placeholder lang-ar">أنيميشن شاشة تسجيل الدخول...</div>
-                <div class="showcase-visual generated-placeholder lang-en">Login Page Animation...</div>
-                
-                <h3 class="lang-ar">الوصول الآمن</h3>
-                <h3 class="lang-en">Secure Access</h3>
-            </div>
-
-            <div class="showcase-item">
-                <div class="showcase-visual generated-placeholder lang-ar">أنيميشن لوحة التحكم...</div>
-                <div class="showcase-visual generated-placeholder lang-en">Dashboard Animation...</div>
-                
-                <h3 class="lang-ar">نظرة عامة حية</h3>
-                <h3 class="lang-en">Live Overview</h3>
-            </div>
-
-            <div class="showcase-item">
-                <div class="showcase-visual generated-placeholder lang-ar">أنيميشن ملخص الفاتورة...</div>
-                <div class="showcase-visual generated-placeholder lang-en">Invoice Animation...</div>
-                
-                <h3 class="lang-ar">إصدار الفواتير الفوري</h3>
-                <h3 class="lang-en">Instant Invoicing</h3>
-            </div>
-
-            <div class="showcase-item">
-                <div class="showcase-visual generated-placeholder lang-ar">أنيميشن عملية المسح...</div>
-                <div class="showcase-visual generated-placeholder lang-en">Scanning Animation...</div>
-                
-                <h3 class="lang-ar">البيع الذكي بالباركود</h3>
-                <h3 class="lang-en">Smart Barcode Selling</h3>
-            </div>
-        </div>
-    </section>
-    <section class="pricing-section">
-        <h2 class="section-title lang-ar">الباقات والأسعار</h2>
-        <h2 class="section-title lang-en">Pricing & Packages</h2>
-
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3 class="lang-ar">الأساسية</h3>
-                <h3 class="lang-en">Basic</h3>
-                <div class="price-container">
-                    <span class="old-price">$75</span>
-                    <span class="new-price">$60</span>
-                    <span class="price-note lang-ar">سعر مخفض لفترة محدودة!</span>
-                    <span class="price-note lang-en">Limited time discounted price!</span>
+        <div class="showcase-item">
+            <div class="anim-container">
+                <div class="anim-chart">
+                    <div class="anim-bar"></div>
+                    <div class="anim-bar"></div>
+                    <div class="anim-bar"></div>
+                    <div class="anim-bar"></div>
                 </div>
-                <ul class="features-list">
-                    <li class="lang-ar">التطبيق بكامل المنتجات والأصناف</li>
-                    <li class="lang-en">Application with all products & categories</li>
-                    <li class="lang-ar">لوحة التحكم التفاعلية</li>
-                    <li class="lang-en">Interactive Dashboard</li>
-                    <li class="lang-ar">مراقبة حالة المخزون</li>
-                    <li class="lang-en">Store status & Inventory tracking</li>
-                    <li class="lang-ar"><strong>شهر واحد</strong> دعم فني مجاني</li>
-                    <li class="lang-en"><strong>1 Month</strong> free technical support</li>
-                </ul>
             </div>
+            <h3 class="lang-ar">إحصائيات ومؤشرات حية</h3>
+            <h3 class="lang-en">Live Stats & Analytics</h3>
+        </div>
 
-            <div class="pricing-card popular">
-                <div class="popular-badge lang-ar">الأكثر طلباً</div>
-                <div class="popular-badge lang-en">Most Popular</div>
-                <h3 class="lang-ar">الاحترافية</h3>
-                <h3 class="lang-en">Pro</h3>
-                <div class="price-container">
-                    <span class="old-price">$100</span>
-                    <span class="new-price">$85</span>
-                    <span class="price-note lang-ar">سعر مخفض لفترة محدودة!</span>
-                    <span class="price-note lang-en">Limited time discounted price!</span>
+        <div class="showcase-item">
+            <div class="anim-container">
+                <div class="anim-invoice">
+                    <div class="anim-line"></div>
+                    <div class="anim-line short"></div>
+                    <div class="anim-line"></div>
+                    <div class="anim-line total"></div>
                 </div>
-                <ul class="features-list">
-                    <li class="lang-ar"><strong>جميع ميزات الباقة الأساسية</strong></li>
-                    <li class="lang-en"><strong>All Basic Plan features</strong></li>
-                    <li class="lang-ar">دعم ميزة قارئ الباركود</li>
-                    <li class="lang-en">Barcode Scanner integration</li>
-                    <li class="lang-ar">دعم باركود المستخدم والمصنع</li>
-                    <li class="lang-en">Supports user & manufacturing barcodes</li>
-                    <li class="lang-ar"><strong>شهر واحد</strong> دعم فني مجاني</li>
-                    <li class="lang-en"><strong>1 Month</strong> free technical support</li>
-                </ul>
             </div>
+            <h3 class="lang-ar">إصدار الفواتير بلحظات</h3>
+            <h3 class="lang-en">Instant Invoicing</h3>
+        </div>
 
-            <div class="pricing-card">
-                <h3 class="lang-ar">المميزة</h3>
-                <h3 class="lang-en">Premium</h3>
-                <div class="price-container">
-                    <span class="old-price">$125</span>
-                    <span class="new-price">$110</span>
-                    <span class="price-note lang-ar">سعر مخفض لفترة محدودة!</span>
-                    <span class="price-note lang-en">Limited time discounted price!</span>
+        <div class="showcase-item">
+            <div class="anim-container">
+                <div class="anim-barcode-wrapper">
+                    <div class="anim-barcode-line"></div>
+                    <div class="anim-barcode-line"></div>
+                    <div class="anim-barcode-line"></div>
+                    <div class="anim-barcode-line"></div>
+                    <div class="anim-barcode-line"></div>
+                    <div class="anim-barcode-line"></div>
+                    <div class="anim-laser"></div>
                 </div>
-                <ul class="features-list">
-                    <li class="lang-ar"><strong>جميع ميزات الباقة الاحترافية</strong></li>
-                    <li class="lang-en"><strong>All Pro Plan features</strong></li>
-                    <li class="lang-ar">تصدير التقارير الشهرية</li>
-                    <li class="lang-en">Export monthly reports</li>
-                    <li class="lang-ar">إرفاق وعرض صور المنتجات</li>
-                    <li class="lang-en">Product images support</li>
-                    <li class="lang-ar"><strong>6 أشهر</strong> دعم فني مجاني</li>
-                    <li class="lang-en"><strong>6 Months</strong> free technical support</li>
-                </ul>
             </div>
+            <h3 class="lang-ar">مسح ضوئي ذكي وسريع</h3>
+            <h3 class="lang-en">Smart Barcode Scanning</h3>
+        </div>
+    </div>
+</section>
+
+<section class="slider-section">
+    <h2 class="section-title lang-ar">جولة مصورة داخل النظام (Slider)</h2>
+    <h2 class="section-title lang-en">Visual Tour Inside The System (Slider)</h2>
+
+    <div class="slider-container">
+        <div class="slide fade">
+            <img src="https://via.placeholder.com/900x500/0A4D68/FFFFFF?text=Login+Screen" alt="Login Screen">
+            <div class="slide-caption lang-ar">شاشة تسجيل الدخول الآمنة للبرنامج</div>
+            <div class="slide-caption lang-en">Secure Application Login Screen</div>
         </div>
 
-        <div class="addons-container">
-            <h4 class="lang-ar">الإضافات وملحقات الأجهزة (اختياري)</h4>
-            <h4 class="lang-en">Hardware Add-ons (Optional)</h4>
-            <p class="lang-ar">
-                أي جهاز قارئ باركود USB متوافق للعمل مع النظام.<br>
-                نوفر <strong>جهاز قارئ باركود</strong> بسعر <strong>$50</strong> لمن يحتاجه.<br>
-                كما يمكننا توفير <strong>طابعة باركود</strong> مخصصة لمنتجاتك الخاصة حسب الطلب.
-            </p>
-            <p class="lang-en">
-                Any standard USB barcode scanner is compatible with the system.<br>
-                We can provide a <strong>Barcode Scanner</strong> device for <strong>$50</strong> if needed.<br>
-                A dedicated <strong>Barcode Printer</strong> for your own products can also be provided upon request.
-            </p>
+        <div class="slide fade">
+            <img src="https://via.placeholder.com/900x500/088395/FFFFFF?text=Dashboard+Overview" alt="Dashboard">
+            <div class="slide-caption lang-ar">لوحة التحكم التفاعلية والإحصائيات</div>
+            <div class="slide-caption lang-en">Interactive Dashboard & Statistics</div>
         </div>
-    </section>
 
-    <section class="developer-section">
-        <h2 class="section-title lang-ar">عن مهندس النظام</h2>
-        <h2 class="section-title lang-en">About the Architect</h2>
-        
-        <div class="dev-card">
-            <div class="lang-ar">
-                <p>تم بناء "الضمان" انطلاقاً من فهم عميق لمتطلبات البرمجيات على مستوى الشركات الكبرى والواقع العملي للأسواق المحلية. مطور النظام هو مهندس برمجيات أول (Senior Software Engineer) يمتلك خبرة تتجاوز 8 سنوات في بناء حلول برمجية قوية وقابلة للتوسع.</p>
-                <p>يعمل المطور حالياً مع عملاء عبر عدة دول، ليجمع بين احتياجات الأسواق المختلفة وأعلى المعايير الهندسية العالمية. كل سطر برمجي في "الضمان" يعكس الالتزام بتقديم برنامج ليس فقط فعالاً، بل موثوقاً وآمناً بشكل صارم ومقفل على مستوى الأجهزة (Hardware-locked).</p>
+        <div class="slide fade">
+            <img src="https://via.placeholder.com/900x500/F59E0B/FFFFFF?text=Invoice+Management" alt="Invoice">
+            <div class="slide-caption lang-ar">واجهة إدارة المبيعات وإصدار الفواتير</div>
+            <div class="slide-caption lang-en">Sales Management & Invoicing Interface</div>
+        </div>
+
+        <div class="slide fade">
+            <img src="https://via.placeholder.com/900x500/2D3748/FFFFFF?text=Barcode+Scanner+Integration" alt="Barcode">
+            <div class="slide-caption lang-ar">دعم متكامل لأجهزة قراءة الباركود</div>
+            <div class="slide-caption lang-en">Seamless Barcode Scanner Integration</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div class="dot-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+    </div>
+</section>
+
+<section class="pricing-section">
+    <h2 class="section-title lang-ar">الباقات والأسعار</h2>
+    <h2 class="section-title lang-en">Pricing & Packages</h2>
+
+    <div class="pricing-grid">
+        <div class="pricing-card">
+            <h3 class="lang-ar">الأساسية</h3>
+            <h3 class="lang-en">Basic</h3>
+            <div class="price-container">
+                <span class="old-price">$75</span>
+                <span class="new-price">$60</span>
+                <span class="price-note lang-ar">سعر مخفض لفترة محدودة!</span>
+                <span class="price-note lang-en">Limited time discounted price!</span>
             </div>
-            <div class="lang-en">
-                <p>Al-Daman was forged from a deep understanding of enterprise-level software requirements and the practical realities of local businesses. The architect behind the system is a Senior Software Engineer with over 8 years of dedicated experience.</p>
-                <p>Currently operating across multiple countries, the developer combines international market insights with world-class engineering standards. Every line of code in Al-Daman reflects a commitment to delivering software that is genuinely reliable and strictly secure at the hardware level.</p>
+            <ul class="features-list">
+                <li class="lang-ar">التطبيق بكامل المنتجات والأصناف</li>
+                <li class="lang-en">Application with all products & categories</li>
+                <li class="lang-ar">لوحة التحكم التفاعلية</li>
+                <li class="lang-en">Interactive Dashboard</li>
+                <li class="lang-ar">مراقبة حالة المخزون</li>
+                <li class="lang-en">Store status & Inventory tracking</li>
+                <li class="lang-ar"><strong>شهر واحد</strong> دعم فني مجاني</li>
+                <li class="lang-en"><strong>1 Month</strong> free technical support</li>
+            </ul>
+        </div>
+
+        <div class="pricing-card popular">
+            <div class="popular-badge lang-ar">الأكثر طلباً</div>
+            <div class="popular-badge lang-en">Most Popular</div>
+            <h3 class="lang-ar">الاحترافية</h3>
+            <h3 class="lang-en">Pro</h3>
+            <div class="price-container">
+                <span class="old-price">$100</span>
+                <span class="new-price">$85</span>
+                <span class="price-note lang-ar">سعر مخفض لفترة محدودة!</span>
+                <span class="price-note lang-en">Limited time discounted price!</span>
             </div>
+            <ul class="features-list">
+                <li class="lang-ar"><strong>جميع ميزات الباقة الأساسية</strong></li>
+                <li class="lang-en"><strong>All Basic Plan features</strong></li>
+                <li class="lang-ar">دعم ميزة قارئ الباركود</li>
+                <li class="lang-en">Barcode Scanner integration</li>
+                <li class="lang-ar">دعم باركود المستخدم والمصنع</li>
+                <li class="lang-en">Supports user & manufacturing barcodes</li>
+                <li class="lang-ar"><strong>شهر واحد</strong> دعم فني مجاني</li>
+                <li class="lang-en"><strong>1 Month</strong> free technical support</li>
+            </ul>
         </div>
-    </section>
 
-    <section class="contact-section">
-        <h2 class="lang-ar">أرقام التواصل</h2>
-        <h2 class="lang-en">Contact Numbers</h2>
-        
-        <p class="lang-ar">هل أنت مستعد لتأمين عمليات مؤسستك؟ تواصل معنا اليوم للحصول على رخصتك المخصصة والمحمية.</p>
-        <p class="lang-en">Ready to secure your business operations? Reach out to get your customized, hardware-locked license today.</p>
-        
-        <div class="contact-numbers">
-            <div class="number-card" dir="ltr">📞 +971 55 196 2296</div>
-            <div class="number-card" dir="ltr">📞 +963 994 065 899</div>
+        <div class="pricing-card">
+            <h3 class="lang-ar">المميزة</h3>
+            <h3 class="lang-en">Premium</h3>
+            <div class="price-container">
+                <span class="old-price">$125</span>
+                <span class="new-price">$110</span>
+                <span class="price-note lang-ar">سعر مخفض لفترة محدودة!</span>
+                <span class="price-note lang-en">Limited time discounted price!</span>
+            </div>
+            <ul class="features-list">
+                <li class="lang-ar"><strong>جميع ميزات الباقة الاحترافية</strong></li>
+                <li class="lang-en"><strong>All Pro Plan features</strong></li>
+                <li class="lang-ar">تصدير التقارير الشهرية</li>
+                <li class="lang-en">Export monthly reports</li>
+                <li class="lang-ar">إرفاق وعرض صور المنتجات</li>
+                <li class="lang-en">Product images support</li>
+                <li class="lang-ar"><strong>6 أشهر</strong> دعم فني مجاني</li>
+                <li class="lang-en"><strong>6 Months</strong> free technical support</li>
+            </ul>
         </div>
-    </section>
+    </div>
 
-    <footer>
-        <span class="lang-ar">&copy; 2026 الضمان لإدارة المبيعات. جميع الحقوق محفوظة.</span>
-        <span class="lang-en">&copy; 2026 Al-Daman Sales Management. All rights reserved.</span>
-    </footer>
+    <div class="addons-container">
+        <h4 class="lang-ar">الإضافات وملحقات الأجهزة (اختياري)</h4>
+        <h4 class="lang-en">Hardware Add-ons (Optional)</h4>
+        <p class="lang-ar">
+            أي جهاز قارئ باركود USB متوافق للعمل مع النظام.<br>
+            نوفر <strong>جهاز قارئ باركود</strong> بسعر <strong>$50</strong> لمن يحتاجه.<br>
+            كما يمكننا توفير <strong>طابعة باركود</strong> مخصصة لمنتجاتك الخاصة حسب الطلب.
+        </p>
+        <p class="lang-en">
+            Any standard USB barcode scanner is compatible with the system.<br>
+            We can provide a <strong>Barcode Scanner</strong> device for <strong>$50</strong> if needed.<br>
+            A dedicated <strong>Barcode Printer</strong> for your own products can also be provided upon request.
+        </p>
+    </div>
+</section>
 
-    <script>
-        function toggleLanguage() {
-            const htmlElement = document.documentElement;
-            const currentLang = htmlElement.getAttribute('lang');
+<section class="developer-section">
+    <h2 class="section-title lang-ar">عن مهندس النظام</h2>
+    <h2 class="section-title lang-en">About the Architect</h2>
 
-            if (currentLang === 'ar') {
-                htmlElement.setAttribute('lang', 'en');
-                htmlElement.setAttribute('dir', 'ltr');
-            } else {
-                htmlElement.setAttribute('lang', 'ar');
-                htmlElement.setAttribute('dir', 'rtl');
-            }
+    <div class="dev-card">
+        <div class="lang-ar">
+            <p>تم بناء "الضمان" انطلاقاً من فهم عميق لمتطلبات البرمجيات على مستوى الشركات الكبرى والواقع العملي للأسواق المحلية. مطور النظام هو مهندس برمجيات أول (Senior Software Engineer) يمتلك خبرة تتجاوز 8 سنوات في بناء حلول برمجية قوية وقابلة للتوسع. يمتلك المطور أساساً متيناً في معمارية النظم المعقدة، والذي تطور لإتقان أحدث التقنيات – وتحديداً ربط الواجهات الخلفية الآمنة مع الواجهات الأمامية التفاعلية وتجميعها في تطبيقات سطح مكتب فائقة السرعة وعالية الأداء.</p>
+            <p>يعمل المطور حالياً مع عملاء عبر عدة دول، ليجمع بين احتياجات الأسواق المختلفة وأعلى المعايير الهندسية العالمية. كل سطر برمجي في "الضمان" يعكس الالتزام بتقديم برنامج ليس فقط فعالاً، بل موثوقاً وآمناً بشكل صارم ومقفل على مستوى الأجهزة (Hardware-locked).</p>
+        </div>
+        <div class="lang-en">
+            <p>Al-Daman was forged from a deep understanding of enterprise-level software requirements and the practical realities of local businesses. The architect behind the system is a Senior Software Engineer with over 8 years of dedicated experience in building robust, highly scalable software solutions. This background translates into a mastery of the modern tech stack—specifically bridging secure backends with dynamic frontends and compiling them into lightning-fast, high-performance desktop applications.</p>
+            <p>Currently operating across multiple countries, the developer combines international market insights with world-class engineering standards. Every line of code in Al-Daman reflects a commitment to delivering software that is not just functional, but genuinely reliable and strictly secure at the hardware level.</p>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section">
+    <h2 class="lang-ar">أرقام التواصل</h2>
+    <h2 class="lang-en">Contact Numbers</h2>
+
+    <p class="lang-ar">هل أنت مستعد لتأمين عمليات مؤسستك؟ تواصل معنا اليوم للحصول على رخصتك المخصصة والمحمية.</p>
+    <p class="lang-en">Ready to secure your business operations? Reach out to get your customized, hardware-locked license today.</p>
+
+    <div class="contact-numbers">
+        <div class="number-card" dir="ltr">📞 +971 55 196 2296</div>
+        <div class="number-card" dir="ltr">📞 +963 994 065 899</div>
+    </div>
+</section>
+
+<footer>
+    <span class="lang-ar">&copy; 2026 الضمان لإدارة المبيعات. جميع الحقوق محفوظة.</span>
+    <span class="lang-en">&copy; 2026 Al-Daman Sales Management. All rights reserved.</span>
+</footer>
+
+<script>
+    // Language Toggle Logic
+    function toggleLanguage() {
+        const htmlElement = document.documentElement;
+        const currentLang = htmlElement.getAttribute('lang');
+
+        if (currentLang === 'ar') {
+            htmlElement.setAttribute('lang', 'en');
+            htmlElement.setAttribute('dir', 'ltr');
+        } else {
+            htmlElement.setAttribute('lang', 'ar');
+            htmlElement.setAttribute('dir', 'rtl');
         }
-    </script>
+    }
+
+    // Image Slider Logic
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("slide");
+        let dots = document.getElementsByClassName("dot");
+
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
+</script>
 </body>
 </html>
