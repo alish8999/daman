@@ -13,6 +13,7 @@
             --dark-text: #2D3748;
             --white: #FFFFFF;
             --transition: all 0.3s ease;
+            --accent-gold: #F59E0B;
         }
 
         * {
@@ -129,7 +130,7 @@
             text-align: center;
         }
 
-        .features-section h2 {
+        .section-title {
             font-size: 2.5rem;
             color: var(--primary-blue);
             margin-bottom: 3rem;
@@ -168,30 +169,143 @@
             margin-bottom: 1rem;
         }
 
-        .feature-card p {
+        /* Pricing Section */
+        .pricing-section {
+            padding: 5rem 5%;
+            background-color: var(--light-blue);
+            text-align: center;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .pricing-card {
+            background-color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--secondary-blue);
+            transition: transform 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .pricing-card.popular {
+            border-top: 5px solid var(--accent-gold);
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-gold);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .price-container {
+            margin: 1.5rem 0;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #A0AEC0;
+            font-size: 1.2rem;
+            margin: 0 10px;
+        }
+
+        .new-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+
+        .price-note {
+            display: block;
+            color: #E53E3E;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            text-align: start;
+            flex-grow: 1;
+        }
+
+        .features-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-inline-start: 2rem;
             color: var(--dark-text);
-            font-size: 1rem;
-            opacity: 0.9;
+        }
+
+        .features-list li::before {
+            content: '✔';
+            color: var(--secondary-blue);
+            position: absolute;
+            inset-inline-start: 0;
+            font-weight: bold;
+        }
+
+        .pricing-card.popular .features-list li::before {
+            color: var(--accent-gold);
+        }
+
+        .addons-container {
+            margin-top: 4rem;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px dashed var(--secondary-blue);
+        }
+
+        .addons-container h4 {
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
         }
 
         /* Developer Story Section */
         .developer-section {
             padding: 5rem 5%;
-            background-color: var(--light-blue);
+            background-color: var(--white);
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
         }
 
-        .developer-section h2 {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 2rem;
-        }
-
         .dev-card {
-            background-color: var(--white);
+            background-color: var(--light-blue);
             padding: 3rem;
             border-radius: 16px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
@@ -200,24 +314,12 @@
             text-align: start;
         }
 
-        .dev-card p {
-            font-size: 1.15rem;
-            color: var(--dark-text);
-            margin-bottom: 1.5rem;
-            text-align: justify;
-        }
-
         /* Contact Section */
         .contact-section {
             padding: 4rem 5%;
             background-color: var(--primary-blue);
             color: var(--white);
             text-align: center;
-        }
-
-        .contact-section h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
         }
 
         .contact-numbers {
@@ -243,13 +345,18 @@
             background-color: rgba(255,255,255,0.2);
         }
 
-        /* Footer */
         footer {
             background-color: #052a3a;
             color: rgba(255,255,255,0.6);
             text-align: center;
             padding: 1.5rem;
             font-size: 1rem;
+        }
+
+        @media (max-width: 992px) {
+            .pricing-card.popular {
+                transform: scale(1);
+            }
         }
 
         @media (max-width: 768px) {
@@ -270,12 +377,8 @@
             <div class="logo-text lang-en">Al-Daman</div>
         </div>
         <div class="header-right">
-            <div style="font-weight: 700; color: var(--secondary-blue);" class="lang-ar">
-                نظام إدارة المبيعات
-            </div>
-            <div style="font-weight: 700; color: var(--secondary-blue);" class="lang-en">
-                Sales Management System
-            </div>
+            <div style="font-weight: 700; color: var(--secondary-blue);" class="lang-ar">نظام إدارة المبيعات</div>
+            <div style="font-weight: 700; color: var(--secondary-blue);" class="lang-en">Sales Management System</div>
             <button class="lang-btn" onclick="toggleLanguage()">
                 <span class="lang-ar">English</span>
                 <span class="lang-en">العربية</span>
@@ -295,8 +398,8 @@
     </section>
 
     <section class="features-section">
-        <h2 class="lang-ar">ميزات النظام الأساسية</h2>
-        <h2 class="lang-en">Core System Features</h2>
+        <h2 class="section-title lang-ar">ميزات النظام الأساسية</h2>
+        <h2 class="section-title lang-en">Core System Features</h2>
         
         <div class="features-grid">
             <div class="feature-card">
@@ -322,54 +425,108 @@
                 <p class="lang-ar">تنظيم مرن لقاعدة بيانات المنتجات، مع إمكانية تقسيمها إلى تصنيفات متعددة لتسهيل الوصول والبحث.</p>
                 <p class="lang-en">Flexible organization of your product database, with the ability to divide items into multiple categories for easy access and search.</p>
             </div>
+        </div>
+    </section>
 
-            <div class="feature-card">
-                <div class="feature-icon">🛒</div>
-                <h3 class="lang-ar">سجل حركات المبيعات ونقاط البيع</h3>
-                <h3 class="lang-en">Sales Transactions & POS</h3>
-                <p class="lang-ar">واجهة سريعة لإضافة المبيعات الجديدة بسهولة، مع الاحتفاظ بسجل كامل لجميع الحركات السابقة للرجوع إليها.</p>
-                <p class="lang-en">A fast interface for easily adding new sales, while maintaining a complete, searchable log of all past transactions.</p>
+    <section class="pricing-section">
+        <h2 class="section-title lang-ar">الباقات والأسعار</h2>
+        <h2 class="section-title lang-en">Pricing & Packages</h2>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3 class="lang-ar">الأساسية</h3>
+                <h3 class="lang-en">Basic</h3>
+                <div class="price-container">
+                    <span class="old-price">$75</span>
+                    <span class="new-price">$60</span>
+                    <span class="price-note lang-ar">سعر مخفض لفترة محدودة!</span>
+                    <span class="price-note lang-en">Limited time discounted price!</span>
+                </div>
+                <ul class="features-list">
+                    <li class="lang-ar">التطبيق بكامل المنتجات والأصناف</li>
+                    <li class="lang-en">Application with all products & categories</li>
+                    <li class="lang-ar">لوحة التحكم التفاعلية</li>
+                    <li class="lang-en">Interactive Dashboard</li>
+                    <li class="lang-ar">مراقبة حالة المخزون</li>
+                    <li class="lang-en">Store status & Inventory tracking</li>
+                    <li class="lang-ar"><strong>شهر واحد</strong> دعم فني مجاني</li>
+                    <li class="lang-en"><strong>1 Month</strong> free technical support</li>
+                </ul>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🔍</div>
-                <h3 class="lang-ar">مراقبة حالة المخزون</h3>
-                <h3 class="lang-en">Real-time Inventory Status</h3>
-                <p class="lang-ar">تتبع دقيق للكميات المتبقية والتنبيه عند انخفاض المخزون لضمان عدم توقف عمليات البيع.</p>
-                <p class="lang-en">Accurate tracking of remaining quantities and low-stock alerts to ensure your sales operations never stop.</p>
+            <div class="pricing-card popular">
+                <div class="popular-badge lang-ar">الأكثر طلباً</div>
+                <div class="popular-badge lang-en">Most Popular</div>
+                <h3 class="lang-ar">الاحترافية</h3>
+                <h3 class="lang-en">Pro</h3>
+                <div class="price-container">
+                    <span class="old-price">$100</span>
+                    <span class="new-price">$85</span>
+                    <span class="price-note lang-ar">سعر مخفض لفترة محدودة!</span>
+                    <span class="price-note lang-en">Limited time discounted price!</span>
+                </div>
+                <ul class="features-list">
+                    <li class="lang-ar"><strong>جميع ميزات الباقة الأساسية</strong></li>
+                    <li class="lang-en"><strong>All Basic Plan features</strong></li>
+                    <li class="lang-ar">دعم ميزة قارئ الباركود</li>
+                    <li class="lang-en">Barcode Scanner integration</li>
+                    <li class="lang-ar">دعم باركود المستخدم والمصنع</li>
+                    <li class="lang-en">Supports user & manufacturing barcodes</li>
+                    <li class="lang-ar"><strong>شهر واحد</strong> دعم فني مجاني</li>
+                    <li class="lang-en"><strong>1 Month</strong> free technical support</li>
+                </ul>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">📟</div>
-                <h3 class="lang-ar">دعم متكامل لقارئ الباركود</h3>
-                <h3 class="lang-en">Barcode Scanner Integration</h3>
-                <p class="lang-ar">تسريع عملية البيع وإدخال البيانات من خلال التوافق التام مع أجهزة قراءة الباركود بأنواعها.</p>
-                <p class="lang-en">Speed up sales and data entry through seamless compatibility with standard physical barcode scanners.</p>
+            <div class="pricing-card">
+                <h3 class="lang-ar">المميزة</h3>
+                <h3 class="lang-en">Premium</h3>
+                <div class="price-container">
+                    <span class="old-price">$125</span>
+                    <span class="new-price">$110</span>
+                    <span class="price-note lang-ar">سعر مخفض لفترة محدودة!</span>
+                    <span class="price-note lang-en">Limited time discounted price!</span>
+                </div>
+                <ul class="features-list">
+                    <li class="lang-ar"><strong>جميع ميزات الباقة الاحترافية</strong></li>
+                    <li class="lang-en"><strong>All Pro Plan features</strong></li>
+                    <li class="lang-ar">تصدير التقارير الشهرية</li>
+                    <li class="lang-en">Export monthly reports</li>
+                    <li class="lang-ar">إرفاق وعرض صور المنتجات</li>
+                    <li class="lang-en">Product images support</li>
+                    <li class="lang-ar"><strong>6 أشهر</strong> دعم فني مجاني</li>
+                    <li class="lang-en"><strong>6 Months</strong> free technical support</li>
+                </ul>
             </div>
+        </div>
+
+        <div class="addons-container">
+            <h4 class="lang-ar">الإضافات وملحقات الأجهزة (اختياري)</h4>
+            <h4 class="lang-en">Hardware Add-ons (Optional)</h4>
+            <p class="lang-ar">
+                أي جهاز قارئ باركود USB متوافق للعمل مع النظام.<br>
+                نوفر <strong>جهاز قارئ باركود</strong> بسعر <strong>$50</strong> لمن يحتاجه.<br>
+                كما يمكننا توفير <strong>طابعة باركود</strong> مخصصة لمنتجاتك الخاصة حسب الطلب.
+            </p>
+            <p class="lang-en">
+                Any standard USB barcode scanner is compatible with the system.<br>
+                We can provide a <strong>Barcode Scanner</strong> device for <strong>$50</strong> if needed.<br>
+                A dedicated <strong>Barcode Printer</strong> for your own products can also be provided upon request.
+            </p>
         </div>
     </section>
 
     <section class="developer-section">
-        <h2 class="lang-ar">عن مهندس النظام</h2>
-        <h2 class="lang-en">About the Architect</h2>
+        <h2 class="section-title lang-ar">عن مهندس النظام</h2>
+        <h2 class="section-title lang-en">About the Architect</h2>
         
         <div class="dev-card">
             <div class="lang-ar">
-                <p>
-                    تم بناء "الضمان" انطلاقاً من فهم عميق لمتطلبات البرمجيات على مستوى الشركات الكبرى والواقع العملي للأسواق المحلية. مطور النظام هو مهندس برمجيات أول (Senior Software Engineer) يمتلك خبرة تتجاوز 8 سنوات في بناء حلول برمجية قوية وقابلة للتوسع. يمتلك المطور أساساً متيناً في معمارية النظم المعقدة، والذي تطور لإتقان أحدث التقنيات – وتحديداً ربط الواجهات الخلفية الآمنة مع الواجهات الأمامية التفاعلية وتجميعها في تطبيقات سطح مكتب فائقة السرعة وعالية الأداء.
-                </p>
-                <p>
-                    يعمل المطور حالياً مع عملاء عبر عدة دول، ليجمع بين احتياجات الأسواق المختلفة وأعلى المعايير الهندسية العالمية. كل سطر برمجي في "الضمان" يعكس الالتزام بتقديم برنامج ليس فقط فعالاً، بل موثوقاً وآمناً بشكل صارم ومقفل على مستوى الأجهزة (Hardware-locked).
-                </p>
+                <p>تم بناء "الضمان" انطلاقاً من فهم عميق لمتطلبات البرمجيات على مستوى الشركات الكبرى والواقع العملي للأسواق المحلية. مطور النظام هو مهندس برمجيات أول (Senior Software Engineer) يمتلك خبرة تتجاوز 8 سنوات في بناء حلول برمجية قوية وقابلة للتوسع.</p>
+                <p>يعمل المطور حالياً مع عملاء عبر عدة دول، ليجمع بين احتياجات الأسواق المختلفة وأعلى المعايير الهندسية العالمية. كل سطر برمجي في "الضمان" يعكس الالتزام بتقديم برنامج ليس فقط فعالاً، بل موثوقاً وآمناً بشكل صارم ومقفل على مستوى الأجهزة (Hardware-locked).</p>
             </div>
-
             <div class="lang-en">
-                <p>
-                    Al-Daman was forged from a deep understanding of enterprise-level software requirements and the practical realities of local businesses. The architect behind the system is a Senior Software Engineer with over 8 years of dedicated experience in building robust, highly scalable software solutions. This background translates into a mastery of the modern tech stack—specifically bridging secure backends with dynamic frontends and compiling them into lightning-fast, high-performance desktop applications.
-                </p>
-                <p>
-                    Currently operating across multiple countries, the developer combines international market insights with world-class engineering standards. Every line of code in Al-Daman reflects a commitment to delivering software that is not just functional, but genuinely reliable and strictly secure at the hardware level.
-                </p>
+                <p>Al-Daman was forged from a deep understanding of enterprise-level software requirements and the practical realities of local businesses. The architect behind the system is a Senior Software Engineer with over 8 years of dedicated experience.</p>
+                <p>Currently operating across multiple countries, the developer combines international market insights with world-class engineering standards. Every line of code in Al-Daman reflects a commitment to delivering software that is genuinely reliable and strictly secure at the hardware level.</p>
             </div>
         </div>
     </section>
@@ -382,12 +539,8 @@
         <p class="lang-en">Ready to secure your business operations? Reach out to get your customized, hardware-locked license today.</p>
         
         <div class="contact-numbers">
-            <div class="number-card" dir="ltr">
-                📞 +971 55 196 2296
-            </div>
-            <div class="number-card" dir="ltr">
-                📞 +963 994 065 899
-            </div>
+            <div class="number-card" dir="ltr">📞 +971 55 196 2296</div>
+            <div class="number-card" dir="ltr">📞 +963 994 065 899</div>
         </div>
     </section>
 
