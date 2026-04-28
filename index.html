@@ -95,250 +95,61 @@
             color: var(--white);
         }
 
-        /* Hero Section */
+        /* Hero Section with Integrated Slider */
         .hero {
             background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
             color: var(--white);
-            text-align: center;
-            padding: 6rem 2rem;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            padding: 5rem 5% 8rem 5%;
+            clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
         }
 
-        .hero h1 {
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-text {
+            flex: 1;
+            text-align: start;
+        }
+
+        .hero-text h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
-        .hero .slogan {
-            font-size: 1.8rem;
+        .hero-text .slogan {
+            font-size: 1.6rem;
             font-weight: 500;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             color: #E2F1E7;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem auto;
+        .hero-text p {
+            font-size: 1.15rem;
+            max-width: 600px;
             opacity: 0.9;
         }
 
-        /* Shared Section Title */
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 3rem;
-            text-align: center;
+        .hero-slider-wrapper {
+            flex: 1;
+            max-width: 550px;
+            width: 100%;
         }
 
-        /* Features Section */
-        .features-section {
-            padding: 5rem 5%;
-            background-color: var(--white);
-            text-align: center;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background-color: var(--light-blue);
-            padding: 2.5rem 1.5rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.03);
-            border-bottom: 4px solid var(--secondary-blue);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            color: var(--primary-blue);
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Animated Showcase Section (CSS Animations) */
-        .showcase-section {
-            padding: 5rem 5%;
-            background-color: var(--light-blue);
-            text-align: center;
-        }
-
-        .showcase-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .showcase-item {
-            background-color: var(--white);
-            padding: 2.5rem 1.5rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.03);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-bottom: 4px solid var(--secondary-blue);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .showcase-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
-        }
-
-        .showcase-item h3 {
-            color: var(--primary-blue);
-            font-size: 1.3rem;
-            margin-top: 1.5rem;
-        }
-
-        .anim-container {
-            width: 120px;
-            height: 120px;
-            background-color: var(--light-blue);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid rgba(8, 131, 149, 0.2);
-        }
-
-        .anim-lock {
-            width: 40px;
-            height: 30px;
-            background-color: var(--primary-blue);
-            border-radius: 4px;
-            position: relative;
-        }
-        .anim-lock::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border: 4px solid var(--primary-blue);
-            border-bottom: none;
-            border-radius: 12px 12px 0 0;
-            top: -24px;
-            left: 6px;
-            transform-origin: left bottom;
-            animation: unlock 2s infinite alternate ease-in-out;
-        }
-        @keyframes unlock {
-            0%, 20% { transform: rotate(0deg); }
-            80%, 100% { transform: rotate(-45deg); }
-        }
-
-        .anim-chart {
-            display: flex;
-            align-items: flex-end;
-            gap: 6px;
-            height: 50px;
-        }
-        .anim-bar {
-            width: 12px;
-            background-color: var(--secondary-blue);
-            border-radius: 2px 2px 0 0;
-            animation: growBar 1.5s infinite alternate ease-in-out;
-        }
-        .anim-bar:nth-child(1) { height: 20px; animation-delay: 0.1s; }
-        .anim-bar:nth-child(2) { height: 40px; animation-delay: 0.3s; background-color: var(--primary-blue); }
-        .anim-bar:nth-child(3) { height: 30px; animation-delay: 0.5s; }
-        .anim-bar:nth-child(4) { height: 50px; animation-delay: 0.7s; background-color: var(--accent-gold); }
-        @keyframes growBar {
-            0% { transform: scaleY(0.2); }
-            100% { transform: scaleY(1); }
-        }
-
-        .anim-invoice {
-            width: 50px;
-            height: 60px;
-            background-color: white;
-            border: 2px solid var(--primary-blue);
-            border-radius: 4px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 8px;
-            gap: 6px;
-            animation: slideUp 3s infinite ease-in-out;
-        }
-        .anim-line {
-            width: 30px;
-            height: 4px;
-            background-color: #CBD5E1;
-            border-radius: 2px;
-        }
-        .anim-line.short { width: 15px; }
-        .anim-line.total { background-color: var(--secondary-blue); width: 35px; margin-top: auto; margin-bottom: 8px;}
-        @keyframes slideUp {
-            0% { transform: translateY(20px); opacity: 0; }
-            20%, 80% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-20px); opacity: 0; }
-        }
-
-        .anim-barcode-wrapper {
-            position: relative;
-            width: 60px;
-            height: 40px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .anim-barcode-line { height: 100%; background-color: var(--primary-blue); }
-        .anim-barcode-line:nth-child(1) { width: 4px; }
-        .anim-barcode-line:nth-child(2) { width: 2px; }
-        .anim-barcode-line:nth-child(3) { width: 6px; }
-        .anim-barcode-line:nth-child(4) { width: 3px; }
-        .anim-barcode-line:nth-child(5) { width: 5px; }
-        .anim-barcode-line:nth-child(6) { width: 2px; }
-        .anim-laser {
-            position: absolute;
-            width: 120%;
-            height: 2px;
-            background-color: #EF4444;
-            left: -10%;
-            box-shadow: 0 0 8px #EF4444;
-            animation: scanLaser 1.5s infinite alternate linear;
-        }
-        @keyframes scanLaser {
-            0% { top: -5px; }
-            100% { top: 45px; }
-        }
-
-        /* NEW: Image Slider Section */
-        .slider-section {
-            padding: 5rem 5%;
-            background-color: var(--white);
-            text-align: center;
-        }
-
+        /* Integrated Slider Controls */
         .slider-container {
-            max-width: 900px;
             position: relative;
-            margin: auto;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border: 4px solid var(--light-blue);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            background-color: var(--white);
         }
 
         .slide {
@@ -350,42 +161,41 @@
             width: 100%;
             display: block;
             object-fit: cover;
-            aspect-ratio: 16/9; /* يحافظ على نسبة عرض الصور */
+            aspect-ratio: 16/9;
         }
 
         .slide-caption {
             position: absolute;
             bottom: 0;
             width: 100%;
-            background: rgba(10, 77, 104, 0.85); /* خلفية شفافة فوق الصورة */
+            background: rgba(10, 77, 104, 0.9);
             color: var(--white);
-            padding: 15px;
-            font-size: 1.3rem;
+            padding: 10px 15px;
+            font-size: 1.1rem;
             font-weight: bold;
+            text-align: center;
         }
 
-        /* Slider Controls */
         .prev, .next {
             cursor: pointer;
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             width: auto;
-            padding: 16px;
+            padding: 12px;
             color: white;
             font-weight: bold;
-            font-size: 24px;
+            font-size: 20px;
             transition: 0.3s ease;
             user-select: none;
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgba(0,0,0,0.5);
             text-decoration: none;
         }
 
         .prev:hover, .next:hover {
-            background-color: var(--primary-blue);
+            background-color: var(--accent-gold);
         }
 
-        /* Handle RTL and LTR for slider arrows */
         html[dir="ltr"] .prev { left: 0; border-radius: 0 5px 5px 0; }
         html[dir="ltr"] .next { right: 0; border-radius: 5px 0 0 5px; }
         html[dir="rtl"] .prev { right: 0; border-radius: 5px 0 0 5px; }
@@ -393,25 +203,24 @@
 
         .dot-container {
             text-align: center;
-            padding: 20px;
+            padding-top: 15px;
         }
 
         .dot {
             cursor: pointer;
-            height: 15px;
-            width: 15px;
+            height: 12px;
+            width: 12px;
             margin: 0 5px;
-            background-color: #CBD5E1;
+            background-color: rgba(255,255,255,0.4);
             border-radius: 50%;
             display: inline-block;
             transition: background-color 0.3s ease;
         }
 
         .dot.active, .dot:hover {
-            background-color: var(--primary-blue);
+            background-color: var(--accent-gold);
         }
 
-        /* Fading animation for slides */
         .fade {
             animation-name: fadeAnim;
             animation-duration: 1.5s;
@@ -421,8 +230,163 @@
             to {opacity: 1}
         }
 
+        /* Shared Section Title */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
 
-        /* Pricing Section */
+        /* Merged Features Section */
+        .features-section {
+            padding: 5rem 5%;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background-color: var(--light-blue);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.03);
+            border-bottom: 4px solid var(--secondary-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 1.05rem;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* CSS Animations for Features */
+        .anim-container {
+            width: 110px;
+            height: 110px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(8, 131, 149, 0.2);
+            margin-bottom: 1.5rem;
+            box-shadow: inset 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* 1. POS Terminal */
+        .anim-pos-wrapper {
+            position: relative; display: flex; flex-direction: column; align-items: center;
+        }
+        .anim-pos-screen {
+            width: 44px; height: 28px; border: 3px solid var(--primary-blue); border-radius: 4px; background: white; z-index: 2;
+        }
+        .anim-pos-base {
+            width: 18px; height: 6px; background: var(--primary-blue); border-radius: 0 0 4px 4px;
+        }
+        .anim-pos-receipt {
+            position: absolute; top: -15px; width: 22px; height: 18px; background: var(--secondary-blue); border-radius: 2px;
+            animation: receiptSlide 2s infinite; z-index: 1;
+        }
+        @keyframes receiptSlide {
+            0% { transform: translateY(18px); opacity: 0; }
+            50%, 80% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-5px); opacity: 0; }
+        }
+
+        /* 2. Offline Sync */
+        .anim-offline-wrapper {
+            position: relative; display: flex; justify-content: center; align-items: center;
+        }
+        .anim-sync-ring {
+            width: 50px; height: 50px; border: 3px dashed var(--secondary-blue); border-radius: 50%; animation: spin 4s infinite linear;
+        }
+        .anim-sync-core {
+            position: absolute; width: 14px; height: 14px; background: var(--primary-blue); border-radius: 50%; animation: pulseCore 1.5s infinite;
+        }
+        @keyframes pulseCore {
+            0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(10, 77, 104, 0.5); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(10, 77, 104, 0); }
+            100% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(10, 77, 104, 0); }
+        }
+
+        /* 3. Chart Analytics */
+        .anim-chart {
+            display: flex; align-items: flex-end; gap: 6px; height: 50px;
+        }
+        .anim-bar {
+            width: 12px; background-color: var(--secondary-blue); border-radius: 2px 2px 0 0; animation: growBar 1.5s infinite alternate ease-in-out;
+        }
+        .anim-bar:nth-child(1) { height: 20px; animation-delay: 0.1s; }
+        .anim-bar:nth-child(2) { height: 40px; animation-delay: 0.3s; background-color: var(--primary-blue); }
+        .anim-bar:nth-child(3) { height: 30px; animation-delay: 0.5s; }
+        .anim-bar:nth-child(4) { height: 50px; animation-delay: 0.7s; background-color: var(--accent-gold); }
+        @keyframes growBar { 0% { transform: scaleY(0.2); } 100% { transform: scaleY(1); } }
+
+        /* 4. Barcode */
+        .anim-barcode-wrapper {
+            position: relative; width: 60px; height: 40px; display: flex; justify-content: space-between;
+        }
+        .anim-barcode-line { height: 100%; background-color: var(--primary-blue); }
+        .anim-barcode-line:nth-child(1) { width: 4px; }
+        .anim-barcode-line:nth-child(2) { width: 2px; }
+        .anim-barcode-line:nth-child(3) { width: 6px; }
+        .anim-barcode-line:nth-child(4) { width: 3px; }
+        .anim-barcode-line:nth-child(5) { width: 5px; }
+        .anim-barcode-line:nth-child(6) { width: 2px; }
+        .anim-laser {
+            position: absolute; width: 120%; height: 2px; background-color: #EF4444; left: -10%; box-shadow: 0 0 8px #EF4444; animation: scanLaser 1.5s infinite alternate linear;
+        }
+        @keyframes scanLaser { 0% { top: -5px; } 100% { top: 45px; } }
+
+        /* 5. Invoice */
+        .anim-invoice {
+            width: 50px; height: 60px; background-color: white; border: 2px solid var(--primary-blue); border-radius: 4px; position: relative; display: flex; flex-direction: column; align-items: center; padding-top: 8px; gap: 6px; animation: slideUp 3s infinite ease-in-out;
+        }
+        .anim-line {
+            width: 30px; height: 4px; background-color: #CBD5E1; border-radius: 2px;
+        }
+        .anim-line.short { width: 15px; }
+        .anim-line.total { background-color: var(--secondary-blue); width: 35px; margin-top: auto; margin-bottom: 8px;}
+        @keyframes slideUp { 0% { transform: translateY(20px); opacity: 0; } 20%, 80% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-20px); opacity: 0; } }
+
+        /* 6. Security Lock */
+        .anim-lock {
+            width: 40px; height: 30px; background-color: var(--primary-blue); border-radius: 4px; position: relative; margin-top: 15px;
+        }
+        .anim-lock::before {
+            content: ''; position: absolute; width: 20px; height: 20px; border: 4px solid var(--primary-blue); border-bottom: none; border-radius: 12px 12px 0 0; top: -24px; left: 6px; transform-origin: left bottom; animation: unlock 2s infinite alternate ease-in-out;
+        }
+        @keyframes unlock { 0%, 20% { transform: rotate(0deg); } 80%, 100% { transform: rotate(-45deg); } }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+
+        /* 2-Tier Pricing Section */
         .pricing-section {
             padding: 5rem 5%;
             background-color: var(--light-blue);
@@ -430,12 +394,13 @@
         }
 
         .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             gap: 2rem;
-            max-width: 1200px;
+            max-width: 900px; /* Reduced max-width for 2 cards to keep them centered */
             margin: 0 auto;
-            align-items: start;
+            align-items: stretch;
         }
 
         .pricing-card {
@@ -448,7 +413,9 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            flex: 1;
+            min-width: 320px;
+            max-width: 420px;
         }
 
         .pricing-card.popular {
@@ -614,15 +581,27 @@
             font-size: 1rem;
         }
 
+        /* Responsive Breakpoints */
         @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            .hero-text {
+                text-align: center;
+            }
+            .hero-text p {
+                margin: 0 auto;
+            }
             .pricing-card.popular {
                 transform: scale(1);
             }
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .hero .slogan { font-size: 1.4rem; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-text .slogan { font-size: 1.4rem; }
             .contact-numbers { flex-direction: column; gap: 1rem; }
             .header-right { flex-direction: column-reverse; gap: 10px; align-items: flex-end; }
         }
@@ -648,61 +627,91 @@
 </header>
 
 <section class="hero">
-    <h1 class="lang-ar">الضمان لإدارة المبيعات</h1>
-    <h1 class="lang-en">Al-Daman Sales Management</h1>
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1 class="lang-ar">الضمان لإدارة المبيعات</h1>
+            <h1 class="lang-en">Al-Daman Sales Management</h1>
 
-    <div class="slogan lang-ar">الضمان... دقة وأمان</div>
-    <div class="slogan lang-en">Al-Daman... Safety and Accuracy</div>
+            <div class="slogan lang-ar">الضمان... دقة وأمان</div>
+            <div class="slogan lang-en">Al-Daman... Safety and Accuracy</div>
 
-    <p class="lang-ar">تطبيق سطح مكتب قوي ومحمي محلياً، مصمم هندسياً لتسهيل عمليات نقاط البيع، تتبع المخزون، والمحاسبة المعقدة دون الحاجة للاتصال الدائم بالإنترنت.</p>
-    <p class="lang-en">A powerful, locally-secured desktop application engineered for seamless point-of-sale operations, inventory tracking, and complex accounting without relying on an active internet connection.</p>
-</section>
-
-<section class="features-section">
-    <h2 class="section-title lang-ar">ميزات النظام الأساسية</h2>
-    <h2 class="section-title lang-en">Core System Features</h2>
-
-    <div class="features-grid">
-        <div class="feature-card">
-            <div class="feature-icon">📊</div>
-            <h3 class="lang-ar">لوحة تحكم وإحصائيات شاملة</h3>
-            <h3 class="lang-en">Comprehensive Statistics Dashboard</h3>
-            <p class="lang-ar">شاشة رئيسية تفاعلية تقدم لك نظرة عامة وفورية على أداء عملك، لتتخذ قراراتك بناءً على بيانات دقيقة.</p>
-            <p class="lang-en">An interactive main screen providing an immediate overview of your business performance to help you make data-driven decisions.</p>
+            <p class="lang-ar">تطبيق سطح مكتب قوي ومحمي محلياً، مصمم هندسياً لتسهيل عمليات نقاط البيع، تتبع المخزون، والمحاسبة المعقدة دون الحاجة للاتصال الدائم بالإنترنت.</p>
+            <p class="lang-en">A powerful, locally-secured desktop application engineered for seamless point-of-sale operations, inventory tracking, and complex accounting without relying on an active internet connection.</p>
         </div>
 
-        <div class="feature-card">
-            <div class="feature-icon">📅</div>
-            <h3 class="lang-ar">تقارير أسبوعية وشهرية</h3>
-            <h3 class="lang-en">Weekly & Monthly Reports</h3>
-            <p class="lang-ar">توليد تقارير مالية ومبيعات مفصلة بشكل أسبوعي أو شهري لمتابعة النمو والتدفقات النقدية بدقة.</p>
-            <p class="lang-en">Generate detailed financial and sales reports on a weekly or monthly basis to accurately track growth and cash flow.</p>
-        </div>
+        <div class="hero-slider-wrapper">
+            <div class="slider-container">
+                <div class="slide fade">
+                    <img src="./login.png?text=Login+Screen" alt="Login Screen" onerror="this.src='https://via.placeholder.com/600x338/0A4D68/FFFFFF?text=Login+Screen'">
+                    <div class="slide-caption lang-ar">شاشة تسجيل الدخول الآمنة</div>
+                    <div class="slide-caption lang-en">Secure Login Screen</div>
+                </div>
 
-        <div class="feature-card">
-            <div class="feature-icon">📦</div>
-            <h3 class="lang-ar">إدارة المنتجات والأصناف</h3>
-            <h3 class="lang-en">Products & Categories Management</h3>
-            <p class="lang-ar">تنظيم مرن لقاعدة بيانات المنتجات، مع إمكانية تقسيمها إلى تصنيفات متعددة لتسهيل الوصول والبحث.</p>
-            <p class="lang-en">Flexible organization of your product database, with the ability to divide items into multiple categories for easy access and search.</p>
+                <div class="slide fade">
+                    <img src="./dashboard.png?text=Dashboard+Overview" alt="Dashboard" onerror="this.src='https://via.placeholder.com/600x338/088395/FFFFFF?text=Live+Dashboard'">
+                    <div class="slide-caption lang-ar">لوحة التحكم والإحصائيات</div>
+                    <div class="slide-caption lang-en">Live Dashboard & Stats</div>
+                </div>
+
+                <div class="slide fade">
+                    <img src="./sales.png?text=Invoice+Management" alt="Invoice" onerror="this.src='https://via.placeholder.com/600x338/F59E0B/FFFFFF?text=Sales+Interface'">
+                    <div class="slide-caption lang-ar">إدارة المبيعات والفواتير</div>
+                    <div class="slide-caption lang-en">Sales & Invoicing</div>
+                </div>
+
+                <div class="slide fade">
+                    <img src="./barcode.png?text=Barcode+Scanner+Integration" alt="Barcode" onerror="this.src='https://via.placeholder.com/600x338/2D3748/FFFFFF?text=Barcode+Scanning'">
+                    <div class="slide-caption lang-ar">مسح ضوئي متكامل للباركود</div>
+                    <div class="slide-caption lang-en">Barcode Scanning System</div>
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
         </div>
     </div>
 </section>
 
-<section class="showcase-section">
-    <h2 class="section-title lang-ar">كيف يعمل النظام؟ (أنيميشن CSS)</h2>
-    <h2 class="section-title lang-en">How The System Works (CSS Animation)</h2>
+<section class="features-section">
+    <h2 class="section-title lang-ar">كل ما تحتاجه لإدارة أعمالك بنجاح</h2>
+    <h2 class="section-title lang-en">Everything You Need to Manage Your Business</h2>
 
-    <div class="showcase-grid">
-        <div class="showcase-item">
+    <div class="features-grid">
+        <div class="feature-card">
             <div class="anim-container">
-                <div class="anim-lock"></div>
+                <div class="anim-pos-wrapper">
+                    <div class="anim-pos-receipt"></div>
+                    <div class="anim-pos-screen"></div>
+                    <div class="anim-pos-base"></div>
+                </div>
             </div>
-            <h3 class="lang-ar">تسجيل دخول مشفر وآمن</h3>
-            <h3 class="lang-en">Secure & Encrypted Login</h3>
+            <h3 class="lang-ar">نقطة بيع سريعة وإدارة العملاء</h3>
+            <h3 class="lang-en">Fast POS & Client Management</h3>
+            <p class="lang-ar">واجهة مبيعات ذكية تتيح لك تعديل الأسعار لحظياً، وتحديث المخزون تلقائياً. مع نظام (CRM) مدمج لتسجيل بيانات عملائك وتتبع تاريخ مشترياتهم بسهولة.</p>
+            <p class="lang-en">A smart checkout interface allowing real-time price adjustments and auto-stock updates. Includes a built-in CRM to easily register clients and track their purchase history.</p>
         </div>
 
-        <div class="showcase-item">
+        <div class="feature-card">
+            <div class="anim-container">
+                <div class="anim-offline-wrapper">
+                    <div class="anim-sync-ring"></div>
+                    <div class="anim-sync-core"></div>
+                </div>
+            </div>
+            <h3 class="lang-ar">عمل مستمر بدون إنترنت</h3>
+            <h3 class="lang-en">Uninterrupted Offline Mode</h3>
+            <p class="lang-ar">لا تدع انقطاع الإنترنت يوقف مبيعاتك! التطبيق مصمم للعمل كلياً دون اتصال، حيث يقوم بحفظ المبيعات محلياً ومزامنتها تلقائياً فور عودة الشبكة.</p>
+            <p class="lang-en">Don't let internet outages stop your sales! The app is designed to work fully offline, saving sales locally and syncing them automatically once reconnected.</p>
+        </div>
+
+        <div class="feature-card">
             <div class="anim-container">
                 <div class="anim-chart">
                     <div class="anim-bar"></div>
@@ -711,24 +720,13 @@
                     <div class="anim-bar"></div>
                 </div>
             </div>
-            <h3 class="lang-ar">إحصائيات ومؤشرات حية</h3>
-            <h3 class="lang-en">Live Stats & Analytics</h3>
+            <h3 class="lang-ar">إحصائيات وأرباح حية</h3>
+            <h3 class="lang-en">Live Analytics & Profits</h3>
+            <p class="lang-ar">لوحة تحكم احترافية تمنحك رؤية عميقة لعملك. راقب إيراداتك، صافي أرباحك، متوسط قيمة الطلب، واكتشف البضائع الراكدة والمنتجات الأكثر مبيعاً بضغطة زر.</p>
+            <p class="lang-en">A professional dashboard providing deep business insights. Monitor revenues, net profits, average order value, and instantly discover dead stock and top sellers.</p>
         </div>
 
-        <div class="showcase-item">
-            <div class="anim-container">
-                <div class="anim-invoice">
-                    <div class="anim-line"></div>
-                    <div class="anim-line short"></div>
-                    <div class="anim-line"></div>
-                    <div class="anim-line total"></div>
-                </div>
-            </div>
-            <h3 class="lang-ar">إصدار الفواتير بلحظات</h3>
-            <h3 class="lang-en">Instant Invoicing</h3>
-        </div>
-
-        <div class="showcase-item">
+        <div class="feature-card">
             <div class="anim-container">
                 <div class="anim-barcode-wrapper">
                     <div class="anim-barcode-line"></div>
@@ -740,50 +738,36 @@
                     <div class="anim-laser"></div>
                 </div>
             </div>
-            <h3 class="lang-ar">مسح ضوئي ذكي وسريع</h3>
-            <h3 class="lang-en">Smart Barcode Scanning</h3>
-        </div>
-    </div>
-</section>
-
-<section class="slider-section">
-    <h2 class="section-title lang-ar">جولة مصورة داخل النظام (Slider)</h2>
-    <h2 class="section-title lang-en">Visual Tour Inside The System (Slider)</h2>
-
-    <div class="slider-container">
-        <div class="slide fade">
-            <img src="https://via.placeholder.com/900x500/0A4D68/FFFFFF?text=Login+Screen" alt="Login Screen">
-            <div class="slide-caption lang-ar">شاشة تسجيل الدخول الآمنة للبرنامج</div>
-            <div class="slide-caption lang-en">Secure Application Login Screen</div>
+            <h3 class="lang-ar">إدارة ذكية للمخزون والباركود</h3>
+            <h3 class="lang-en">Smart Inventory & Barcodes</h3>
+            <p class="lang-ar">نظام متكامل يدعم أجهزة المسح الضوئي، يقوم بتنبيهك عند انخفاض كميات المنتجات، ويتيح لك توليد وطباعة ملصقات الباركود الخاصة بك من داخل النظام مباشرة.</p>
+            <p class="lang-en">An integrated system supporting barcode scanners, alerting you on low stock, and allowing you to generate and print your own custom barcode labels directly.</p>
         </div>
 
-        <div class="slide fade">
-            <img src="https://via.placeholder.com/900x500/088395/FFFFFF?text=Dashboard+Overview" alt="Dashboard">
-            <div class="slide-caption lang-ar">لوحة التحكم التفاعلية والإحصائيات</div>
-            <div class="slide-caption lang-en">Interactive Dashboard & Statistics</div>
+        <div class="feature-card">
+            <div class="anim-container">
+                <div class="anim-invoice">
+                    <div class="anim-line"></div>
+                    <div class="anim-line short"></div>
+                    <div class="anim-line"></div>
+                    <div class="anim-line total"></div>
+                </div>
+            </div>
+            <h3 class="lang-ar">فواتير احترافية وإدارة المرتجعات</h3>
+            <h3 class="lang-en">Professional Invoices & Returns</h3>
+            <p class="lang-ar">تصدير الفواتير تلقائياً بتنسيق PDF احترافي مع إمكانية المعاينة والطباعة. بالإضافة إلى نظام مرن لمعالجة المرتجعات (الجزئية أو الكلية) وإلغاء العمليات السابقة.</p>
+            <p class="lang-en">Automatically export professional PDF invoices with preview and print support. Plus, a flexible system to process partial/full returns and cancel historical transactions.</p>
         </div>
 
-        <div class="slide fade">
-            <img src="https://via.placeholder.com/900x500/F59E0B/FFFFFF?text=Invoice+Management" alt="Invoice">
-            <div class="slide-caption lang-ar">واجهة إدارة المبيعات وإصدار الفواتير</div>
-            <div class="slide-caption lang-en">Sales Management & Invoicing Interface</div>
+        <div class="feature-card">
+            <div class="anim-container">
+                <div class="anim-lock"></div>
+            </div>
+            <h3 class="lang-ar">تعدد العملات وصلاحيات أمنية</h3>
+            <h3 class="lang-en">Multi-Currency & Security</h3>
+            <p class="lang-ar">دعم ديناميكي لتغيير أسعار الصرف (الدولار/الليرة) وتحديث كافة الأسعار فوراً. مع نظام حماية صارم يفصل بين صلاحيات "المدير" و"الموظف" للحفاظ على سرية بياناتك.</p>
+            <p class="lang-en">Dynamic support for changing exchange rates, instantly updating all prices. Combined with strict role-based access control (Admin/User) to keep your data secure.</p>
         </div>
-
-        <div class="slide fade">
-            <img src="https://via.placeholder.com/900x500/2D3748/FFFFFF?text=Barcode+Scanner+Integration" alt="Barcode">
-            <div class="slide-caption lang-ar">دعم متكامل لأجهزة قراءة الباركود</div>
-            <div class="slide-caption lang-en">Seamless Barcode Scanner Integration</div>
-        </div>
-
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-
-    <div class="dot-container">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
     </div>
 </section>
 
@@ -802,12 +786,16 @@
                 <span class="price-note lang-en">Limited time discounted price!</span>
             </div>
             <ul class="features-list">
-                <li class="lang-ar">التطبيق بكامل المنتجات والأصناف</li>
-                <li class="lang-en">Application with all products & categories</li>
-                <li class="lang-ar">لوحة التحكم التفاعلية</li>
-                <li class="lang-en">Interactive Dashboard</li>
-                <li class="lang-ar">مراقبة حالة المخزون</li>
-                <li class="lang-en">Store status & Inventory tracking</li>
+                <li class="lang-ar">التطبيق بكامل ميزاته الأساسية</li>
+                <li class="lang-en">Full Core Application Features</li>
+                <li class="lang-ar">دعم اللغتين (العربية / الإنجليزية)</li>
+                <li class="lang-en">Multi-language (Arabic / English)</li>
+                <li class="lang-ar">إصدار وطباعة الفواتير الاحترافية</li>
+                <li class="lang-en">Professional Invoicing & Printing</li>
+                <li class="lang-ar">لوحة تحكم وتقارير الأرباح</li>
+                <li class="lang-en">Dashboard & Profit Reports</li>
+                <li class="lang-ar">تعدد العملات والعمل بدون إنترنت</li>
+                <li class="lang-en">Multi-currency & Offline Mode</li>
                 <li class="lang-ar"><strong>شهر واحد</strong> دعم فني مجاني</li>
                 <li class="lang-en"><strong>1 Month</strong> free technical support</li>
             </ul>
@@ -827,33 +815,14 @@
             <ul class="features-list">
                 <li class="lang-ar"><strong>جميع ميزات الباقة الأساسية</strong></li>
                 <li class="lang-en"><strong>All Basic Plan features</strong></li>
-                <li class="lang-ar">دعم ميزة قارئ الباركود</li>
-                <li class="lang-en">Barcode Scanner integration</li>
-                <li class="lang-ar">دعم باركود المستخدم والمصنع</li>
-                <li class="lang-en">Supports user & manufacturing barcodes</li>
+                <li class="lang-ar"><strong>دعم أجهزة المسح الضوئي (Barcode)</strong></li>
+                <li class="lang-en"><strong>Hardware Barcode Scanner Support</strong></li>
+                <li class="lang-ar">توليد وطباعة باركود خاص بالمنتجات</li>
+                <li class="lang-en">Generate & Print Custom Barcodes</li>
+                <li class="lang-ar">إرفاق وإدارة <strong>صور المنتجات</strong></li>
+                <li class="lang-en">Product <strong>Images</strong> Management</li>
                 <li class="lang-ar"><strong>شهر واحد</strong> دعم فني مجاني</li>
                 <li class="lang-en"><strong>1 Month</strong> free technical support</li>
-            </ul>
-        </div>
-
-        <div class="pricing-card">
-            <h3 class="lang-ar">المميزة</h3>
-            <h3 class="lang-en">Premium</h3>
-            <div class="price-container">
-                <span class="old-price">$125</span>
-                <span class="new-price">$110</span>
-                <span class="price-note lang-ar">سعر مخفض لفترة محدودة!</span>
-                <span class="price-note lang-en">Limited time discounted price!</span>
-            </div>
-            <ul class="features-list">
-                <li class="lang-ar"><strong>جميع ميزات الباقة الاحترافية</strong></li>
-                <li class="lang-en"><strong>All Pro Plan features</strong></li>
-                <li class="lang-ar">تصدير التقارير الشهرية</li>
-                <li class="lang-en">Export monthly reports</li>
-                <li class="lang-ar">إرفاق وعرض صور المنتجات</li>
-                <li class="lang-en">Product images support</li>
-                <li class="lang-ar"><strong>6 أشهر</strong> دعم فني مجاني</li>
-                <li class="lang-en"><strong>6 Months</strong> free technical support</li>
             </ul>
         </div>
     </div>
@@ -923,16 +892,34 @@
         }
     }
 
-    // Image Slider Logic
+    // Auto-playing Image Slider Logic
     let slideIndex = 1;
-    showSlides(slideIndex);
+    let slideTimer;
+
+    function initSlider() {
+        showSlides(slideIndex);
+        startTimer();
+    }
+
+    function startTimer() {
+        slideTimer = setInterval(function() {
+            plusSlides(1);
+        }, 3000);
+    }
+
+    function resetTimer() {
+        clearInterval(slideTimer);
+        startTimer();
+    }
 
     function plusSlides(n) {
         showSlides(slideIndex += n);
+        resetTimer();
     }
 
     function currentSlide(n) {
         showSlides(slideIndex = n);
+        resetTimer();
     }
 
     function showSlides(n) {
@@ -953,6 +940,8 @@
         slides[slideIndex-1].style.display = "block";
         dots[slideIndex-1].className += " active";
     }
+
+    window.onload = initSlider;
 </script>
 </body>
 </html>
