@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ضمان لإدارة المبيعات | Daman Sales Management</title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="./icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -59,23 +61,23 @@
             gap: 15px;
         }
 
-        .logo-placeholder {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--white);
-            font-weight: bold;
-            font-size: 24px;
+        /* Fancy Header Logo Styling */
+        .brand-link {
+            text-decoration: none;
+            /* Creates a smooth, slightly "bouncy" animation on hover */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary-blue);
+        .brand-link:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            /* Adds a very subtle, premium shadow so the logo pops */
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.06));
         }
 
         .lang-btn {
@@ -385,11 +387,23 @@
         @keyframes unlock { 0%, 20% { transform: rotate(0deg); } 80%, 100% { transform: rotate(-45deg); } }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* 2-Tier Pricing Section */
+        /* 3-Tier Pricing Section */
         .pricing-section {
             padding: 5rem 5%;
             background-color: var(--light-blue);
             text-align: center;
+        }
+
+        .upgrade-banner {
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .pricing-grid {
@@ -397,7 +411,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 2rem;
-            max-width: 900px; /* Reduced max-width for 2 cards to keep them centered */
+            max-width: 1200px;
             margin: 0 auto;
             align-items: stretch;
         }
@@ -413,8 +427,8 @@
             display: flex;
             flex-direction: column;
             flex: 1;
-            min-width: 320px;
-            max-width: 420px;
+            min-width: 300px;
+            max-width: 380px;
         }
 
         .pricing-card.popular {
@@ -580,7 +594,30 @@
             font-size: 1rem;
         }
 
+        /* Fancy Footer Logo Styling */
+        .footer-brand {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand img {
+            height: 45px;
+            width: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer-brand img:hover {
+            opacity: 1;
+            transform: translateY(-3px); /* Floats up slightly on hover */
+        }
+
         /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .pricing-card.popular {
+                transform: scale(1); /* Prevent layout break on tablets from scale effect */
+            }
+        }
+
         @media (max-width: 992px) {
             .hero-content {
                 flex-direction: column;
@@ -592,9 +629,6 @@
             }
             .hero-text p {
                 margin: 0 auto;
-            }
-            .pricing-card.popular {
-                transform: scale(1);
             }
         }
 
@@ -609,12 +643,11 @@
 <body>
 
 <header>
-    <div class="logo-container">
-        <div class="logo-placeholder lang-ar">ض</div>
-        <div class="logo-placeholder lang-en">D</div>
-        <div class="logo-text lang-ar">ضمان</div>
-        <div class="logo-text lang-en">Daman</div>
-    </div>
+    <!-- Dark Logo for Light Header -->
+    <a href="#" class="logo-container brand-link">
+        <img src="./logo-dark.png" alt="Daman Logo" class="brand-logo">
+    </a>
+
     <div class="header-right">
         <div style="font-weight: 700; color: var(--secondary-blue);" class="lang-ar">نظام إدارة المبيعات</div>
         <div style="font-weight: 700; color: var(--secondary-blue);" class="lang-en">Sales Management System</div>
@@ -634,8 +667,8 @@
             <div class="slogan lang-ar">الضمان... دقة وأمان</div>
             <div class="slogan lang-en">Daman... Safety and Accuracy</div>
 
-            <p class="lang-ar">تطبيق سطح مكتب قوي ومحمي محلياً، مصمم هندسياً لتسهيل عمليات نقاط البيع، تتبع المخزون، والمحاسبة المعقدة دون الحاجة للاتصال الدائم بالإنترنت.</p>
-            <p class="lang-en">A powerful, locally-secured desktop application engineered for seamless point-of-sale operations, inventory tracking, and complex accounting without relying on an active internet connection.</p>
+            <p class="lang-ar">تطبيق سطح مكتب متكامل لنقاط البيع وإدارة الأعمال — مصمَّم للمحلات والمولات ومنافذ الخدمة في السوق العربي. واجهة عربية أصيلة، دعم لتعدد العملات، إدارة كاملة للورديات وحسابات العملاء والموردين، ويعمل بسلاسة على جهاز الكاشير دون الحاجة للاتصال بالإنترنت.</p>
+            <p class="lang-en">A complete desktop POS and business-management suite — built for retail shops, mini-markets and service counters across the Arab market. Arabic-first interface, multi-currency support, full shift control and customer/supplier ledgers, all running smoothly on the cashier's PC with no internet required.</p>
         </div>
 
         <div class="hero-slider-wrapper">
@@ -698,10 +731,10 @@
                     <div class="anim-pos-base"></div>
                 </div>
             </div>
-            <h3 class="lang-ar">إدارة شاملة للمبيعات والمشتريات</h3>
-            <h3 class="lang-en">Comprehensive POS & Purchasing</h3>
-            <p class="lang-ar">واجهة مبيعات ذكية لتحديث المخزون تلقائياً، مع نظام مدمج لإدارة العملاء والموردين وتسجيل المشتريات بكل سهولة.</p>
-            <p class="lang-en">Smart POS interface for auto-stock updates, with a built-in CRM for clients and full supplier/purchases management.</p>
+            <h3 class="lang-ar">نقطة بيع شاملة وذكية</h3>
+            <h3 class="lang-en">Smart, Comprehensive POS</h3>
+            <p class="lang-ar">سلة سريعة مع قراءة الباركود، عبوات متعددة للمنتج الواحد (قطعة / كرتون / صندوق)، إدخال عكسي بالقيمة («أعطني بـ500 ل.س من الأرز»)، أصناف حرة، وبيع آجل بنقرة واحدة على حسابات العملاء والموردين.</p>
+            <p class="lang-en">Fast cart with barcode scanning, multi-package SKUs (piece / box / case), reverse-math entry ("give me 500 SYP of rice"), open / misc items, and one-tap on-account sales for client and supplier ledgers.</p>
         </div>
 
         <div class="feature-card">
@@ -711,10 +744,10 @@
                     <div class="anim-sync-core"></div>
                 </div>
             </div>
-            <h3 class="lang-ar">عمل مستمر بدون إنترنت</h3>
-            <h3 class="lang-en">Uninterrupted Offline Mode</h3>
-            <p class="lang-ar">لا تدع انقطاع الإنترنت يوقف مبيعاتك! التطبيق مصمم للعمل كلياً دون اتصال، حيث يقوم بحفظ المبيعات محلياً ومزامنتها تلقائياً فور عودة الشبكة.</p>
-            <p class="lang-en">Don't let internet outages stop your sales! The app is designed to work fully offline, saving sales locally and syncing them automatically once reconnected.</p>
+            <h3 class="lang-ar">يعمل دائماً — حتى بدون إنترنت</h3>
+            <h3 class="lang-en">Truly Offline — Always On</h3>
+            <p class="lang-ar">النظام بأكمله يعمل محلياً على جهاز الكاشير: لا اشتراكات سحابية، لا فاتورة إنترنت شهرية، ولا تتوقف مبيعاتك لأن الشبكة انقطعت. بياناتك تبقى على جهازك، وتنسخها بكل بساطة كملف.</p>
+            <p class="lang-en">The whole system runs locally on the cashier's PC: no cloud subscription, no monthly internet bill, no "we can't sell — the internet is down" moments. Your data lives on your machine, and a backup is just a file copy.</p>
         </div>
 
         <div class="feature-card">
@@ -726,10 +759,10 @@
                     <div class="anim-bar"></div>
                 </div>
             </div>
-            <h3 class="lang-ar">تقارير مالية وتصدير (للمحترفين)</h3>
-            <h3 class="lang-en">Financial Reports & Export (Pro)</h3>
-            <p class="lang-ar">لوحة تحكم مالية شاملة تعرض أرباحك الصافية والمنتجات الأكثر مبيعاً، مع إمكانية تصدير التقارير كملفات (PDF) في الباقة الاحترافية.</p>
-            <p class="lang-en">Comprehensive financial dashboard tracking net profits and top sellers, with PDF report export available in the Pro package.</p>
+            <h3 class="lang-ar">لوحة تحكم وتقارير ربحية (احترافية)</h3>
+            <h3 class="lang-en">Profit Dashboard & Reports (Pro)</h3>
+            <p class="lang-ar">لوحة تحكم مباشرة تُظهر الأرباح اليومية والأسبوعية، نسبة هامش الربح، المنتجات الأكثر مبيعاً، ومخطط إيرادات سبعة أيام — مع تصدير تقارير PDF لأي فترة بنقرة واحدة (في الباقة الاحترافية).</p>
+            <p class="lang-en">Live dashboard showing daily and weekly profit, profit-margin %, top-selling products and a 7-day revenue chart — plus one-click PDF reports for any date range (in the Pro package).</p>
         </div>
 
         <div class="feature-card">
@@ -744,10 +777,10 @@
                     <div class="anim-laser"></div>
                 </div>
             </div>
-            <h3 class="lang-ar">إدارة مخزون ودعم الباركود</h3>
-            <h3 class="lang-en">Inventory & Barcode Management</h3>
-            <p class="lang-ar">إدارة دقيقة للمخزون وتتبع النواقص. دعم كامل لأجهزة الباركود الخارجية وتوليد ملصقات مخصصة لتسريع العمل (ضمن الباقة الاحترافية).</p>
-            <p class="lang-en">Accurate inventory tracking. Full hardware barcode scanner support and custom label generation to speed up work (in Pro package).</p>
+            <h3 class="lang-ar">المخزون والباركود وسجل التدقيق</h3>
+            <h3 class="lang-en">Inventory, Barcodes & Audit Trail</h3>
+            <p class="lang-ar">تتبّع دقيق للمخزون وتنبيهات نفاد الكميات، توليد باركود تلقائي ودعم أجهزة المسح الضوئي الخارجية، وسجل دائم لكل تغيّر في الكمية مع السبب والعملية المرتبطة (بيع / مرتجع / تعديل يدوي).</p>
+            <p class="lang-en">Accurate stock tracking with low-stock alerts, auto-generated barcodes, hardware scanner support, and a permanent audit log of every quantity change — with the reason and the sale, return or adjustment that caused it.</p>
         </div>
 
         <div class="feature-card">
@@ -759,20 +792,20 @@
                     <div class="anim-line total"></div>
                 </div>
             </div>
-            <h3 class="lang-ar">فواتير احترافية وأمان للمشرف</h3>
-            <h3 class="lang-en">Pro Invoices & Supervisor Security</h3>
-            <p class="lang-ar">نظام فواتير احترافي وإدارة مرتجعات مرنة. حماية العمليات الحساسة (كإلغاء المبيعات) برمز مرور خاص بالمشرف (PIN) لضمان الأمان.</p>
-            <p class="lang-en">Professional invoicing and flexible returns. Sensitive actions (like sale cancellations) are securely protected by a Supervisor PIN.</p>
+            <h3 class="lang-ar">إدارة الورديات وحركة الصندوق</h3>
+            <h3 class="lang-en">Shifts & Cash Drawer Control</h3>
+            <p class="lang-ar">افتح وأغلق الوردية مع رصيد البداية والرصيد المتوقع والرصيد الفعلي. كل عملية بيع ومرتجع ودفعة ومصروف مرتبطة بوردية محددة، فتُصبح تسوية الصندوق نهاية اليوم واضحة وقابلة للتدقيق، مع حماية العمليات الحساسة برمز المشرف (PIN).</p>
+            <p class="lang-en">Open and close shifts with starting cash, expected cash and actual cash. Every sale, return, payment and expense is stamped to a shift — so end-of-day reconciliation is transparent and tamper-evident, with sensitive actions protected by a Supervisor PIN.</p>
         </div>
 
         <div class="feature-card">
             <div class="anim-container">
                 <div class="anim-lock"></div>
             </div>
-            <h3 class="lang-ar">تعدد العملات لتقلبات السوق</h3>
-            <h3 class="lang-en">Multi-Currency for Market Shifts</h3>
-            <p class="lang-ar">مصمم خصيصاً لتقلبات السوق! دعم كامل لتعدد العملات (دولار، ليرة سورية) مع تحديث يومي لأسعار الصرف لضمان دقة أرباحك دائماً.</p>
-            <p class="lang-en">Designed for market fluctuations! Full multi-currency support (USD, SYP) with daily exchange rate updates to ensure profit accuracy.</p>
+            <h3 class="lang-ar">تعدد العملات بدون اضطراب الأرقام</h3>
+            <h3 class="lang-en">Multi-Currency Without the Drift</h3>
+            <p class="lang-ar">بِع بالدولار، الليرة السورية الجديدة، أو القديمة — وبدّل العملة في أي وقت أثناء الوردية. كل عملية تُسجَّل بالعملتين معاً وبسعر الصرف وقت تنفيذها، لتبقى تقاريرك دقيقة حتى مع تغيّر الأسعار لاحقاً.</p>
+            <p class="lang-en">Sell in US Dollars, New Syrian Pound, or Old Syrian Pound — and switch mid-shift. Every transaction is stored in both the cashier's currency and the base currency at that day's rate, so reports stay accurate even as exchange rates move later.</p>
         </div>
     </div>
 </section>
@@ -781,7 +814,15 @@
     <h2 class="section-title lang-ar">الباقات والأسعار</h2>
     <h2 class="section-title lang-en">Pricing & Packages</h2>
 
+    <!-- Upgrade Banner -->
+    <div class="upgrade-banner">
+        <span class="lang-ar">🚀 يمكنك الترقية إلى باقة أعلى بكل سهولة في أي وقت، مع الاحتفاظ بكامل بياناتك!</span>
+        <span class="lang-en">🚀 Easily upgrade to a higher plan at any time, with zero data loss!</span>
+    </div>
+
     <div class="pricing-grid">
+
+        <!-- Basic Plan -->
         <div class="pricing-card">
             <h3 class="lang-ar">الأساسية</h3>
             <h3 class="lang-en">Basic</h3>
@@ -792,23 +833,24 @@
                 <span class="price-note lang-en">Limited time discounted price!</span>
             </div>
             <ul class="features-list">
-                <li class="lang-ar">إدارة المنتجات، العملاء، والموردين</li>
-                <li class="lang-en">Products, Clients & Suppliers Admin</li>
+                <li class="lang-ar">إدارة المنتجات، العملاء، والموردين مع حسابات الديون</li>
+                <li class="lang-en">Products, Clients & Suppliers with credit ledgers</li>
                 <li class="lang-ar">لوحة تحكم وملخص يومي للإحصائيات</li>
-                <li class="lang-en">Daily Dashboard & Basic Stats</li>
+                <li class="lang-en">Daily dashboard & basic stats</li>
                 <li class="lang-ar">إصدار الفواتير والمرتجعات بسلاسة</li>
-                <li class="lang-en">Seamless Invoicing & Returns</li>
-                <li class="lang-ar">تعدد العملات والعمل بدون إنترنت</li>
-                <li class="lang-en">Multi-currency & Offline Mode</li>
-                <li class="lang-ar">حماية العمليات برمز المشرف (PIN)</li>
-                <li class="lang-en">Supervisor PIN Security</li>
+                <li class="lang-en">Seamless invoicing & returns</li>
+                <li class="lang-ar">العمل بسلاسة بدون اتصال بالإنترنت (Offline Mode)</li>
+                <li class="lang-en">Full offline mode operations</li>
+                <li class="lang-ar">حماية العمليات الحساسة برمز المشرف (PIN)</li>
+                <li class="lang-en">Supervisor PIN on sensitive actions</li>
                 <li class="lang-ar">دعم اللغتين (العربية / الإنجليزية)</li>
-                <li class="lang-en">Dual Language (Arabic / English)</li>
-                <li class="lang-ar"><strong>شهرين</strong> دعم فني مجاني</li>
-                <li class="lang-en"><strong>2 Months</strong> free technical support</li>
+                <li class="lang-en">Dual language (Arabic / English)</li>
+                <li class="lang-ar"><strong>شهر واحد</strong> دعم فني مجاني</li>
+                <li class="lang-en"><strong>1 month</strong> free technical support</li>
             </ul>
         </div>
 
+        <!-- Pro Plan -->
         <div class="pricing-card popular">
             <div class="popular-badge lang-ar">الأكثر طلباً</div>
             <div class="popular-badge lang-en">Most Popular</div>
@@ -823,18 +865,51 @@
             <ul class="features-list">
                 <li class="lang-ar"><strong>جميع ميزات الباقة الأساسية</strong></li>
                 <li class="lang-en"><strong>All Basic Plan features</strong></li>
-                <li class="lang-ar"><strong>تقارير مالية شاملة ورسوم بيانية</strong></li>
-                <li class="lang-en"><strong>Full Financial Reports & Charts</strong></li>
-                <li class="lang-ar"><strong>تصدير التقارير والفواتير (PDF)</strong></li>
-                <li class="lang-en"><strong>Export Reports to PDF</strong></li>
-                <li class="lang-ar"><strong>دعم أجهزة المسح الضوئي (Barcode)</strong></li>
-                <li class="lang-en"><strong>Hardware Barcode Scanner Support</strong></li>
-                <li class="lang-ar">توليد وطباعة باركود خاص بالمنتجات</li>
-                <li class="lang-en">Generate & Print Custom Barcodes</li>
-                <li class="lang-ar"><strong>6 أشهر</strong> دعم فني مجاني</li>
-                <li class="lang-en"><strong>6 Months</strong> free technical support</li>
+                <li class="lang-ar"><strong>تعدد العملات (دولار / ليرة) مع التحويل المباشر</strong></li>
+                <li class="lang-en"><strong>Multi-currency (USD / SYP) with live switching</strong></li>
+                <li class="lang-ar">تقارير مالية شاملة ورسوم بيانية لهامش الربح</li>
+                <li class="lang-en">Full financial reports & profit-margin charts</li>
+                <li class="lang-ar">تصدير التقارير والفواتير بصيغة PDF</li>
+                <li class="lang-en">Export reports & invoices to PDF</li>
+                <li class="lang-ar">دعم أجهزة قارئ الباركود وطباعة الملصقات</li>
+                <li class="lang-en">Barcode scanner & label-printer support</li>
+                <li class="lang-ar">عبوات متعددة للمنتج بأسعار مستقلة</li>
+                <li class="lang-en">Multi-package SKUs with separate prices</li>
+                <li class="lang-ar">سجل تدقيق دائم لكل تغيير في المخزون</li>
+                <li class="lang-en">Permanent audit trail for every stock change</li>
+                <li class="lang-ar"><strong>4 أشهر</strong> دعم فني مجاني</li>
+                <li class="lang-en"><strong>4 months</strong> free technical support</li>
             </ul>
         </div>
+
+        <!-- Ultimate Plan -->
+        <div class="pricing-card" style="border-top-color: var(--primary-blue);">
+            <h3 class="lang-ar">المتكاملة</h3>
+            <h3 class="lang-en">Ultimate</h3>
+            <div class="price-container">
+                <span class="old-price">$150</span>
+                <span class="new-price">$120</span>
+                <span class="price-note lang-ar">للفروع والشركات</span>
+                <span class="price-note lang-en">For enterprise & branches</span>
+            </div>
+            <ul class="features-list">
+                <li class="lang-ar"><strong>جميع ميزات الباقة الاحترافية</strong></li>
+                <li class="lang-en"><strong>All Pro Plan features</strong></li>
+                <li class="lang-ar"><strong>إدارة الورديات وتسوية الصندوق المتقدمة</strong></li>
+                <li class="lang-en"><strong>Advanced shift management & cash reconciliation</strong></li>
+                <li class="lang-ar"><strong>تخصيص الواجهة (الترويسة والشعار) باسم متجرك</strong></li>
+                <li class="lang-en"><strong>White-label branding (Custom Header & Logo)</strong></li>
+                <li class="lang-ar">إدارة متقدمة للمصاريف التشغيلية والشخصية</li>
+                <li class="lang-en">Advanced operational & personal expense tracking</li>
+                <li class="lang-ar">صلاحيات مخصصة وأدوار متقدمة للمستخدمين</li>
+                <li class="lang-en">Custom user roles & advanced permissions</li>
+                <li class="lang-ar">دعم تأسيس وتهيئة لأجهزة متعددة</li>
+                <li class="lang-en">Multi-device setup & onboarding assistance</li>
+                <li class="lang-ar"><strong>سنة كاملة (12 شهراً)</strong> دعم فني بأولوية عالية</li>
+                <li class="lang-en"><strong>1 Year</strong> high-priority technical support</li>
+            </ul>
+        </div>
+
     </div>
 
     <div class="addons-container">
@@ -864,7 +939,7 @@
         </div>
         <div class="lang-en">
             <p>Daman was forged from a deep understanding of enterprise-level software requirements and the practical realities of local businesses. The architect behind the system is a Senior Software Engineer with over 8 years of dedicated experience in building robust, highly scalable software solutions. This background translates into a mastery of the modern tech stack—specifically bridging secure backends with dynamic frontends and compiling them into lightning-fast, high-performance desktop applications.</p>
-            <p>Currently operating across multiple countries, the developer combines international market insights with world-class engineering standards. Every line of code in Al-Daman reflects a commitment to delivering software that is not just functional, but genuinely reliable and strictly secure at the hardware level.</p>
+            <p>Currently operating across multiple countries, the developer combines international market insights with world-class engineering standards. Every line of code in Daman reflects a commitment to delivering software that is not just functional, but genuinely reliable and strictly secure at the hardware level.</p>
         </div>
     </div>
 </section>
@@ -883,8 +958,13 @@
 </section>
 
 <footer>
+    <!-- Light Logo for Dark Footer -->
+    <div class="footer-brand">
+        <img src="./logo-light.png" alt="Daman Logo Light">
+    </div>
+
     <span class="lang-ar">&copy; 2026 الضمان لإدارة المبيعات. جميع الحقوق محفوظة.</span>
-    <span class="lang-en">&copy; 2026 Al-Daman Sales Management. All rights reserved.</span>
+    <span class="lang-en">&copy; 2026 Daman Sales Management. All rights reserved.</span>
 </footer>
 
 <script>
