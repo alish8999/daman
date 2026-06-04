@@ -1,0 +1,240 @@
+================================================================================
+  DAMAN SALES MANAGEMENT — PRINT POSTER DESIGN BRIEF
+  ضمان لإدارة المبيعات — موجز تصميم الملصق/البوستر
+================================================================================
+
+PROJECT
+-------
+Design a print-ready marketing poster for "Daman / الضمان لإدارة المبيعات" —
+an offline-first desktop POS system built for Arab and Syrian retail shops.
+
+
+FORMAT & TECHNICAL SPECS
+------------------------
+  Size:           A2 or A3 (portrait preferred for shop walls)
+  Resolution:     300 DPI, CMYK for print (+ RGB PDF for digital sharing)
+  Languages:      Arabic PRIMARY (RTL layout), English SECONDARY (smaller text)
+  Font:           Tajawal (or similar modern Arabic sans-serif)
+  Deliverables:   Print-ready PDF, editable source (AI / Figma / PSD), web JPG
+
+
+BRAND IDENTITY
+--------------
+  Product Name (AR):   الضمان لإدارة المبيعات
+  Product Name (EN):   Daman Sales Management
+  Slogan (AR):         الضمان... دقة وأمان
+  Slogan (EN):         Daman... Safety and Accuracy
+
+  Colors:
+    Primary Blue:      #0A4D68
+    Secondary Teal:    #088395
+    Accent Gold:       #F59E0B
+    Light Background:  #EBF8FF
+    Dark Text:         #2D3748
+    Footer Dark:       #052a3a
+
+  Logo assets (provided separately):
+    logo-dark.png   — for light backgrounds
+    logo-light.png  — for dark backgrounds
+    icon.png        — favicon / small badge use
+
+
+HEADLINE OPTIONS (choose one)
+------------------------------
+  1. نظام نقاط بيع سطح مكتب — يعمل بدون إنترنت
+     Desktop POS — Works Without Internet
+
+  2. إدارة مبيعاتك بثقة — من الكاشير إلى التقارير
+     Manage Sales with Confidence — From Cashier to Reports
+
+  3. الضمان... دقة وأمان في كل فاتورة
+     Daman... Safety and Accuracy in Every Invoice
+
+
+SUB-HEADLINE
+------------
+  AR: تطبيق سطح مكتب متكامل للمحلات والسوبرماركت ومنافذ بطاقات الاتصالات —
+      واجهة عربية، تعدد عملات، ومخزون ومالية في مكان واحد.
+
+  EN: A complete desktop app for shops, supermarkets and telecom card counters —
+      Arabic interface, multi-currency, inventory and finance in one place.
+
+
+HERO VISUAL DIRECTION
+---------------------
+  - Desktop or laptop showing the POS screen (sales cart, dashboard, or barcode scan)
+  - Optional props: cashier, USB barcode scanner, receipt printer
+  - Mood: professional, trustworthy, local market — NOT generic cloud/SaaS style
+  - Screenshots available: login.png, dashboard.png, sales.png, barcode.png, reports.png
+
+
+STRONG POINTS — PROMINENT (use 4–6 with icons or numbered badges)
+------------------------------------------------------------------
+  1. يعمل بدون إنترنت | Works Offline
+     Full system runs locally on the cashier PC — no cloud subscription,
+     no monthly internet dependency. Your data stays on your machine.
+
+  2. تعدد العملات | Multi-Currency
+     Sell in USD, New Syrian Pound (SYP), and Old Syrian Pound (SYP_OLD).
+     Every transaction stores the exchange rate at that moment — reports
+     stay accurate even when rates change later.
+
+  3. رخصة مقفلة على الجهاز | Hardware-Locked License
+     One-time purchase. License tied to the device — no recurring SaaS fees.
+
+  4. واجهة عربية RTL | Arabic-First RTL Interface
+     Built for Arab cashiers from day one. Optional English toggle.
+
+  5. تسوية وردية شفافة | Transparent Shift Reconciliation
+     Open/close shifts with starting, expected and actual cash.
+     Every sale, return, payment and expense is tied to a shift.
+
+  6. ترقية بدون فقدان بيانات | Upgrade Without Data Loss
+     Start with Basic, upgrade to Pro or Ultimate anytime — all history kept.
+
+
+FULL FEATURE LIST (group into columns or sections on poster)
+-------------------------------------------------------------
+
+  ── POINT OF SALE / نقطة البيع ──
+  • Fast sales cart with barcode scanning
+  • Multi-packaging SKUs (piece / box / carton) with separate prices
+  • Reverse-math entry ("give me 500 SYP of rice")
+  • Open / misc items and fractional quantities
+  • Sales returns and PDF invoices
+  • Supervisor PIN protection on sensitive actions
+
+  ── INVENTORY / المخزون ──
+  • Real-time stock tracking and low-stock alerts
+  • Auto barcode generation and label printing
+  • Permanent audit trail for every stock change
+  • Spoilage / wastage recording (inventory loss — does NOT leave cash drawer)
+  • Batch stocktake — enter actual counts vs system quantities in bulk
+  • Bulk category price update — raise/lower entire category by % or fixed amount,
+    with separate adjustments per currency group
+
+  ── PURCHASES & SUPPLIERS / المشتريات والموردين ──
+  • Record purchase invoices and update product costs
+  • Update per-packaging sell prices on purchase
+  • Supplier ledger — pay cash or on account, track balances
+
+  ── CLIENTS & FINANCE / العملاء والمالية ──
+  • Client ledger — credit sales and incoming payments
+  • Account statement report (sales, returns, payments for any period)
+  • Multi-currency checkout with FX rate snapshotted per transaction
+  • Fixed local-currency pricing (e.g. MTN / Syriatel cards priced in SYP
+    while the store base currency is USD)
+  • Shift management and end-of-day cash reconciliation
+  • Operating and personal expense tracking
+  • Profit dashboard, P&L reports including wastage cost
+
+  ── REPORTS / التقارير ──
+  • Daily and weekly profit with margin percentage
+  • Top-selling products and 7-day revenue chart
+  • Per-product Item Ledger — full movement history
+  • PDF export for reports and invoices
+
+  ── SECURITY & BRANDING / الأمان والتخصيص ──
+  • Secure login (JWT), role-based access (Admin / User)
+  • Hardware-locked license
+  • White-label branding: your logo, colours and store name (Ultimate plan)
+  • Arabic + English bilingual interface
+
+
+PRICING BLOCK (3 tiers — show on poster)
+-----------------------------------------
+  ┌──────────────┬──────────────┬──────────────────────────────────────────┐
+  │ BASIC        │ PRO ⭐       │ ULTIMATE                                 │
+  │ الأساسية     │ الاحترافية   │ المتكاملة                                │
+  ├──────────────┼──────────────┼──────────────────────────────────────────┤
+  │ Was $75      │ Was $100     │ Was $150                                 │
+  │ NOW $60      │ NOW $85      │ NOW $120                                 │
+  ├──────────────┼──────────────┼──────────────────────────────────────────┤
+  │ Core POS     │ All Basic +  │ All Pro +                                │
+  │ Products,    │ Multi-curr.  │ Shift management                         │
+  │ clients,     │ Purchases    │ White-label branding                     │
+  │ suppliers    │ Full reports │ Account statement                        │
+  │ Credit       │ PDF export   │ Item ledger                              │
+  │ ledgers      │ Barcode &    │ Batch stocktake                          │
+  │ Sales &      │ labels       │ Bulk category pricing                    │
+  │ returns      │ Multi-pack   │ Fixed local-currency pricing             │
+  │ Offline mode │ packaging    │ Expense tracking                         │
+  │ Supervisor   │ Spoilage &   │ Multi-device setup                       │
+  │ PIN          │ audit trail  │ 1 year priority support                  │
+  │ Bilingual    │ 4 months     │                                          │
+  │ 1 month      │ support      │ For branches & enterprise                │
+  │ support      │              │                                          │
+  └──────────────┴──────────────┴──────────────────────────────────────────┘
+
+  PROMO BANNER:
+  AR: 🚀 يمكنك الترقية إلى باقة أعلى في أي وقت — مع الاحتفاظ بكامل بياناتك!
+  EN: 🚀 Upgrade anytime with zero data loss!
+
+  HARDWARE ADD-ON (optional):
+  USB Barcode Scanner — $50
+
+
+PREMIUM MODULES (can mention as "available on request" or in Ultimate)
+-----------------------------------------------------------------------
+  • Client / Supplier Account Statement  —  كشف حساب
+  • Per-Product Item Ledger              —  سجل حركة الصنف
+  • Batch Stocktake & Reconciliation     —  تسوية الجرد المجمّعة
+  • Bulk Category Price Update           —  تعديل أسعار قسم بالكامل
+  • Fixed Local-Currency Pricing         —  تسعير ثابت (MTN / Syriatel)
+
+
+TARGET AUDIENCE (small footer text)
+------------------------------------
+  • Mini-markets and grocery shops
+  • Telecom card resellers (MTN, Syriatel)
+  • Wholesale and retail in Syria and Arab markets
+  • Any shop needing offline reliability and multi-currency support
+
+
+CALL TO ACTION (large, bottom of poster)
+-----------------------------------------
+  AR: هل أنت مستعد لتأمين عمليات متجرك؟
+  EN: Ready to secure your business operations?
+
+  📞  +971 55 196 2296
+  📞  +963 994 065 899
+
+  Optional: QR code linking to website or WhatsApp
+
+
+SUGGESTED LAYOUT (wireframe)
+-----------------------------
+  ┌─────────────────────────────────────────┐
+  │  [LOGO]     الضمان لإدارة المبيعات       │
+  │             Daman Sales Management       │
+  │  Slogan: الضمان... دقة وأمان             │
+  ├─────────────────────────────────────────┤
+  │  HEADLINE (large)                        │
+  │  Sub-headline                            │
+  │  [Hero screenshot / mockup]              │
+  │  • Offline  • Multi-currency  • No sub   │
+  ├─────────────────────────────────────────┤
+  │  6 STRONG POINTS (icon grid, 2×3)        │
+  ├─────────────────────────────────────────┤
+  │  FEATURES (2–3 columns, grouped by area) │
+  ├─────────────────────────────────────────┤
+  │  PRICING:  Basic | Pro ⭐ | Ultimate     │
+  ├─────────────────────────────────────────┤
+  │  CTA + phone numbers + optional QR       │
+  │  © 2026 Daman Sales Management           │
+  └─────────────────────────────────────────┘
+
+
+NOTES FOR DESIGNER
+------------------
+  1. Arabic text must read right-to-left; English can appear as secondary
+     subtitles beneath Arabic headings.
+  2. Avoid cloud/internet imagery — emphasize LOCAL desktop, OFFLINE reliability.
+  3. Gold accent (#F59E0B) works well for "Most Popular" badge and CTA highlights.
+  4. The Pro plan should be visually emphasized (gold border or "الأكثر طلباً" badge).
+  5. Keep phone numbers in LTR direction even within RTL layout.
+  6. Website reference: daman-website/index.html (for tone and copy consistency).
+
+================================================================================
+  End of brief — contact developer for logo files and app screenshots.
+================================================================================

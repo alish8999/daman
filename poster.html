@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>Daman Poster Prototype</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: #EBF8FF;
+      color: #2D3748;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+    .poster-container {
+      background-color: #ffffff;
+      width: 800px; /* A-series proportion approx */
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+      border: 1px solid #ddd;
+    }
+    .header {
+      background-color: #0A4D68;
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 800;
+    }
+    .header h2 {
+      margin: 5px 0 0 0;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #EBF8FF;
+      letter-spacing: 2px;
+    }
+    .header .slogan {
+      color: #F59E0B;
+      font-size: 1.5rem;
+      margin-top: 15px;
+      font-weight: 700;
+    }
+    .hero {
+      padding: 40px;
+      text-align: center;
+      background: linear-gradient(135deg, #EBF8FF 0%, #ffffff 100%);
+    }
+    .hero h2 {
+      color: #0A4D68;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #088395;
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+      line-height: 1.6;
+    }
+    .poster-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      border: 4px solid #0A4D68;
+      box-shadow: 0 12px 28px rgba(10, 77, 104, 0.18);
+    }
+    .strong-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 0 40px;
+    }
+    .point {
+      background-color: #f8fafc;
+      padding: 20px;
+      border-right: 4px solid #F59E0B;
+      border-radius: 5px;
+    }
+    .point h4 {
+      color: #088395;
+      margin: 0 0 10px 0;
+      font-size: 1.2rem;
+    }
+    .point p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .pricing {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 15px;
+      padding: 40px;
+      text-align: center;
+    }
+    .tier {
+      border: 2px solid #EBF8FF;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .tier.pro {
+      border-color: #F59E0B;
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(245, 158, 11, 0.15);
+      background-color: #fffaf0;
+    }
+    .tier h3 {
+      color: #0A4D68;
+      margin-top: 0;
+    }
+    .tier.pro h3 {
+      color: #F59E0B;
+    }
+    .price-old {
+      text-decoration: line-through;
+      color: #a0aec0;
+      font-size: 0.9rem;
+    }
+    .price-new {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #088395;
+      margin-bottom: 15px;
+    }
+    .tier ul {
+      list-style: none;
+      padding: 0;
+      font-size: 0.9rem;
+      text-align: right;
+      line-height: 1.8;
+    }
+    .tier ul li::before {
+      content: "✓ ";
+      color: #088395;
+      font-weight: bold;
+    }
+    .cta {
+      background-color: #052a3a;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+    .cta h2 {
+      color: #F59E0B;
+      margin-top: 0;
+    }
+    .phone {
+      font-size: 1.5rem;
+      font-weight: 700;
+      direction: ltr; /* Keeps numbers LTR */
+      display: inline-block;
+      margin: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="poster-container">
+  <!-- Header Segment -->
+  <div class="header">
+    <h1>ضمان لإدارة المبيعات</h1>
+    <h2>Daman Sales Management</h2>
+    <div class="slogan">ضمان... دقة وأمان</div>
+  </div>
+
+  <!-- Hero Segment -->
+  <div class="hero">
+    <h2>نظام نقاط بيع سطح مكتب — يعمل بدون إنترنت</h2>
+    <p>تطبيق متكامل للمحلات والسوبرماركت ومنافذ بطاقات الاتصالات — واجهة عربية، تعدد عملات، ومخزون ومالية في مكان واحد.</p>
+
+    <img
+      src="./poster.png"
+      alt="لوحة تقارير ضمان — إيرادات، أرباح، مخزون ومصروفات"
+      class="poster-image"
+    >
+  </div>
+
+  <!-- Strong Points Grid -->
+  <div class="strong-points">
+    <div class="point">
+      <h4>يعمل بدون إنترنت | Offline</h4>
+      <p>يعمل النظام بالكامل على جهازك المحلي. لا حاجة لاشتراكات سحابية، بياناتك بأمان على جهازك.</p>
+    </div>
+    <div class="point">
+      <h4>تعدد العملات | Multi-Currency</h4>
+      <p>بيع بالدولار والليرة السورية. يتم حفظ سعر الصرف لحظة البيع لضمان دقة التقارير المالية.</p>
+    </div>
+    <div class="point">
+      <h4>رخصة مقفلة | Lifetime License</h4>
+      <p>شراء لمرة واحدة. رخصة مرتبطة بالجهاز بدون أي رسوم شهرية أو مفاجآت.</p>
+    </div>
+    <div class="point">
+      <h4>تسوية وردية شفافة | Shift Sync</h4>
+      <p>إدارة الورديات بوضوح مع تسجيل النقدية الافتتاحية والختامية بدقة متناهية.</p>
+    </div>
+  </div>
+
+  <!-- Pricing Segment -->
+  <div class="pricing">
+    <div class="tier">
+      <h3>الأساسية <br><small>BASIC</small></h3>
+      <div class="price-old">$75</div>
+      <div class="price-new">$60</div>
+      <ul>
+        <li>نقطة بيع أساسية</li>
+        <li>إدارة المخزون</li>
+        <li>حسابات العملاء والموردين</li>
+        <li>دعم فني لشهر واحد</li>
+      </ul>
+    </div>
+    <div class="tier pro">
+      <h3>الاحترافية ⭐ <br><small>PRO</small></h3>
+      <div class="price-old">$100</div>
+      <div class="price-new">$85</div>
+      <ul>
+        <li>كل ميزات الأساسية +</li>
+        <li>تعدد العملات والتسعير</li>
+        <li>توليد وقراءة الباركود</li>
+        <li>دعم فني لـ 4 أشهر</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <h3>المتكاملة <br><small>ULTIMATE</small></h3>
+      <div class="price-old">$150</div>
+      <div class="price-new">$120</div>
+      <ul>
+        <li>كل ميزات الاحترافية +</li>
+        <li>إدارة الورديات (Shifts)</li>
+        <li>تخصيص الهوية البصرية</li>
+        <li>دعم فني مميز لسنة</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer / CTA -->
+  <div class="cta">
+    <h2>هل أنت مستعد لتأمين عمليات متجرك؟</h2>
+    <div class="phone">📞 +971 55 196 2296</div>
+    <div class="phone">📞 +963 994 065 899</div>
+    <p style="margin-top: 20px; font-size: 0.9rem; color: #a0aec0;">مخصص للمحلات التجارية، السوبرماركت، ومراكز بطاقات الاتصالات</p>
+  </div>
+</div>
+
+</body>
+</html>

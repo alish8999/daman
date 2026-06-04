@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ضمان لإدارة المبيعات | Daman Sales Management</title>
+    <meta name="description" content="الضمان — نظام نقاط بيع سطح مكتب للمحلات العربية. يعمل بدون إنترنت، دعم تعدد العملات، ورديات، حسابات عملاء وموردين، مشتريات، تقارير PDF، وباركود.">
+    <meta name="description" lang="en" content="Daman — offline-first desktop POS for Arab retail. Multi-currency, shifts, client & supplier ledgers, purchases, PDF reports, barcodes, and hardware-locked licensing.">
+    <meta property="og:title" content="ضمان لإدارة المبيعات | Daman Sales Management">
+    <meta property="og:description" content="الضمان... دقة وأمان — نقطة بيع سطح مكتب متكاملة للسوق العربي والسوري.">
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="./icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -283,6 +287,152 @@
             font-size: 1.05rem;
             color: var(--dark-text);
             line-height: 1.6;
+        }
+
+        .feature-card.compact {
+            padding: 2rem 1.5rem;
+        }
+
+        .feature-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.25rem;
+            border: 2px solid rgba(8, 131, 149, 0.2);
+            box-shadow: inset 0 4px 6px rgba(0,0,0,0.04);
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: #64748B;
+            max-width: 780px;
+            margin: -2rem auto 3rem;
+            line-height: 1.7;
+        }
+
+        .modules-section {
+            padding: 4rem 5% 5rem;
+            background: linear-gradient(180deg, var(--light-blue) 0%, var(--white) 100%);
+        }
+
+        .highlights-strip {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 1100px;
+            margin: 0 auto 4rem;
+        }
+
+        .highlight-pill {
+            background: var(--white);
+            border: 1px solid rgba(8, 131, 149, 0.25);
+            color: var(--primary-blue);
+            padding: 0.65rem 1.25rem;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+        }
+
+        .hero-bullets {
+            list-style: none;
+            margin-top: 1.75rem;
+            text-align: start;
+            max-width: 620px;
+        }
+
+        .hero-bullets li {
+            position: relative;
+            padding-inline-start: 1.75rem;
+            margin-bottom: 0.65rem;
+            font-size: 1.05rem;
+            opacity: 0.95;
+        }
+
+        .hero-bullets li::before {
+            content: '✓';
+            position: absolute;
+            inset-inline-start: 0;
+            color: var(--accent-gold);
+            font-weight: 800;
+        }
+
+        .hero-text .hero-bullets {
+            margin-inline: 0;
+        }
+
+        html[dir="ltr"] .hero-text .hero-bullets,
+        html[dir="rtl"] .hero-text .hero-bullets {
+            margin-inline: 0;
+        }
+
+        @media (max-width: 992px) {
+            .hero-text .hero-bullets {
+                margin-inline: auto;
+                text-align: start;
+                display: inline-block;
+            }
+        }
+
+        .why-section {
+            padding: 4rem 5%;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .why-section .section-title {
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 14px;
+            padding: 1.75rem 1.25rem;
+        }
+
+        .why-card strong {
+            display: block;
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gold);
+        }
+
+        .addons-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+            text-align: start;
+        }
+
+        .addons-list li {
+            margin-bottom: 0.75rem;
+            padding-inline-start: 1.5rem;
+            position: relative;
+        }
+
+        .addons-list li::before {
+            content: '＋';
+            position: absolute;
+            inset-inline-start: 0;
+            color: var(--secondary-blue);
+            font-weight: bold;
         }
 
         /* CSS Animations for Features */
@@ -667,8 +817,19 @@
             <div class="slogan lang-ar">الضمان... دقة وأمان</div>
             <div class="slogan lang-en">Daman... Safety and Accuracy</div>
 
-            <p class="lang-ar">تطبيق سطح مكتب متكامل لنقاط البيع وإدارة الأعمال — مصمَّم للمحلات والمولات ومنافذ الخدمة في السوق العربي. واجهة عربية أصيلة، دعم لتعدد العملات، إدارة كاملة للورديات وحسابات العملاء والموردين، ويعمل بسلاسة على جهاز الكاشير دون الحاجة للاتصال بالإنترنت.</p>
-            <p class="lang-en">A complete desktop POS and business-management suite — built for retail shops, mini-markets and service counters across the Arab market. Arabic-first interface, multi-currency support, full shift control and customer/supplier ledgers, all running smoothly on the cashier's PC with no internet required.</p>
+            <p class="lang-ar">تطبيق سطح مكتب متكامل لنقاط البيع وإدارة الأعمال — مصمَّم للمحلات والمولات ومنافذ الخدمة في السوق العربي. واجهة عربية أصيلة، دعم لتعدد العملات، مشتريات وحركة مخزون، حسابات عملاء وموردين، ورديات وتسوية صندوق — ويعمل بسلاسة على جهاز الكاشير دون الحاجة للاتصال بالإنترنت.</p>
+            <p class="lang-en">A complete desktop POS and business-management suite — built for retail shops, mini-markets and service counters across the Arab market. Arabic-first interface, multi-currency support, purchases and inventory, client & supplier ledgers, shifts and cash reconciliation — all running smoothly on the cashier's PC with no internet required.</p>
+
+            <ul class="hero-bullets lang-ar">
+                <li>بيع وشراء ومرتجعات — مع عبوات متعددة وباركود</li>
+                <li>دولار / ليرة جديدة / ليرة قديمة — بدون تشويه التقارير</li>
+                <li>رخصة مقفلة على الجهاز — بدون اشتراك شهري</li>
+            </ul>
+            <ul class="hero-bullets lang-en">
+                <li>Sales, purchases & returns — multi-packaging & barcodes</li>
+                <li>USD / New SYP / Old SYP — reports stay accurate</li>
+                <li>Hardware-locked license — no monthly subscription</li>
+            </ul>
         </div>
 
         <div class="hero-slider-wrapper">
@@ -810,6 +971,123 @@
     </div>
 </section>
 
+<section class="modules-section">
+    <h2 class="section-title lang-ar">وحدات متقدمة لإدارة أدق</h2>
+    <h2 class="section-title lang-en">Advanced Modules for Deeper Control</h2>
+    <p class="section-subtitle lang-ar">ميزات إضافية يمكن تفعيلها حسب نوع نشاطك — من محلات الجملة إلى نقاط بيع بطاقات الاتصالات والسوبرماركت.</p>
+    <p class="section-subtitle lang-en">Optional modules tailored to your business — from wholesale shops to telecom card counters and supermarkets.</p>
+
+    <div class="highlights-strip">
+        <span class="highlight-pill lang-ar">📦 مشتريات وموردين</span>
+        <span class="highlight-pill lang-en">📦 Purchases & Suppliers</span>
+        <span class="highlight-pill lang-ar">📒 كشف حساب</span>
+        <span class="highlight-pill lang-en">📒 Account Statement</span>
+        <span class="highlight-pill lang-ar">📊 سجل صنف</span>
+        <span class="highlight-pill lang-en">📊 Item Ledger</span>
+        <span class="highlight-pill lang-ar">🔢 جرد مجمّع</span>
+        <span class="highlight-pill lang-en">🔢 Batch Stocktake</span>
+        <span class="highlight-pill lang-ar">💲 تعديل أسعار قسم</span>
+        <span class="highlight-pill lang-en">💲 Bulk Category Pricing</span>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card compact">
+            <div class="feature-icon">🛒</div>
+            <h3 class="lang-ar">المشتريات وسجل الموردين</h3>
+            <h3 class="lang-en">Purchases & Supplier Ledger</h3>
+            <p class="lang-ar">سجّل فواتير الشراء، حدّث كلفة وأسعار البيع لكل عبوة، ادفع للمورد نقداً أو على الحساب، وتابع رصيد كل مورد بدقة — مع ربط كل عملية بوردية محددة.</p>
+            <p class="lang-en">Record purchase invoices, update cost and per-packaging sell prices, pay suppliers cash or on account, and track each supplier balance — every transaction tied to a shift.</p>
+        </div>
+
+        <div class="feature-card compact">
+            <div class="feature-icon">👤</div>
+            <h3 class="lang-ar">حسابات العملاء وكشف الحساب</h3>
+            <h3 class="lang-en">Client Ledger & Account Statement</h3>
+            <p class="lang-ar">بيع آجل بنقرة واحدة، تسجيل الدفعات الواردة، وميزان عميل محدّث لحظياً. تقرير كشف حساب شامل (مبيعات، مرتجعات، دفعات) لفترة محددة — جاهز للطباعة أو المشاركة.</p>
+            <p class="lang-en">One-tap credit sales, incoming payment recording, and live client balances. Full account statement (sales, returns, payments) for any period — ready to print or share.</p>
+        </div>
+
+        <div class="feature-card compact">
+            <div class="feature-icon">📋</div>
+            <h3 class="lang-ar">سجل حركة الصنف (Item Ledger)</h3>
+            <h3 class="lang-en">Per-Product Item Ledger</h3>
+            <p class="lang-ar">تتبّع كل حركة لمادة واحدة: مبيعات، مشتريات، مرتجعات، تعديلات مخزون، وإتلاف — مع الكمية قبل وبعد وسبب التغيير. مثالي لحل النزاعات ومراجعة الأرقام.</p>
+            <p class="lang-en">Track every movement for a single product: sales, purchases, returns, adjustments and spoilage — with before/after quantities and reasons. Ideal for disputes and audits.</p>
+        </div>
+
+        <div class="feature-card compact">
+            <div class="feature-icon">📦</div>
+            <h3 class="lang-ar">تسوية الجرد المجمّعة</h3>
+            <h3 class="lang-en">Batch Stocktake & Reconciliation</h3>
+            <p class="lang-ar">أدخل الكميات الفعلية لمجموعة أصناف دفعة واحدة — النظام يحسب الفروقات ويُسجّل النقص كتوالف والزيادة كمكاسب مخزون في تقارير الربحية، دون أن يخرج نقد من الصندوق.</p>
+            <p class="lang-en">Enter actual counts for many products at once — the system posts shortages as wastage and surpluses as inventory gains in P&amp;L reports, without touching cash in the drawer.</p>
+        </div>
+
+        <div class="feature-card compact">
+            <div class="feature-icon">💲</div>
+            <h3 class="lang-ar">تعديل أسعار قسم بالكامل</h3>
+            <h3 class="lang-en">Bulk Category Price Update</h3>
+            <p class="lang-ar">ارفع أو خفّض أسعار كل أصناف قسم معيّن دفعة واحدة — بنسبة مئوية أو مبلغ ثابت، مع دعم تعديل كل مجموعة عملات على حدة (مثلاً أصناف بالدولار وأخرى بالليرة).</p>
+            <p class="lang-en">Raise or lower prices for an entire category at once — by percentage or fixed amount, with separate adjustments per pricing-currency group (e.g. USD items vs SYP items).</p>
+        </div>
+
+        <div class="feature-card compact">
+            <div class="feature-icon">📱</div>
+            <h3 class="lang-ar">تسعير ثابت بعملة محلية</h3>
+            <h3 class="lang-en">Fixed Local-Currency Pricing</h3>
+            <p class="lang-ar">مثالي لبطاقات MTN وسيرياتيل: حدّد سعر البيع بالليرة لكل بطاقة بينما متجرك يعمل بالدولار — بدون تحويل يومي يُربك الكاشير أو يشوّه الفاتورة.</p>
+            <p class="lang-en">Perfect for MTN / Syriatel cards: set a fixed SYP sell price per card while your store runs in USD — no daily conversion confusing the cashier or the receipt.</p>
+        </div>
+
+        <div class="feature-card compact">
+            <div class="feature-icon">🗑️</div>
+            <h3 class="lang-ar">تسجيل الإتلاف والتوالف</h3>
+            <h3 class="lang-en">Spoilage & Wastage Recording</h3>
+            <p class="lang-ar">شطب كميات منتهية أو تالفة من المخزون مع سبب واضح — يُخصم من صافي الربح في التقارير دون أن يُسجَّل كمصروف نقدي من الصندوق.</p>
+            <p class="lang-en">Write off expired or damaged stock with a clear reason — reduces net profit in reports without recording a cash expense from the drawer.</p>
+        </div>
+
+        <div class="feature-card compact">
+            <div class="feature-icon">🎨</div>
+            <h3 class="lang-ar">هوية متجرك (White-Label)</h3>
+            <h3 class="lang-en">Your Brand (White-Label)</h3>
+            <p class="lang-ar">في الباقة المتكاملة: شعارك، ألوانك، وترويسة باسم متجرك على شاشة الدخول والفواتير — تجربة احترافية تحمل اسم نشاطك وليس اسم البرنامج.</p>
+            <p class="lang-en">Ultimate plan: your logo, colours and store name on login and invoices — a professional experience branded for your business, not the software vendor.</p>
+        </div>
+    </div>
+</section>
+
+<section class="why-section">
+    <h2 class="section-title lang-ar">لماذا الضمان؟</h2>
+    <h2 class="section-title lang-en">Why Daman?</h2>
+    <div class="why-grid">
+        <div class="why-card">
+            <strong class="lang-ar">مصمَّم للسوق السوري والعربي</strong>
+            <strong class="lang-en">Built for Syrian & Arab Retail</strong>
+            <span class="lang-ar">ليرة جديدة وقديمة، RTL أصيل، ومصطلحات محلية يفهمها الكاشير من أول يوم.</span>
+            <span class="lang-en">New & old SYP, native RTL, and local terminology your cashier understands from day one.</span>
+        </div>
+        <div class="why-card">
+            <strong class="lang-ar">بدون إنترنت — بدون اشتراك</strong>
+            <strong class="lang-en">No Internet — No Subscription</strong>
+            <span class="lang-ar">دفعة واحدة، رخصة مقفلة على جهازك، وبياناتك محلية — لا فواتير سحابية شهرية.</span>
+            <span class="lang-en">One-time payment, hardware-locked license, local data — no monthly cloud bills.</span>
+        </div>
+        <div class="why-card">
+            <strong class="lang-ar">دقة مالية حقيقية</strong>
+            <strong class="lang-en">Real Financial Accuracy</strong>
+            <span class="lang-ar">سعر صرف لحظة كل عملية، سجل تدقيق للمخزون، وتسوية وردية شفافة.</span>
+            <span class="lang-en">FX rate snapshotted per transaction, stock audit trail, transparent shift reconciliation.</span>
+        </div>
+        <div class="why-card">
+            <strong class="lang-ar">قابل للتوسع حسب نشاطك</strong>
+            <strong class="lang-en">Grows With Your Business</strong>
+            <span class="lang-ar">ابدأ بالأساسيات وارتقِ لاحقاً — مع الاحتفاظ بكامل بياناتك دون إعادة إدخال.</span>
+            <span class="lang-en">Start with essentials and upgrade later — keeping all your data, zero re-entry.</span>
+        </div>
+    </div>
+</section>
+
 <section class="pricing-section">
     <h2 class="section-title lang-ar">الباقات والأسعار</h2>
     <h2 class="section-title lang-en">Pricing & Packages</h2>
@@ -833,14 +1111,16 @@
                 <span class="price-note lang-en">Limited time discounted price!</span>
             </div>
             <ul class="features-list">
-                <li class="lang-ar">إدارة المنتجات، العملاء، والموردين مع حسابات الديون</li>
-                <li class="lang-en">Products, Clients & Suppliers with credit ledgers</li>
+                <li class="lang-ar">إدارة المنتجات، العملاء، والموردين</li>
+                <li class="lang-en">Products, clients & suppliers management</li>
+                <li class="lang-ar">مبيعات، مرتجعات، وفواتير PDF</li>
+                <li class="lang-en">Sales, returns & PDF invoices</li>
                 <li class="lang-ar">لوحة تحكم وملخص يومي للإحصائيات</li>
                 <li class="lang-en">Daily dashboard & basic stats</li>
-                <li class="lang-ar">إصدار الفواتير والمرتجعات بسلاسة</li>
-                <li class="lang-en">Seamless invoicing & returns</li>
-                <li class="lang-ar">العمل بسلاسة بدون اتصال بالإنترنت (Offline Mode)</li>
-                <li class="lang-en">Full offline mode operations</li>
+                <li class="lang-ar">حسابات ديون العملاء والموردين (آجل / دفعات)</li>
+                <li class="lang-en">Client & supplier credit ledgers (on-account / payments)</li>
+                <li class="lang-ar">العمل بسلاسة بدون اتصال بالإنترنت</li>
+                <li class="lang-en">Full offline operation</li>
                 <li class="lang-ar">حماية العمليات الحساسة برمز المشرف (PIN)</li>
                 <li class="lang-en">Supervisor PIN on sensitive actions</li>
                 <li class="lang-ar">دعم اللغتين (العربية / الإنجليزية)</li>
@@ -865,18 +1145,20 @@
             <ul class="features-list">
                 <li class="lang-ar"><strong>جميع ميزات الباقة الأساسية</strong></li>
                 <li class="lang-en"><strong>All Basic Plan features</strong></li>
-                <li class="lang-ar"><strong>تعدد العملات (دولار / ليرة) مع التحويل المباشر</strong></li>
-                <li class="lang-en"><strong>Multi-currency (USD / SYP) with live switching</strong></li>
+                <li class="lang-ar"><strong>تعدد العملات (USD / SYP / SYP_OLD) مع التحويل المباشر</strong></li>
+                <li class="lang-en"><strong>Multi-currency (USD / SYP / SYP_OLD) with live switching</strong></li>
+                <li class="lang-ar">المشتريات وتحديث كلفة وأسعار العبوات</li>
+                <li class="lang-en">Purchases with cost & per-packaging price updates</li>
                 <li class="lang-ar">تقارير مالية شاملة ورسوم بيانية لهامش الربح</li>
                 <li class="lang-en">Full financial reports & profit-margin charts</li>
                 <li class="lang-ar">تصدير التقارير والفواتير بصيغة PDF</li>
                 <li class="lang-en">Export reports & invoices to PDF</li>
                 <li class="lang-ar">دعم أجهزة قارئ الباركود وطباعة الملصقات</li>
                 <li class="lang-en">Barcode scanner & label-printer support</li>
-                <li class="lang-ar">عبوات متعددة للمنتج بأسعار مستقلة</li>
-                <li class="lang-en">Multi-package SKUs with separate prices</li>
-                <li class="lang-ar">سجل تدقيق دائم لكل تغيير في المخزون</li>
-                <li class="lang-en">Permanent audit trail for every stock change</li>
+                <li class="lang-ar">عبوات متعددة للمنتج بأسعار مستقلة (قطعة / كرتون)</li>
+                <li class="lang-en">Multi-packaging SKUs with separate prices</li>
+                <li class="lang-ar">تسجيل الإتلاف وسجل تدقيق دائم للمخزون</li>
+                <li class="lang-en">Spoilage recording & permanent stock audit trail</li>
                 <li class="lang-ar"><strong>4 أشهر</strong> دعم فني مجاني</li>
                 <li class="lang-en"><strong>4 months</strong> free technical support</li>
             </ul>
@@ -897,16 +1179,20 @@
                 <li class="lang-en"><strong>All Pro Plan features</strong></li>
                 <li class="lang-ar"><strong>إدارة الورديات وتسوية الصندوق المتقدمة</strong></li>
                 <li class="lang-en"><strong>Advanced shift management & cash reconciliation</strong></li>
-                <li class="lang-ar"><strong>تخصيص الواجهة (الترويسة والشعار) باسم متجرك</strong></li>
-                <li class="lang-en"><strong>White-label branding (Custom Header & Logo)</strong></li>
-                <li class="lang-ar">إدارة متقدمة للمصاريف التشغيلية والشخصية</li>
-                <li class="lang-en">Advanced operational & personal expense tracking</li>
-                <li class="lang-ar">صلاحيات مخصصة وأدوار متقدمة للمستخدمين</li>
-                <li class="lang-en">Custom user roles & advanced permissions</li>
+                <li class="lang-ar"><strong>تخصيص الواجهة (الشعار والألوان) باسم متجرك</strong></li>
+                <li class="lang-en"><strong>White-label branding (logo, colours & header)</strong></li>
+                <li class="lang-ar">كشف حساب عميل/مورد وسجل حركة الصنف</li>
+                <li class="lang-en">Account statement & per-product item ledger</li>
+                <li class="lang-ar">تسوية جرد مجمّعة وتعديل أسعار قسم بالكامل</li>
+                <li class="lang-en">Batch stocktake & bulk category price update</li>
+                <li class="lang-ar">تسعير ثابت بعملة محلية (بطاقات اتصالات)</li>
+                <li class="lang-en">Fixed local-currency product pricing (telecom cards)</li>
+                <li class="lang-ar">إدارة المصاريف التشغيلية والشخصية</li>
+                <li class="lang-en">Operational & personal expense tracking</li>
                 <li class="lang-ar">دعم تأسيس وتهيئة لأجهزة متعددة</li>
                 <li class="lang-en">Multi-device setup & onboarding assistance</li>
                 <li class="lang-ar"><strong>سنة كاملة (12 شهراً)</strong> دعم فني بأولوية عالية</li>
-                <li class="lang-en"><strong>1 Year</strong> high-priority technical support</li>
+                <li class="lang-en"><strong>1 year</strong> high-priority technical support</li>
             </ul>
         </div>
 
@@ -914,17 +1200,33 @@
 
     <div class="addons-container">
         <h4 class="lang-ar">الإضافات وملحقات الأجهزة (اختياري)</h4>
-        <h4 class="lang-en">Hardware Add-ons (Optional)</h4>
+        <h4 class="lang-en">Add-ons & Hardware (Optional)</h4>
         <p class="lang-ar">
             أي جهاز قارئ باركود USB متوافق للعمل مع النظام.<br>
             نوفر <strong>جهاز قارئ باركود</strong> بسعر <strong>$50</strong> لمن يحتاجه.<br>
             كما يمكننا توفير <strong>طابعة باركود</strong> مخصصة لمنتجاتك الخاصة حسب الطلب.
         </p>
         <p class="lang-en">
-            Any standard USB barcode scanner is compatible with the system.<br>
-            We can provide a <strong>Barcode Scanner</strong> device for <strong>$50</strong> if needed.<br>
-            A dedicated <strong>Barcode Printer</strong> for your own products can also be provided upon request.
+            Any standard USB barcode scanner works with the system.<br>
+            We can provide a <strong>barcode scanner</strong> for <strong>$50</strong> if needed.<br>
+            A dedicated <strong>barcode label printer</strong> for your products is also available on request.
         </p>
+        <h4 class="lang-ar" style="margin-top: 1.5rem;">وحدات Premium (حسب الطلب)</h4>
+        <h4 class="lang-en" style="margin-top: 1.5rem;">Premium Modules (On Request)</h4>
+        <ul class="addons-list lang-ar">
+            <li>كشف حساب عميل / مورد (Account Statement)</li>
+            <li>سجل حركة الصنف (Item Ledger)</li>
+            <li>تسوية الجرد المجمّعة (Batch Stocktake)</li>
+            <li>تعديل أسعار قسم بالكامل (Bulk Category Pricing)</li>
+            <li>تسعير ثابت بعملة محلية — MTN / سيرياتيل</li>
+        </ul>
+        <ul class="addons-list lang-en">
+            <li>Client / Supplier Account Statement</li>
+            <li>Per-Product Item Ledger</li>
+            <li>Batch Stocktake & Reconciliation</li>
+            <li>Bulk Category Price Update</li>
+            <li>Fixed local-currency pricing — MTN / Syriatel cards</li>
+        </ul>
     </div>
 </section>
 
