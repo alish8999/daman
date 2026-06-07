@@ -5,7 +5,7 @@
 
 PROJECT
 -------
-Design a print-ready marketing poster for "Daman / الضمان لإدارة المبيعات" —
+Design a print-ready marketing poster for "Daman / ضمان لإدارة المبيعات" —
 an offline-first desktop POS system built for Arab and Syrian retail shops.
 
 
@@ -20,9 +20,9 @@ FORMAT & TECHNICAL SPECS
 
 BRAND IDENTITY
 --------------
-  Product Name (AR):   الضمان لإدارة المبيعات
+  Product Name (AR):   ضمان لإدارة المبيعات
   Product Name (EN):   Daman Sales Management
-  Slogan (AR):         الضمان... دقة وأمان
+  Slogan (AR):         ضمان... دقة وأمان
   Slogan (EN):         Daman... Safety and Accuracy
 
   Colors:
@@ -47,7 +47,7 @@ HEADLINE OPTIONS (choose one)
   2. إدارة مبيعاتك بثقة — من الكاشير إلى التقارير
      Manage Sales with Confidence — From Cashier to Reports
 
-  3. الضمان... دقة وأمان في كل فاتورة
+  3. ضمان... دقة وأمان في كل فاتورة
      Daman... Safety and Accuracy in Every Invoice
 
 
@@ -205,9 +205,9 @@ CALL TO ACTION (large, bottom of poster)
 SUGGESTED LAYOUT (wireframe)
 -----------------------------
   ┌─────────────────────────────────────────┐
-  │  [LOGO]     الضمان لإدارة المبيعات       │
+  │  [LOGO]     ضمان لإدارة المبيعات       │
   │             Daman Sales Management       │
-  │  Slogan: الضمان... دقة وأمان             │
+  │  Slogan: ضمان... دقة وأمان             │
   ├─────────────────────────────────────────┤
   │  HEADLINE (large)                        │
   │  Sub-headline                            │
