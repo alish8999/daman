@@ -788,6 +788,36 @@
             .contact-numbers { flex-direction: column; gap: 1rem; }
             .header-right { flex-direction: column-reverse; gap: 10px; align-items: flex-end; }
         }
+
+        /* Download Demo CTA */
+        .btn-download-demo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, #F59E0B 0%, #d97706 100%);
+            color: var(--white);
+            padding: 0.85rem 2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 14px rgba(245,158,11,0.4);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-download-demo:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(245,158,11,0.55);
+            color: var(--white);
+        }
+
+        .hero-cta-note {
+            margin-top: 0.55rem;
+            font-size: 0.85rem;
+            opacity: 0.75;
+            color: inherit;
+        }
     </style>
 </head>
 <body>
@@ -830,6 +860,17 @@
                 <li>USD / New SYP / Old SYP — reports stay accurate</li>
                 <li>Hardware-locked license — no monthly subscription</li>
             </ul>
+
+            <div style="margin-top: 1.75rem;">
+                <a href="https://drive.google.com/file/d/1Lo8q5B-ek5YOIce8LauoCxi9EuWNOXdV/view?usp=sharing"
+                   target="_blank" rel="noopener"
+                   class="btn-download-demo lang-ar">⬇ حمّل النسخة التجريبية مجاناً</a>
+                <a href="https://drive.google.com/file/d/1Lo8q5B-ek5YOIce8LauoCxi9EuWNOXdV/view?usp=sharing"
+                   target="_blank" rel="noopener"
+                   class="btn-download-demo lang-en">⬇ Download Free Trial</a>
+                <p class="hero-cta-note lang-ar">تتطلب مفتاح تفعيل — تواصل معنا للحصول على مفتاحك الخاص</p>
+                <p class="hero-cta-note lang-en">Requires an activation key — contact us to get your personal license</p>
+            </div>
         </div>
 
         <div class="hero-slider-wrapper">
@@ -1054,6 +1095,30 @@
             <p class="lang-ar">في الباقة المتكاملة: شعارك، ألوانك، وترويسة باسم متجرك على شاشة الدخول والفواتير — تجربة احترافية تحمل اسم نشاطك وليس اسم البرنامج.</p>
             <p class="lang-en">Ultimate plan: your logo, colours and store name on login and invoices — a professional experience branded for your business, not the software vendor.</p>
         </div>
+
+        <div class="feature-card compact">
+            <div class="feature-icon">👥</div>
+            <h3 class="lang-ar">إدارة المستخدمين والصلاحيات (متكاملة)</h3>
+            <h3 class="lang-en">User & Permission Management (Ultimate)</h3>
+            <p class="lang-ar">تحكّم بدقة بما يراه كل موظف: حدّد أقسام لوحة التحكم والإجراءات والصفحات المتاحة لكل حساب مستقل — صلاحيات محفوظة لكل مستخدم على حدة ويمكن تعديلها في أي وقت.</p>
+            <p class="lang-en">Precisely control what each employee accesses: select which dashboard sections, actions and pages are available per account — permissions saved independently per user and editable any time.</p>
+        </div>
+
+        <div class="feature-card compact">
+            <div class="feature-icon">🧾</div>
+            <h3 class="lang-ar">تخصيص بيانات الفاتورة (احترافية)</h3>
+            <h3 class="lang-en">Invoice Customization (Pro)</h3>
+            <p class="lang-ar">أضف رقم هاتفك، عنوانك التجاري، والرقم الضريبي إلى كل فاتورة — واجهة إعداد بسيطة تُظهر هوية نشاطك في كل مستند تطبعه أو تشاركه مع العميل.</p>
+            <p class="lang-en">Add your phone number, store address and tax ID to every invoice — a simple settings screen that puts your business identity on every document you print or share with a client.</p>
+        </div>
+
+        <div class="feature-card compact">
+            <div class="feature-icon">🏭</div>
+            <h3 class="lang-ar">وصفات الإنتاج والتصنيع</h3>
+            <h3 class="lang-en">Manufacturing & Product Recipes</h3>
+            <p class="lang-ar">عرّف وصفة لكل منتج مصنّع بتحديد مكوناته وكمياته — يخصم النظام المواد الأولية تلقائياً عند تسجيل أي دفعة إنتاج، مع عكس التكلفة الفعلية في تقارير الربحية.</p>
+            <p class="lang-en">Define a recipe for each manufactured product with its ingredients and quantities — the system auto-deducts raw materials on each production run and reflects true cost in profit reports.</p>
+        </div>
     </div>
 </section>
 
@@ -1159,6 +1224,8 @@
                 <li class="lang-en">Multi-packaging SKUs with separate prices</li>
                 <li class="lang-ar">تسجيل الإتلاف وسجل تدقيق دائم للمخزون</li>
                 <li class="lang-en">Spoilage recording & permanent stock audit trail</li>
+                <li class="lang-ar">تخصيص بيانات الفاتورة (هاتف، عنوان، رقم ضريبي)</li>
+                <li class="lang-en">Invoice customization (phone, address & tax ID)</li>
                 <li class="lang-ar"><strong>4 أشهر</strong> دعم فني مجاني</li>
                 <li class="lang-en"><strong>4 months</strong> free technical support</li>
             </ul>
@@ -1189,6 +1256,8 @@
                 <li class="lang-en">Fixed local-currency product pricing (telecom cards)</li>
                 <li class="lang-ar">إدارة المصاريف التشغيلية والشخصية</li>
                 <li class="lang-en">Operational & personal expense tracking</li>
+                <li class="lang-ar">إدارة المستخدمين وتخصيص الصلاحيات لكل موظف</li>
+                <li class="lang-en">User & permission management per employee</li>
                 <li class="lang-ar">دعم تأسيس وتهيئة لأجهزة متعددة</li>
                 <li class="lang-en">Multi-device setup & onboarding assistance</li>
                 <li class="lang-ar"><strong>سنة كاملة (12 شهراً)</strong> دعم فني بأولوية عالية</li>
