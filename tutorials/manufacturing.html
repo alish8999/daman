@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل: أوامر التصنيع | Daman</title>
+    <meta name="description" content="دليل خطوة بخطوة لتنفيذ أمر تصنيع في ضمان، بمثال مصنع تغليف حقيقي.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/x-icon" href="../icon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0A4D68; --secondary-blue: #088395; --light-blue: #EBF8FF;
+            --dark-text: #2D3748; --white: #FFFFFF; --accent-gold: #F59E0B;
+            --line: rgba(10,77,104,0.14); --warn: #C0392B; --warn-bg: #FDEDEB;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+        body { background-color: var(--light-blue); color: var(--dark-text); line-height: 1.75; }
+        html[lang="ar"] .lang-en { display: none !important; }
+        html[lang="en"] .lang-ar { display: none !important; }
+
+        header {
+            background-color: var(--white); box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .brand-logo { height: 46px; width: auto; object-fit: contain; }
+        .lang-btn {
+            background-color: var(--light-blue); color: var(--primary-blue);
+            border: 1px solid var(--secondary-blue); padding: 8px 16px; border-radius: 8px;
+            cursor: pointer; font-weight: bold; font-size: 1rem;
+        }
+        .lang-btn:hover { background-color: var(--primary-blue); color: var(--white); }
+
+        main { max-width: 760px; margin: 0 auto; padding: 0 5% 5rem; }
+
+        .breadcrumb { padding: 1.5rem 0 0; font-size: 0.88rem; }
+        .breadcrumb a { color: var(--secondary-blue); text-decoration: none; font-weight: 600; }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        .doc-head { padding: 1.5rem 0 2rem; border-bottom: 1px solid var(--line); }
+        .eyebrow {
+            display: inline-block; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em;
+            color: #92400E; background: #FEF3E2;
+            padding: 0.3rem 0.8rem; border-radius: 999px; margin-bottom: 1rem;
+        }
+        h1 { font-size: 2rem; color: var(--primary-blue); margin-bottom: 0.6rem; }
+        .doc-sub { font-size: 1.05rem; color: #4A5568; max-width: 62ch; margin-bottom: 1.1rem; }
+        .price-chip {
+            display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+            background: #FEF3E2; border: 1px solid rgba(245,158,11,0.35);
+            color: #92400E; font-size: 0.85rem; font-weight: 700;
+            padding: 0.45rem 0.9rem; border-radius: 999px;
+        }
+
+        .jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.3rem; padding: 0; list-style: none; }
+        .jump a {
+            display: inline-block; font-size: 0.82rem; font-weight: 700; text-decoration: none;
+            color: var(--primary-blue); background: var(--white); border: 1px solid var(--line);
+            padding: 0.4rem 0.85rem; border-radius: 8px;
+        }
+        .jump a:hover { border-color: var(--accent-gold); }
+
+        .prereq {
+            display: flex; gap: 0.7rem; align-items: flex-start; margin-top: 1.4rem;
+            background: var(--white); border: 1px solid var(--line); border-radius: 10px;
+            padding: 0.9rem 1.05rem; font-size: 0.92rem;
+        }
+        .prereq svg { flex-shrink: 0; margin-top: 0.15rem; color: var(--accent-gold); }
+        .prereq a { color: var(--secondary-blue); font-weight: 700; text-decoration: none; }
+        .prereq a:hover { text-decoration: underline; }
+
+        section.block { padding: 2.2rem 0; border-bottom: 1px solid var(--line); }
+        section.block:last-of-type { border-bottom: none; }
+        .block-head { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.3rem; }
+        .block-num { font-weight: 800; color: var(--accent-gold); font-size: 1rem; }
+        h2 { font-size: 1.35rem; color: var(--primary-blue); margin: 0 0 0.2rem; }
+        .block-hint { color: #4A5568; font-size: 0.94rem; margin-bottom: 1.2rem; }
+
+        ol.steps { list-style: none; counter-reset: step; }
+        ol.steps li {
+            counter-increment: step;
+            display: grid; grid-template-columns: 1fr 2.15rem; gap: 0.9rem;
+            padding: 0.95rem 0; border-top: 1px dashed var(--line);
+        }
+        ol.steps li:first-child { border-top: none; }
+        ol.steps li::before {
+            content: counter(step); grid-column: 2;
+            font-weight: 800; font-size: 0.95rem; color: var(--white); background: var(--accent-gold);
+            width: 2.15rem; height: 2.15rem; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .step-body { font-size: 0.96rem; }
+        .step-body p { margin-bottom: 0.3rem; }
+        .ui-label {
+            font-weight: 700; background: var(--light-blue); border: 1px solid var(--line);
+            border-radius: 5px; padding: 0.05rem 0.4rem; font-size: 0.9em; color: var(--primary-blue);
+        }
+
+        .callout {
+            display: flex; gap: 0.6rem; border-radius: 10px; padding: 0.8rem 0.95rem;
+            font-size: 0.89rem; margin-top: 0.6rem; background: var(--warn-bg);
+            border: 1px solid rgba(192,57,43,0.3); color: var(--warn);
+        }
+        .callout strong { color: var(--dark-text); }
+        .callout svg { flex-shrink: 0; margin-top: 0.1rem; }
+
+        .ticket {
+            background: var(--white); border: 1px solid var(--line); border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(10,77,104,0.08); padding: 1.4rem 1.5rem 1.2rem;
+            position: relative; overflow: hidden;
+        }
+        .ticket::before {
+            content: ""; position: absolute; inset-inline: 0; top: 0; height: 4px;
+            background: repeating-linear-gradient(90deg, var(--accent-gold) 0 10px, transparent 10px 20px);
+        }
+        .ticket-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+        .ticket-head h3 { color: var(--primary-blue); font-size: 1.1rem; }
+        .ticket-yield { font-size: 0.8rem; color: #718096; }
+        .ticket-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+        @media (max-width: 560px) { .ticket-grid { grid-template-columns: 1fr; } }
+        .ticket-col h4 {
+            font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: #92400E;
+            margin-bottom: 0.5rem; font-weight: 800;
+        }
+        .ticket-line { display: flex; justify-content: space-between; font-size: 0.92rem; padding: 0.28rem 0; border-bottom: 1px dotted var(--line); }
+        .ticket-line:last-child { border-bottom: none; }
+        .ticket-result {
+            margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid var(--line);
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+        }
+        .ticket-result .stock-up { color: #1A7A3C; font-weight: 800; font-size: 1.15rem; }
+
+        .price-note {
+            margin-top: 1.2rem; background: var(--white); border: 1px solid var(--line); border-radius: 10px;
+            padding: 0.9rem 1rem; font-size: 0.88rem; color: #4A5568;
+        }
+        .price-note strong { color: var(--dark-text); }
+
+        footer { background-color: #052a3a; color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="../index.html" class="logo-container">
+        <img src="../logo-dark.png" alt="Daman Logo" class="brand-logo">
+    </a>
+    <button class="lang-btn" onclick="toggleLanguage()">
+        <span class="lang-ar">English</span>
+        <span class="lang-en">العربية</span>
+    </button>
+</header>
+
+<main>
+    <p class="breadcrumb">
+        <a href="index.html" class="lang-ar">← كل الأدلة</a>
+        <a href="index.html" class="lang-en">← All tutorials</a>
+    </p>
+
+    <div class="doc-head">
+        <span class="eyebrow lang-ar">أوامر التصنيع</span>
+        <span class="eyebrow lang-en">Manufacturing Orders</span>
+        <h1 class="lang-ar">تنفيذ أمر تصنيع، خطوة بخطوة</h1>
+        <h1 class="lang-en">Run a manufacturing order, step by step</h1>
+        <p class="doc-sub lang-ar">هذا الدليل يشرح كيفية تصنيع دفعة فعلية من "علبة حلويات فاخرة" — تُخصم المواد الخام تلقائياً ويزيد مخزون العلب الجاهزة.</p>
+        <p class="doc-sub lang-en">This guide covers producing an actual batch of "Luxury Candy Box" — raw materials are deducted automatically and the finished box's stock goes up.</p>
+        <span class="price-chip"><span class="lang-ar">التصنيع — 59$ (مع BOM)</span><span class="lang-en">Manufacturing — $59 (bundle w/ BOM)</span></span>
+
+        <div class="prereq">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span class="lang-ar">تحتاج أولاً منتجاً من نوع "وصفة / BOM" مفعّلاً عليه "إنتاج مسبق للمستودع" — إن لم تكن أعددت واحداً بعد، راجع <a href="bom.html">دليل وصفات المنتجات / BOM</a> أولاً.</span>
+            <span class="lang-en">You'll need a "Recipe / BOM" product with "Pre-produce to stock" enabled first — if you haven't set one up yet, go through the <a href="bom.html">Product Recipes / BOM guide</a> first.</span>
+        </div>
+
+        <ul class="jump">
+            <li><a href="#before"><span class="lang-ar">قبل أن تبدأ</span><span class="lang-en">Before you start</span></a></li>
+            <li><a href="#part3"><span class="lang-ar">تنفيذ أمر تصنيع</span><span class="lang-en">Run the order</span></a></li>
+            <li><a href="#example"><span class="lang-ar">مثال توضيحي</span><span class="lang-en">Worked example</span></a></li>
+        </ul>
+    </div>
+
+    <section class="block" id="before">
+        <div class="block-head"><h2 class="lang-ar">قبل أن تبدأ</h2><h2 class="lang-en">Before you start</h2></div>
+        <p class="block-hint lang-ar">تأكد أن ميزة <strong>أوامر التصنيع</strong> مفعّلة على حسابك. إذا لم يظهر عنصر "أوامر التصنيع" في القائمة الجانبية، تواصل معنا لتفعيله.</p>
+        <p class="block-hint lang-en">Make sure <strong>Manufacturing</strong> is enabled on your account. If you don't see a "Manufacturing" item in your sidebar menu, contact us and we'll enable it.</p>
+    </section>
+
+    <section class="block" id="part3">
+        <div class="block-head">
+            <h2 class="lang-ar">تنفيذ أمر تصنيع</h2>
+            <h2 class="lang-en">Run a manufacturing order</h2>
+        </div>
+        <p class="block-hint lang-ar">الآن نصنّع دفعة فعلية من علب الحلويات ونراقب تحديث المخزون.</p>
+        <p class="block-hint lang-en">Now produce an actual batch of candy boxes and watch the stock update.</p>
+        <ol class="steps">
+            <li><div class="step-body">
+                <p class="lang-ar">اذهب إلى <span class="ui-label">أوامر التصنيع</span> من القائمة الجانبية.</p>
+                <p class="lang-en">Go to <span class="ui-label">Manufacturing</span> in the sidebar.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اضغط <span class="ui-label">أمر تصنيع جديد</span>.</p>
+                <p class="lang-en">Click <span class="ui-label">New Manufacturing Order</span>.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">في حقل <span class="ui-label">المنتج</span>، اختر <strong>علبة حلويات فاخرة</strong>.</p>
+                <p class="lang-en">In <span class="ui-label">Product</span>, select <strong>Luxury Candy Box</strong>.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">في حقل <span class="ui-label">عدد الدفعات</span>، أدخل <strong>2</strong> (2 × 100 = 200 علبة).</p>
+                <p class="lang-en">In <span class="ui-label">Number of batches</span>, enter <strong>2</strong> (2 × 100 = 200 boxes).</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">راجع <span class="ui-label">الاستهلاك المتوقع</span> — يعرض بالضبط كمية كل مادة سيستهلكها هذا الأمر، ويُظهر باللون الأحمر أي مادة لا تملك منها كمية كافية.</p>
+                <p class="lang-en">Check <span class="ui-label">Expected consumption</span> — it shows exactly how much of each ingredient this run will use, and flags in red anything you're short on.</p>
+                <div class="callout">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    <span class="lang-ar"><strong>إذا ظهرت مادة باللون الأحمر:</strong> جدّد مخزونها قبل التصنيع، أو قلّل عدد الدفعات.</span>
+                    <span class="lang-en"><strong>If an ingredient is highlighted red:</strong> restock it before producing, or reduce the number of batches.</span>
+                </div>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اضغط <span class="ui-label">تنفيذ التصنيع</span>.</p>
+                <p class="lang-en">Click <span class="ui-label">Produce</span>.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">ستظهر رسالة <em>"تم تسجيل أمر التصنيع وتحديث المخزون."</em> مخزون المواد الخام ينقص، ومخزون علب الحلويات يزيد بـ200 — بخطوة واحدة.</p>
+                <p class="lang-en">You'll see <em>"Manufacturing order recorded and stock updated."</em> Ingredient stock goes down; the candy box's own stock goes up by 200 — in one step.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">كل عملية تُحفظ في قائمة أوامر التصنيع — التاريخ، الكمية، التكلفة، ومن سجّلها. اضغط أي سطر لعرض التفاصيل.</p>
+                <p class="lang-en">Every run is saved in the Manufacturing list — date, quantity, cost, and who recorded it. Click a row to see the full breakdown.</p>
+            </div></li>
+        </ol>
+    </section>
+
+    <section class="block" id="example">
+        <div class="block-head"><h2 class="lang-ar">مثال توضيحي</h2><h2 class="lang-en">Worked example</h2></div>
+        <div class="ticket">
+            <div class="ticket-head">
+                <h3><span class="lang-ar">علبة حلويات فاخرة — أمر تصنيع</span><span class="lang-en">Luxury Candy Box — Manufacturing Order</span></h3>
+                <span class="ticket-yield"><span class="lang-ar">الدفعة الواحدة = 100 علبة</span><span class="lang-en">1 batch = 100 boxes</span></span>
+            </div>
+            <div class="ticket-grid">
+                <div class="ticket-col">
+                    <h4><span class="lang-ar">لكل دفعة</span><span class="lang-en">Per batch</span></h4>
+                    <div class="ticket-line"><span class="lang-ar">كرتون مقوى</span><span class="lang-en">Cardboard</span><span>30 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">شريط ساتان</span><span class="lang-en">Ribbon</span><span>50 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">ورق ذهبي</span><span class="lang-en">Gold Foil</span><span>20 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">غراء صناعي</span><span class="lang-en">Glue</span><span>5 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">فاصل داخلي</span><span class="lang-en">Divider</span><span>100 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                </div>
+                <div class="ticket-col">
+                    <h4><span class="lang-ar">هذا الأمر — دفعتان</span><span class="lang-en">This order — 2 batches</span></h4>
+                    <div class="ticket-line"><span class="lang-ar">كرتون مستهلك</span><span class="lang-en">Cardboard used</span><span>60 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">شريط مستهلك</span><span class="lang-en">Ribbon used</span><span>100 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">ورق ذهبي مستهلك</span><span class="lang-en">Gold foil used</span><span>40 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">غراء مستهلك</span><span class="lang-en">Glue used</span><span>10 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">فواصل مستهلكة</span><span class="lang-en">Dividers used</span><span>200 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                </div>
+            </div>
+            <div class="ticket-result">
+                <span class="lang-ar">تكلفة المواد الإجمالية: 142.00$ (0.71$/علبة)</span>
+                <span class="lang-en">Total material cost: $142.00 ($0.71/box)</span>
+                <span class="stock-up"><span class="lang-ar">+200 علبة حلويات فاخرة</span><span class="lang-en">+200 Luxury Candy Boxes</span></span>
+            </div>
+        </div>
+
+        <div class="price-note">
+            <strong class="lang-ar">بخصوص التسعير: </strong><span class="lang-ar">وصفات المنتجات / BOM بسعر 39$ بمفردها. التصنيع لا يعمل إلا فوقها، لذلك سعره 20$ إضافية — أي 59$ إجمالاً عند استخدام الميزتين معاً.</span>
+            <strong class="lang-en">On pricing: </strong><span class="lang-en">Product Recipes / BOM is $39 on its own. Manufacturing only works on top of it, so it's priced as $20 more — $59 total when you use both together.</span>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <span class="lang-ar">&copy; 2026 ضمان لإدارة المبيعات. جميع الحقوق محفوظة.</span>
+    <span class="lang-en">&copy; 2026 Daman Sales Management. All rights reserved.</span>
+</footer>
+
+<script>
+    function toggleLanguage() {
+        const htmlElement = document.documentElement;
+        const currentLang = htmlElement.getAttribute('lang');
+        if (currentLang === 'ar') {
+            htmlElement.setAttribute('lang', 'en');
+            htmlElement.setAttribute('dir', 'ltr');
+        } else {
+            htmlElement.setAttribute('lang', 'ar');
+            htmlElement.setAttribute('dir', 'rtl');
+        }
+    }
+</script>
+</body>
+</html>

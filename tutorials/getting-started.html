@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل: البداية — تسجيل الدخول والتصنيفات والمنتجات | Daman</title>
+    <meta name="description" content="دليل خطوة بخطوة لأول استخدام لضمان: تسجيل الدخول، التنقل في القائمة الجانبية، إضافة تصنيف وأول منتج.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/x-icon" href="../icon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0A4D68; --secondary-blue: #088395; --light-blue: #EBF8FF;
+            --dark-text: #2D3748; --white: #FFFFFF; --accent-gold: #F59E0B;
+            --line: rgba(10,77,104,0.14);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+        body { background-color: var(--light-blue); color: var(--dark-text); line-height: 1.75; }
+        html[lang="ar"] .lang-en { display: none !important; }
+        html[lang="en"] .lang-ar { display: none !important; }
+
+        header {
+            background-color: var(--white); box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .brand-logo { height: 46px; width: auto; object-fit: contain; }
+        .lang-btn {
+            background-color: var(--light-blue); color: var(--primary-blue);
+            border: 1px solid var(--secondary-blue); padding: 8px 16px; border-radius: 8px;
+            cursor: pointer; font-weight: bold; font-size: 1rem;
+        }
+        .lang-btn:hover { background-color: var(--primary-blue); color: var(--white); }
+
+        main { max-width: 760px; margin: 0 auto; padding: 0 5% 5rem; }
+
+        .breadcrumb { padding: 1.5rem 0 0; font-size: 0.88rem; }
+        .breadcrumb a { color: var(--secondary-blue); text-decoration: none; font-weight: 600; }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        .doc-head { padding: 1.5rem 0 2rem; border-bottom: 1px solid var(--line); }
+        .eyebrow {
+            display: inline-block; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em;
+            color: var(--secondary-blue); background: rgba(8,131,149,0.1);
+            padding: 0.3rem 0.8rem; border-radius: 999px; margin-bottom: 1rem;
+        }
+        h1 { font-size: 2rem; color: var(--primary-blue); margin-bottom: 0.6rem; }
+        .doc-sub { font-size: 1.05rem; color: #4A5568; max-width: 62ch; margin-bottom: 1.1rem; }
+        .price-chip {
+            display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+            background: #E6F4EA; border: 1px solid rgba(26,122,60,0.3);
+            color: #1A7A3C; font-size: 0.85rem; font-weight: 700;
+            padding: 0.45rem 0.9rem; border-radius: 999px;
+        }
+
+        .jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.3rem; padding: 0; list-style: none; }
+        .jump a {
+            display: inline-block; font-size: 0.82rem; font-weight: 700; text-decoration: none;
+            color: var(--primary-blue); background: var(--white); border: 1px solid var(--line);
+            padding: 0.4rem 0.85rem; border-radius: 8px;
+        }
+        .jump a:hover { border-color: var(--secondary-blue); }
+
+        section.block { padding: 2.2rem 0; border-bottom: 1px solid var(--line); }
+        section.block:last-of-type { border-bottom: none; }
+        .block-head { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.3rem; }
+        .block-num { font-weight: 800; color: var(--secondary-blue); font-size: 1rem; }
+        h2 { font-size: 1.35rem; color: var(--primary-blue); margin: 0 0 0.2rem; }
+        .block-hint { color: #4A5568; font-size: 0.94rem; margin-bottom: 1.2rem; }
+
+        ol.steps { list-style: none; counter-reset: step; }
+        ol.steps li {
+            counter-increment: step;
+            display: grid; grid-template-columns: 1fr 2.15rem; gap: 0.9rem;
+            padding: 0.95rem 0; border-top: 1px dashed var(--line);
+        }
+        ol.steps li:first-child { border-top: none; }
+        ol.steps li::before {
+            content: counter(step); grid-column: 2;
+            font-weight: 800; font-size: 0.95rem; color: var(--white); background: var(--secondary-blue);
+            width: 2.15rem; height: 2.15rem; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .step-body { font-size: 0.96rem; }
+        .step-body p { margin-bottom: 0.3rem; }
+        .ui-label {
+            font-weight: 700; background: var(--light-blue); border: 1px solid var(--line);
+            border-radius: 5px; padding: 0.05rem 0.4rem; font-size: 0.9em; color: var(--primary-blue);
+        }
+        .step-note { color: #4A5568; font-size: 0.88rem; margin-top: 0.35rem; }
+
+        .nav-map {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem;
+            margin-top: 0.4rem;
+        }
+        .nav-group {
+            background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem;
+        }
+        .nav-group h4 {
+            font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--secondary-blue);
+            margin-bottom: 0.55rem; font-weight: 800;
+        }
+        .nav-group ul { list-style: none; font-size: 0.88rem; color: var(--dark-text); display: grid; gap: 0.3rem; }
+        .nav-group ul li::before { content: '›'; color: var(--accent-gold); font-weight: 800; margin-inline-end: 0.4rem; }
+
+        .checklist-widget {
+            margin-top: 1.4rem; background: #FEF3E2; border: 1px solid rgba(245,158,11,0.35);
+            border-radius: 12px; padding: 1rem 1.2rem; font-size: 0.9rem; color: #7C4A03;
+        }
+        .checklist-widget strong { color: var(--dark-text); }
+
+        .ticket {
+            background: var(--white); border: 1px solid var(--line); border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(10,77,104,0.08); padding: 1.4rem 1.5rem 1.2rem;
+            position: relative; overflow: hidden;
+        }
+        .ticket::before {
+            content: ""; position: absolute; inset-inline: 0; top: 0; height: 4px;
+            background: repeating-linear-gradient(90deg, var(--secondary-blue) 0 10px, transparent 10px 20px);
+        }
+        .ticket-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+        .ticket-head h3 { color: var(--primary-blue); font-size: 1.1rem; }
+        .ticket-line { display: flex; justify-content: space-between; font-size: 0.92rem; padding: 0.28rem 0; border-bottom: 1px dotted var(--line); }
+        .ticket-line:last-child { border-bottom: none; }
+
+        .next-box {
+            margin-top: 2.5rem; background: #FEF3E2; border: 1px solid rgba(245,158,11,0.35);
+            border-radius: 12px; padding: 1.1rem 1.4rem; display: flex; align-items: center;
+            justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+        }
+        .next-box a { color: #92400E; font-weight: 800; text-decoration: none; white-space: nowrap; }
+        .next-box a:hover { text-decoration: underline; }
+
+        footer { background-color: #052a3a; color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="../index.html" class="logo-container">
+        <img src="../logo-dark.png" alt="Daman Logo" class="brand-logo">
+    </a>
+    <button class="lang-btn" onclick="toggleLanguage()">
+        <span class="lang-ar">English</span>
+        <span class="lang-en">العربية</span>
+    </button>
+</header>
+
+<main>
+    <p class="breadcrumb">
+        <a href="index.html" class="lang-ar">← كل الأدلة</a>
+        <a href="index.html" class="lang-en">← All tutorials</a>
+    </p>
+
+    <div class="doc-head">
+        <span class="eyebrow lang-ar">البداية</span>
+        <span class="eyebrow lang-en">Getting Started</span>
+        <h1 class="lang-ar">أول تسجيل دخول، والتصنيفات، وأول منتج</h1>
+        <h1 class="lang-en">First login, categories, and your first product</h1>
+        <p class="doc-sub lang-ar">هذا الدليل هو نقطة البداية لأي متجر جديد على ضمان — تسجيل الدخول، التعرف على القائمة الجانبية، ثم إضافة أول تصنيف ومنتج. سنستخدم مثال مصنع تغليف صغير (علب هدايا فاخرة) نتابعه في الأدلة التالية: المشتريات، الوصفات (BOM)، والتصنيع.</p>
+        <p class="doc-sub lang-en">This is the starting point for any new store on Daman — signing in, getting familiar with the sidebar, then adding your first category and product. We'll use a small packaging-workshop example (luxury gift boxes) carried into the next guides: Purchases, Recipes (BOM), and Manufacturing.</p>
+        <span class="price-chip"><span class="lang-ar">✓ متضمّن في كل الباقات</span><span class="lang-en">✓ Included in every plan</span></span>
+        <ul class="jump">
+            <li><a href="#part1"><span class="lang-ar">1. تسجيل الدخول والقائمة الجانبية</span><span class="lang-en">1. Sign in &amp; the sidebar</span></a></li>
+            <li><a href="#part2"><span class="lang-ar">2. أضف تصنيفاً</span><span class="lang-en">2. Add a category</span></a></li>
+            <li><a href="#part3"><span class="lang-ar">3. أضف منتجك الأول</span><span class="lang-en">3. Add your first product</span></a></li>
+        </ul>
+    </div>
+
+    <section class="block" id="part1">
+        <div class="block-head">
+            <span class="block-num lang-ar">الجزء الأول</span><span class="block-num lang-en">Part 1</span>
+            <h2 class="lang-ar">تسجيل الدخول والتعرف على القائمة الجانبية</h2>
+            <h2 class="lang-en">Sign in and get familiar with the sidebar</h2>
+        </div>
+        <ol class="steps">
+            <li><div class="step-body">
+                <p class="lang-ar">افتح التطبيق، أدخل <span class="ui-label">اسم المستخدم</span> و<span class="ui-label">كلمة المرور</span> التي أرسلناها لك، ثم اضغط <span class="ui-label">تسجيل الدخول</span>.</p>
+                <p class="lang-en">Open the app, enter the <span class="ui-label">Username</span> and <span class="ui-label">Password</span> we sent you, then click <span class="ui-label">Sign In</span>.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">ستفتح <span class="ui-label">لوحة التحكم</span> تلقائياً — نظرة عامة على مبيعاتك وإحصائياتك.</p>
+                <p class="lang-en">The <span class="ui-label">Dashboard</span> opens automatically — an overview of your sales and stats.</p>
+            </div></li>
+            <li>
+                <div class="step-body">
+                    <p class="lang-ar">القائمة الجانبية مقسّمة إلى مجموعات (بعض العناصر تظهر فقط إذا كانت الميزة مفعّلة على حسابك):</p>
+                    <p class="lang-en">The sidebar is split into groups (some items only appear if that feature is enabled on your account):</p>
+                    <div class="nav-map">
+                        <div class="nav-group">
+                            <h4 class="lang-ar">المبيعات</h4><h4 class="lang-en">Sales</h4>
+                            <ul>
+                                <li class="lang-ar">لوحة التحكم</li><li class="lang-en">Dashboard</li>
+                                <li class="lang-ar">الفواتير</li><li class="lang-en">Transactions</li>
+                                <li class="lang-ar">العملاء</li><li class="lang-en">Clients</li>
+                                <li class="lang-ar">عروض الأسعار</li><li class="lang-en">Quotations</li>
+                            </ul>
+                        </div>
+                        <div class="nav-group">
+                            <h4 class="lang-ar">المخزون</h4><h4 class="lang-en">Inventory</h4>
+                            <ul>
+                                <li class="lang-ar">المنتجات</li><li class="lang-en">Products</li>
+                                <li class="lang-ar">التصنيفات</li><li class="lang-en">Categories</li>
+                                <li class="lang-ar">قوائم الأسعار</li><li class="lang-en">Price Lists</li>
+                                <li class="lang-ar">المشتريات</li><li class="lang-en">Purchases</li>
+                                <li class="lang-ar">الموردون</li><li class="lang-en">Suppliers</li>
+                                <li class="lang-ar">التصنيع</li><li class="lang-en">Manufacturing</li>
+                            </ul>
+                        </div>
+                        <div class="nav-group">
+                            <h4 class="lang-ar">العمليات</h4><h4 class="lang-en">Operations</h4>
+                            <ul>
+                                <li class="lang-ar">المصاريف</li><li class="lang-en">Expenses</li>
+                                <li class="lang-ar">الورديات</li><li class="lang-en">Shifts</li>
+                            </ul>
+                        </div>
+                        <div class="nav-group">
+                            <h4 class="lang-ar">التقارير والمحاسبة</h4><h4 class="lang-en">Reports &amp; Accounting</h4>
+                            <ul>
+                                <li class="lang-ar">التقارير</li><li class="lang-en">Reports</li>
+                                <li class="lang-ar">سجل الصنف</li><li class="lang-en">Item Ledger</li>
+                                <li class="lang-ar">كشف الحساب</li><li class="lang-en">Account Statement</li>
+                                <li class="lang-ar">المحاسبة</li><li class="lang-en">Accounting</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="step-note lang-ar">أعلى القائمة الجانبية يوجد زر بارز باسم "بيع جديد" لبدء فاتورة مبيعات في أي وقت.</p>
+                    <p class="step-note lang-en">A prominent "New Sale" button sits at the top of the sidebar to start a sales invoice at any time.</p>
+                </div>
+            </li>
+            <li><div class="step-body">
+                <div class="checklist-widget">
+                    <strong class="lang-ar">ملاحظة: </strong><span class="lang-ar">لوحة التحكم نفسها تعرض قائمة "لنجهّز متجرك" لأول مرة تدخل فيها — بالضبط نفس الخطوات في هذا الدليل: إضافة تصنيف، إضافة منتجات، تسجيل رأس المال، ثم أول عملية بيع.</span>
+                    <strong class="lang-en">Note: </strong><span class="lang-en">The Dashboard itself shows a "Let's get your store ready" checklist the first time you log in — the same steps as this guide: add a category, add products, record starting capital, then make your first sale.</span>
+                </div>
+            </div></li>
+        </ol>
+    </section>
+
+    <section class="block" id="part2">
+        <div class="block-head">
+            <span class="block-num lang-ar">الجزء الثاني</span><span class="block-num lang-en">Part 2</span>
+            <h2 class="lang-ar">أضف تصنيفاً</h2>
+            <h2 class="lang-en">Add a category</h2>
+        </div>
+        <p class="block-hint lang-ar">التصنيفات تُنشأ من صفحتها الخاصة أولاً — قائمة "التصنيف" داخل نموذج المنتج لا تتيح إضافة تصنيف جديد مباشرة، لذا يجب إنشاؤه هنا قبل إضافة أي منتج.</p>
+        <p class="block-hint lang-en">Categories are created on their own page first — the Category dropdown inside the product form doesn't let you add a new one on the fly, so create it here before adding any product.</p>
+        <ol class="steps">
+            <li><div class="step-body">
+                <p class="lang-ar">اذهب إلى <span class="ui-label">التصنيفات</span> من القائمة الجانبية.</p>
+                <p class="lang-en">Go to <span class="ui-label">Categories</span> in the sidebar.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اضغط <span class="ui-label">إضافة تصنيف</span>.</p>
+                <p class="lang-en">Click <span class="ui-label">Add Category</span>.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">أدخل <span class="ui-label">الاسم</span> — مثلاً <strong>مواد التصنيع</strong>.</p>
+                <p class="lang-en">Enter <span class="ui-label">Name</span> — e.g. <strong>Raw Materials</strong>.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">(اختياري) أضف <span class="ui-label">الوصف</span> — مثلاً "مواد خام تُستخدم في تصنيع العلب".</p>
+                <p class="lang-en">(Optional) add a <span class="ui-label">Description</span> — e.g. "Raw materials used to manufacture the boxes".</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اضغط <span class="ui-label">إنشاء</span>. كرّر لأي تصنيفات أخرى تحتاجها — مثلاً "علب جاهزة" لمنتجاتك النهائية.</p>
+                <p class="lang-en">Click <span class="ui-label">Create</span>. Repeat for any other categories you need — e.g. "Finished Goods" for your ready-to-sell products.</p>
+            </div></li>
+        </ol>
+    </section>
+
+    <section class="block" id="part3">
+        <div class="block-head">
+            <span class="block-num lang-ar">الجزء الثالث</span><span class="block-num lang-en">Part 3</span>
+            <h2 class="lang-ar">أضف منتجك الأول</h2>
+            <h2 class="lang-en">Add your first product</h2>
+        </div>
+        <p class="block-hint lang-ar">سنضيف "كرتون مقوى" كمثال — مادة خام بسيطة ستشتري كميات منها لاحقاً في دليل المشتريات.</p>
+        <p class="block-hint lang-en">We'll add "Cardboard" as our example — a simple raw material you'll buy stock of later in the Purchases guide.</p>
+        <ol class="steps">
+            <li><div class="step-body">
+                <p class="lang-ar">اذهب إلى <span class="ui-label">المنتجات</span> من القائمة الجانبية، ثم اضغط <span class="ui-label">إضافة منتج</span>.</p>
+                <p class="lang-en">Go to <span class="ui-label">Products</span> in the sidebar, then click <span class="ui-label">Add Product</span>.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اترك <span class="ui-label">نوع المنتج</span> على <strong>منتج عادي</strong> (الخيار الافتراضي).</p>
+                <p class="lang-en">Leave <span class="ui-label">Product type</span> set to <strong>Standard product</strong> (the default).</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">أدخل <span class="ui-label">اسم المنتج</span> — <strong>كرتون مقوى</strong>.</p>
+                <p class="lang-en">Enter <span class="ui-label">Product Name</span> — <strong>Cardboard</strong>.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اختر <span class="ui-label">التصنيف</span> — <strong>مواد التصنيع</strong>، الذي أنشأته في الجزء الثاني.</p>
+                <p class="lang-en">Choose <span class="ui-label">Category</span> — <strong>Raw Materials</strong>, the one you created in Part 2.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اختر <span class="ui-label">وحدة الأساس</span> — <strong>قطعة</strong> (تُحسب صفائح الكرتون بالقطعة).</p>
+                <p class="lang-en">Choose <span class="ui-label">Base Unit</span> — <strong>Piece</strong> (cardboard sheets are counted per piece).</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">أدخل <span class="ui-label">سعر التكلفة</span> — قيمة تقريبية مبدئياً، مثلاً 0.40$ (سنُحدّثها لاحقاً بشكل صحيح من فاتورة الشراء).</p>
+                <p class="lang-en">Enter <span class="ui-label">Cost Price</span> — a rough starting value, e.g. $0.40 (we'll update it properly from a purchase invoice next).</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">أدخل <span class="ui-label">سعر البيع</span> ضمن قسم التعبئة والتسعير (يمكن أن يساوي سعر التكلفة إن كنت لا تبيع هذه المادة مباشرة).</p>
+                <p class="lang-en">Enter <span class="ui-label">Selling Price</span> under Packaging &amp; Pricing (can equal the cost price if you never sell this material directly).</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اترك <span class="ui-label">المخزون الافتتاحي</span> على 0 — سنستقبل الكمية الفعلية عبر أول فاتورة شراء.</p>
+                <p class="lang-en">Leave <span class="ui-label">Opening Stock</span> at 0 — we'll receive the real quantity through your first purchase invoice.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">(اختياري) أضف <span class="ui-label">الباركود</span> إن وُجد.</p>
+                <p class="lang-en">(Optional) add a <span class="ui-label">Barcode</span> if you have one.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اضغط <span class="ui-label">إنشاء</span>. كرّر لكل منتج آخر تريد بيعه أو استخدامه.</p>
+                <p class="lang-en">Click <span class="ui-label">Create</span>. Repeat for every other product you sell or use.</p>
+            </div></li>
+        </ol>
+
+        <div class="ticket">
+            <div class="ticket-head">
+                <h3><span class="lang-ar">ما أنشأناه حتى الآن</span><span class="lang-en">What we've created so far</span></h3>
+            </div>
+            <div class="ticket-line"><span class="lang-ar">التصنيف</span><span class="lang-en">Category</span><span class="lang-ar">مواد التصنيع</span><span class="lang-en">Raw Materials</span></div>
+            <div class="ticket-line"><span class="lang-ar">المنتج</span><span class="lang-en">Product</span><span class="lang-ar">كرتون مقوى (قطعة)</span><span class="lang-en">Cardboard (piece)</span></div>
+            <div class="ticket-line"><span class="lang-ar">المخزون الحالي</span><span class="lang-en">Current stock</span><span>0 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+        </div>
+
+        <div class="next-box">
+            <span class="lang-ar">جاهز؟ التالي: استقبل أول كمية فعلية من الكرتون عبر فاتورة شراء.</span>
+            <span class="lang-en">Ready? Next: receive real stock of Cardboard through a purchase invoice.</span>
+            <a href="purchases.html"><span class="lang-ar">دليل المشتريات ←</span><span class="lang-en">Purchases guide →</span></a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <span class="lang-ar">&copy; 2026 ضمان لإدارة المبيعات. جميع الحقوق محفوظة.</span>
+    <span class="lang-en">&copy; 2026 Daman Sales Management. All rights reserved.</span>
+</footer>
+
+<script>
+    function toggleLanguage() {
+        const htmlElement = document.documentElement;
+        const currentLang = htmlElement.getAttribute('lang');
+        if (currentLang === 'ar') {
+            htmlElement.setAttribute('lang', 'en');
+            htmlElement.setAttribute('dir', 'ltr');
+        } else {
+            htmlElement.setAttribute('lang', 'ar');
+            htmlElement.setAttribute('dir', 'rtl');
+        }
+    }
+</script>
+</body>
+</html>

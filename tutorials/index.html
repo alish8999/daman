@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أدلة الاستخدام | Daman Tutorials</title>
+    <meta name="description" content="أدلة استخدام خطوة بخطوة لميزات ضمان — وصفات المنتجات (BOM) وأوامر التصنيع.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/x-icon" href="../icon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0A4D68;
+            --secondary-blue: #088395;
+            --light-blue: #EBF8FF;
+            --dark-text: #2D3748;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease;
+            --accent-gold: #F59E0B;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+        body { background-color: var(--light-blue); color: var(--dark-text); line-height: 1.8; }
+        html[lang="ar"] .lang-en { display: none !important; }
+        html[lang="en"] .lang-ar { display: none !important; }
+
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .brand-logo { height: 46px; width: auto; object-fit: contain; }
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        .lang-btn {
+            background-color: var(--light-blue); color: var(--primary-blue);
+            border: 1px solid var(--secondary-blue); padding: 8px 16px; border-radius: 8px;
+            cursor: pointer; font-weight: bold; font-size: 1rem; transition: var(--transition);
+        }
+        .lang-btn:hover { background-color: var(--primary-blue); color: var(--white); }
+
+        main { max-width: 980px; margin: 0 auto; padding: 3.5rem 5% 5rem; }
+
+        .eyebrow {
+            display: inline-block; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em;
+            color: var(--secondary-blue); background: rgba(8,131,149,0.1);
+            padding: 0.35rem 0.9rem; border-radius: 999px; margin-bottom: 1rem;
+        }
+        h1 { font-size: 2.3rem; color: var(--primary-blue); margin-bottom: 0.75rem; }
+        .sub { font-size: 1.1rem; color: #4A5568; max-width: 65ch; margin-bottom: 2.75rem; }
+
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.75rem; }
+
+        .tut-card {
+            background: var(--white); border-radius: 16px; padding: 2rem 1.9rem;
+            box-shadow: 0 8px 20px rgba(10,77,104,0.07);
+            border-top: 5px solid var(--secondary-blue);
+            display: flex; flex-direction: column; gap: 0.9rem;
+            text-decoration: none; color: inherit;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .tut-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(10,77,104,0.13); }
+        .tut-card.manufacturing { border-top-color: var(--accent-gold); }
+
+        .tut-icon {
+            width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.7rem; background: var(--light-blue); border: 2px solid rgba(8,131,149,0.18);
+        }
+        .tut-card.manufacturing .tut-icon { background: #FEF3E2; border-color: rgba(245,158,11,0.3); }
+
+        .tut-card h2 { font-size: 1.35rem; color: var(--primary-blue); }
+        .tut-card p.desc { color: #4A5568; font-size: 0.98rem; flex-grow: 1; }
+
+        .tut-price {
+            display: inline-flex; align-self: flex-start; align-items: center; gap: 0.4rem;
+            font-size: 0.85rem; font-weight: 700; color: var(--primary-blue);
+            background: var(--light-blue); border: 1px solid rgba(8,131,149,0.25);
+            padding: 0.3rem 0.8rem; border-radius: 999px;
+        }
+        .tut-card.manufacturing .tut-price { color: #92400E; background: #FEF3E2; border-color: rgba(245,158,11,0.35); }
+        .tut-price.included { color: #1A7A3C; background: #E6F4EA; border-color: rgba(26,122,60,0.3); }
+
+        .tut-cta {
+            margin-top: 0.4rem; display: inline-flex; align-items: center; gap: 0.4rem;
+            font-weight: 700; color: var(--secondary-blue);
+        }
+        .tut-card.manufacturing .tut-cta { color: var(--accent-gold); }
+        html[dir="rtl"] .tut-cta .arrow::before { content: '←'; }
+        html[dir="ltr"] .tut-cta .arrow::before { content: '→'; }
+
+        .note-box {
+            margin-top: 3rem; background: var(--white); border: 1px dashed var(--secondary-blue);
+            border-radius: 12px; padding: 1.25rem 1.5rem; font-size: 0.95rem; color: #4A5568;
+        }
+        .note-box strong { color: var(--primary-blue); }
+
+        footer {
+            background-color: #052a3a; color: rgba(255,255,255,0.6);
+            text-align: center; padding: 1.5rem; font-size: 0.95rem;
+        }
+        footer a { color: rgba(255,255,255,0.85); }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="../index.html" class="logo-container">
+        <img src="../logo-dark.png" alt="Daman Logo" class="brand-logo">
+    </a>
+    <div class="header-right">
+        <button class="lang-btn" onclick="toggleLanguage()">
+            <span class="lang-ar">English</span>
+            <span class="lang-en">العربية</span>
+        </button>
+    </div>
+</header>
+
+<main>
+    <span class="eyebrow lang-ar">أدلة الاستخدام</span>
+    <span class="eyebrow lang-en">Tutorials</span>
+    <h1 class="lang-ar">تعلّم استخدام ميزات ضمان خطوة بخطوة</h1>
+    <h1 class="lang-en">Learn Daman's features, step by step</h1>
+    <p class="sub lang-ar">اختر الدليل الذي تريده. كل دليل يشرح بالضبط ما تراه على الشاشة، مع مثال حقيقي من مصنع تغليف صغير (كرتون وشريط ساتان وورق ذهبي تتحول إلى علبة حلويات فاخرة).</p>
+    <p class="sub lang-en">Pick the guide you need. Each one walks through exactly what you'll see on screen, using a real packaging-workshop example (cardboard, satin ribbon and gold foil turning into a luxury candy box).</p>
+
+    <div class="card-grid">
+        <a class="tut-card" href="getting-started.html">
+            <div class="tut-icon">🚀</div>
+            <h2 class="lang-ar">البداية: تسجيل الدخول، التصنيفات، والمنتجات</h2>
+            <h2 class="lang-en">Getting Started: Login, Categories &amp; Products</h2>
+            <p class="desc lang-ar">أول خطوة لأي متجر جديد — تسجيل الدخول، التعرف على القائمة الجانبية، وإضافة أول تصنيف ومنتج.</p>
+            <p class="desc lang-en">The first step for any new store — signing in, learning the sidebar, and adding your first category and product.</p>
+            <span class="tut-price included"><span class="lang-ar">✓ متضمّن في كل الباقات</span><span class="lang-en">✓ Included in every plan</span></span>
+            <span class="tut-cta"><span class="lang-ar">ابدأ الدليل</span><span class="lang-en">Start the guide</span> <span class="arrow"></span></span>
+        </a>
+
+        <a class="tut-card" href="purchases.html">
+            <div class="tut-icon">🧾</div>
+            <h2 class="lang-ar">المشتريات</h2>
+            <h2 class="lang-en">Purchases</h2>
+            <p class="desc lang-ar">سجّل فاتورة شراء من مورد، حدّث سعر التكلفة تلقائياً، وسجّل الدفع الكامل أو الجزئي أو على الحساب.</p>
+            <p class="desc lang-en">Record a purchase invoice from a supplier, auto-update the cost price, and record full, partial, or on-account payment.</p>
+            <span class="tut-price included"><span class="lang-ar">✓ متضمّن مع ميزة الموردين</span><span class="lang-en">✓ Included with Suppliers</span></span>
+            <span class="tut-cta"><span class="lang-ar">ابدأ الدليل</span><span class="lang-en">Start the guide</span> <span class="arrow"></span></span>
+        </a>
+
+        <a class="tut-card" href="bom.html">
+            <div class="tut-icon">📋</div>
+            <h2 class="lang-ar">وصفات المنتجات / قوائم المواد (BOM)</h2>
+            <h2 class="lang-en">Product Recipes / BOM</h2>
+            <p class="desc lang-ar">حوّل منتجاً إلى وصفة تُصنَع من مواد خام — أضف الكرتون والشريط والورق الذهبي كمنتجات، ثم اربطها معاً في وصفة علبة حلويات.</p>
+            <p class="desc lang-en">Turn a product into a recipe made from raw materials — add cardboard, ribbon and gold foil as products, then link them together into a candy-box recipe.</p>
+            <span class="tut-price">$39</span>
+            <span class="tut-cta"><span class="lang-ar">ابدأ الدليل</span><span class="lang-en">Start the guide</span> <span class="arrow"></span></span>
+        </a>
+
+        <a class="tut-card manufacturing" href="manufacturing.html">
+            <div class="tut-icon">🏭</div>
+            <h2 class="lang-ar">أوامر التصنيع</h2>
+            <h2 class="lang-en">Manufacturing Orders</h2>
+            <p class="desc lang-ar">نفّذ دفعة إنتاج فعلية: تخصم المواد الخام تلقائياً ويزيد مخزون المنتج الجاهز — مثالي لورش التغليف والتصنيع الصغيرة.</p>
+            <p class="desc lang-en">Run an actual production batch: raw materials are deducted automatically and the finished product's stock goes up — ideal for small packaging and manufacturing workshops.</p>
+            <span class="tut-price">$59 <span class="lang-ar" style="font-weight:500;">(مع BOM)</span><span class="lang-en" style="font-weight:500;">(bundle w/ BOM)</span></span>
+            <span class="tut-cta"><span class="lang-ar">ابدأ الدليل</span><span class="lang-en">Start the guide</span> <span class="arrow"></span></span>
+        </a>
+    </div>
+
+    <div class="note-box">
+        <strong class="lang-ar">ملاحظة: </strong><span class="lang-ar">هذه الأدلة مرتّبة بالترتيب الموصى به — ابدأ بـ"البداية"، ثم "المشتريات"، ثم "BOM"، وأخيراً "التصنيع" (يحتاج BOM مفعّلاً أولاً).</span>
+        <strong class="lang-en">Note: </strong><span class="lang-en">These guides are ordered as recommended — start with Getting Started, then Purchases, then BOM, and finally Manufacturing (which needs BOM enabled first).</span>
+    </div>
+</main>
+
+<footer>
+    <span class="lang-ar">&copy; 2026 ضمان لإدارة المبيعات. جميع الحقوق محفوظة.</span>
+    <span class="lang-en">&copy; 2026 Daman Sales Management. All rights reserved.</span>
+    &nbsp;·&nbsp;
+    <a href="../index.html" class="lang-ar">العودة للموقع الرئيسي</a>
+    <a href="../index.html" class="lang-en">Back to main site</a>
+</footer>
+
+<script>
+    function toggleLanguage() {
+        const htmlElement = document.documentElement;
+        const currentLang = htmlElement.getAttribute('lang');
+        if (currentLang === 'ar') {
+            htmlElement.setAttribute('lang', 'en');
+            htmlElement.setAttribute('dir', 'ltr');
+        } else {
+            htmlElement.setAttribute('lang', 'ar');
+            htmlElement.setAttribute('dir', 'rtl');
+        }
+    }
+</script>
+</body>
+</html>

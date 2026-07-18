@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل: المشتريات | Daman</title>
+    <meta name="description" content="دليل خطوة بخطوة لتسجيل فاتورة شراء من مورد في ضمان، بما في ذلك إضافة مورد وتحديث الأسعار والدفع.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/x-icon" href="../icon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0A4D68; --secondary-blue: #088395; --light-blue: #EBF8FF;
+            --dark-text: #2D3748; --white: #FFFFFF; --accent-gold: #F59E0B;
+            --line: rgba(10,77,104,0.14);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+        body { background-color: var(--light-blue); color: var(--dark-text); line-height: 1.75; }
+        html[lang="ar"] .lang-en { display: none !important; }
+        html[lang="en"] .lang-ar { display: none !important; }
+
+        header {
+            background-color: var(--white); box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .brand-logo { height: 46px; width: auto; object-fit: contain; }
+        .lang-btn {
+            background-color: var(--light-blue); color: var(--primary-blue);
+            border: 1px solid var(--secondary-blue); padding: 8px 16px; border-radius: 8px;
+            cursor: pointer; font-weight: bold; font-size: 1rem;
+        }
+        .lang-btn:hover { background-color: var(--primary-blue); color: var(--white); }
+
+        main { max-width: 760px; margin: 0 auto; padding: 0 5% 5rem; }
+
+        .breadcrumb { padding: 1.5rem 0 0; font-size: 0.88rem; }
+        .breadcrumb a { color: var(--secondary-blue); text-decoration: none; font-weight: 600; }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        .doc-head { padding: 1.5rem 0 2rem; border-bottom: 1px solid var(--line); }
+        .eyebrow {
+            display: inline-block; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em;
+            color: var(--secondary-blue); background: rgba(8,131,149,0.1);
+            padding: 0.3rem 0.8rem; border-radius: 999px; margin-bottom: 1rem;
+        }
+        h1 { font-size: 2rem; color: var(--primary-blue); margin-bottom: 0.6rem; }
+        .doc-sub { font-size: 1.05rem; color: #4A5568; max-width: 62ch; margin-bottom: 1.1rem; }
+        .price-chip {
+            display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+            background: #E6F4EA; border: 1px solid rgba(26,122,60,0.3);
+            color: #1A7A3C; font-size: 0.85rem; font-weight: 700;
+            padding: 0.45rem 0.9rem; border-radius: 999px;
+        }
+
+        .jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.3rem; padding: 0; list-style: none; }
+        .jump a {
+            display: inline-block; font-size: 0.82rem; font-weight: 700; text-decoration: none;
+            color: var(--primary-blue); background: var(--white); border: 1px solid var(--line);
+            padding: 0.4rem 0.85rem; border-radius: 8px;
+        }
+        .jump a:hover { border-color: var(--secondary-blue); }
+
+        .prereq {
+            display: flex; gap: 0.7rem; align-items: flex-start; margin-top: 1.4rem;
+            background: var(--white); border: 1px solid var(--line); border-radius: 10px;
+            padding: 0.9rem 1.05rem; font-size: 0.92rem;
+        }
+        .prereq svg { flex-shrink: 0; margin-top: 0.15rem; color: var(--accent-gold); }
+        .prereq a { color: var(--secondary-blue); font-weight: 700; text-decoration: none; }
+        .prereq a:hover { text-decoration: underline; }
+
+        section.block { padding: 2.2rem 0; border-bottom: 1px solid var(--line); }
+        section.block:last-of-type { border-bottom: none; }
+        .block-head { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.3rem; }
+        .block-num { font-weight: 800; color: var(--secondary-blue); font-size: 1rem; }
+        h2 { font-size: 1.35rem; color: var(--primary-blue); margin: 0 0 0.2rem; }
+        .block-hint { color: #4A5568; font-size: 0.94rem; margin-bottom: 1.2rem; }
+
+        ol.steps { list-style: none; counter-reset: step; }
+        ol.steps li {
+            counter-increment: step;
+            display: grid; grid-template-columns: 1fr 2.15rem; gap: 0.9rem;
+            padding: 0.95rem 0; border-top: 1px dashed var(--line);
+        }
+        ol.steps li:first-child { border-top: none; }
+        ol.steps li::before {
+            content: counter(step); grid-column: 2;
+            font-weight: 800; font-size: 0.95rem; color: var(--white); background: var(--secondary-blue);
+            width: 2.15rem; height: 2.15rem; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .step-body { font-size: 0.96rem; }
+        .step-body p { margin-bottom: 0.3rem; }
+        .ui-label {
+            font-weight: 700; background: var(--light-blue); border: 1px solid var(--line);
+            border-radius: 5px; padding: 0.05rem 0.4rem; font-size: 0.9em; color: var(--primary-blue);
+        }
+        .step-note { color: #4A5568; font-size: 0.88rem; margin-top: 0.35rem; }
+
+        .callout {
+            display: flex; gap: 0.6rem; border-radius: 10px; padding: 0.8rem 0.95rem;
+            font-size: 0.89rem; margin-top: 0.6rem; background: var(--light-blue);
+            border: 1px solid rgba(8,131,149,0.25); color: var(--primary-blue);
+        }
+        .callout strong { color: var(--dark-text); }
+        .callout svg { flex-shrink: 0; margin-top: 0.1rem; color: var(--secondary-blue); }
+
+        .pay-options { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0; }
+        .pay-pill {
+            font-size: 0.85rem; font-weight: 700; background: var(--white); border: 1px solid var(--line);
+            padding: 0.3rem 0.8rem; border-radius: 999px; color: var(--primary-blue);
+        }
+        .pay-pill.chosen { background: var(--primary-blue); color: var(--white); border-color: var(--primary-blue); }
+
+        .ticket {
+            background: var(--white); border: 1px solid var(--line); border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(10,77,104,0.08); padding: 1.4rem 1.5rem 1.2rem;
+            position: relative; overflow: hidden;
+        }
+        .ticket::before {
+            content: ""; position: absolute; inset-inline: 0; top: 0; height: 4px;
+            background: repeating-linear-gradient(90deg, var(--secondary-blue) 0 10px, transparent 10px 20px);
+        }
+        .ticket-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+        .ticket-head h3 { color: var(--primary-blue); font-size: 1.1rem; }
+        .ticket-yield { font-size: 0.8rem; color: #718096; }
+        .ticket-line { display: flex; justify-content: space-between; font-size: 0.92rem; padding: 0.28rem 0; border-bottom: 1px dotted var(--line); }
+        .ticket-line:last-child { border-bottom: none; }
+        .ticket-result {
+            margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid var(--line);
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+        }
+        .ticket-result .stock-up { color: #1A7A3C; font-weight: 800; font-size: 1.1rem; }
+
+        .next-box {
+            margin-top: 2.5rem; background: #FEF3E2; border: 1px solid rgba(245,158,11,0.35);
+            border-radius: 12px; padding: 1.1rem 1.4rem; display: flex; align-items: center;
+            justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+        }
+        .next-box a { color: #92400E; font-weight: 800; text-decoration: none; white-space: nowrap; }
+        .next-box a:hover { text-decoration: underline; }
+
+        footer { background-color: #052a3a; color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="../index.html" class="logo-container">
+        <img src="../logo-dark.png" alt="Daman Logo" class="brand-logo">
+    </a>
+    <button class="lang-btn" onclick="toggleLanguage()">
+        <span class="lang-ar">English</span>
+        <span class="lang-en">العربية</span>
+    </button>
+</header>
+
+<main>
+    <p class="breadcrumb">
+        <a href="index.html" class="lang-ar">← كل الأدلة</a>
+        <a href="index.html" class="lang-en">← All tutorials</a>
+    </p>
+
+    <div class="doc-head">
+        <span class="eyebrow lang-ar">المشتريات</span>
+        <span class="eyebrow lang-en">Purchases</span>
+        <h1 class="lang-ar">تسجيل فاتورة شراء من مورد</h1>
+        <h1 class="lang-en">Record a purchase from a supplier</h1>
+        <p class="doc-sub lang-ar">نكمل مثال "كرتون مقوى" من دليل البداية: سنستقبل أول كمية فعلية منه عبر فاتورة شراء من مورد، مع تحديث سعر التكلفة وتسجيل الدفع.</p>
+        <p class="doc-sub lang-en">Continuing the "Cardboard" example from the Getting Started guide: we'll receive its first real stock through a purchase invoice from a supplier, updating cost price and recording payment.</p>
+        <span class="price-chip"><span class="lang-ar">✓ متضمّن مع ميزة الموردين</span><span class="lang-en">✓ Included with the Suppliers feature</span></span>
+        <ul class="jump">
+            <li><a href="#before"><span class="lang-ar">قبل أن تبدأ</span><span class="lang-en">Before you start</span></a></li>
+            <li><a href="#part1"><span class="lang-ar">1. أضف مورداً</span><span class="lang-en">1. Add a supplier</span></a></li>
+            <li><a href="#part2"><span class="lang-ar">2. سجّل عملية شراء</span><span class="lang-en">2. Record a purchase</span></a></li>
+            <li><a href="#example"><span class="lang-ar">مثال توضيحي</span><span class="lang-en">Worked example</span></a></li>
+        </ul>
+    </div>
+
+    <section class="block" id="before">
+        <div class="block-head"><h2 class="lang-ar">قبل أن تبدأ</h2><h2 class="lang-en">Before you start</h2></div>
+        <p class="block-hint lang-ar">تأكد أن منتج "كرتون مقوى" (أو أي منتج تريد شراءه) موجود مسبقاً — راجع <a href="getting-started.html">دليل البداية</a> إن لم تكن أضفته بعد. تحتاج أيضاً ميزة <strong>الموردون</strong> مفعّلة على حسابك ليظهر عنصر "المشتريات" في القائمة الجانبية.</p>
+        <p class="block-hint lang-en">Make sure "Cardboard" (or whatever product you're buying) already exists — see the <a href="getting-started.html">Getting Started guide</a> if you haven't added it yet. You'll also need the <strong>Suppliers</strong> feature enabled on your account for the "Purchases" sidebar item to appear.</p>
+    </section>
+
+    <section class="block" id="part1">
+        <div class="block-head">
+            <span class="block-num lang-ar">الجزء الأول</span><span class="block-num lang-en">Part 1</span>
+            <h2 class="lang-ar">أضف مورداً</h2>
+            <h2 class="lang-en">Add a supplier</h2>
+        </div>
+        <p class="block-hint lang-ar">يمكنك إضافة المورد مسبقاً من صفحته الخاصة، أو إضافته مباشرة أثناء تسجيل الشراء (الخطوة التالية) — الطريقتان تؤديان لنفس النتيجة.</p>
+        <p class="block-hint lang-en">You can add a supplier ahead of time from its own page, or add one inline while recording the purchase (next part) — either way works the same.</p>
+        <ol class="steps">
+            <li><div class="step-body">
+                <p class="lang-ar">اذهب إلى <span class="ui-label">الموردون</span> من القائمة الجانبية، ثم اضغط <span class="ui-label">إضافة مورد</span>.</p>
+                <p class="lang-en">Go to <span class="ui-label">Suppliers</span> in the sidebar, then click <span class="ui-label">Add Supplier</span>.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">أدخل <span class="ui-label">اسم المورد</span> — مثلاً <strong>مصنع الكرتون السوري</strong>. أضف رقم الهاتف والعنوان إن رغبت.</p>
+                <p class="lang-en">Enter <span class="ui-label">Supplier Name</span> — e.g. <strong>Syrian Cardboard Factory</strong>. Add a phone number and address if you'd like.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اضغط <span class="ui-label">إنشاء</span>.</p>
+                <p class="lang-en">Click <span class="ui-label">Create</span>.</p>
+            </div></li>
+        </ol>
+    </section>
+
+    <section class="block" id="part2">
+        <div class="block-head">
+            <span class="block-num lang-ar">الجزء الثاني</span><span class="block-num lang-en">Part 2</span>
+            <h2 class="lang-ar">سجّل عملية شراء</h2>
+            <h2 class="lang-en">Record a purchase</h2>
+        </div>
+        <ol class="steps">
+            <li><div class="step-body">
+                <p class="lang-ar">اذهب إلى <span class="ui-label">المشتريات</span> من القائمة الجانبية، ثم اضغط <span class="ui-label">شراء جديد</span>.</p>
+                <p class="lang-en">Go to <span class="ui-label">Purchases</span> in the sidebar, then click <span class="ui-label">New Purchase</span>.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اختر <strong>مصنع الكرتون السوري</strong> من قائمة <span class="ui-label">المورد</span>.</p>
+                <p class="lang-en">Choose <strong>Syrian Cardboard Factory</strong> from the <span class="ui-label">Supplier</span> dropdown.</p>
+                <p class="step-note lang-ar">لم تُضف المورد بعد؟ اضغط زر <span class="ui-label">إضافة مورد</span> بجانب القائمة لإضافته فوراً دون مغادرة الشاشة.</p>
+                <p class="step-note lang-en">Haven't added the supplier yet? Click the <span class="ui-label">Add Supplier</span> button next to the dropdown to add one on the spot, without leaving this screen.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اضغط <span class="ui-label">إضافة عنصر</span>، ثم اختر <strong>كرتون مقوى</strong> من قائمة المنتجات.</p>
+                <p class="lang-en">Click <span class="ui-label">Add Item</span>, then select <strong>Cardboard</strong> from the product list.</p>
+                <p class="step-note lang-ar">لا يوجد المنتج بعد؟ يمكنك إضافته مباشرة من نفس القائمة عبر "إضافة منتج جديد" دون مغادرة الشاشة أيضاً.</p>
+                <p class="step-note lang-en">Product doesn't exist yet? You can add it directly from that same list via "Add New Product" — also without leaving the screen.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">حدّد <span class="ui-label">استلام كـ</span> (الوحدة/العبوة، مثلاً قطعة)، ثم <span class="ui-label">الكمية</span> — مثلاً <strong>1000</strong>.</p>
+                <p class="lang-en">Set <span class="ui-label">Received As</span> (the packaging/unit, e.g. piece), then <span class="ui-label">Quantity</span> — e.g. <strong>1000</strong>.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">أدخل <span class="ui-label">التكلفة لكل قطعة</span> — ما دفعته فعلياً للمورد، مثلاً <strong>0.40$</strong>. هذا يُحدّث سعر تكلفة المنتج تلقائياً.</p>
+                <p class="lang-en">Enter <span class="ui-label">Cost per piece</span> — what you actually paid the supplier, e.g. <strong>$0.40</strong>. This automatically updates the product's cost price.</p>
+                <p class="step-note lang-ar">حقل <span class="ui-label">سعر بيع جديد</span> اختياري — املأه فقط إذا أردت تغيير سعر البيع أيضاً، وإلا اتركه فارغاً ليبقى السعر الحالي كما هو.</p>
+                <p class="step-note lang-en">The <span class="ui-label">New Selling Price</span> field is optional — only fill it in if you also want to change the sell price, otherwise leave it blank to keep the current price.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">راجع <span class="ui-label">الإجمالي الكلي</span> المحسوب تلقائياً، ثم اضغط <span class="ui-label">حفظ الشراء</span>.</p>
+                <p class="lang-en">Check the automatically-computed <span class="ui-label">Grand Total</span>, then click <span class="ui-label">Save Purchase</span>.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">في نافذة <span class="ui-label">تأكيد الشراء</span>، اختر كم ستدفع الآن:</p>
+                <p class="lang-en">In the <span class="ui-label">Confirm Purchase</span> step, choose how much you're paying now:</p>
+                <div class="pay-options">
+                    <span class="pay-pill chosen lang-ar">كامل المبلغ</span><span class="pay-pill chosen lang-en">Full</span>
+                    <span class="pay-pill lang-ar">النصف</span><span class="pay-pill lang-en">Half</span>
+                    <span class="pay-pill lang-ar">الكل على الحساب</span><span class="pay-pill lang-en">All on debt</span>
+                </div>
+                <p class="step-note lang-ar">أي مبلغ غير مدفوع يُضاف تلقائياً إلى رصيد المورد. في مثالنا سندفع كامل المبلغ نقداً. اضغط <span class="ui-label">تأكيد وحفظ</span> لإنهاء العملية.</p>
+                <p class="step-note lang-en">Any unpaid amount is automatically added to the supplier's balance. In our example we'll pay the full amount in cash. Click <span class="ui-label">Confirm &amp; Save</span> to finish.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">تفتح فوراً <span class="ui-label">فاتورة استلام بضاعة</span> قابلة للطباعة — اطبعها أو أغلقها. مخزون الكرتون يرتفع تلقائياً بنفس الخطوة، دون أي تأكيد إضافي.</p>
+                <p class="lang-en">A printable <span class="ui-label">Purchase Receipt</span> opens immediately — print it or close it. Cardboard's stock increases automatically in that same step, with no extra confirmation needed.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">العملية تظهر الآن في قائمة المشتريات — يمكنك عرض التفاصيل، إعادة الطباعة، أو إلغاء الشراء بالكامل (ما يعيد المخزون كما كان).</p>
+                <p class="lang-en">The purchase now appears in your Purchases list — you can view details, print again, or cancel the purchase entirely (which restores the stock).</p>
+            </div></li>
+        </ol>
+    </section>
+
+    <section class="block" id="example">
+        <div class="block-head"><h2 class="lang-ar">مثال توضيحي</h2><h2 class="lang-en">Worked example</h2></div>
+        <div class="ticket">
+            <div class="ticket-head">
+                <h3><span class="lang-ar">فاتورة شراء — مصنع الكرتون السوري</span><span class="lang-en">Purchase Invoice — Syrian Cardboard Factory</span></h3>
+                <span class="ticket-yield"><span class="lang-ar">عنصر واحد</span><span class="lang-en">1 line item</span></span>
+            </div>
+            <div class="ticket-line"><span class="lang-ar">الصنف</span><span class="lang-en">Item</span><span class="lang-ar">كرتون مقوى</span><span class="lang-en">Cardboard</span></div>
+            <div class="ticket-line"><span class="lang-ar">الكمية</span><span class="lang-en">Quantity</span><span>1000 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+            <div class="ticket-line"><span class="lang-ar">التكلفة لكل قطعة</span><span class="lang-en">Cost per piece</span><span>$0.40</span></div>
+            <div class="ticket-line"><span class="lang-ar">الإجمالي</span><span class="lang-en">Grand Total</span><span>$400.00</span></div>
+            <div class="ticket-line"><span class="lang-ar">مدفوع الآن (كامل المبلغ)</span><span class="lang-en">Paid now (Full)</span><span>$400.00</span></div>
+            <div class="ticket-result">
+                <span class="lang-ar">مخزون الكرتون</span><span class="lang-en">Cardboard stock</span>
+                <span class="stock-up"><span class="lang-ar">0 ← 1000 قطعة</span><span class="lang-en">0 → 1000 pcs</span></span>
+            </div>
+        </div>
+
+        <div class="next-box">
+            <span class="lang-ar">جاهز؟ لديك الآن كرتون في المخزون — التالي: حوّله إلى وصفة علبة حلويات (BOM).</span>
+            <span class="lang-en">Ready? You now have cardboard in stock — next: turn it into a gift-box recipe (BOM).</span>
+            <a href="bom.html"><span class="lang-ar">دليل الوصفات / BOM ←</span><span class="lang-en">BOM guide →</span></a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <span class="lang-ar">&copy; 2026 ضمان لإدارة المبيعات. جميع الحقوق محفوظة.</span>
+    <span class="lang-en">&copy; 2026 Daman Sales Management. All rights reserved.</span>
+</footer>
+
+<script>
+    function toggleLanguage() {
+        const htmlElement = document.documentElement;
+        const currentLang = htmlElement.getAttribute('lang');
+        if (currentLang === 'ar') {
+            htmlElement.setAttribute('lang', 'en');
+            htmlElement.setAttribute('dir', 'ltr');
+        } else {
+            htmlElement.setAttribute('lang', 'ar');
+            htmlElement.setAttribute('dir', 'rtl');
+        }
+    }
+</script>
+</body>
+</html>
