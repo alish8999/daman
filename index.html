@@ -307,6 +307,17 @@
             box-shadow: inset 0 4px 6px rgba(0,0,0,0.04);
         }
 
+        .feature-price-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--white);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+
         .section-subtitle {
             font-size: 1.15rem;
             color: #64748B;
@@ -659,6 +670,39 @@
             color: var(--accent-gold);
         }
 
+        /* Single all-inclusive plan (replaces the old 3-tier grid) */
+        .pricing-card--single {
+            max-width: 680px;
+            width: 100%;
+            border-top: 5px solid var(--accent-gold);
+            padding: 3rem 2.5rem;
+        }
+
+        .pricing-card--single .features-list {
+            columns: 2;
+            column-gap: 2.5rem;
+        }
+
+        .pricing-card--single .features-list li {
+            break-inside: avoid;
+        }
+
+        @media (max-width: 640px) {
+            .pricing-card--single .features-list { columns: 1; }
+        }
+
+        .renewal-note {
+            display: block;
+            color: #64748B;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+
+        .addons-list li .addon-price {
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
         .addons-container {
             margin-top: 4rem;
             background-color: var(--white);
@@ -862,10 +906,10 @@
             </ul>
 
             <div style="margin-top: 1.75rem;">
-                <a href="https://drive.google.com/file/d/1Lo8q5B-ek5YOIce8LauoCxi9EuWNOXdV/view?usp=sharing"
+                <a href="https://drive.google.com/file/d/10XHysBLRnIsu_F_F_7e0-DZYKWIxBhi3/view?usp=sharing"
                    target="_blank" rel="noopener"
                    class="btn-download-demo lang-ar">⬇ حمّل النسخة التجريبية مجاناً</a>
-                <a href="https://drive.google.com/file/d/1Lo8q5B-ek5YOIce8LauoCxi9EuWNOXdV/view?usp=sharing"
+                <a href="https://drive.google.com/file/d/10XHysBLRnIsu_F_F_7e0-DZYKWIxBhi3/view?usp=sharing"
                    target="_blank" rel="noopener"
                    class="btn-download-demo lang-en">⬇ Download Free Trial</a>
                 <p class="hero-cta-note lang-ar">تتطلب مفتاح تفعيل — تواصل معنا للحصول على مفتاحك الخاص</p>
@@ -961,10 +1005,10 @@
                     <div class="anim-bar"></div>
                 </div>
             </div>
-            <h3 class="lang-ar">لوحة تحكم وتقارير ربحية (احترافية)</h3>
-            <h3 class="lang-en">Profit Dashboard & Reports (Pro)</h3>
-            <p class="lang-ar">لوحة تحكم مباشرة تُظهر الأرباح اليومية والأسبوعية، نسبة هامش الربح، المنتجات الأكثر مبيعاً، ومخطط إيرادات سبعة أيام — مع تصدير تقارير PDF لأي فترة بنقرة واحدة (في الباقة الاحترافية).</p>
-            <p class="lang-en">Live dashboard showing daily and weekly profit, profit-margin %, top-selling products and a 7-day revenue chart — plus one-click PDF reports for any date range (in the Pro package).</p>
+            <h3 class="lang-ar">لوحة تحكم وتقارير ربحية</h3>
+            <h3 class="lang-en">Profit Dashboard & Reports</h3>
+            <p class="lang-ar">لوحة تحكم مباشرة تُظهر الأرباح اليومية والأسبوعية، نسبة هامش الربح، المنتجات الأكثر مبيعاً، ومخطط إيرادات سبعة أيام — مع تصدير تقارير PDF لأي فترة بنقرة واحدة.</p>
+            <p class="lang-en">Live dashboard showing daily and weekly profit, profit-margin %, top-selling products and a 7-day revenue chart — plus one-click PDF reports for any date range.</p>
         </div>
 
         <div class="feature-card">
@@ -994,6 +1038,8 @@
                     <div class="anim-line total"></div>
                 </div>
             </div>
+            <span class="feature-price-badge lang-ar">إضافة — 29$</span>
+            <span class="feature-price-badge lang-en">Add-on — $29</span>
             <h3 class="lang-ar">إدارة الورديات وحركة الصندوق</h3>
             <h3 class="lang-en">Shifts & Cash Drawer Control</h3>
             <p class="lang-ar">افتح وأغلق الوردية مع رصيد البداية والرصيد المتوقع والرصيد الفعلي. كل عملية بيع ومرتجع ودفعة ومصروف مرتبطة بوردية محددة، فتُصبح تسوية الصندوق نهاية اليوم واضحة وقابلة للتدقيق، مع حماية العمليات الحساسة برمز المشرف (PIN).</p>
@@ -1092,32 +1138,56 @@
             <div class="feature-icon">🎨</div>
             <h3 class="lang-ar">هوية متجرك (White-Label)</h3>
             <h3 class="lang-en">Your Brand (White-Label)</h3>
-            <p class="lang-ar">في الباقة المتكاملة: شعارك، ألوانك، وترويسة باسم متجرك على شاشة الدخول والفواتير — تجربة احترافية تحمل اسم نشاطك وليس اسم البرنامج.</p>
-            <p class="lang-en">Ultimate plan: your logo, colours and store name on login and invoices — a professional experience branded for your business, not the software vendor.</p>
+            <p class="lang-ar">شعارك، ألوانك، وترويسة باسم متجرك على شاشة الدخول والفواتير — تجربة احترافية تحمل اسم نشاطك وليس اسم البرنامج، متضمّنة لكل عميل.</p>
+            <p class="lang-en">Your logo, colours and store name on login and invoices — a professional experience branded for your business, not the software vendor, included for every client.</p>
         </div>
 
         <div class="feature-card compact">
             <div class="feature-icon">👥</div>
-            <h3 class="lang-ar">إدارة المستخدمين والصلاحيات (متكاملة)</h3>
-            <h3 class="lang-en">User & Permission Management (Ultimate)</h3>
+            <span class="feature-price-badge lang-ar">إضافة — 20$</span>
+            <span class="feature-price-badge lang-en">Add-on — $20</span>
+            <h3 class="lang-ar">إدارة المستخدمين والصلاحيات</h3>
+            <h3 class="lang-en">User & Permission Management</h3>
             <p class="lang-ar">تحكّم بدقة بما يراه كل موظف: حدّد أقسام لوحة التحكم والإجراءات والصفحات المتاحة لكل حساب مستقل — صلاحيات محفوظة لكل مستخدم على حدة ويمكن تعديلها في أي وقت.</p>
             <p class="lang-en">Precisely control what each employee accesses: select which dashboard sections, actions and pages are available per account — permissions saved independently per user and editable any time.</p>
         </div>
 
         <div class="feature-card compact">
             <div class="feature-icon">🧾</div>
-            <h3 class="lang-ar">تخصيص بيانات الفاتورة (احترافية)</h3>
-            <h3 class="lang-en">Invoice Customization (Pro)</h3>
+            <h3 class="lang-ar">تخصيص بيانات الفاتورة</h3>
+            <h3 class="lang-en">Invoice Customization</h3>
             <p class="lang-ar">أضف رقم هاتفك، عنوانك التجاري، والرقم الضريبي إلى كل فاتورة — واجهة إعداد بسيطة تُظهر هوية نشاطك في كل مستند تطبعه أو تشاركه مع العميل.</p>
             <p class="lang-en">Add your phone number, store address and tax ID to every invoice — a simple settings screen that puts your business identity on every document you print or share with a client.</p>
         </div>
 
         <div class="feature-card compact">
             <div class="feature-icon">🏭</div>
+            <span class="feature-price-badge lang-ar">وصفات / BOM — 39$ · مع التصنيع — 59$</span>
+            <span class="feature-price-badge lang-en">Recipes / BOM — $39 · with Manufacturing — $59</span>
             <h3 class="lang-ar">وصفات الإنتاج والتصنيع</h3>
             <h3 class="lang-en">Manufacturing & Product Recipes</h3>
-            <p class="lang-ar">عرّف وصفة لكل منتج مصنّع بتحديد مكوناته وكمياته — يخصم النظام المواد الأولية تلقائياً عند تسجيل أي دفعة إنتاج، مع عكس التكلفة الفعلية في تقارير الربحية.</p>
-            <p class="lang-en">Define a recipe for each manufactured product with its ingredients and quantities — the system auto-deducts raw materials on each production run and reflects true cost in profit reports.</p>
+            <p class="lang-ar">عرّف وصفة لكل منتج مصنّع بتحديد مكوناته وكمياته — يخصم النظام المواد الأولية تلقائياً عند تسجيل أي دفعة إنتاج، مع عكس التكلفة الفعلية في تقارير الربحية. أوامر التصنيع تتطلب تفعيل الوصفات (BOM) أولاً.</p>
+            <p class="lang-en">Define a recipe for each manufactured product with its ingredients and quantities — the system auto-deducts raw materials on each production run and reflects true cost in profit reports. Manufacturing Orders require Recipes/BOM to be enabled first.</p>
+        </div>
+
+        <div class="feature-card compact">
+            <div class="feature-icon">📝</div>
+            <span class="feature-price-badge lang-ar">إضافة — 15$</span>
+            <span class="feature-price-badge lang-en">Add-on — $15</span>
+            <h3 class="lang-ar">عروض الأسعار</h3>
+            <h3 class="lang-en">Quotations</h3>
+            <p class="lang-ar">أنشئ عرض سعر للعميل قبل تأكيد البيع، وحوّله إلى فاتورة فعلية بنقرة واحدة عند الموافقة — دون إعادة إدخال الأصناف.</p>
+            <p class="lang-en">Create a price quote for a client before confirming the sale, then convert it to a real invoice in one click once approved — no re-entering items.</p>
+        </div>
+
+        <div class="feature-card compact">
+            <div class="feature-icon">📊</div>
+            <span class="feature-price-badge lang-ar">إضافة — 39$</span>
+            <span class="feature-price-badge lang-en">Add-on — $39</span>
+            <h3 class="lang-ar">وحدة المحاسبة الكاملة</h3>
+            <h3 class="lang-en">Full Accounting Module</h3>
+            <p class="lang-ar">دفتر أستاذ عام وقيود يومية تُنشأ تلقائياً لكل عملية بيع وشراء ودفعة، مع ميزان مراجعة وقوائم مالية جاهزة — محاسبة حقيقية دون إدخال يدوي.</p>
+            <p class="lang-en">A general ledger with automatic journal entries for every sale, purchase and payment, plus a trial balance and ready financial statements — real bookkeeping without manual entry.</p>
         </div>
     </div>
 </section>
@@ -1154,117 +1224,66 @@
 </section>
 
 <section class="pricing-section">
-    <h2 class="section-title lang-ar">الباقات والأسعار</h2>
-    <h2 class="section-title lang-en">Pricing & Packages</h2>
-
-    <!-- Upgrade Banner -->
-    <div class="upgrade-banner">
-        <span class="lang-ar">🚀 يمكنك الترقية إلى باقة أعلى بكل سهولة في أي وقت، مع الاحتفاظ بكامل بياناتك!</span>
-        <span class="lang-en">🚀 Easily upgrade to a higher plan at any time, with zero data loss!</span>
-    </div>
+    <h2 class="section-title lang-ar">السعر</h2>
+    <h2 class="section-title lang-en">Pricing</h2>
+    <p class="section-subtitle lang-ar">تطبيق واحد متكامل، بدون باقات ولا تعقيد.</p>
+    <p class="section-subtitle lang-en">One complete app. No tiers, no confusion.</p>
 
     <div class="pricing-grid">
-
-        <!-- Basic Plan -->
-        <div class="pricing-card">
-            <h3 class="lang-ar">الأساسية</h3>
-            <h3 class="lang-en">Basic</h3>
+        <div class="pricing-card pricing-card--single">
+            <div class="popular-badge lang-ar">عرض السنة الأولى</div>
+            <div class="popular-badge lang-en">First-Year Offer</div>
+            <h3 class="lang-ar">ضمان — اشتراك سنوي</h3>
+            <h3 class="lang-en">Daman — Annual Subscription</h3>
             <div class="price-container">
-                <span class="old-price">$75</span>
-                <span class="new-price">$60</span>
-                <span class="price-note lang-ar">سعر مخفض لفترة محدودة!</span>
-                <span class="price-note lang-en">Limited time discounted price!</span>
+                <span class="old-price">$99</span>
+                <span class="new-price">$59</span>
+                <span class="price-note lang-ar">لأول سنة — ثم 99$ سنوياً بعد ذلك</span>
+                <span class="price-note lang-en">For your first year — then $99/year after that</span>
+                <span class="renewal-note lang-ar">اشتراك سنوي واحد يشمل كل ما يلزم لتشغيل نقطة البيع بالكامل.</span>
+                <span class="renewal-note lang-en">One yearly subscription covers everything you need to run the POS.</span>
             </div>
             <ul class="features-list">
                 <li class="lang-ar">إدارة المنتجات، العملاء، والموردين</li>
                 <li class="lang-en">Products, clients & suppliers management</li>
                 <li class="lang-ar">مبيعات، مرتجعات، وفواتير PDF</li>
                 <li class="lang-en">Sales, returns & PDF invoices</li>
-                <li class="lang-ar">لوحة تحكم وملخص يومي للإحصائيات</li>
-                <li class="lang-en">Daily dashboard & basic stats</li>
+                <li class="lang-ar">لوحة تحكم وتقارير مالية ورسوم بيانية لهامش الربح</li>
+                <li class="lang-en">Dashboard, financial reports & profit-margin charts</li>
+                <li class="lang-ar">المشتريات وتحديث كلفة وأسعار العبوات</li>
+                <li class="lang-en">Purchases with cost & per-packaging price updates</li>
                 <li class="lang-ar">حسابات ديون العملاء والموردين (آجل / دفعات)</li>
                 <li class="lang-en">Client & supplier credit ledgers (on-account / payments)</li>
+                <li class="lang-ar">كشف حساب عميل/مورد وسجل حركة الصنف</li>
+                <li class="lang-en">Client/supplier account statements & per-product item ledger</li>
+                <li class="lang-ar">تعدد العملات (USD / SYP / SYP_OLD) مع التحويل المباشر</li>
+                <li class="lang-en">Multi-currency (USD / SYP / SYP_OLD) with live switching</li>
+                <li class="lang-ar">تسعير ثابت بعملة محلية (بطاقات اتصالات)</li>
+                <li class="lang-en">Fixed local-currency product pricing (telecom cards)</li>
+                <li class="lang-ar">عبوات متعددة للمنتج بأسعار مستقلة (قطعة / كرتون)</li>
+                <li class="lang-en">Multi-packaging SKUs with separate prices</li>
+                <li class="lang-ar">تسوية جرد مجمّعة وتعديل أسعار قسم بالكامل</li>
+                <li class="lang-en">Batch stocktake & bulk category price update</li>
+                <li class="lang-ar">تسجيل الإتلاف وسجل تدقيق دائم للمخزون</li>
+                <li class="lang-en">Spoilage recording & permanent stock audit trail</li>
+                <li class="lang-ar">دعم أجهزة قارئ الباركود وطباعة الملصقات</li>
+                <li class="lang-en">Barcode scanner & label-printer support</li>
+                <li class="lang-ar">تصدير التقارير والفواتير بصيغة PDF</li>
+                <li class="lang-en">Export reports & invoices to PDF</li>
+                <li class="lang-ar">تخصيص بيانات الفاتورة (هاتف، عنوان، رقم ضريبي)</li>
+                <li class="lang-en">Invoice customization (phone, address & tax ID)</li>
+                <li class="lang-ar">هويتك الخاصة (شعارك وألوانك واسم متجرك)</li>
+                <li class="lang-en">Your own branding (logo, colours & store name)</li>
                 <li class="lang-ar">العمل بسلاسة بدون اتصال بالإنترنت</li>
                 <li class="lang-en">Full offline operation</li>
                 <li class="lang-ar">حماية العمليات الحساسة برمز المشرف (PIN)</li>
                 <li class="lang-en">Supervisor PIN on sensitive actions</li>
                 <li class="lang-ar">دعم اللغتين (العربية / الإنجليزية)</li>
                 <li class="lang-en">Dual language (Arabic / English)</li>
-                <li class="lang-ar"><strong>شهر واحد</strong> دعم فني مجاني</li>
-                <li class="lang-en"><strong>1 month</strong> free technical support</li>
+                <li class="lang-ar"><strong>سنة كاملة</strong> دعم فني مجاني</li>
+                <li class="lang-en"><strong>1 full year</strong> of free technical support</li>
             </ul>
         </div>
-
-        <!-- Pro Plan -->
-        <div class="pricing-card popular">
-            <div class="popular-badge lang-ar">الأكثر طلباً</div>
-            <div class="popular-badge lang-en">Most Popular</div>
-            <h3 class="lang-ar">الاحترافية</h3>
-            <h3 class="lang-en">Pro</h3>
-            <div class="price-container">
-                <span class="old-price">$100</span>
-                <span class="new-price">$85</span>
-                <span class="price-note lang-ar">سعر مخفض لفترة محدودة!</span>
-                <span class="price-note lang-en">Limited time discounted price!</span>
-            </div>
-            <ul class="features-list">
-                <li class="lang-ar"><strong>جميع ميزات الباقة الأساسية</strong></li>
-                <li class="lang-en"><strong>All Basic Plan features</strong></li>
-                <li class="lang-ar"><strong>تعدد العملات (USD / SYP / SYP_OLD) مع التحويل المباشر</strong></li>
-                <li class="lang-en"><strong>Multi-currency (USD / SYP / SYP_OLD) with live switching</strong></li>
-                <li class="lang-ar">المشتريات وتحديث كلفة وأسعار العبوات</li>
-                <li class="lang-en">Purchases with cost & per-packaging price updates</li>
-                <li class="lang-ar">تقارير مالية شاملة ورسوم بيانية لهامش الربح</li>
-                <li class="lang-en">Full financial reports & profit-margin charts</li>
-                <li class="lang-ar">تصدير التقارير والفواتير بصيغة PDF</li>
-                <li class="lang-en">Export reports & invoices to PDF</li>
-                <li class="lang-ar">دعم أجهزة قارئ الباركود وطباعة الملصقات</li>
-                <li class="lang-en">Barcode scanner & label-printer support</li>
-                <li class="lang-ar">عبوات متعددة للمنتج بأسعار مستقلة (قطعة / كرتون)</li>
-                <li class="lang-en">Multi-packaging SKUs with separate prices</li>
-                <li class="lang-ar">تسجيل الإتلاف وسجل تدقيق دائم للمخزون</li>
-                <li class="lang-en">Spoilage recording & permanent stock audit trail</li>
-                <li class="lang-ar">تخصيص بيانات الفاتورة (هاتف، عنوان، رقم ضريبي)</li>
-                <li class="lang-en">Invoice customization (phone, address & tax ID)</li>
-                <li class="lang-ar"><strong>4 أشهر</strong> دعم فني مجاني</li>
-                <li class="lang-en"><strong>4 months</strong> free technical support</li>
-            </ul>
-        </div>
-
-        <!-- Ultimate Plan -->
-        <div class="pricing-card" style="border-top-color: var(--primary-blue);">
-            <h3 class="lang-ar">المتكاملة</h3>
-            <h3 class="lang-en">Ultimate</h3>
-            <div class="price-container">
-                <span class="old-price">$150</span>
-                <span class="new-price">$120</span>
-                <span class="price-note lang-ar">للفروع والشركات</span>
-                <span class="price-note lang-en">For enterprise & branches</span>
-            </div>
-            <ul class="features-list">
-                <li class="lang-ar"><strong>جميع ميزات الباقة الاحترافية</strong></li>
-                <li class="lang-en"><strong>All Pro Plan features</strong></li>
-                <li class="lang-ar"><strong>إدارة الورديات وتسوية الصندوق المتقدمة</strong></li>
-                <li class="lang-en"><strong>Advanced shift management & cash reconciliation</strong></li>
-                <li class="lang-ar"><strong>تخصيص الواجهة (الشعار والألوان) باسم متجرك</strong></li>
-                <li class="lang-en"><strong>White-label branding (logo, colours & header)</strong></li>
-                <li class="lang-ar">كشف حساب عميل/مورد وسجل حركة الصنف</li>
-                <li class="lang-en">Account statement & per-product item ledger</li>
-                <li class="lang-ar">تسوية جرد مجمّعة وتعديل أسعار قسم بالكامل</li>
-                <li class="lang-en">Batch stocktake & bulk category price update</li>
-                <li class="lang-ar">تسعير ثابت بعملة محلية (بطاقات اتصالات)</li>
-                <li class="lang-en">Fixed local-currency product pricing (telecom cards)</li>
-                <li class="lang-ar">إدارة المصاريف التشغيلية والشخصية</li>
-                <li class="lang-en">Operational & personal expense tracking</li>
-                <li class="lang-ar">إدارة المستخدمين وتخصيص الصلاحيات لكل موظف</li>
-                <li class="lang-en">User & permission management per employee</li>
-                <li class="lang-ar">دعم تأسيس وتهيئة لأجهزة متعددة</li>
-                <li class="lang-en">Multi-device setup & onboarding assistance</li>
-                <li class="lang-ar"><strong>سنة كاملة (12 شهراً)</strong> دعم فني بأولوية عالية</li>
-                <li class="lang-en"><strong>1 year</strong> high-priority technical support</li>
-            </ul>
-        </div>
-
     </div>
 
     <div class="addons-container">
@@ -1280,21 +1299,23 @@
             We can provide a <strong>barcode scanner</strong> for <strong>$50</strong> if needed.<br>
             A dedicated <strong>barcode label printer</strong> for your products is also available on request.
         </p>
-        <h4 class="lang-ar" style="margin-top: 1.5rem;">وحدات Premium (حسب الطلب)</h4>
-        <h4 class="lang-en" style="margin-top: 1.5rem;">Premium Modules (On Request)</h4>
+        <h4 class="lang-ar" style="margin-top: 1.5rem;">وحدات اختيارية إضافية</h4>
+        <h4 class="lang-en" style="margin-top: 1.5rem;">Optional Add-on Modules</h4>
         <ul class="addons-list lang-ar">
-            <li>كشف حساب عميل / مورد (Account Statement)</li>
-            <li>سجل حركة الصنف (Item Ledger)</li>
-            <li>تسوية الجرد المجمّعة (Batch Stocktake)</li>
-            <li>تعديل أسعار قسم بالكامل (Bulk Category Pricing)</li>
-            <li>تسعير ثابت بعملة محلية — MTN / سيرياتيل</li>
+            <li>عروض الأسعار (Quotations) — <span class="addon-price">15$</span></li>
+            <li>إدارة المستخدمين والصلاحيات — <span class="addon-price">20$</span></li>
+            <li>إدارة الورديات وتسوية الصندوق — <span class="addon-price">29$</span></li>
+            <li>وحدة المحاسبة الكاملة — <span class="addon-price">39$</span></li>
+            <li>وصفات المنتجات / قوائم المواد (BOM) — <span class="addon-price">39$</span></li>
+            <li>أوامر التصنيع (تتطلب BOM) — <span class="addon-price">59$ كباقة مع BOM</span></li>
         </ul>
         <ul class="addons-list lang-en">
-            <li>Client / Supplier Account Statement</li>
-            <li>Per-Product Item Ledger</li>
-            <li>Batch Stocktake & Reconciliation</li>
-            <li>Bulk Category Price Update</li>
-            <li>Fixed local-currency pricing — MTN / Syriatel cards</li>
+            <li>Quotations — <span class="addon-price">$15</span></li>
+            <li>User & Permission Management — <span class="addon-price">$20</span></li>
+            <li>Shift Management & Cash Reconciliation — <span class="addon-price">$29</span></li>
+            <li>Full Accounting Module — <span class="addon-price">$39</span></li>
+            <li>Product Recipes / BOM — <span class="addon-price">$39</span></li>
+            <li>Manufacturing Orders (requires BOM) — <span class="addon-price">$59 bundled with BOM</span></li>
         </ul>
     </div>
 </section>
