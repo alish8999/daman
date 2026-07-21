@@ -81,12 +81,12 @@
         ol.steps { list-style: none; counter-reset: step; }
         ol.steps li {
             counter-increment: step;
-            display: grid; grid-template-columns: 1fr 2.15rem; gap: 0.9rem;
+            display: grid; grid-template-columns: 2.15rem 1fr; gap: 0.9rem;
             padding: 0.95rem 0; border-top: 1px dashed var(--line);
         }
         ol.steps li:first-child { border-top: none; }
         ol.steps li::before {
-            content: counter(step); grid-column: 2;
+            content: counter(step);
             font-weight: 800; font-size: 0.95rem; color: var(--white); background: var(--secondary-blue);
             width: 2.15rem; height: 2.15rem; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
@@ -168,8 +168,8 @@
         <span class="eyebrow lang-en">Purchases</span>
         <h1 class="lang-ar">تسجيل فاتورة شراء من مورد</h1>
         <h1 class="lang-en">Record a purchase from a supplier</h1>
-        <p class="doc-sub lang-ar">نكمل مثال "كرتون مقوى" من دليل البداية: سنستقبل أول كمية فعلية منه عبر فاتورة شراء من مورد، مع تحديث سعر التكلفة وتسجيل الدفع.</p>
-        <p class="doc-sub lang-en">Continuing the "Cardboard" example from the Getting Started guide: we'll receive its first real stock through a purchase invoice from a supplier, updating cost price and recording payment.</p>
+        <p class="doc-sub lang-ar">نكمل مثال "سكر (كيس 1 كغ)" من دليل البداية: سنستقبل أول كمية فعلية منه عبر فاتورة شراء من مورد، مع تحديث سعر التكلفة وتسجيل الدفع.</p>
+        <p class="doc-sub lang-en">Continuing the "Sugar (1kg bag)" example from the Getting Started guide: we'll receive its first real stock through a purchase invoice from a supplier, updating cost price and recording payment.</p>
         <span class="price-chip"><span class="lang-ar">✓ متضمّن مع ميزة الموردين</span><span class="lang-en">✓ Included with the Suppliers feature</span></span>
         <ul class="jump">
             <li><a href="#before"><span class="lang-ar">قبل أن تبدأ</span><span class="lang-en">Before you start</span></a></li>
@@ -181,8 +181,8 @@
 
     <section class="block" id="before">
         <div class="block-head"><h2 class="lang-ar">قبل أن تبدأ</h2><h2 class="lang-en">Before you start</h2></div>
-        <p class="block-hint lang-ar">تأكد أن منتج "كرتون مقوى" (أو أي منتج تريد شراءه) موجود مسبقاً — راجع <a href="getting-started.html">دليل البداية</a> إن لم تكن أضفته بعد. تحتاج أيضاً ميزة <strong>الموردون</strong> مفعّلة على حسابك ليظهر عنصر "المشتريات" في القائمة الجانبية.</p>
-        <p class="block-hint lang-en">Make sure "Cardboard" (or whatever product you're buying) already exists — see the <a href="getting-started.html">Getting Started guide</a> if you haven't added it yet. You'll also need the <strong>Suppliers</strong> feature enabled on your account for the "Purchases" sidebar item to appear.</p>
+        <p class="block-hint lang-ar">تأكد أن منتج "سكر (كيس 1 كغ)" (أو أي منتج تريد شراءه) موجود مسبقاً — راجع <a href="getting-started.html">دليل البداية</a> إن لم تكن أضفته بعد. تحتاج أيضاً ميزة <strong>الموردون</strong> مفعّلة على حسابك ليظهر عنصر "المشتريات" في القائمة الجانبية.</p>
+        <p class="block-hint lang-en">Make sure "Sugar (1kg bag)" (or whatever product you're buying) already exists — see the <a href="getting-started.html">Getting Started guide</a> if you haven't added it yet. You'll also need the <strong>Suppliers</strong> feature enabled on your account for the "Purchases" sidebar item to appear.</p>
     </section>
 
     <section class="block" id="part1">
@@ -199,8 +199,8 @@
                 <p class="lang-en">Go to <span class="ui-label">Suppliers</span> in the sidebar, then click <span class="ui-label">Add Supplier</span>.</p>
             </div></li>
             <li><div class="step-body">
-                <p class="lang-ar">أدخل <span class="ui-label">اسم المورد</span> — مثلاً <strong>مصنع الكرتون السوري</strong>. أضف رقم الهاتف والعنوان إن رغبت.</p>
-                <p class="lang-en">Enter <span class="ui-label">Supplier Name</span> — e.g. <strong>Syrian Cardboard Factory</strong>. Add a phone number and address if you'd like.</p>
+                <p class="lang-ar">أدخل <span class="ui-label">اسم المورد</span> — مثلاً <strong>مؤسسة النور للتجارة بالجملة</strong>. أضف رقم الهاتف والعنوان إن رغبت.</p>
+                <p class="lang-en">Enter <span class="ui-label">Supplier Name</span> — e.g. <strong>Al-Noor Wholesale Trading</strong>. Add a phone number and address if you'd like.</p>
             </div></li>
             <li><div class="step-body">
                 <p class="lang-ar">اضغط <span class="ui-label">إنشاء</span>.</p>
@@ -221,24 +221,24 @@
                 <p class="lang-en">Go to <span class="ui-label">Purchases</span> in the sidebar, then click <span class="ui-label">New Purchase</span>.</p>
             </div></li>
             <li><div class="step-body">
-                <p class="lang-ar">اختر <strong>مصنع الكرتون السوري</strong> من قائمة <span class="ui-label">المورد</span>.</p>
-                <p class="lang-en">Choose <strong>Syrian Cardboard Factory</strong> from the <span class="ui-label">Supplier</span> dropdown.</p>
+                <p class="lang-ar">اختر <strong>مؤسسة النور للتجارة بالجملة</strong> من قائمة <span class="ui-label">المورد</span>.</p>
+                <p class="lang-en">Choose <strong>Al-Noor Wholesale Trading</strong> from the <span class="ui-label">Supplier</span> dropdown.</p>
                 <p class="step-note lang-ar">لم تُضف المورد بعد؟ اضغط زر <span class="ui-label">إضافة مورد</span> بجانب القائمة لإضافته فوراً دون مغادرة الشاشة.</p>
                 <p class="step-note lang-en">Haven't added the supplier yet? Click the <span class="ui-label">Add Supplier</span> button next to the dropdown to add one on the spot, without leaving this screen.</p>
             </div></li>
             <li><div class="step-body">
-                <p class="lang-ar">اضغط <span class="ui-label">إضافة عنصر</span>، ثم اختر <strong>كرتون مقوى</strong> من قائمة المنتجات.</p>
-                <p class="lang-en">Click <span class="ui-label">Add Item</span>, then select <strong>Cardboard</strong> from the product list.</p>
+                <p class="lang-ar">اضغط <span class="ui-label">إضافة عنصر</span>، ثم اختر <strong>سكر (كيس 1 كغ)</strong> من قائمة المنتجات.</p>
+                <p class="lang-en">Click <span class="ui-label">Add Item</span>, then select <strong>Sugar (1kg bag)</strong> from the product list.</p>
                 <p class="step-note lang-ar">لا يوجد المنتج بعد؟ يمكنك إضافته مباشرة من نفس القائمة عبر "إضافة منتج جديد" دون مغادرة الشاشة أيضاً.</p>
                 <p class="step-note lang-en">Product doesn't exist yet? You can add it directly from that same list via "Add New Product" — also without leaving the screen.</p>
             </div></li>
             <li><div class="step-body">
-                <p class="lang-ar">حدّد <span class="ui-label">استلام كـ</span> (الوحدة/العبوة، مثلاً قطعة)، ثم <span class="ui-label">الكمية</span> — مثلاً <strong>1000</strong>.</p>
-                <p class="lang-en">Set <span class="ui-label">Received As</span> (the packaging/unit, e.g. piece), then <span class="ui-label">Quantity</span> — e.g. <strong>1000</strong>.</p>
+                <p class="lang-ar">حدّد <span class="ui-label">استلام كـ</span> (الوحدة/العبوة، مثلاً قطعة)، ثم <span class="ui-label">الكمية</span> — مثلاً <strong>500</strong>.</p>
+                <p class="lang-en">Set <span class="ui-label">Received As</span> (the packaging/unit, e.g. piece), then <span class="ui-label">Quantity</span> — e.g. <strong>500</strong>.</p>
             </div></li>
             <li><div class="step-body">
-                <p class="lang-ar">أدخل <span class="ui-label">التكلفة لكل قطعة</span> — ما دفعته فعلياً للمورد، مثلاً <strong>0.40$</strong>. هذا يُحدّث سعر تكلفة المنتج تلقائياً.</p>
-                <p class="lang-en">Enter <span class="ui-label">Cost per piece</span> — what you actually paid the supplier, e.g. <strong>$0.40</strong>. This automatically updates the product's cost price.</p>
+                <p class="lang-ar">أدخل <span class="ui-label">التكلفة لكل قطعة</span> — ما دفعته فعلياً للمورد، مثلاً <strong>0.90$</strong>. هذا يُحدّث سعر تكلفة المنتج تلقائياً.</p>
+                <p class="lang-en">Enter <span class="ui-label">Cost per piece</span> — what you actually paid the supplier, e.g. <strong>$0.90</strong>. This automatically updates the product's cost price.</p>
                 <p class="step-note lang-ar">حقل <span class="ui-label">سعر بيع جديد</span> اختياري — املأه فقط إذا أردت تغيير سعر البيع أيضاً، وإلا اتركه فارغاً ليبقى السعر الحالي كما هو.</p>
                 <p class="step-note lang-en">The <span class="ui-label">New Selling Price</span> field is optional — only fill it in if you also want to change the sell price, otherwise leave it blank to keep the current price.</p>
             </div></li>
@@ -258,8 +258,8 @@
                 <p class="step-note lang-en">Any unpaid amount is automatically added to the supplier's balance. In our example we'll pay the full amount in cash. Click <span class="ui-label">Confirm &amp; Save</span> to finish.</p>
             </div></li>
             <li><div class="step-body">
-                <p class="lang-ar">تفتح فوراً <span class="ui-label">فاتورة استلام بضاعة</span> قابلة للطباعة — اطبعها أو أغلقها. مخزون الكرتون يرتفع تلقائياً بنفس الخطوة، دون أي تأكيد إضافي.</p>
-                <p class="lang-en">A printable <span class="ui-label">Purchase Receipt</span> opens immediately — print it or close it. Cardboard's stock increases automatically in that same step, with no extra confirmation needed.</p>
+                <p class="lang-ar">تفتح فوراً <span class="ui-label">فاتورة استلام بضاعة</span> قابلة للطباعة — اطبعها أو أغلقها. مخزون السكر يرتفع تلقائياً بنفس الخطوة، دون أي تأكيد إضافي.</p>
+                <p class="lang-en">A printable <span class="ui-label">Purchase Receipt</span> opens immediately — print it or close it. Sugar's stock increases automatically in that same step, with no extra confirmation needed.</p>
             </div></li>
             <li><div class="step-body">
                 <p class="lang-ar">العملية تظهر الآن في قائمة المشتريات — يمكنك عرض التفاصيل، إعادة الطباعة، أو إلغاء الشراء بالكامل (ما يعيد المخزون كما كان).</p>
@@ -272,24 +272,24 @@
         <div class="block-head"><h2 class="lang-ar">مثال توضيحي</h2><h2 class="lang-en">Worked example</h2></div>
         <div class="ticket">
             <div class="ticket-head">
-                <h3><span class="lang-ar">فاتورة شراء — مصنع الكرتون السوري</span><span class="lang-en">Purchase Invoice — Syrian Cardboard Factory</span></h3>
+                <h3><span class="lang-ar">فاتورة شراء — مؤسسة النور للتجارة بالجملة</span><span class="lang-en">Purchase Invoice — Al-Noor Wholesale Trading</span></h3>
                 <span class="ticket-yield"><span class="lang-ar">عنصر واحد</span><span class="lang-en">1 line item</span></span>
             </div>
-            <div class="ticket-line"><span class="lang-ar">الصنف</span><span class="lang-en">Item</span><span class="lang-ar">كرتون مقوى</span><span class="lang-en">Cardboard</span></div>
-            <div class="ticket-line"><span class="lang-ar">الكمية</span><span class="lang-en">Quantity</span><span>1000 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-            <div class="ticket-line"><span class="lang-ar">التكلفة لكل قطعة</span><span class="lang-en">Cost per piece</span><span>$0.40</span></div>
-            <div class="ticket-line"><span class="lang-ar">الإجمالي</span><span class="lang-en">Grand Total</span><span>$400.00</span></div>
-            <div class="ticket-line"><span class="lang-ar">مدفوع الآن (كامل المبلغ)</span><span class="lang-en">Paid now (Full)</span><span>$400.00</span></div>
+            <div class="ticket-line"><span class="lang-ar">الصنف</span><span class="lang-en">Item</span><span class="lang-ar">سكر (كيس 1 كغ)</span><span class="lang-en">Sugar (1kg bag)</span></div>
+            <div class="ticket-line"><span class="lang-ar">الكمية</span><span class="lang-en">Quantity</span><span>500 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+            <div class="ticket-line"><span class="lang-ar">التكلفة لكل قطعة</span><span class="lang-en">Cost per piece</span><span>$0.90</span></div>
+            <div class="ticket-line"><span class="lang-ar">الإجمالي</span><span class="lang-en">Grand Total</span><span>$450.00</span></div>
+            <div class="ticket-line"><span class="lang-ar">مدفوع الآن (كامل المبلغ)</span><span class="lang-en">Paid now (Full)</span><span>$450.00</span></div>
             <div class="ticket-result">
-                <span class="lang-ar">مخزون الكرتون</span><span class="lang-en">Cardboard stock</span>
-                <span class="stock-up"><span class="lang-ar">0 ← 1000 قطعة</span><span class="lang-en">0 → 1000 pcs</span></span>
+                <span class="lang-ar">مخزون السكر</span><span class="lang-en">Sugar stock</span>
+                <span class="stock-up"><span class="lang-ar">0 ← 500 قطعة</span><span class="lang-en">0 → 500 pcs</span></span>
             </div>
         </div>
 
         <div class="next-box">
-            <span class="lang-ar">جاهز؟ لديك الآن كرتون في المخزون — التالي: حوّله إلى وصفة علبة حلويات (BOM).</span>
-            <span class="lang-en">Ready? You now have cardboard in stock — next: turn it into a gift-box recipe (BOM).</span>
-            <a href="bom.html"><span class="lang-ar">دليل الوصفات / BOM ←</span><span class="lang-en">BOM guide →</span></a>
+            <span class="lang-ar">جاهز؟ لديك الآن سكر في المخزون — التالي: بِعه لعميل وتعرّف على ميزة الحساب بالإجمالي.</span>
+            <span class="lang-en">Ready? You now have sugar in stock — next: sell it to a customer and learn the Calculate by Total feature.</span>
+            <a href="create-sale.html"><span class="lang-ar">دليل إنشاء عملية بيع ←</span><span class="lang-en">Create a Sale guide →</span></a>
         </div>
     </section>
 </main>

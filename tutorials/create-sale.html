@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل: إنشاء عملية بيع | Daman</title>
+    <meta name="description" content="دليل خطوة بخطوة لإنشاء عملية بيع في ضمان، بما في ذلك ميزة الحساب بالإجمالي (بيع بقيمة محددة).">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/x-icon" href="../icon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0A4D68; --secondary-blue: #088395; --light-blue: #EBF8FF;
+            --dark-text: #2D3748; --white: #FFFFFF; --accent-gold: #F59E0B;
+            --line: rgba(10,77,104,0.14);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+        body { background-color: var(--light-blue); color: var(--dark-text); line-height: 1.75; }
+        html[lang="ar"] .lang-en { display: none !important; }
+        html[lang="en"] .lang-ar { display: none !important; }
+
+        header {
+            background-color: var(--white); box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .brand-logo { height: 46px; width: auto; object-fit: contain; }
+        .lang-btn {
+            background-color: var(--light-blue); color: var(--primary-blue);
+            border: 1px solid var(--secondary-blue); padding: 8px 16px; border-radius: 8px;
+            cursor: pointer; font-weight: bold; font-size: 1rem;
+        }
+        .lang-btn:hover { background-color: var(--primary-blue); color: var(--white); }
+
+        main { max-width: 760px; margin: 0 auto; padding: 0 5% 5rem; }
+
+        .breadcrumb { padding: 1.5rem 0 0; font-size: 0.88rem; }
+        .breadcrumb a { color: var(--secondary-blue); text-decoration: none; font-weight: 600; }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        .doc-head { padding: 1.5rem 0 2rem; border-bottom: 1px solid var(--line); }
+        .eyebrow {
+            display: inline-block; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em;
+            color: var(--secondary-blue); background: rgba(8,131,149,0.1);
+            padding: 0.3rem 0.8rem; border-radius: 999px; margin-bottom: 1rem;
+        }
+        h1 { font-size: 2rem; color: var(--primary-blue); margin-bottom: 0.6rem; }
+        .doc-sub { font-size: 1.05rem; color: #4A5568; max-width: 62ch; margin-bottom: 1.1rem; }
+        .price-chip {
+            display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+            background: #E6F4EA; border: 1px solid rgba(26,122,60,0.3);
+            color: #1A7A3C; font-size: 0.85rem; font-weight: 700;
+            padding: 0.45rem 0.9rem; border-radius: 999px;
+        }
+
+        .jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.3rem; padding: 0; list-style: none; }
+        .jump a {
+            display: inline-block; font-size: 0.82rem; font-weight: 700; text-decoration: none;
+            color: var(--primary-blue); background: var(--white); border: 1px solid var(--line);
+            padding: 0.4rem 0.85rem; border-radius: 8px;
+        }
+        .jump a:hover { border-color: var(--secondary-blue); }
+
+        .prereq {
+            display: flex; gap: 0.7rem; align-items: flex-start; margin-top: 1.4rem;
+            background: var(--white); border: 1px solid var(--line); border-radius: 10px;
+            padding: 0.9rem 1.05rem; font-size: 0.92rem;
+        }
+        .prereq svg { flex-shrink: 0; margin-top: 0.15rem; color: var(--accent-gold); }
+        .prereq a { color: var(--secondary-blue); font-weight: 700; text-decoration: none; }
+        .prereq a:hover { text-decoration: underline; }
+
+        section.block { padding: 2.2rem 0; border-bottom: 1px solid var(--line); }
+        section.block:last-of-type { border-bottom: none; }
+        .block-head { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.3rem; }
+        .block-num { font-weight: 800; color: var(--secondary-blue); font-size: 1rem; }
+        h2 { font-size: 1.35rem; color: var(--primary-blue); margin: 0 0 0.2rem; }
+        .block-hint { color: #4A5568; font-size: 0.94rem; margin-bottom: 1.2rem; }
+
+        ol.steps { list-style: none; counter-reset: step; }
+        ol.steps li {
+            counter-increment: step;
+            display: grid; grid-template-columns: 2.15rem 1fr; gap: 0.9rem;
+            padding: 0.95rem 0; border-top: 1px dashed var(--line);
+        }
+        ol.steps li:first-child { border-top: none; }
+        ol.steps li::before {
+            content: counter(step);
+            font-weight: 800; font-size: 0.95rem; color: var(--white); background: var(--secondary-blue);
+            width: 2.15rem; height: 2.15rem; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .step-body { font-size: 0.96rem; }
+        .step-body p { margin-bottom: 0.3rem; }
+        .ui-label {
+            font-weight: 700; background: var(--light-blue); border: 1px solid var(--line);
+            border-radius: 5px; padding: 0.05rem 0.4rem; font-size: 0.9em; color: var(--primary-blue);
+        }
+        .step-note { color: #4A5568; font-size: 0.88rem; margin-top: 0.35rem; }
+
+        .callout {
+            display: flex; gap: 0.6rem; border-radius: 10px; padding: 0.8rem 0.95rem;
+            font-size: 0.89rem; margin-top: 0.6rem; background: var(--light-blue);
+            border: 1px solid rgba(8,131,149,0.25); color: var(--primary-blue);
+        }
+        .callout strong { color: var(--dark-text); }
+        .callout svg { flex-shrink: 0; margin-top: 0.1rem; color: var(--secondary-blue); }
+
+        .calc-modes { display: grid; gap: 0.6rem; margin-top: 0.5rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+        .calc-mode {
+            background: var(--white); border: 1px solid var(--line); border-radius: 10px;
+            padding: 0.8rem 0.9rem; font-size: 0.88rem;
+        }
+        .calc-mode .mode-title { font-weight: 800; color: var(--primary-blue); font-size: 0.92rem; margin-bottom: 0.25rem; }
+        .calc-mode .mode-hint { color: #718096; }
+
+        .pay-options { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0; }
+        .pay-pill {
+            font-size: 0.85rem; font-weight: 700; background: var(--white); border: 1px solid var(--line);
+            padding: 0.3rem 0.8rem; border-radius: 999px; color: var(--primary-blue);
+        }
+        .pay-pill.chosen { background: var(--primary-blue); color: var(--white); border-color: var(--primary-blue); }
+
+        .ticket {
+            background: var(--white); border: 1px solid var(--line); border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(10,77,104,0.08); padding: 1.4rem 1.5rem 1.2rem;
+            position: relative; overflow: hidden;
+        }
+        .ticket::before {
+            content: ""; position: absolute; inset-inline: 0; top: 0; height: 4px;
+            background: repeating-linear-gradient(90deg, var(--secondary-blue) 0 10px, transparent 10px 20px);
+        }
+        .ticket-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+        .ticket-head h3 { color: var(--primary-blue); font-size: 1.1rem; }
+        .ticket-line { display: flex; justify-content: space-between; font-size: 0.92rem; padding: 0.28rem 0; border-bottom: 1px dotted var(--line); }
+        .ticket-line:last-child { border-bottom: none; }
+        .ticket-result {
+            margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid var(--line);
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+        }
+        .ticket-result .cost-val { color: var(--secondary-blue); font-weight: 800; font-size: 1.1rem; }
+
+        .next-box {
+            margin-top: 2.5rem; background: #FEF3E2; border: 1px solid rgba(245,158,11,0.35);
+            border-radius: 12px; padding: 1.1rem 1.4rem; display: flex; align-items: center;
+            justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+        }
+        .next-box a { color: #92400E; font-weight: 800; text-decoration: none; white-space: nowrap; }
+        .next-box a:hover { text-decoration: underline; }
+
+        footer { background-color: #052a3a; color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="../index.html" class="logo-container">
+        <img src="../logo-dark.png" alt="Daman Logo" class="brand-logo">
+    </a>
+    <button class="lang-btn" onclick="toggleLanguage()">
+        <span class="lang-ar">English</span>
+        <span class="lang-en">العربية</span>
+    </button>
+</header>
+
+<main>
+    <p class="breadcrumb">
+        <a href="index.html" class="lang-ar">← كل الأدلة</a>
+        <a href="index.html" class="lang-en">← All tutorials</a>
+    </p>
+
+    <div class="doc-head">
+        <span class="eyebrow lang-ar">إنشاء عملية بيع</span>
+        <span class="eyebrow lang-en">Create a Sale</span>
+        <h1 class="lang-ar">أنشئ عملية بيع لعميل، خطوة بخطوة</h1>
+        <h1 class="lang-en">Create a sale for a customer, step by step</h1>
+        <p class="doc-sub lang-ar">نكمل مثال البقالة: سنبيع سكراً من المخزون الذي استقبلناه في دليل المشتريات، ونتعرّف على ميزة <strong>الحساب بالإجمالي</strong> — بيع كمية بقيمة محددة يطلبها العميل بدلاً من حساب الكمية يدوياً.</p>
+        <p class="doc-sub lang-en">Continuing the grocery-store example: we'll sell sugar from the stock we received in the Purchases guide, and cover <strong>Calculate by Total</strong> — selling a specific amount the customer asks for, without doing the math yourself.</p>
+        <span class="price-chip"><span class="lang-ar">✓ متضمّن في كل الباقات</span><span class="lang-en">✓ Included in every plan</span></span>
+        <ul class="jump">
+            <li><a href="#part1"><span class="lang-ar">1. أضف منتجات إلى الفاتورة</span><span class="lang-en">1. Add products to the sale</span></a></li>
+            <li><a href="#part2"><span class="lang-ar">2. الحساب بالإجمالي</span><span class="lang-en">2. Calculate by Total</span></a></li>
+            <li><a href="#part3"><span class="lang-ar">3. أكمل عملية البيع</span><span class="lang-en">3. Complete the sale</span></a></li>
+            <li><a href="#example"><span class="lang-ar">مثال توضيحي</span><span class="lang-en">Worked example</span></a></li>
+        </ul>
+    </div>
+
+    <section class="block" id="part1">
+        <div class="block-head">
+            <span class="block-num lang-ar">الجزء الأول</span><span class="block-num lang-en">Part 1</span>
+            <h2 class="lang-ar">أضف منتجات إلى الفاتورة</h2>
+            <h2 class="lang-en">Add products to the sale</h2>
+        </div>
+        <p class="block-hint lang-ar">تأكد أن "سكر (كيس 1 كغ)" لديك مخزون منه — راجع <a href="purchases.html">دليل المشتريات</a> إن لم تكن استقبلته بعد.</p>
+        <p class="block-hint lang-en">Make sure "Sugar (1kg bag)" has stock — see the <a href="purchases.html">Purchases guide</a> if you haven't received it yet.</p>
+        <ol class="steps">
+            <li><div class="step-body">
+                <p class="lang-ar">اضغط زر <span class="ui-label">بيع جديد</span> البارز أعلى القائمة الجانبية — يفتح شاشة <span class="ui-label">إنشاء عملية بيع جديدة</span>.</p>
+                <p class="lang-en">Click the prominent <span class="ui-label">New Sale</span> button at the top of the sidebar — it opens the <span class="ui-label">Create New Sale</span> screen.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اضغط مربع <span class="ui-label">البحث عن المنتجات...</span>، اكتب "سكر"، ثم اختر <strong>سكر (كيس 1 كغ)</strong> من نتائج البحث.</p>
+                <p class="lang-en">Click the <span class="ui-label">Search products...</span> box, type "sugar", then select <strong>Sugar (1kg bag)</strong> from the results.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اضبط <span class="ui-label">الكمية</span> بأزرار +/- أو بالكتابة مباشرة — مثلاً <strong>2</strong>. حقل <span class="ui-label">السعر</span> يُملأ تلقائياً بسعر البيع، ويمكن تعديله إن رغبت.</p>
+                <p class="lang-en">Set the <span class="ui-label">Quantity</span> with the +/- buttons or by typing directly — e.g. <strong>2</strong>. The <span class="ui-label">Price</span> field auto-fills with the selling price, and can be overridden if needed.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">يظهر سطر فارغ جديد تلقائياً بعد كل اختيار — كرّر البحث والاختيار لإضافة منتج آخر، مثلاً <strong>شاي (علبة)</strong>.</p>
+                <p class="lang-en">A new empty line appears automatically after each selection — repeat the search-and-select to add another product, e.g. <strong>Tea (box)</strong>.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">راجع <span class="ui-label">الإجمالي الكلي</span> أسفل الفاتورة — يتحدّث تلقائياً مع كل سطر.</p>
+                <p class="lang-en">Check the <span class="ui-label">Grand Total</span> at the bottom of the sale — it updates live with every line.</p>
+            </div></li>
+        </ol>
+    </section>
+
+    <section class="block" id="part2">
+        <div class="block-head">
+            <span class="block-num lang-ar">الجزء الثاني</span><span class="block-num lang-en">Part 2</span>
+            <h2 class="lang-ar">الحساب بالإجمالي</h2>
+            <h2 class="lang-en">Calculate by Total</h2>
+        </div>
+        <p class="block-hint lang-ar">أحياناً يطلب العميل مبلغاً محدداً بدل كمية محددة — مثلاً "أعطني سكراً بخمسة دولارات". بدل حساب الكمية يدوياً، استخدم هذه الميزة على أي سطر.</p>
+        <p class="block-hint lang-en">Sometimes a customer asks for a set amount instead of a set quantity — e.g. "give me $5 worth of sugar." Instead of doing the math yourself, use this feature on any line.</p>
+        <ol class="steps">
+            <li><div class="step-body">
+                <p class="lang-ar">على سطر السكر، اضغط زر <span class="ui-label">الحساب بالإجمالي</span> بجانب إجمالي السطر — يفتح نافذة <span class="ui-label">خيارات السطر المتقدمة</span>.</p>
+                <p class="lang-en">On the sugar line, click the <span class="ui-label">Calculate by Total</span> button next to the line total — it opens the <span class="ui-label">Advanced Item Options</span> dialog.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">حقل <span class="ui-label">الإجمالي المستهدف</span> يبدأ معبّأً بإجمالي السطر الحالي — امسحه وأدخل <strong>5.00$</strong> (المبلغ الذي يريده العميل).</p>
+                <p class="lang-en">The <span class="ui-label">Target Total</span> field starts pre-filled with the line's current total — clear it and enter <strong>$5.00</strong> (what the customer wants to pay).</p>
+            </div></li>
+            <li>
+                <div class="step-body">
+                    <p class="lang-ar">اختر إحدى طريقتين حسب ما تريد تثبيته:</p>
+                    <p class="lang-en">Choose one of two modes depending on what you want to keep fixed:</p>
+                    <div class="calc-modes">
+                        <div class="calc-mode">
+                            <div class="mode-title lang-ar">بيع بقيمة</div>
+                            <div class="mode-title lang-en">Sell by Amount</div>
+                            <div class="mode-hint lang-ar">يُبقي سعر الوحدة ثابتاً، ويحسب الكمية/الوزن تلقائياً من الإجمالي المستهدف.</div>
+                            <div class="mode-hint lang-en">Keeps the unit price fixed, and auto-calculates the weight/quantity from the target total.</div>
+                        </div>
+                        <div class="calc-mode">
+                            <div class="mode-title lang-ar">تطبيق خصم</div>
+                            <div class="mode-title lang-en">Apply Discount</div>
+                            <div class="mode-hint lang-ar">يُبقي الكمية ثابتة، ويخفّض سعر الوحدة ليصل الإجمالي إلى الرقم المطلوب.</div>
+                            <div class="mode-hint lang-en">Keeps the quantity fixed, and lowers the unit price until the total hits the target number.</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li><div class="step-body">
+                <p class="lang-ar">اضغط <span class="ui-label">بيع بقيمة</span>. بما أن سعر الكيس الواحد 1.25$، يحسب التطبيق الكمية تلقائياً: 5.00$ ÷ 1.25$ = <strong>4 أكياس</strong>.</p>
+                <p class="lang-en">Click <span class="ui-label">Sell by Amount</span>. Since sugar is $1.25/bag, the app auto-calculates quantity: $5.00 ÷ $1.25 = <strong>4 bags</strong>.</p>
+                <p class="step-note lang-ar">اضغط Enter داخل الحقل لتنفيذ نفس الإجراء الافتراضي مباشرة دون الحاجة للضغط على الزر.</p>
+                <p class="step-note lang-en">Pressing Enter inside the field runs the same default action directly, without clicking the button.</p>
+            </div></li>
+            <li><div class="step-body">
+                <div class="callout">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    <span class="lang-ar"><strong>ملاحظات: </strong>إذا كان متجرك يستخدم كميات بوحدات كاملة فقط، يظهر خيار "بيع بقيمة" معطّلاً — يبقى "تطبيق خصم" متاحاً دائماً. كما لا يسمح النظام بخفض السعر إلى ما دون التكلفة عبر "تطبيق خصم" — يظهر تنبيه بدل ذلك.</span>
+                    <span class="lang-en"><strong>Notes: </strong>if your store only allows whole-unit quantities, "Sell by Amount" is unavailable — "Apply Discount" is always available instead. Also, "Apply Discount" never lets the price drop below cost — it shows a warning instead.</span>
+                </div>
+            </div></li>
+        </ol>
+    </section>
+
+    <section class="block" id="part3">
+        <div class="block-head">
+            <span class="block-num lang-ar">الجزء الثالث</span><span class="block-num lang-en">Part 3</span>
+            <h2 class="lang-ar">أكمل عملية البيع</h2>
+            <h2 class="lang-en">Complete the sale</h2>
+        </div>
+        <ol class="steps">
+            <li><div class="step-body">
+                <p class="lang-ar">اضغط <span class="ui-label">إنشاء عملية بيع</span> أسفل الفاتورة — تفتح نافذة <span class="ui-label">تأكيد البيع</span>.</p>
+                <p class="lang-en">Click <span class="ui-label">Create Sale</span> at the bottom of the sale — it opens the <span class="ui-label">Confirm Sale</span> dialog.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">راجع <span class="ui-label">الإجمالي قبل الخصم</span>، وطبّق خصماً اختيارياً (بدون / نسبة % / مبلغ ثابت) إن رغبت.</p>
+                <p class="lang-en">Review the <span class="ui-label">Subtotal</span>, and optionally apply a discount (None / % / fixed amount) if you'd like.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">أدخل <span class="ui-label">المبلغ المدفوع الآن</span> — اتركه فارغاً للدفع الكامل، أو اضغط <span class="ui-label">كامل</span> لتعبئته تلقائياً بالإجمالي.</p>
+                <p class="lang-en">Enter <span class="ui-label">Amount Paid Now</span> — leave it empty for full payment, or click <span class="ui-label">Full</span> to auto-fill the total.</p>
+                <div class="pay-options">
+                    <span class="pay-pill chosen lang-ar">كامل</span><span class="pay-pill chosen lang-en">Full</span>
+                    <span class="pay-pill lang-ar">مبلغ جزئي</span><span class="pay-pill lang-en">Partial amount</span>
+                </div>
+                <p class="step-note lang-ar">إذا كان المبلغ المدفوع أقل من الإجمالي، يظهر خياران: إضافة الفرق إلى دين العميل، أو تسويته كخصم فرق صرافة بسيط.</p>
+                <p class="step-note lang-en">If the amount paid falls short, two options appear: add the difference to the customer's debt, or settle it as a small rounding-discount.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اضغط <span class="ui-label">تأكيد وإنشاء البيع</span>.</p>
+                <p class="lang-en">Click <span class="ui-label">Confirm &amp; Create Sale</span>.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">تفتح فوراً فاتورة قابلة <span class="ui-label">للطباعة</span> أو <span class="ui-label">التنزيل</span>. مخزون كل منتج ينقص تلقائياً بنفس الخطوة.</p>
+                <p class="lang-en">A <span class="ui-label">Print</span>-able / <span class="ui-label">Download</span>-able invoice opens immediately. Each product's stock decreases automatically in that same step.</p>
+            </div></li>
+        </ol>
+    </section>
+
+    <section class="block" id="example">
+        <div class="block-head"><h2 class="lang-ar">مثال توضيحي</h2><h2 class="lang-en">Worked example</h2></div>
+        <div class="ticket">
+            <div class="ticket-head">
+                <h3><span class="lang-ar">عملية بيع — نقداً</span><span class="lang-en">Sale — Cash</span></h3>
+            </div>
+            <div class="ticket-line"><span class="lang-ar">سكر (كيس 1 كغ) — بيع بقيمة 5.00$</span><span class="lang-en">Sugar (1kg bag) — sold via $5.00 Calculate by Total</span><span>4 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span> — $5.00</span></div>
+            <div class="ticket-line"><span class="lang-ar">شاي (علبة)</span><span class="lang-en">Tea (box)</span><span>2 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span> — $2.40</span></div>
+            <div class="ticket-line"><span class="lang-ar">الإجمالي الكلي</span><span class="lang-en">Grand Total</span><span>$7.40</span></div>
+            <div class="ticket-line"><span class="lang-ar">مدفوع الآن (كامل المبلغ)</span><span class="lang-en">Paid now (Full)</span><span>$7.40</span></div>
+            <div class="ticket-result">
+                <span class="lang-ar">مخزون السكر بعد البيع</span><span class="lang-en">Sugar stock after the sale</span>
+                <span class="cost-val"><span class="lang-ar">500 ← 496 قطعة</span><span class="lang-en">500 → 496 pcs</span></span>
+            </div>
+        </div>
+
+        <div class="next-box">
+            <span class="lang-ar">جاهز؟ التالي: اجمع عدة منتجات في عبوة واحدة تُباع بسعر واحد.</span>
+            <span class="lang-en">Ready? Next: bundle several products into one pack sold at one price.</span>
+            <a href="bom.html"><span class="lang-ar">دليل الوصفات / BOM ←</span><span class="lang-en">BOM guide →</span></a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <span class="lang-ar">&copy; 2026 ضمان لإدارة المبيعات. جميع الحقوق محفوظة.</span>
+    <span class="lang-en">&copy; 2026 Daman Sales Management. All rights reserved.</span>
+</footer>
+
+<script>
+    function toggleLanguage() {
+        const htmlElement = document.documentElement;
+        const currentLang = htmlElement.getAttribute('lang');
+        if (currentLang === 'ar') {
+            htmlElement.setAttribute('lang', 'en');
+            htmlElement.setAttribute('dir', 'ltr');
+        } else {
+            htmlElement.setAttribute('lang', 'ar');
+            htmlElement.setAttribute('dir', 'rtl');
+        }
+    }
+</script>
+</body>
+</html>

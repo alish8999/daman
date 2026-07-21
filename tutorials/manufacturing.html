@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دليل: أوامر التصنيع | Daman</title>
-    <meta name="description" content="دليل خطوة بخطوة لتنفيذ أمر تصنيع في ضمان، بمثال مصنع تغليف حقيقي.">
+    <meta name="description" content="دليل خطوة بخطوة لإعداد وصفة إنتاج وتنفيذ أمر تصنيع في ضمان.">
     <meta name="robots" content="noindex">
     <link rel="icon" type="image/x-icon" href="../icon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -81,12 +81,12 @@
         ol.steps { list-style: none; counter-reset: step; }
         ol.steps li {
             counter-increment: step;
-            display: grid; grid-template-columns: 1fr 2.15rem; gap: 0.9rem;
+            display: grid; grid-template-columns: 2.15rem 1fr; gap: 0.9rem;
             padding: 0.95rem 0; border-top: 1px dashed var(--line);
         }
         ol.steps li:first-child { border-top: none; }
         ol.steps li::before {
-            content: counter(step); grid-column: 2;
+            content: counter(step);
             font-weight: 800; font-size: 0.95rem; color: var(--white); background: var(--accent-gold);
             width: 2.15rem; height: 2.15rem; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
@@ -97,6 +97,14 @@
             font-weight: 700; background: var(--light-blue); border: 1px solid var(--line);
             border-radius: 5px; padding: 0.05rem 0.4rem; font-size: 0.9em; color: var(--primary-blue);
         }
+        .step-note { color: #4A5568; font-size: 0.88rem; margin-top: 0.35rem; }
+        .ingredient-row {
+            display: flex; gap: 0.4rem; align-items: center; justify-content: space-between;
+            background: var(--light-blue); border: 1px solid var(--line);
+            border-radius: 8px; padding: 0.4rem 0.7rem; margin: 0.3rem 0; font-size: 0.9rem;
+        }
+        .ingredient-row b { color: var(--primary-blue); }
+        .ingredient-row .cost-hint { color: #718096; font-size: 0.85em; }
 
         .callout {
             display: flex; gap: 0.6rem; border-radius: 10px; padding: 0.8rem 0.95rem;
@@ -109,7 +117,7 @@
         .ticket {
             background: var(--white); border: 1px solid var(--line); border-radius: 14px;
             box-shadow: 0 6px 20px rgba(10,77,104,0.08); padding: 1.4rem 1.5rem 1.2rem;
-            position: relative; overflow: hidden;
+            position: relative; overflow: hidden; margin-top: 1.2rem;
         }
         .ticket::before {
             content: ""; position: absolute; inset-inline: 0; top: 0; height: 4px;
@@ -131,6 +139,7 @@
             display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
         }
         .ticket-result .stock-up { color: #1A7A3C; font-weight: 800; font-size: 1.15rem; }
+        .ticket-result .cost-val { color: var(--secondary-blue); font-weight: 800; font-size: 1.1rem; }
 
         .price-note {
             margin-top: 1.2rem; background: var(--white); border: 1px solid var(--line); border-radius: 10px;
@@ -162,38 +171,136 @@
     <div class="doc-head">
         <span class="eyebrow lang-ar">أوامر التصنيع</span>
         <span class="eyebrow lang-en">Manufacturing Orders</span>
-        <h1 class="lang-ar">تنفيذ أمر تصنيع، خطوة بخطوة</h1>
-        <h1 class="lang-en">Run a manufacturing order, step by step</h1>
-        <p class="doc-sub lang-ar">هذا الدليل يشرح كيفية تصنيع دفعة فعلية من "علبة حلويات فاخرة" — تُخصم المواد الخام تلقائياً ويزيد مخزون العلب الجاهزة.</p>
-        <p class="doc-sub lang-en">This guide covers producing an actual batch of "Luxury Candy Box" — raw materials are deducted automatically and the finished box's stock goes up.</p>
+        <h1 class="lang-ar">من وصفة الإنتاج إلى أمر تصنيع، خطوة بخطوة</h1>
+        <h1 class="lang-en">From a production recipe to a manufacturing order, step by step</h1>
+        <p class="doc-sub lang-ar">دليل مستقل بذاته لأعمال التصنيع الصغيرة (مثل خلط وتعبئة التوابل): سنتحقق أولاً أن ميزة التصنيع مفعّلة، ثم نُعدّ منتجاً كوصفة إنتاج (BOM)، وأخيراً ننفّذ دفعة تصنيع فعلية — تُخصم المواد الخام تلقائياً ويزيد مخزون المنتج الجاهز.</p>
+        <p class="doc-sub lang-en">A self-contained guide for small manufacturing businesses (like blending and packing spices): we'll first confirm Manufacturing is enabled, then set up a product as a production recipe (BOM), and finally run an actual production batch — raw materials are deducted automatically and the finished product's stock goes up.</p>
         <span class="price-chip"><span class="lang-ar">التصنيع — 59$ (مع BOM)</span><span class="lang-en">Manufacturing — $59 (bundle w/ BOM)</span></span>
 
-        <div class="prereq">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            <span class="lang-ar">تحتاج أولاً منتجاً من نوع "وصفة / BOM" مفعّلاً عليه "إنتاج مسبق للمستودع" — إن لم تكن أعددت واحداً بعد، راجع <a href="bom.html">دليل وصفات المنتجات / BOM</a> أولاً.</span>
-            <span class="lang-en">You'll need a "Recipe / BOM" product with "Pre-produce to stock" enabled first — if you haven't set one up yet, go through the <a href="bom.html">Product Recipes / BOM guide</a> first.</span>
-        </div>
-
         <ul class="jump">
-            <li><a href="#before"><span class="lang-ar">قبل أن تبدأ</span><span class="lang-en">Before you start</span></a></li>
-            <li><a href="#part3"><span class="lang-ar">تنفيذ أمر تصنيع</span><span class="lang-en">Run the order</span></a></li>
+            <li><a href="#before"><span class="lang-ar">تحقق أن التصنيع مفعّل</span><span class="lang-en">Check Manufacturing is enabled</span></a></li>
+            <li><a href="#part1"><span class="lang-ar">1. أضف المواد الخام</span><span class="lang-en">1. Add the raw materials</span></a></li>
+            <li><a href="#part2"><span class="lang-ar">2. أضف منتجاً كوصفة إنتاج</span><span class="lang-en">2. Add a product as a recipe</span></a></li>
+            <li><a href="#part3"><span class="lang-ar">3. نفّذ أمر تصنيع</span><span class="lang-en">3. Run the order</span></a></li>
             <li><a href="#example"><span class="lang-ar">مثال توضيحي</span><span class="lang-en">Worked example</span></a></li>
         </ul>
     </div>
 
     <section class="block" id="before">
-        <div class="block-head"><h2 class="lang-ar">قبل أن تبدأ</h2><h2 class="lang-en">Before you start</h2></div>
-        <p class="block-hint lang-ar">تأكد أن ميزة <strong>أوامر التصنيع</strong> مفعّلة على حسابك. إذا لم يظهر عنصر "أوامر التصنيع" في القائمة الجانبية، تواصل معنا لتفعيله.</p>
-        <p class="block-hint lang-en">Make sure <strong>Manufacturing</strong> is enabled on your account. If you don't see a "Manufacturing" item in your sidebar menu, contact us and we'll enable it.</p>
+        <div class="block-head"><h2 class="lang-ar">تحقق أن التصنيع مفعّل</h2><h2 class="lang-en">Check Manufacturing is enabled</h2></div>
+        <p class="block-hint lang-ar">التصنيع ميزة إضافية تُبنى فوق وصفات المنتجات (BOM) — كلتاهما يجب أن تكونا مفعّلتين على حسابك قبل المتابعة.</p>
+        <p class="block-hint lang-en">Manufacturing is an add-on feature that's built on top of Product Recipes (BOM) — both need to be enabled on your account before continuing.</p>
+        <ol class="steps">
+            <li><div class="step-body">
+                <p class="lang-ar">افتح <span class="ui-label">المنتجات</span> ← <span class="ui-label">إضافة منتج</span>، وتحقق من ظهور <span class="ui-label">وصفة / BOM</span> ضمن خيارات <span class="ui-label">نوع المنتج</span>.</p>
+                <p class="lang-en">Open <span class="ui-label">Products</span> ← <span class="ui-label">Add Product</span>, and confirm <span class="ui-label">Recipe / BOM</span> appears as one of the <span class="ui-label">Product Type</span> options.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">تحقق من ظهور عنصر <span class="ui-label">أوامر التصنيع</span> ضمن مجموعة "المخزون" في القائمة الجانبية.</p>
+                <p class="lang-en">Confirm a <span class="ui-label">Manufacturing</span> item appears in the "Inventory" group of the sidebar.</p>
+            </div></li>
+            <li><div class="step-body">
+                <div class="callout">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    <span class="lang-ar"><strong>لا يظهر أي منهما؟</strong> تواصل معنا لتفعيل وصفات المنتجات / BOM والتصنيع على حسابك، ثم عد لهذا الدليل.</span>
+                    <span class="lang-en"><strong>Neither one showing?</strong> Contact us to enable Product Recipes / BOM and Manufacturing on your account, then come back to this guide.</span>
+                </div>
+            </div></li>
+        </ol>
+    </section>
+
+    <section class="block" id="part1">
+        <div class="block-head">
+            <span class="block-num lang-ar">الجزء الأول</span><span class="block-num lang-en">Part 1</span>
+            <h2 class="lang-ar">أضف المواد الخام</h2>
+            <h2 class="lang-en">Add the raw materials</h2>
+        </div>
+        <p class="block-hint lang-ar">مثالنا: محل بهارات يُنتج "خلطة البهارات السبعة" من مواد خام يشتريها بالكيلو، ويعبّئها في برطمانات جاهزة للبيع. أضف كل مادة كمنتج عادي، بتصنيف "مواد خام" ووحدة أساس "قطعة" (تُستخدم كوحدة وزن — كل قطعة = 1 كغ).</p>
+        <p class="block-hint lang-en">Our example: a spice shop producing a "House Baharat Blend" from raw materials bought by the kilo, packed into ready-to-sell jars. Add each material as a Standard product, category "Raw Materials", base unit "Piece" (used here as a weight unit — 1 piece = 1kg).</p>
+        <ol class="steps">
+            <li><div class="step-body">
+                <p class="lang-ar">اذهب إلى <span class="ui-label">المنتجات</span> ← <span class="ui-label">إضافة منتج</span>، واترك <span class="ui-label">نوع المنتج</span> على <strong>منتج عادي</strong>.</p>
+                <p class="lang-en">Go to <span class="ui-label">Products</span> ← <span class="ui-label">Add Product</span>, and leave <span class="ui-label">Product type</span> on <strong>Standard product</strong>.</p>
+            </div></li>
+            <li>
+                <div class="step-body">
+                    <p class="lang-ar">أدخل <span class="ui-label">اسم المنتج</span> و<span class="ui-label">سعر التكلفة</span> لكل مادة (تصنيف "مواد خام"، وحدة "قطعة" = 1 كغ):</p>
+                    <p class="lang-en">Enter <span class="ui-label">Product Name</span> and <span class="ui-label">Cost Price</span> for each (category "Raw Materials", unit "Piece" = 1kg):</p>
+                    <div class="ingredient-row"><b class="lang-ar">فلفل أسود</b><b class="lang-en">Black Pepper</b><span>$4.00 <span class="cost-hint lang-ar">/ كغ</span><span class="cost-hint lang-en">/ kg</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">كمون</b><b class="lang-en">Cumin</b><span>$3.50 <span class="cost-hint lang-ar">/ كغ</span><span class="cost-hint lang-en">/ kg</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">كزبرة</b><b class="lang-en">Coriander</b><span>$3.00 <span class="cost-hint lang-ar">/ كغ</span><span class="cost-hint lang-en">/ kg</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">قرفة</b><b class="lang-en">Cinnamon</b><span>$5.00 <span class="cost-hint lang-ar">/ كغ</span><span class="cost-hint lang-en">/ kg</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">برطمان فارغ</b><b class="lang-en">Empty Jar</b><span>$0.25 <span class="cost-hint lang-ar">/ قطعة</span><span class="cost-hint lang-en">/ piece</span></span></div>
+                </div>
+            </li>
+            <li><div class="step-body">
+                <p class="lang-ar">أدخل سعر بيع (يمكن أن يساوي سعر التكلفة إن كنت لا تبيع هذه المادة بمفردها)، ثم اضغط <span class="ui-label">إنشاء</span>. كرّر للمواد الخمس.</p>
+                <p class="lang-en">Enter a selling price (can equal the cost price if you never sell this material on its own), then click <span class="ui-label">Create</span>. Repeat for all five.</p>
+            </div></li>
+        </ol>
+    </section>
+
+    <section class="block" id="part2">
+        <div class="block-head">
+            <span class="block-num lang-ar">الجزء الثاني</span><span class="block-num lang-en">Part 2</span>
+            <h2 class="lang-ar">أضف منتجاً كوصفة إنتاج (BOM)</h2>
+            <h2 class="lang-en">Add a product as a recipe (BOM)</h2>
+        </div>
+        <p class="block-hint lang-ar">سننشئ منتجاً جديداً باسم "خلطة البهارات السبعة" يستهلك المواد الخمس التي أضفناها، ونفعّل عليه خيار الإنتاج المسبق ليظهر لاحقاً في أوامر التصنيع.</p>
+        <p class="block-hint lang-en">We'll create a new product called "House Baharat Blend" that consumes the five materials we've added, and turn on pre-production so it shows up in Manufacturing next.</p>
+        <ol class="steps">
+            <li><div class="step-body">
+                <p class="lang-ar">أضف منتجاً جديداً باسم <strong>خلطة البهارات السبعة (برطمان 250غ)</strong>، بتصنيف <strong>خلطات بهارات</strong> (أنشئه أولاً من صفحة التصنيفات إن لم يكن موجوداً).</p>
+                <p class="lang-en">Add a new product named <strong>House Baharat Blend (250g jar)</strong>, with category <strong>Spice Blends</strong> (create it first on the Categories page if it doesn't exist yet).</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">أعلى النموذج، ضمن <span class="ui-label">نوع المنتج</span>، اختر <span class="ui-label">وصفة / BOM</span> بدلاً من منتج عادي.</p>
+                <p class="lang-en">At the top of the form, under <span class="ui-label">Product type</span>, choose <span class="ui-label">Recipe / BOM</span> instead of Standard product.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">في حقل <span class="ui-label">هذه الوصفة تنتج:</span>، أدخل <strong>20</strong> (لإنتاج 20 برطماناً لكل دفعة).</p>
+                <p class="lang-en">In <span class="ui-label">This recipe yields</span>, enter <strong>20</strong> (20 jars per batch).</p>
+            </div></li>
+            <li>
+                <div class="step-body">
+                    <p class="lang-ar">في قسم <span class="ui-label">مكونات الوصفة</span>، اضغط <span class="ui-label">إضافة مادة أولية</span> لكل مادة تدخل في دفعة الـ20 برطمان:</p>
+                    <p class="lang-en">In <span class="ui-label">Recipe ingredients</span>, click <span class="ui-label">Add ingredient</span> for each material used in that batch of 20 jars:</p>
+                    <div class="ingredient-row"><b class="lang-ar">فلفل أسود</b><b class="lang-en">Black Pepper</b><span>1.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">كمون</b><b class="lang-en">Cumin</b><span>1.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">كزبرة</b><b class="lang-en">Coriander</b><span>1.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">قرفة</b><b class="lang-en">Cinnamon</b><span>0.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">برطمان فارغ</b><b class="lang-en">Empty Jar</b><span>20 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <p class="step-note lang-ar">هذه الكميات لكامل دفعة الـ20 برطمان — يقوم التطبيق تلقائياً بتحجيم كل شيء آخر.</p>
+                    <p class="step-note lang-en">These quantities are for the whole batch of 20 — the app scales everything else automatically.</p>
+                </div>
+            </li>
+            <li><div class="step-body">
+                <p class="lang-ar"><span class="ui-label">تكلفة محسوبة تلقائياً</span> تُملأ من تلقاء نفسها — في هذا المثال تُصبح حوالي <strong>1.16$</strong> للبرطمان الواحد، بناءً على أسعار شراء المواد الخمس.</p>
+                <p class="lang-en"><span class="ui-label">Auto-calculated cost</span> fills in on its own — in this example it works out to about <strong>$1.16</strong> per jar, based on what you paid for the five materials.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">أدخل <span class="ui-label">سعر البيع</span> — مثلاً <strong>2.50$</strong> للبرطمان الواحد.</p>
+                <p class="lang-en">Enter <span class="ui-label">Selling Price</span> — e.g. <strong>$2.50</strong> per jar.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">في قسم المخزون، فعّل <span class="ui-label">إنتاج مسبق للمستودع (لا تخصم المكونات عند البيع)</span>. هذا ما يجعل الخلطة تظهر في أوامر التصنيع.</p>
+                <p class="lang-en">In the Inventory section, check <span class="ui-label">Pre-produce to stock (do not deduct ingredients at sale)</span>. This is what makes the blend show up in Manufacturing.</p>
+            </div></li>
+            <li><div class="step-body">
+                <p class="lang-ar">اضغط <span class="ui-label">إنشاء</span> (أو <span class="ui-label">حفظ التعديلات</span>).</p>
+                <p class="lang-en">Click <span class="ui-label">Create</span> (or <span class="ui-label">Save Changes</span>).</p>
+            </div></li>
+        </ol>
     </section>
 
     <section class="block" id="part3">
         <div class="block-head">
-            <h2 class="lang-ar">تنفيذ أمر تصنيع</h2>
+            <span class="block-num lang-ar">الجزء الثالث</span><span class="block-num lang-en">Part 3</span>
+            <h2 class="lang-ar">نفّذ أمر تصنيع</h2>
             <h2 class="lang-en">Run a manufacturing order</h2>
         </div>
-        <p class="block-hint lang-ar">الآن نصنّع دفعة فعلية من علب الحلويات ونراقب تحديث المخزون.</p>
-        <p class="block-hint lang-en">Now produce an actual batch of candy boxes and watch the stock update.</p>
+        <p class="block-hint lang-ar">الآن ننتج دفعة فعلية من خلطة البهارات ونراقب تحديث المخزون.</p>
+        <p class="block-hint lang-en">Now produce an actual batch of the spice blend and watch the stock update.</p>
         <ol class="steps">
             <li><div class="step-body">
                 <p class="lang-ar">اذهب إلى <span class="ui-label">أوامر التصنيع</span> من القائمة الجانبية.</p>
@@ -204,12 +311,12 @@
                 <p class="lang-en">Click <span class="ui-label">New Manufacturing Order</span>.</p>
             </div></li>
             <li><div class="step-body">
-                <p class="lang-ar">في حقل <span class="ui-label">المنتج</span>، اختر <strong>علبة حلويات فاخرة</strong>.</p>
-                <p class="lang-en">In <span class="ui-label">Product</span>, select <strong>Luxury Candy Box</strong>.</p>
+                <p class="lang-ar">في حقل <span class="ui-label">المنتج</span>، اختر <strong>خلطة البهارات السبعة (برطمان 250غ)</strong>.</p>
+                <p class="lang-en">In <span class="ui-label">Product</span>, select <strong>House Baharat Blend (250g jar)</strong>.</p>
             </div></li>
             <li><div class="step-body">
-                <p class="lang-ar">في حقل <span class="ui-label">عدد الدفعات</span>، أدخل <strong>2</strong> (2 × 100 = 200 علبة).</p>
-                <p class="lang-en">In <span class="ui-label">Number of batches</span>, enter <strong>2</strong> (2 × 100 = 200 boxes).</p>
+                <p class="lang-ar">في حقل <span class="ui-label">عدد الدفعات</span>، أدخل <strong>3</strong> (3 × 20 = 60 برطماناً).</p>
+                <p class="lang-en">In <span class="ui-label">Number of batches</span>, enter <strong>3</strong> (3 × 20 = 60 jars).</p>
             </div></li>
             <li><div class="step-body">
                 <p class="lang-ar">راجع <span class="ui-label">الاستهلاك المتوقع</span> — يعرض بالضبط كمية كل مادة سيستهلكها هذا الأمر، ويُظهر باللون الأحمر أي مادة لا تملك منها كمية كافية.</p>
@@ -225,8 +332,8 @@
                 <p class="lang-en">Click <span class="ui-label">Produce</span>.</p>
             </div></li>
             <li><div class="step-body">
-                <p class="lang-ar">ستظهر رسالة <em>"تم تسجيل أمر التصنيع وتحديث المخزون."</em> مخزون المواد الخام ينقص، ومخزون علب الحلويات يزيد بـ200 — بخطوة واحدة.</p>
-                <p class="lang-en">You'll see <em>"Manufacturing order recorded and stock updated."</em> Ingredient stock goes down; the candy box's own stock goes up by 200 — in one step.</p>
+                <p class="lang-ar">ستظهر رسالة <em>"تم تسجيل أمر التصنيع وتحديث المخزون."</em> مخزون المواد الخام ينقص، ومخزون البرطمانات يزيد بـ60 — بخطوة واحدة.</p>
+                <p class="lang-en">You'll see <em>"Manufacturing order recorded and stock updated."</em> Raw material stock goes down; the jar's own stock goes up by 60 — in one step.</p>
             </div></li>
             <li><div class="step-body">
                 <p class="lang-ar">كل عملية تُحفظ في قائمة أوامر التصنيع — التاريخ، الكمية، التكلفة، ومن سجّلها. اضغط أي سطر لعرض التفاصيل.</p>
@@ -237,33 +344,50 @@
 
     <section class="block" id="example">
         <div class="block-head"><h2 class="lang-ar">مثال توضيحي</h2><h2 class="lang-en">Worked example</h2></div>
+
         <div class="ticket">
             <div class="ticket-head">
-                <h3><span class="lang-ar">علبة حلويات فاخرة — أمر تصنيع</span><span class="lang-en">Luxury Candy Box — Manufacturing Order</span></h3>
-                <span class="ticket-yield"><span class="lang-ar">الدفعة الواحدة = 100 علبة</span><span class="lang-en">1 batch = 100 boxes</span></span>
+                <h3><span class="lang-ar">وصفة خلطة البهارات السبعة</span><span class="lang-en">House Baharat Blend recipe</span></h3>
+                <span class="ticket-yield"><span class="lang-ar">الدفعة الواحدة = 20 برطماناً</span><span class="lang-en">1 batch = 20 jars</span></span>
+            </div>
+            <div class="ticket-line"><span class="lang-ar">فلفل أسود</span><span class="lang-en">Black Pepper</span><span>1.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+            <div class="ticket-line"><span class="lang-ar">كمون</span><span class="lang-en">Cumin</span><span>1.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+            <div class="ticket-line"><span class="lang-ar">كزبرة</span><span class="lang-en">Coriander</span><span>1.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+            <div class="ticket-line"><span class="lang-ar">قرفة</span><span class="lang-en">Cinnamon</span><span>0.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+            <div class="ticket-line"><span class="lang-ar">برطمان فارغ</span><span class="lang-en">Empty Jar</span><span>20 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+            <div class="ticket-result">
+                <span class="lang-ar">تكلفة البرطمان / سعر البيع</span><span class="lang-en">Cost per jar / Sell price</span>
+                <span class="cost-val">~$1.16 / $2.50</span>
+            </div>
+        </div>
+
+        <div class="ticket">
+            <div class="ticket-head">
+                <h3><span class="lang-ar">أمر تصنيع — 3 دفعات</span><span class="lang-en">Manufacturing order — 3 batches</span></h3>
+                <span class="ticket-yield"><span class="lang-ar">3 × 20 = 60 برطماناً</span><span class="lang-en">3 × 20 = 60 jars</span></span>
             </div>
             <div class="ticket-grid">
                 <div class="ticket-col">
                     <h4><span class="lang-ar">لكل دفعة</span><span class="lang-en">Per batch</span></h4>
-                    <div class="ticket-line"><span class="lang-ar">كرتون مقوى</span><span class="lang-en">Cardboard</span><span>30 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-                    <div class="ticket-line"><span class="lang-ar">شريط ساتان</span><span class="lang-en">Ribbon</span><span>50 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-                    <div class="ticket-line"><span class="lang-ar">ورق ذهبي</span><span class="lang-en">Gold Foil</span><span>20 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-                    <div class="ticket-line"><span class="lang-ar">غراء صناعي</span><span class="lang-en">Glue</span><span>5 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-                    <div class="ticket-line"><span class="lang-ar">فاصل داخلي</span><span class="lang-en">Divider</span><span>100 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">فلفل أسود</span><span class="lang-en">Black Pepper</span><span>1.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">كمون</span><span class="lang-en">Cumin</span><span>1.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">كزبرة</span><span class="lang-en">Coriander</span><span>1.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">قرفة</span><span class="lang-en">Cinnamon</span><span>0.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">برطمان</span><span class="lang-en">Jar</span><span>20 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
                 </div>
                 <div class="ticket-col">
-                    <h4><span class="lang-ar">هذا الأمر — دفعتان</span><span class="lang-en">This order — 2 batches</span></h4>
-                    <div class="ticket-line"><span class="lang-ar">كرتون مستهلك</span><span class="lang-en">Cardboard used</span><span>60 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-                    <div class="ticket-line"><span class="lang-ar">شريط مستهلك</span><span class="lang-en">Ribbon used</span><span>100 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-                    <div class="ticket-line"><span class="lang-ar">ورق ذهبي مستهلك</span><span class="lang-en">Gold foil used</span><span>40 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-                    <div class="ticket-line"><span class="lang-ar">غراء مستهلك</span><span class="lang-en">Glue used</span><span>10 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-                    <div class="ticket-line"><span class="lang-ar">فواصل مستهلكة</span><span class="lang-en">Dividers used</span><span>200 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <h4><span class="lang-ar">هذا الأمر — 3 دفعات</span><span class="lang-en">This order — 3 batches</span></h4>
+                    <div class="ticket-line"><span class="lang-ar">فلفل أسود مستهلك</span><span class="lang-en">Black Pepper used</span><span>4.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">كمون مستهلك</span><span class="lang-en">Cumin used</span><span>4.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">كزبرة مستهلكة</span><span class="lang-en">Coriander used</span><span>4.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">قرفة مستهلكة</span><span class="lang-en">Cinnamon used</span><span>1.5 <span class="lang-ar">كغ</span><span class="lang-en">kg</span></span></div>
+                    <div class="ticket-line"><span class="lang-ar">برطمانات مستهلكة</span><span class="lang-en">Jars used</span><span>60 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
                 </div>
             </div>
             <div class="ticket-result">
-                <span class="lang-ar">تكلفة المواد الإجمالية: 142.00$ (0.71$/علبة)</span>
-                <span class="lang-en">Total material cost: $142.00 ($0.71/box)</span>
-                <span class="stock-up"><span class="lang-ar">+200 علبة حلويات فاخرة</span><span class="lang-en">+200 Luxury Candy Boxes</span></span>
+                <span class="lang-ar">تكلفة المواد الإجمالية: 69.75$ (~1.16$/برطمان)</span>
+                <span class="lang-en">Total material cost: $69.75 (~$1.16/jar)</span>
+                <span class="stock-up"><span class="lang-ar">+60 برطمان خلطة بهارات</span><span class="lang-en">+60 Baharat Blend jars</span></span>
             </div>
         </div>
 

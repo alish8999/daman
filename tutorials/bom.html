@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دليل: وصفات المنتجات / BOM | Daman</title>
-    <meta name="description" content="دليل خطوة بخطوة لإعداد وصفة منتج (BOM) في ضمان، بمثال مصنع تغليف حقيقي.">
+    <meta name="description" content="دليل خطوة بخطوة لإعداد وصفة منتج (BOM) في ضمان، بمثال بقالة عام.">
     <meta name="robots" content="noindex">
     <link rel="icon" type="image/x-icon" href="../icon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -81,12 +81,12 @@
         ol.steps { list-style: none; counter-reset: step; }
         ol.steps li {
             counter-increment: step;
-            display: grid; grid-template-columns: 1fr 2.15rem; gap: 0.9rem;
+            display: grid; grid-template-columns: 2.15rem 1fr; gap: 0.9rem;
             padding: 0.95rem 0; border-top: 1px dashed var(--line);
         }
         ol.steps li:first-child { border-top: none; }
         ol.steps li::before {
-            content: counter(step); grid-column: 2;
+            content: counter(step);
             font-weight: 800; font-size: 0.95rem; color: var(--white); background: var(--secondary-blue);
             width: 2.15rem; height: 2.15rem; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
@@ -162,12 +162,12 @@
         <span class="eyebrow lang-en">Product Recipes / BOM</span>
         <h1 class="lang-ar">إعداد وصفة منتج، خطوة بخطوة</h1>
         <h1 class="lang-en">Set up a product recipe, step by step</h1>
-        <p class="doc-sub lang-ar">نكمل مثال مصنع التغليف: سنبني وصفة "علبة حلويات فاخرة" من كرتون وشريط ساتان وورق ذهبي وغراء وفاصل داخلي — نفس المواد التي بدأنا بشرائها في الدليل السابق.</p>
-        <p class="doc-sub lang-en">Continuing the packaging-workshop example: we'll build a "Luxury Candy Box" recipe from cardboard, satin ribbon, gold foil, glue and a cardboard divider — the same materials we started buying in the previous guide.</p>
+        <p class="doc-sub lang-ar">نكمل مثال البقالة: سنبني "سلة هدايا بقالية" من سكر وشاي وتمر ومكسرات وسلة تغليف — منتجات موجودة أصلاً في مخزونك، مجمّعة في عبوة واحدة تُباع بسعر واحد. هذه الميزة عامة ولا تتطلب تفعيل التصنيع.</p>
+        <p class="doc-sub lang-en">Continuing the grocery-store example: we'll build a "Grocery Gift Basket" from sugar, tea, dates, nuts and a basket — products you already stock, bundled into one item sold at one price. This feature is general-purpose and doesn't require Manufacturing to be enabled.</p>
         <span class="price-chip"><span class="lang-ar">وصفات المنتجات / BOM — 39$</span><span class="lang-en">Product Recipes / BOM — $39</span></span>
         <ul class="jump">
             <li><a href="#before"><span class="lang-ar">قبل أن تبدأ</span><span class="lang-en">Before you start</span></a></li>
-            <li><a href="#part1"><span class="lang-ar">1. أضف بقية المواد الخام</span><span class="lang-en">1. Add the remaining raw materials</span></a></li>
+            <li><a href="#part1"><span class="lang-ar">1. أضف بقية المنتجات</span><span class="lang-en">1. Add the remaining products</span></a></li>
             <li><a href="#part2"><span class="lang-ar">2. إعداد الوصفة</span><span class="lang-en">2. Set up the recipe</span></a></li>
             <li><a href="#example"><span class="lang-ar">مثال توضيحي</span><span class="lang-en">Worked example</span></a></li>
         </ul>
@@ -183,8 +183,8 @@
             </li>
             <li>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span class="lang-ar">لديك "كرتون مقوى" مضافاً كمنتج بالفعل من <a href="getting-started.html">دليل البداية</a> و<a href="purchases.html">دليل المشتريات</a>.</span>
-                <span class="lang-en">You already have "Cardboard" added as a product from the <a href="getting-started.html">Getting Started</a> and <a href="purchases.html">Purchases</a> guides.</span>
+                <span class="lang-ar">لديك "سكر (كيس 1 كغ)" مضافاً كمنتج بالفعل من <a href="getting-started.html">دليل البداية</a> و<a href="purchases.html">دليل المشتريات</a>.</span>
+                <span class="lang-en">You already have "Sugar (1kg bag)" added as a product from the <a href="getting-started.html">Getting Started</a> and <a href="purchases.html">Purchases</a> guides.</span>
             </li>
         </ul>
     </section>
@@ -192,11 +192,11 @@
     <section class="block" id="part1">
         <div class="block-head">
             <span class="block-num lang-ar">الجزء الأول</span><span class="block-num lang-en">Part 1</span>
-            <h2 class="lang-ar">أضف بقية المواد الخام</h2>
-            <h2 class="lang-en">Add the remaining raw materials</h2>
+            <h2 class="lang-ar">أضف بقية المنتجات</h2>
+            <h2 class="lang-en">Add the remaining products</h2>
         </div>
-        <p class="block-hint lang-ar">وصفة "علبة حلويات فاخرة" تحتاج أربع مواد إضافية بجانب الكرتون. أضفها بنفس طريقة إضافة الكرتون (منتج عادي، تصنيف "مواد التصنيع"، وحدة الأساس "قطعة") — كرّر الخطوات التالية لكل واحدة.</p>
-        <p class="block-hint lang-en">The "Luxury Candy Box" recipe needs four more materials besides cardboard. Add them the same way you added cardboard (Standard product, "Raw Materials" category, "Piece" base unit) — repeat the steps below for each one.</p>
+        <p class="block-hint lang-ar">وصفة "سلة هدايا بقالية" تحتاج أربعة منتجات إضافية بجانب السكر. أضفها بنفس طريقة إضافة السكر (منتج عادي، تصنيف "البقالة"، وحدة الأساس "قطعة") — كرّر الخطوات التالية لكل واحد.</p>
+        <p class="block-hint lang-en">The "Grocery Gift Basket" recipe needs four more products besides sugar. Add them the same way you added sugar (Standard product, "Groceries" category, "Piece" base unit) — repeat the steps below for each one.</p>
         <ol class="steps">
             <li><div class="step-body">
                 <p class="lang-ar">اذهب إلى <span class="ui-label">المنتجات</span> ← <span class="ui-label">إضافة منتج</span>، واترك <span class="ui-label">نوع المنتج</span> على <strong>منتج عادي</strong>.</p>
@@ -204,17 +204,17 @@
             </div></li>
             <li>
                 <div class="step-body">
-                    <p class="lang-ar">أدخل <span class="ui-label">اسم المنتج</span> و<span class="ui-label">سعر التكلفة</span>، مع تصنيف <strong>مواد التصنيع</strong> ووحدة أساس <strong>قطعة</strong> لكل مادة:</p>
-                    <p class="lang-en">Enter <span class="ui-label">Product Name</span> and <span class="ui-label">Cost Price</span>, with category <strong>Raw Materials</strong> and base unit <strong>Piece</strong> for each:</p>
-                    <div class="ingredient-row"><b class="lang-ar">شريط ساتان</b><b class="lang-en">Satin Ribbon</b><span>$0.30 <span class="cost-hint lang-ar">/ قطعة</span><span class="cost-hint lang-en">/ piece</span></span></div>
-                    <div class="ingredient-row"><b class="lang-ar">ورق ذهبي</b><b class="lang-en">Gold Foil</b><span>$0.70 <span class="cost-hint lang-ar">/ قطعة</span><span class="cost-hint lang-en">/ piece</span></span></div>
-                    <div class="ingredient-row"><b class="lang-ar">غراء صناعي</b><b class="lang-en">Industrial Glue</b><span>$3.00 <span class="cost-hint lang-ar">/ قطعة</span><span class="cost-hint lang-en">/ piece</span></span></div>
-                    <div class="ingredient-row"><b class="lang-ar">فاصل داخلي كرتوني</b><b class="lang-en">Cardboard Divider</b><span>$0.15 <span class="cost-hint lang-ar">/ قطعة</span><span class="cost-hint lang-en">/ piece</span></span></div>
+                    <p class="lang-ar">أدخل <span class="ui-label">اسم المنتج</span> و<span class="ui-label">سعر التكلفة</span>، مع تصنيف <strong>البقالة</strong> ووحدة أساس <strong>قطعة</strong> لكل منتج:</p>
+                    <p class="lang-en">Enter <span class="ui-label">Product Name</span> and <span class="ui-label">Cost Price</span>, with category <strong>Groceries</strong> and base unit <strong>Piece</strong> for each:</p>
+                    <div class="ingredient-row"><b class="lang-ar">شاي (علبة)</b><b class="lang-en">Tea (box)</b><span>$1.20 <span class="cost-hint lang-ar">/ قطعة</span><span class="cost-hint lang-en">/ piece</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">تمر (علبة)</b><b class="lang-en">Dates (box)</b><span>$2.50 <span class="cost-hint lang-ar">/ قطعة</span><span class="cost-hint lang-en">/ piece</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">مكسرات (كيس)</b><b class="lang-en">Nuts (bag)</b><span>$3.00 <span class="cost-hint lang-ar">/ قطعة</span><span class="cost-hint lang-en">/ piece</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">سلة تغليف فارغة</b><b class="lang-en">Empty Gift Basket</b><span>$0.80 <span class="cost-hint lang-ar">/ قطعة</span><span class="cost-hint lang-en">/ piece</span></span></div>
                 </div>
             </li>
             <li><div class="step-body">
-                <p class="lang-ar">أدخل سعر بيع (يمكن أن يساوي سعر التكلفة)، ثم اضغط <span class="ui-label">إنشاء</span>. كرّر لكل مادة من الأربع.</p>
-                <p class="lang-en">Enter a selling price (can equal the cost price), then click <span class="ui-label">Create</span>. Repeat for each of the four.</p>
+                <p class="lang-ar">أدخل سعر بيع لكل منتج (نفس سعره الفردي المعتاد على الرف)، ثم اضغط <span class="ui-label">إنشاء</span>. كرّر لكل منتج من الأربعة.</p>
+                <p class="lang-en">Enter a selling price for each (its usual standalone shelf price), then click <span class="ui-label">Create</span>. Repeat for each of the four.</p>
             </div></li>
         </ol>
     </section>
@@ -225,45 +225,45 @@
             <h2 class="lang-ar">إعداد الوصفة</h2>
             <h2 class="lang-en">Set up the recipe</h2>
         </div>
-        <p class="block-hint lang-ar">سننشئ منتجاً جديداً باسم "علبة حلويات فاخرة" يستهلك المواد الخمس التي أضفناها.</p>
-        <p class="block-hint lang-en">We'll create a new product called "Luxury Candy Box" that consumes the five materials we've added.</p>
+        <p class="block-hint lang-ar">سننشئ منتجاً جديداً باسم "سلة هدايا بقالية" يستهلك المنتجات الخمسة التي أضفناها.</p>
+        <p class="block-hint lang-en">We'll create a new product called "Grocery Gift Basket" that consumes the five products we've added.</p>
         <ol class="steps">
             <li><div class="step-body">
-                <p class="lang-ar">أضف منتجاً جديداً باسم <strong>علبة حلويات فاخرة</strong>، بتصنيف <strong>علب جاهزة</strong> (أنشئه أولاً من صفحة التصنيفات إن لم يكن موجوداً).</p>
-                <p class="lang-en">Add a new product named <strong>Luxury Candy Box</strong>, with category <strong>Finished Goods</strong> (create it first on the Categories page if it doesn't exist yet).</p>
+                <p class="lang-ar">أضف منتجاً جديداً باسم <strong>سلة هدايا بقالية</strong>، بتصنيف <strong>سلال الهدايا</strong> (أنشئه أولاً من صفحة التصنيفات إن لم يكن موجوداً).</p>
+                <p class="lang-en">Add a new product named <strong>Grocery Gift Basket</strong>, with category <strong>Gift Baskets</strong> (create it first on the Categories page if it doesn't exist yet).</p>
             </div></li>
             <li><div class="step-body">
                 <p class="lang-ar">أعلى النموذج، ضمن <span class="ui-label">نوع المنتج</span>، اختر <span class="ui-label">وصفة / BOM</span> بدلاً من منتج عادي.</p>
                 <p class="lang-en">At the top of the form, under <span class="ui-label">Product type</span>, choose <span class="ui-label">Recipe / BOM</span> instead of Standard product.</p>
             </div></li>
             <li><div class="step-body">
-                <p class="lang-ar">في حقل <span class="ui-label">هذه الوصفة تنتج:</span>، أدخل <strong>100</strong> (لإنتاج 100 علبة لكل دفعة).</p>
-                <p class="lang-en">In <span class="ui-label">This recipe yields</span>, enter <strong>100</strong> (100 boxes per batch).</p>
+                <p class="lang-ar">في حقل <span class="ui-label">هذه الوصفة تنتج:</span>، أدخل <strong>10</strong> (لتجهيز 10 سلال لكل دفعة).</p>
+                <p class="lang-en">In <span class="ui-label">This recipe yields</span>, enter <strong>10</strong> (10 baskets per batch).</p>
             </div></li>
             <li>
                 <div class="step-body">
-                    <p class="lang-ar">في قسم <span class="ui-label">مكونات الوصفة</span>، اضغط <span class="ui-label">إضافة مادة أولية</span> لكل مادة تدخل في هذه الدفعة من 100 علبة:</p>
-                    <p class="lang-en">In <span class="ui-label">Recipe ingredients</span>, click <span class="ui-label">Add ingredient</span> for each material used in that batch of 100 boxes:</p>
-                    <div class="ingredient-row"><b class="lang-ar">كرتون مقوى</b><b class="lang-en">Cardboard</b><span>30 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-                    <div class="ingredient-row"><b class="lang-ar">شريط ساتان</b><b class="lang-en">Satin Ribbon</b><span>50 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-                    <div class="ingredient-row"><b class="lang-ar">ورق ذهبي</b><b class="lang-en">Gold Foil</b><span>20 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-                    <div class="ingredient-row"><b class="lang-ar">غراء صناعي</b><b class="lang-en">Industrial Glue</b><span>5 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-                    <div class="ingredient-row"><b class="lang-ar">فاصل داخلي كرتوني</b><b class="lang-en">Cardboard Divider</b><span>100 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-                    <p class="step-note lang-ar">هذه الكميات لكامل دفعة الـ100 علبة — يقوم التطبيق تلقائياً بتحجيم كل شيء آخر.</p>
-                    <p class="step-note lang-en">These quantities are for the whole batch of 100 — the app scales everything else automatically.</p>
+                    <p class="lang-ar">في قسم <span class="ui-label">مكونات الوصفة</span>، اضغط <span class="ui-label">إضافة مادة أولية</span> لكل منتج يدخل في هذه الدفعة من 10 سلال:</p>
+                    <p class="lang-en">In <span class="ui-label">Recipe ingredients</span>, click <span class="ui-label">Add ingredient</span> for each product used in that batch of 10 baskets:</p>
+                    <div class="ingredient-row"><b class="lang-ar">سكر (كيس 1 كغ)</b><b class="lang-en">Sugar (1kg bag)</b><span>10 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">شاي (علبة)</b><b class="lang-en">Tea (box)</b><span>10 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">تمر (علبة)</b><b class="lang-en">Dates (box)</b><span>10 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">مكسرات (كيس)</b><b class="lang-en">Nuts (bag)</b><span>10 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <div class="ingredient-row"><b class="lang-ar">سلة تغليف فارغة</b><b class="lang-en">Empty Gift Basket</b><span>10 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+                    <p class="step-note lang-ar">هذه الكميات لكامل دفعة الـ10 سلال — يقوم التطبيق تلقائياً بتحجيم كل شيء آخر.</p>
+                    <p class="step-note lang-en">These quantities are for the whole batch of 10 — the app scales everything else automatically.</p>
                 </div>
             </li>
             <li><div class="step-body">
-                <p class="lang-ar"><span class="ui-label">تكلفة محسوبة تلقائياً</span> تُملأ من تلقاء نفسها — في هذا المثال تُصبح حوالي <strong>0.71$</strong> لكل علبة، بناءً على أسعار شراء المواد الخمس.</p>
-                <p class="lang-en"><span class="ui-label">Auto-calculated cost</span> fills in on its own — in this example it works out to about <strong>$0.71</strong> per box, based on what you paid for the five materials.</p>
+                <p class="lang-ar"><span class="ui-label">تكلفة محسوبة تلقائياً</span> تُملأ من تلقاء نفسها — في هذا المثال تُصبح حوالي <strong>8.40$</strong> لكل سلة، بناءً على تكلفة المنتجات الخمسة.</p>
+                <p class="lang-en"><span class="ui-label">Auto-calculated cost</span> fills in on its own — in this example it works out to about <strong>$8.40</strong> per basket, based on what the five products cost.</p>
             </div></li>
             <li><div class="step-body">
-                <p class="lang-ar">أدخل <span class="ui-label">سعر البيع</span> — مثلاً <strong>8.00$</strong> للعلبة الواحدة.</p>
-                <p class="lang-en">Enter <span class="ui-label">Selling Price</span> — e.g. <strong>$8.00</strong> per box.</p>
+                <p class="lang-ar">أدخل <span class="ui-label">سعر البيع</span> — مثلاً <strong>12.00$</strong> للسلة الواحدة.</p>
+                <p class="lang-en">Enter <span class="ui-label">Selling Price</span> — e.g. <strong>$12.00</strong> per basket.</p>
             </div></li>
             <li><div class="step-body">
-                <p class="lang-ar">في قسم المخزون، فعّل <span class="ui-label">إنتاج مسبق للمستودع (لا تخصم المكونات عند البيع)</span>. هذا ما يجعل العلبة تظهر لاحقاً في أوامر التصنيع.</p>
-                <p class="lang-en">In the Inventory section, check <span class="ui-label">Pre-produce to stock (do not deduct ingredients at sale)</span>. This is what makes the box show up in Manufacturing later on.</p>
+                <p class="lang-ar">في قسم المخزون، اترك <span class="ui-label">إنتاج مسبق للمستودع</span> غير مفعّل إن كنت تفضّل تجهيز سلة واحدة عند كل عملية بيع (تُخصم المكونات تلقائياً من مخزونها عند البيع). فعّله فقط إذا أردت تجهيز دفعات مسبقاً وتتبّعها رسمياً — هذا يتطلب ميزة التصنيع، ويُشرح في دليل منفصل.</p>
+                <p class="lang-en">In the Inventory section, leave <span class="ui-label">Pre-produce to stock</span> unchecked if you'd rather assemble one basket per sale (ingredients are deducted from stock automatically at the sale). Only check it if you want to prepare batches ahead of time and track them formally — that needs the Manufacturing feature, covered in a separate guide.</p>
             </div></li>
             <li><div class="step-body">
                 <p class="lang-ar">اضغط <span class="ui-label">إنشاء</span> (أو <span class="ui-label">حفظ التعديلات</span>).</p>
@@ -276,23 +276,23 @@
         <div class="block-head"><h2 class="lang-ar">مثال توضيحي</h2><h2 class="lang-en">Worked example</h2></div>
         <div class="ticket">
             <div class="ticket-head">
-                <h3><span class="lang-ar">وصفة علبة حلويات فاخرة</span><span class="lang-en">Luxury Candy Box recipe</span></h3>
-                <span class="ticket-yield"><span class="lang-ar">الدفعة الواحدة = 100 علبة</span><span class="lang-en">1 batch = 100 boxes</span></span>
+                <h3><span class="lang-ar">وصفة سلة هدايا بقالية</span><span class="lang-en">Grocery Gift Basket recipe</span></h3>
+                <span class="ticket-yield"><span class="lang-ar">الدفعة الواحدة = 10 سلال</span><span class="lang-en">1 batch = 10 baskets</span></span>
             </div>
-            <div class="ticket-line"><span class="lang-ar">كرتون مقوى</span><span class="lang-en">Cardboard</span><span>30 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-            <div class="ticket-line"><span class="lang-ar">شريط ساتان</span><span class="lang-en">Satin Ribbon</span><span>50 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-            <div class="ticket-line"><span class="lang-ar">ورق ذهبي</span><span class="lang-en">Gold Foil</span><span>20 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-            <div class="ticket-line"><span class="lang-ar">غراء صناعي</span><span class="lang-en">Industrial Glue</span><span>5 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
-            <div class="ticket-line"><span class="lang-ar">فاصل داخلي كرتوني</span><span class="lang-en">Cardboard Divider</span><span>100 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+            <div class="ticket-line"><span class="lang-ar">سكر (كيس 1 كغ)</span><span class="lang-en">Sugar (1kg bag)</span><span>10 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+            <div class="ticket-line"><span class="lang-ar">شاي (علبة)</span><span class="lang-en">Tea (box)</span><span>10 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+            <div class="ticket-line"><span class="lang-ar">تمر (علبة)</span><span class="lang-en">Dates (box)</span><span>10 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+            <div class="ticket-line"><span class="lang-ar">مكسرات (كيس)</span><span class="lang-en">Nuts (bag)</span><span>10 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
+            <div class="ticket-line"><span class="lang-ar">سلة تغليف فارغة</span><span class="lang-en">Empty Gift Basket</span><span>10 <span class="lang-ar">قطعة</span><span class="lang-en">pcs</span></span></div>
             <div class="ticket-result">
-                <span class="lang-ar">تكلفة العلبة الواحدة / سعر البيع</span><span class="lang-en">Cost per box / Sell price</span>
-                <span class="cost-val">~$0.71 / $8.00</span>
+                <span class="lang-ar">تكلفة السلة الواحدة / سعر البيع</span><span class="lang-en">Cost per basket / Sell price</span>
+                <span class="cost-val">~$8.40 / $12.00</span>
             </div>
         </div>
 
         <div class="next-box">
-            <span class="lang-ar">جاهز؟ التالي: نفّذ أول دفعة إنتاج فعلية من علب الحلويات.</span>
-            <span class="lang-en">Ready? Next: run your first real production batch of candy boxes.</span>
+            <span class="lang-ar">جاهز؟ سلة الهدايا الآن منتج قابل للبيع كأي منتج آخر — بيعها من نقطة البيع مباشرة. أردت تجهيز دفعات مسبقاً وتتبّعها رسمياً؟ راجع دليل أوامر التصنيع.</span>
+            <span class="lang-en">Ready? The gift basket is now sellable like any other product — ring it up straight from checkout. Want to prepare batches ahead of time and track them formally instead? See the Manufacturing guide.</span>
             <a href="manufacturing.html"><span class="lang-ar">دليل أوامر التصنيع ←</span><span class="lang-en">Manufacturing guide →</span></a>
         </div>
     </section>
