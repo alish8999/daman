@@ -20,6 +20,13 @@
             --white: #FFFFFF;
             --transition: all 0.3s ease;
             --accent-gold: #F59E0B;
+            /* Shared card/section language - one consistent shadow+radius+rhythm
+               scale instead of every card picking its own numbers. */
+            --shadow-sm: 0 1px 3px rgba(10,77,104,0.06), 0 6px 16px rgba(10,77,104,0.05);
+            --shadow-md: 0 10px 24px rgba(10,77,104,0.10);
+            --shadow-lg: 0 20px 45px rgba(10,77,104,0.14);
+            --radius-card: 18px;
+            --section-padding: 5.5rem 5%;
         }
 
         * {
@@ -146,6 +153,102 @@
             flex: 1;
             max-width: 550px;
             width: 100%;
+            position: relative;
+        }
+
+        /* Floating "live dashboard" widget - a real preview of the app's own
+           dashboard feature (profit counting up, a growing bar chart), not an
+           invented company stat. Overlaps the screenshot slider's corner. */
+        .hero-dashboard-widget {
+            position: absolute;
+            bottom: -28px;
+            inset-inline-start: -22px;
+            width: 200px;
+            z-index: 5;
+            background: rgba(255,255,255,.14);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255,255,255,.28);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: 0 20px 45px rgba(0,0,0,.28);
+        }
+
+        .hero-dashboard-widget .widget-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .hero-dashboard-widget .live-dot {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #7CFFB2;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .hero-dashboard-widget .live-dot::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22C55E;
+            animation: pulse-dot 1.6s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.6); }
+            70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+            100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+        }
+
+        .hero-dashboard-widget .widget-label {
+            color: rgba(255,255,255,.65);
+            font-size: 10.5px;
+        }
+
+        .hero-dashboard-widget .widget-num {
+            color: #fff;
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero-dashboard-widget .widget-sub {
+            color: rgba(255,255,255,.7);
+            font-size: 11px;
+            margin-top: 2px;
+        }
+
+        .hero-dashboard-widget .widget-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 5px;
+            height: 42px;
+            margin-top: 14px;
+        }
+
+        .hero-dashboard-widget .widget-bars span {
+            flex: 1;
+            background: linear-gradient(180deg, #F59E0B, #fbbf24);
+            border-radius: 4px 4px 0 0;
+            height: 8%;
+            animation: grow-bar 1.2s ease-out forwards;
+        }
+
+        @keyframes grow-bar {
+            to { height: var(--h); }
+        }
+
+        @media (max-width: 576px) {
+            .hero-dashboard-widget {
+                position: static;
+                width: 100%;
+                margin-top: 1rem;
+            }
         }
 
         /* Integrated Slider Controls */
@@ -246,7 +349,7 @@
 
         /* Merged Features Section */
         .features-section {
-            padding: 5rem 5%;
+            padding: var(--section-padding);
             background-color: var(--white);
             text-align: center;
         }
@@ -262,8 +365,8 @@
         .feature-card {
             background-color: var(--light-blue);
             padding: 2.5rem 2rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.03);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-sm);
             border-bottom: 4px solid var(--secondary-blue);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
@@ -273,8 +376,8 @@
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
         }
 
         .feature-card h3 {
@@ -327,28 +430,8 @@
         }
 
         .modules-section {
-            padding: 4rem 5% 5rem;
+            padding: var(--section-padding);
             background: linear-gradient(180deg, var(--light-blue) 0%, var(--white) 100%);
-        }
-
-        .highlights-strip {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            max-width: 1100px;
-            margin: 0 auto 4rem;
-        }
-
-        .highlight-pill {
-            background: var(--white);
-            border: 1px solid rgba(8, 131, 149, 0.25);
-            color: var(--primary-blue);
-            padding: 0.65rem 1.25rem;
-            border-radius: 999px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
         }
 
         .hero-bullets {
@@ -392,7 +475,7 @@
         }
 
         .why-section {
-            padding: 4rem 5%;
+            padding: var(--section-padding);
             background-color: var(--primary-blue);
             color: var(--white);
             text-align: center;
@@ -414,8 +497,14 @@
         .why-card {
             background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 14px;
+            border-radius: var(--radius-card);
             padding: 1.75rem 1.25rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.13);
         }
 
         .why-card strong {
@@ -423,27 +512,6 @@
             font-size: 1.15rem;
             margin-bottom: 0.5rem;
             color: var(--accent-gold);
-        }
-
-        .addons-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 1rem;
-            text-align: start;
-        }
-
-        .addons-list li {
-            margin-bottom: 0.75rem;
-            padding-inline-start: 1.5rem;
-            position: relative;
-        }
-
-        .addons-list li::before {
-            content: '＋';
-            position: absolute;
-            inset-inline-start: 0;
-            color: var(--secondary-blue);
-            font-weight: bold;
         }
 
         /* CSS Animations for Features */
@@ -550,7 +618,7 @@
 
         /* 3-Tier Pricing Section */
         .pricing-section {
-            padding: 5rem 5%;
+            padding: var(--section-padding);
             background-color: var(--light-blue);
             text-align: center;
         }
@@ -580,10 +648,10 @@
         .pricing-card {
             background-color: var(--white);
             padding: 3rem 2rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-md);
             border-top: 5px solid var(--secondary-blue);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -592,10 +660,15 @@
             max-width: 380px;
         }
 
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
         .pricing-card.popular {
             border-top: 5px solid var(--accent-gold);
             transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-lg);
             z-index: 10;
         }
 
@@ -698,17 +771,12 @@
             margin-top: 8px;
         }
 
-        .addons-list li .addon-price {
-            font-weight: 700;
-            color: var(--primary-blue);
-        }
-
         .addons-container {
             margin-top: 4rem;
             background-color: var(--white);
             padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-sm);
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -723,7 +791,7 @@
 
         /* Developer Story Section */
         .developer-section {
-            padding: 5rem 5%;
+            padding: var(--section-padding);
             background-color: var(--white);
             display: flex;
             flex-direction: column;
@@ -734,8 +802,8 @@
         .dev-card {
             background-color: var(--light-blue);
             padding: 3rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-sm);
             max-width: 900px;
             border-top: 5px solid var(--secondary-blue);
             text-align: start;
@@ -750,7 +818,7 @@
 
         /* Contact Section */
         .contact-section {
-            padding: 4rem 5%;
+            padding: var(--section-padding);
             background-color: var(--primary-blue);
             color: var(--white);
             text-align: center;
@@ -765,6 +833,9 @@
         }
 
         .number-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             background-color: rgba(255,255,255,0.1);
             padding: 1rem 2rem;
             border-radius: 8px;
@@ -772,6 +843,9 @@
             font-weight: bold;
             border: 1px solid rgba(255,255,255,0.2);
             transition: var(--transition);
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         .number-card:hover {
@@ -978,6 +1052,30 @@
                 <span class="dot" onclick="currentSlide(4)"></span>
                 <span class="dot" onclick="currentSlide(5)"></span>
             </div>
+
+            <!-- Preview of the app's own real dashboard feature (see Features
+                 section below) - not an invented company statistic. -->
+            <div class="hero-dashboard-widget">
+                <div class="widget-top">
+                    <span class="live-dot lang-ar">مباشر</span>
+                    <span class="live-dot lang-en">Live</span>
+                    <span class="widget-label lang-ar">لوحة التحكم</span>
+                    <span class="widget-label lang-en">Dashboard</span>
+                </div>
+                <div class="widget-num lang-ar" data-count="842500" data-suffix=" ل.س">0</div>
+                <div class="widget-num lang-en" data-count="842500" data-suffix=" SYP">0</div>
+                <div class="widget-sub lang-ar">أرباح اليوم</div>
+                <div class="widget-sub lang-en">Today's profit</div>
+                <div class="widget-bars">
+                    <span style="--h:35%; animation-delay:.05s"></span>
+                    <span style="--h:55%; animation-delay:.15s"></span>
+                    <span style="--h:40%; animation-delay:.25s"></span>
+                    <span style="--h:75%; animation-delay:.35s"></span>
+                    <span style="--h:60%; animation-delay:.45s"></span>
+                    <span style="--h:90%; animation-delay:.55s"></span>
+                    <span style="--h:100%; animation-delay:.65s"></span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -1081,19 +1179,6 @@
     <h2 class="section-title lang-en">Advanced Modules for Deeper Control</h2>
     <p class="section-subtitle lang-ar">ميزات إضافية يمكن تفعيلها حسب نوع نشاطك — من محلات الجملة إلى نقاط بيع بطاقات الاتصالات والسوبرماركت.</p>
     <p class="section-subtitle lang-en">Optional modules tailored to your business — from wholesale shops to telecom card counters and supermarkets.</p>
-
-    <div class="highlights-strip">
-        <span class="highlight-pill lang-ar">📦 مشتريات وموردين</span>
-        <span class="highlight-pill lang-en">📦 Purchases & Suppliers</span>
-        <span class="highlight-pill lang-ar">📒 كشف حساب</span>
-        <span class="highlight-pill lang-en">📒 Account Statement</span>
-        <span class="highlight-pill lang-ar">📊 سجل صنف</span>
-        <span class="highlight-pill lang-en">📊 Item Ledger</span>
-        <span class="highlight-pill lang-ar">🔢 جرد مجمّع</span>
-        <span class="highlight-pill lang-en">🔢 Batch Stocktake</span>
-        <span class="highlight-pill lang-ar">💲 تعديل أسعار قسم</span>
-        <span class="highlight-pill lang-en">💲 Bulk Category Pricing</span>
-    </div>
 
     <div class="features-grid">
         <div class="feature-card compact">
@@ -1207,6 +1292,16 @@
             <p class="lang-ar">دفتر أستاذ عام وقيود يومية تُنشأ تلقائياً لكل عملية بيع وشراء ودفعة، مع ميزان مراجعة وقوائم مالية جاهزة — محاسبة حقيقية دون إدخال يدوي.</p>
             <p class="lang-en">A general ledger with automatic journal entries for every sale, purchase and payment, plus a trial balance and ready financial statements — real bookkeeping without manual entry.</p>
         </div>
+
+        <div class="feature-card compact">
+            <div class="feature-icon">🖥️</div>
+            <span class="feature-price-badge lang-ar">إضافة — 100$ / 75$ لفترة محدودة</span>
+            <span class="feature-price-badge lang-en">Add-on — $100 / $75 limited-time</span>
+            <h3 class="lang-ar">تعدد نقاط البيع</h3>
+            <h3 class="lang-en">Multi-Terminal POS</h3>
+            <p class="lang-ar">شغّل النظام على أكثر من كاشير واحد في نفس المتجر — أوامر البيع والمخزون تبقى متزامنة بين الأجهزة، لكل جهاز كاشير إضافي.</p>
+            <p class="lang-en">Run the system on more than one cash register in the same store — sales and inventory stay in sync across terminals, per additional cash register.</p>
+        </div>
     </div>
 </section>
 
@@ -1319,26 +1414,8 @@
             We also supply <strong>barcode scanners and receipt printers</strong> at good prices — contact us for pricing.<br>
             A dedicated <strong>barcode label printer</strong> for your products is also available on request.
         </p>
-        <h4 class="lang-ar" style="margin-top: 1.5rem;">وحدات اختيارية إضافية</h4>
-        <h4 class="lang-en" style="margin-top: 1.5rem;">Optional Add-on Modules</h4>
-        <ul class="addons-list lang-ar">
-            <li>عروض الأسعار (Quotations) — <span class="addon-price">15$</span></li>
-            <li>إدارة المستخدمين والصلاحيات — <span class="addon-price">20$</span></li>
-            <li>إدارة الورديات وتسوية الصندوق — <span class="addon-price">25$</span></li>
-            <li>وحدة المحاسبة الكاملة — <span class="addon-price">25$</span></li>
-            <li>وصفات المنتجات / قوائم المواد (BOM) — <span class="addon-price">25$</span></li>
-            <li>أوامر التصنيع (تتطلب BOM) — <span class="addon-price">50$ كباقة مع BOM</span></li>
-            <li>تعدد نقاط البيع (أجهزة كاشير إضافية) — <span class="addon-price">100$ / 75$ لفترة محدودة</span></li>
-        </ul>
-        <ul class="addons-list lang-en">
-            <li>Quotations — <span class="addon-price">$15</span></li>
-            <li>User & Permission Management — <span class="addon-price">$20</span></li>
-            <li>Shift Management & Cash Reconciliation — <span class="addon-price">$25</span></li>
-            <li>Full Accounting Module — <span class="addon-price">$25</span></li>
-            <li>Product Recipes / BOM — <span class="addon-price">$25</span></li>
-            <li>Manufacturing Orders (requires BOM) — <span class="addon-price">$50 bundled with BOM</span></li>
-            <li>Multi-Terminal POS (extra cash registers) — <span class="addon-price">$100 / $75 limited-time</span></li>
-        </ul>
+        <p class="lang-ar" style="margin-top: 1.5rem;">أسعار الوحدات الاختيارية (إضافة) مذكورة على بطاقة كل وحدة بالأعلى.</p>
+        <p class="lang-en" style="margin-top: 1.5rem;">Optional (add-on) module pricing is shown on each module's own card above.</p>
     </div>
 </section>
 
@@ -1366,8 +1443,8 @@
     <p class="lang-en">Ready to secure your business operations? Reach out to get your customized, hardware-locked license today.</p>
 
     <div class="contact-numbers">
-        <div class="number-card" dir="ltr">📞 +971 55 196 2296</div>
-        <div class="number-card" dir="ltr">📞 +963 994 065 899</div>
+        <a class="number-card" dir="ltr" href="https://wa.me/971551962296" target="_blank" rel="noopener">📞 +971 55 196 2296</a>
+        <a class="number-card" dir="ltr" href="https://wa.me/963994065899" target="_blank" rel="noopener">📞 +963 994 065 899</a>
     </div>
 </section>
 
@@ -1445,7 +1522,29 @@
         dots[slideIndex-1].className += " active";
     }
 
-    window.onload = initSlider;
+    // Animates the hero dashboard widget's profit figure from 0 up to its
+    // real target once on page load - a preview of the app's own live
+    // dashboard feature, not a repeating/looping gimmick.
+    function animateHeroCounters() {
+        document.querySelectorAll('.hero-dashboard-widget [data-count]').forEach((el) => {
+            const target = parseInt(el.dataset.count, 10);
+            const suffix = el.dataset.suffix || '';
+            const duration = 1400;
+            const start = performance.now();
+            function tick(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
+                if (progress < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        });
+    }
+
+    window.onload = function () {
+        initSlider();
+        animateHeroCounters();
+    };
 </script>
 </body>
 </html>
