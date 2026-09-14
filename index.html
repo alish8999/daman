@@ -356,18 +356,18 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .feature-card {
             background-color: var(--light-blue);
-            padding: 2.5rem 2rem;
+            padding: 1.75rem 1.5rem;
             border-radius: var(--radius-card);
             box-shadow: var(--shadow-sm);
-            border-bottom: 4px solid var(--secondary-blue);
+            border-bottom: 3px solid var(--secondary-blue);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
             display: flex;
@@ -382,30 +382,26 @@
 
         .feature-card h3 {
             color: var(--primary-blue);
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
         }
 
         .feature-card p {
-            font-size: 1.05rem;
+            font-size: 0.88rem;
             color: var(--dark-text);
-            line-height: 1.6;
-        }
-
-        .feature-card.compact {
-            padding: 2rem 1.5rem;
+            line-height: 1.55;
         }
 
         .feature-icon {
-            width: 72px;
-            height: 72px;
+            width: 52px;
+            height: 52px;
             background: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.25rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.85rem;
             border: 2px solid rgba(8, 131, 149, 0.2);
             box-shadow: inset 0 4px 6px rgba(0,0,0,0.04);
         }
@@ -427,11 +423,6 @@
             max-width: 780px;
             margin: -2rem auto 3rem;
             line-height: 1.7;
-        }
-
-        .modules-section {
-            padding: var(--section-padding);
-            background: linear-gradient(180deg, var(--light-blue) 0%, var(--white) 100%);
         }
 
         .hero-bullets {
@@ -474,147 +465,6 @@
             }
         }
 
-        .why-section {
-            padding: var(--section-padding);
-            background-color: var(--primary-blue);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .why-section .section-title {
-            color: var(--white);
-            margin-bottom: 2rem;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .why-card {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: var(--radius-card);
-            padding: 1.75rem 1.25rem;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .why-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255,255,255,0.13);
-        }
-
-        .why-card strong {
-            display: block;
-            font-size: 1.15rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent-gold);
-        }
-
-        /* CSS Animations for Features */
-        .anim-container {
-            width: 110px;
-            height: 110px;
-            background-color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid rgba(8, 131, 149, 0.2);
-            margin-bottom: 1.5rem;
-            box-shadow: inset 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        /* 1. POS Terminal */
-        .anim-pos-wrapper {
-            position: relative; display: flex; flex-direction: column; align-items: center;
-        }
-        .anim-pos-screen {
-            width: 44px; height: 28px; border: 3px solid var(--primary-blue); border-radius: 4px; background: white; z-index: 2;
-        }
-        .anim-pos-base {
-            width: 18px; height: 6px; background: var(--primary-blue); border-radius: 0 0 4px 4px;
-        }
-        .anim-pos-receipt {
-            position: absolute; top: -15px; width: 22px; height: 18px; background: var(--secondary-blue); border-radius: 2px;
-            animation: receiptSlide 2s infinite; z-index: 1;
-        }
-        @keyframes receiptSlide {
-            0% { transform: translateY(18px); opacity: 0; }
-            50%, 80% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-5px); opacity: 0; }
-        }
-
-        /* 2. Offline Sync */
-        .anim-offline-wrapper {
-            position: relative; display: flex; justify-content: center; align-items: center;
-        }
-        .anim-sync-ring {
-            width: 50px; height: 50px; border: 3px dashed var(--secondary-blue); border-radius: 50%; animation: spin 4s infinite linear;
-        }
-        .anim-sync-core {
-            position: absolute; width: 14px; height: 14px; background: var(--primary-blue); border-radius: 50%; animation: pulseCore 1.5s infinite;
-        }
-        @keyframes pulseCore {
-            0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(10, 77, 104, 0.5); }
-            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(10, 77, 104, 0); }
-            100% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(10, 77, 104, 0); }
-        }
-
-        /* 3. Chart Analytics */
-        .anim-chart {
-            display: flex; align-items: flex-end; gap: 6px; height: 50px;
-        }
-        .anim-bar {
-            width: 12px; background-color: var(--secondary-blue); border-radius: 2px 2px 0 0; animation: growBar 1.5s infinite alternate ease-in-out;
-        }
-        .anim-bar:nth-child(1) { height: 20px; animation-delay: 0.1s; }
-        .anim-bar:nth-child(2) { height: 40px; animation-delay: 0.3s; background-color: var(--primary-blue); }
-        .anim-bar:nth-child(3) { height: 30px; animation-delay: 0.5s; }
-        .anim-bar:nth-child(4) { height: 50px; animation-delay: 0.7s; background-color: var(--accent-gold); }
-        @keyframes growBar { 0% { transform: scaleY(0.2); } 100% { transform: scaleY(1); } }
-
-        /* 4. Barcode */
-        .anim-barcode-wrapper {
-            position: relative; width: 60px; height: 40px; display: flex; justify-content: space-between;
-        }
-        .anim-barcode-line { height: 100%; background-color: var(--primary-blue); }
-        .anim-barcode-line:nth-child(1) { width: 4px; }
-        .anim-barcode-line:nth-child(2) { width: 2px; }
-        .anim-barcode-line:nth-child(3) { width: 6px; }
-        .anim-barcode-line:nth-child(4) { width: 3px; }
-        .anim-barcode-line:nth-child(5) { width: 5px; }
-        .anim-barcode-line:nth-child(6) { width: 2px; }
-        .anim-laser {
-            position: absolute; width: 120%; height: 2px; background-color: #EF4444; left: -10%; box-shadow: 0 0 8px #EF4444; animation: scanLaser 1.5s infinite alternate linear;
-        }
-        @keyframes scanLaser { 0% { top: -5px; } 100% { top: 45px; } }
-
-        /* 5. Invoice */
-        .anim-invoice {
-            width: 50px; height: 60px; background-color: white; border: 2px solid var(--primary-blue); border-radius: 4px; position: relative; display: flex; flex-direction: column; align-items: center; padding-top: 8px; gap: 6px; animation: slideUp 3s infinite ease-in-out;
-        }
-        .anim-line {
-            width: 30px; height: 4px; background-color: #CBD5E1; border-radius: 2px;
-        }
-        .anim-line.short { width: 15px; }
-        .anim-line.total { background-color: var(--secondary-blue); width: 35px; margin-top: auto; margin-bottom: 8px;}
-        @keyframes slideUp { 0% { transform: translateY(20px); opacity: 0; } 20%, 80% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-20px); opacity: 0; } }
-
-        /* 6. Security Lock */
-        .anim-lock {
-            width: 40px; height: 30px; background-color: var(--primary-blue); border-radius: 4px; position: relative; margin-top: 15px;
-        }
-        .anim-lock::before {
-            content: ''; position: absolute; width: 20px; height: 20px; border: 4px solid var(--primary-blue); border-bottom: none; border-radius: 12px 12px 0 0; top: -24px; left: 6px; transform-origin: left bottom; animation: unlock 2s infinite alternate ease-in-out;
-        }
-        @keyframes unlock { 0%, 20% { transform: rotate(0deg); } 80%, 100% { transform: rotate(-45deg); } }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
 
         /* 3-Tier Pricing Section */
         .pricing-section {
@@ -787,33 +637,6 @@
             color: var(--primary-blue);
             font-size: 1.3rem;
             margin-bottom: 1rem;
-        }
-
-        /* Developer Story Section */
-        .developer-section {
-            padding: var(--section-padding);
-            background-color: var(--white);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .dev-card {
-            background-color: var(--light-blue);
-            padding: 3rem;
-            border-radius: var(--radius-card);
-            box-shadow: var(--shadow-sm);
-            max-width: 900px;
-            border-top: 5px solid var(--secondary-blue);
-            text-align: start;
-        }
-
-        .dev-card p {
-            font-size: 1.15rem;
-            color: var(--dark-text);
-            margin-bottom: 1.5rem;
-            text-align: justify;
         }
 
         /* Contact Section */
@@ -998,12 +821,12 @@
 
             <ul class="hero-bullets lang-ar">
                 <li>بيع وشراء ومرتجعات — مع عبوات متعددة وباركود</li>
-                <li>دولار / ليرة جديدة / ليرة قديمة — بدون تشويه التقارير</li>
+                <li>دولار / ليرة سورية — بدون تشويه التقارير</li>
                 <li>رخصة مقفلة على الجهاز — بدون اشتراك شهري</li>
             </ul>
             <ul class="hero-bullets lang-en">
                 <li>Sales, purchases & returns — multi-packaging & barcodes</li>
-                <li>USD / New SYP / Old SYP — reports stay accurate</li>
+                <li>USD / SYP — reports stay accurate</li>
                 <li>Hardware-locked license — no monthly subscription</li>
             </ul>
 
@@ -1097,255 +920,180 @@
 <section class="features-section">
     <h2 class="section-title lang-ar">كل ما تحتاجه لإدارة أعمالك بنجاح</h2>
     <h2 class="section-title lang-en">Everything You Need to Manage Your Business</h2>
+    <p class="section-subtitle lang-ar">الأساسيات مضمّنة بالكامل — العناصر المعلَّم عليها «إضافة» اختيارية.</p>
+    <p class="section-subtitle lang-en">Core features are fully included — items marked "Add-on" are optional.</p>
 
     <div class="features-grid">
         <div class="feature-card">
-            <div class="anim-container">
-                <div class="anim-pos-wrapper">
-                    <div class="anim-pos-receipt"></div>
-                    <div class="anim-pos-screen"></div>
-                    <div class="anim-pos-base"></div>
-                </div>
-            </div>
+            <div class="feature-icon">💳</div>
             <h3 class="lang-ar">نقطة بيع شاملة وذكية</h3>
             <h3 class="lang-en">Smart, Comprehensive POS</h3>
-            <p class="lang-ar">سلة سريعة مع قراءة الباركود، عبوات متعددة للمنتج الواحد (قطعة / كرتون / صندوق)، إدخال عكسي بالقيمة («أعطني بـ500 ل.س من الأرز»)، أصناف حرة، وبيع آجل بنقرة واحدة على حسابات العملاء والموردين.</p>
-            <p class="lang-en">Fast cart with barcode scanning, multi-package SKUs (piece / box / case), reverse-math entry ("give me 500 SYP of rice"), open / misc items, and one-tap on-account sales for client and supplier ledgers.</p>
+            <p class="lang-ar">سلة سريعة بالباركود، عبوات متعددة، إدخال عكسي بالقيمة، وبيع آجل بنقرة واحدة.</p>
+            <p class="lang-en">Fast barcode cart, multi-packaging, reverse-math entry, and one-tap on-account sales.</p>
         </div>
 
         <div class="feature-card">
-            <div class="anim-container">
-                <div class="anim-offline-wrapper">
-                    <div class="anim-sync-ring"></div>
-                    <div class="anim-sync-core"></div>
-                </div>
-            </div>
+            <div class="feature-icon">🔌</div>
             <h3 class="lang-ar">يعمل دائماً — حتى بدون إنترنت</h3>
             <h3 class="lang-en">Truly Offline — Always On</h3>
-            <p class="lang-ar">النظام بأكمله يعمل محلياً على جهاز الكاشير: لا اشتراكات سحابية، لا فاتورة إنترنت شهرية، ولا تتوقف مبيعاتك لأن الشبكة انقطعت. بياناتك تبقى على جهازك، وتنسخها بكل بساطة كملف.</p>
-            <p class="lang-en">The whole system runs locally on the cashier's PC: no cloud subscription, no monthly internet bill, no "we can't sell — the internet is down" moments. Your data lives on your machine, and a backup is just a file copy.</p>
+            <p class="lang-ar">يعمل بالكامل على جهازك — بدون اشتراك سحابي وبدون توقف عند انقطاع الإنترنت.</p>
+            <p class="lang-en">Runs entirely on your PC — no cloud subscription, never stops when the internet drops.</p>
         </div>
 
         <div class="feature-card">
-            <div class="anim-container">
-                <div class="anim-chart">
-                    <div class="anim-bar"></div>
-                    <div class="anim-bar"></div>
-                    <div class="anim-bar"></div>
-                    <div class="anim-bar"></div>
-                </div>
-            </div>
+            <div class="feature-icon">📈</div>
             <h3 class="lang-ar">لوحة تحكم وتقارير ربحية</h3>
             <h3 class="lang-en">Profit Dashboard & Reports</h3>
-            <p class="lang-ar">لوحة تحكم مباشرة تُظهر الأرباح اليومية والأسبوعية، نسبة هامش الربح، المنتجات الأكثر مبيعاً، ومخطط إيرادات سبعة أيام — مع تصدير تقارير PDF لأي فترة بنقرة واحدة.</p>
-            <p class="lang-en">Live dashboard showing daily and weekly profit, profit-margin %, top-selling products and a 7-day revenue chart — plus one-click PDF reports for any date range.</p>
+            <p class="lang-ar">أرباح يومية وأسبوعية، أكثر المنتجات مبيعاً، وتصدير تقارير PDF بنقرة واحدة.</p>
+            <p class="lang-en">Daily/weekly profit, top-selling products, and one-click PDF reports.</p>
         </div>
 
         <div class="feature-card">
-            <div class="anim-container">
-                <div class="anim-barcode-wrapper">
-                    <div class="anim-barcode-line"></div>
-                    <div class="anim-barcode-line"></div>
-                    <div class="anim-barcode-line"></div>
-                    <div class="anim-barcode-line"></div>
-                    <div class="anim-barcode-line"></div>
-                    <div class="anim-barcode-line"></div>
-                    <div class="anim-laser"></div>
-                </div>
-            </div>
+            <div class="feature-icon">🏷️</div>
             <h3 class="lang-ar">المخزون والباركود وسجل التدقيق</h3>
             <h3 class="lang-en">Inventory, Barcodes & Audit Trail</h3>
-            <p class="lang-ar">تتبّع دقيق للمخزون وتنبيهات نفاد الكميات، توليد باركود تلقائي ودعم أجهزة المسح الضوئي الخارجية، وسجل دائم لكل تغيّر في الكمية مع السبب والعملية المرتبطة (بيع / مرتجع / تعديل يدوي).</p>
-            <p class="lang-en">Accurate stock tracking with low-stock alerts, auto-generated barcodes, hardware scanner support, and a permanent audit log of every quantity change — with the reason and the sale, return or adjustment that caused it.</p>
+            <p class="lang-ar">تتبّع مخزون دقيق، تنبيهات نفاد الكمية، وسجل تدقيق دائم لكل تغيير.</p>
+            <p class="lang-en">Accurate stock tracking, low-stock alerts, and a permanent audit trail for every change.</p>
         </div>
 
         <div class="feature-card">
-            <div class="anim-container">
-                <div class="anim-invoice">
-                    <div class="anim-line"></div>
-                    <div class="anim-line short"></div>
-                    <div class="anim-line"></div>
-                    <div class="anim-line total"></div>
-                </div>
-            </div>
+            <div class="feature-icon">💰</div>
             <span class="feature-price-badge lang-ar">إضافة — 25$</span>
             <span class="feature-price-badge lang-en">Add-on — $25</span>
             <h3 class="lang-ar">إدارة الورديات وحركة الصندوق</h3>
             <h3 class="lang-en">Shifts & Cash Drawer Control</h3>
-            <p class="lang-ar">افتح وأغلق الوردية مع رصيد البداية والرصيد المتوقع والرصيد الفعلي. كل عملية بيع ومرتجع ودفعة ومصروف مرتبطة بوردية محددة، فتُصبح تسوية الصندوق نهاية اليوم واضحة وقابلة للتدقيق، مع حماية العمليات الحساسة برمز المشرف (PIN).</p>
-            <p class="lang-en">Open and close shifts with starting cash, expected cash and actual cash. Every sale, return, payment and expense is stamped to a shift — so end-of-day reconciliation is transparent and tamper-evident, with sensitive actions protected by a Supervisor PIN.</p>
+            <p class="lang-ar">فتح وإغلاق ورديات مع تسوية صندوق واضحة وحماية بكود مشرف (PIN).</p>
+            <p class="lang-en">Open/close shifts with clear cash reconciliation and Supervisor PIN protection.</p>
         </div>
 
         <div class="feature-card">
-            <div class="anim-container">
-                <div class="anim-lock"></div>
-            </div>
+            <div class="feature-icon">💱</div>
             <h3 class="lang-ar">تعدد العملات بدون اضطراب الأرقام</h3>
             <h3 class="lang-en">Multi-Currency Without the Drift</h3>
-            <p class="lang-ar">بِع بالدولار، الليرة السورية الجديدة، أو القديمة — وبدّل العملة في أي وقت أثناء الوردية. كل عملية تُسجَّل بالعملتين معاً وبسعر الصرف وقت تنفيذها، لتبقى تقاريرك دقيقة حتى مع تغيّر الأسعار لاحقاً.</p>
-            <p class="lang-en">Sell in US Dollars, New Syrian Pound, or Old Syrian Pound — and switch mid-shift. Every transaction is stored in both the cashier's currency and the base currency at that day's rate, so reports stay accurate even as exchange rates move later.</p>
+            <p class="lang-ar">بِع بالدولار أو الليرة، وبدّل العملة في أي وقت — تقاريرك تبقى دقيقة دائماً.</p>
+            <p class="lang-en">Sell in USD or SYP, switch anytime — reports always stay accurate.</p>
         </div>
-    </div>
-</section>
 
-<section class="modules-section">
-    <h2 class="section-title lang-ar">وحدات متقدمة لإدارة أدق</h2>
-    <h2 class="section-title lang-en">Advanced Modules for Deeper Control</h2>
-    <p class="section-subtitle lang-ar">ميزات إضافية يمكن تفعيلها حسب نوع نشاطك — من محلات الجملة إلى نقاط بيع بطاقات الاتصالات والسوبرماركت.</p>
-    <p class="section-subtitle lang-en">Optional modules tailored to your business — from wholesale shops to telecom card counters and supermarkets.</p>
-
-    <div class="features-grid">
-        <div class="feature-card compact">
+        <div class="feature-card">
             <div class="feature-icon">🛒</div>
             <h3 class="lang-ar">المشتريات وسجل الموردين</h3>
             <h3 class="lang-en">Purchases & Supplier Ledger</h3>
-            <p class="lang-ar">سجّل فواتير الشراء، حدّث كلفة وأسعار البيع لكل عبوة، ادفع للمورد نقداً أو على الحساب، وتابع رصيد كل مورد بدقة — مع ربط كل عملية بوردية محددة.</p>
-            <p class="lang-en">Record purchase invoices, update cost and per-packaging sell prices, pay suppliers cash or on account, and track each supplier balance — every transaction tied to a shift.</p>
+            <p class="lang-ar">سجّل فواتير الشراء، حدّث الكلفة والأسعار، وتابع رصيد كل مورد بدقة.</p>
+            <p class="lang-en">Record purchases, update cost & prices, and track each supplier's balance.</p>
         </div>
 
-        <div class="feature-card compact">
+        <div class="feature-card">
             <div class="feature-icon">👤</div>
             <h3 class="lang-ar">حسابات العملاء وكشف الحساب</h3>
             <h3 class="lang-en">Client Ledger & Account Statement</h3>
-            <p class="lang-ar">بيع آجل بنقرة واحدة، تسجيل الدفعات الواردة، وميزان عميل محدّث لحظياً. تقرير كشف حساب شامل (مبيعات، مرتجعات، دفعات) لفترة محددة — جاهز للطباعة أو المشاركة.</p>
-            <p class="lang-en">One-tap credit sales, incoming payment recording, and live client balances. Full account statement (sales, returns, payments) for any period — ready to print or share.</p>
+            <p class="lang-ar">بيع آجل بنقرة واحدة، ودفعات وكشف حساب شامل جاهز للطباعة.</p>
+            <p class="lang-en">One-tap credit sales, payments, and a full account statement ready to print.</p>
         </div>
 
-        <div class="feature-card compact">
+        <div class="feature-card">
             <div class="feature-icon">📋</div>
             <h3 class="lang-ar">سجل حركة الصنف (Item Ledger)</h3>
             <h3 class="lang-en">Per-Product Item Ledger</h3>
-            <p class="lang-ar">تتبّع كل حركة لمادة واحدة: مبيعات، مشتريات، مرتجعات، تعديلات مخزون، وإتلاف — مع الكمية قبل وبعد وسبب التغيير. مثالي لحل النزاعات ومراجعة الأرقام.</p>
-            <p class="lang-en">Track every movement for a single product: sales, purchases, returns, adjustments and spoilage — with before/after quantities and reasons. Ideal for disputes and audits.</p>
+            <p class="lang-ar">تتبّع كل حركة لمادة واحدة مع الكمية قبل وبعد — مثالي للتدقيق.</p>
+            <p class="lang-en">Track every movement for one product, before/after quantities — ideal for audits.</p>
         </div>
 
-        <div class="feature-card compact">
+        <div class="feature-card">
             <div class="feature-icon">📦</div>
             <h3 class="lang-ar">تسوية الجرد المجمّعة</h3>
             <h3 class="lang-en">Batch Stocktake & Reconciliation</h3>
-            <p class="lang-ar">أدخل الكميات الفعلية لمجموعة أصناف دفعة واحدة — النظام يحسب الفروقات ويُسجّل النقص كتوالف والزيادة كمكاسب مخزون في تقارير الربحية، دون أن يخرج نقد من الصندوق.</p>
-            <p class="lang-en">Enter actual counts for many products at once — the system posts shortages as wastage and surpluses as inventory gains in P&amp;L reports, without touching cash in the drawer.</p>
+            <p class="lang-ar">أدخل الكميات الفعلية دفعة واحدة — النظام يحسب الفروقات تلقائياً.</p>
+            <p class="lang-en">Enter actual counts at once — the system posts the differences automatically.</p>
         </div>
 
-        <div class="feature-card compact">
+        <div class="feature-card">
             <div class="feature-icon">💲</div>
             <h3 class="lang-ar">تعديل أسعار قسم بالكامل</h3>
             <h3 class="lang-en">Bulk Category Price Update</h3>
-            <p class="lang-ar">ارفع أو خفّض أسعار كل أصناف قسم معيّن دفعة واحدة — بنسبة مئوية أو مبلغ ثابت، مع دعم تعديل كل مجموعة عملات على حدة (مثلاً أصناف بالدولار وأخرى بالليرة).</p>
-            <p class="lang-en">Raise or lower prices for an entire category at once — by percentage or fixed amount, with separate adjustments per pricing-currency group (e.g. USD items vs SYP items).</p>
+            <p class="lang-ar">ارفع أو خفّض أسعار قسم كامل دفعة واحدة — بنسبة أو مبلغ ثابت.</p>
+            <p class="lang-en">Raise or lower an entire category's prices at once — by percentage or amount.</p>
         </div>
 
-        <div class="feature-card compact">
+        <div class="feature-card">
             <div class="feature-icon">📱</div>
             <h3 class="lang-ar">تسعير ثابت بعملة محلية</h3>
             <h3 class="lang-en">Fixed Local-Currency Pricing</h3>
-            <p class="lang-ar">مثالي لبطاقات MTN وسيرياتيل: حدّد سعر البيع بالليرة لكل بطاقة بينما متجرك يعمل بالدولار — بدون تحويل يومي يُربك الكاشير أو يشوّه الفاتورة.</p>
-            <p class="lang-en">Perfect for MTN / Syriatel cards: set a fixed SYP sell price per card while your store runs in USD — no daily conversion confusing the cashier or the receipt.</p>
+            <p class="lang-ar">مثالي لبطاقات الاتصالات: سعر ثابت بالليرة بينما متجرك يعمل بالدولار.</p>
+            <p class="lang-en">Perfect for telecom cards: a fixed SYP price while your store runs in USD.</p>
         </div>
 
-        <div class="feature-card compact">
+        <div class="feature-card">
             <div class="feature-icon">🗑️</div>
             <h3 class="lang-ar">تسجيل الإتلاف والتوالف</h3>
             <h3 class="lang-en">Spoilage & Wastage Recording</h3>
-            <p class="lang-ar">شطب كميات منتهية أو تالفة من المخزون مع سبب واضح — يُخصم من صافي الربح في التقارير دون أن يُسجَّل كمصروف نقدي من الصندوق.</p>
-            <p class="lang-en">Write off expired or damaged stock with a clear reason — reduces net profit in reports without recording a cash expense from the drawer.</p>
+            <p class="lang-ar">شطب كميات تالفة مع سبب واضح — يُخصم من الربح دون مصروف نقدي.</p>
+            <p class="lang-en">Write off damaged stock with a reason — reduces profit, no cash expense.</p>
         </div>
 
-        <div class="feature-card compact">
+        <div class="feature-card">
             <div class="feature-icon">🎨</div>
             <h3 class="lang-ar">هوية متجرك (White-Label)</h3>
             <h3 class="lang-en">Your Brand (White-Label)</h3>
-            <p class="lang-ar">شعارك، ألوانك، وترويسة باسم متجرك على شاشة الدخول والفواتير — تجربة احترافية تحمل اسم نشاطك وليس اسم البرنامج، متضمّنة لكل عميل.</p>
-            <p class="lang-en">Your logo, colours and store name on login and invoices — a professional experience branded for your business, not the software vendor, included for every client.</p>
+            <p class="lang-ar">شعارك وألوانك واسم متجرك على الدخول والفواتير — مجاناً لكل عميل.</p>
+            <p class="lang-en">Your logo, colors and store name on login and invoices — included free.</p>
         </div>
 
-        <div class="feature-card compact">
+        <div class="feature-card">
             <div class="feature-icon">👥</div>
             <span class="feature-price-badge lang-ar">إضافة — 20$</span>
             <span class="feature-price-badge lang-en">Add-on — $20</span>
             <h3 class="lang-ar">إدارة المستخدمين والصلاحيات</h3>
             <h3 class="lang-en">User & Permission Management</h3>
-            <p class="lang-ar">تحكّم بدقة بما يراه كل موظف: حدّد أقسام لوحة التحكم والإجراءات والصفحات المتاحة لكل حساب مستقل — صلاحيات محفوظة لكل مستخدم على حدة ويمكن تعديلها في أي وقت.</p>
-            <p class="lang-en">Precisely control what each employee accesses: select which dashboard sections, actions and pages are available per account — permissions saved independently per user and editable any time.</p>
+            <p class="lang-ar">تحكّم بما يراه كل موظف — صلاحيات مستقلة لكل حساب، قابلة للتعديل دائماً.</p>
+            <p class="lang-en">Control what each employee sees — independent, editable permissions per user.</p>
         </div>
 
-        <div class="feature-card compact">
+        <div class="feature-card">
             <div class="feature-icon">🧾</div>
             <h3 class="lang-ar">تخصيص بيانات الفاتورة</h3>
             <h3 class="lang-en">Invoice Customization</h3>
-            <p class="lang-ar">أضف رقم هاتفك، عنوانك التجاري، والرقم الضريبي إلى كل فاتورة — واجهة إعداد بسيطة تُظهر هوية نشاطك في كل مستند تطبعه أو تشاركه مع العميل.</p>
-            <p class="lang-en">Add your phone number, store address and tax ID to every invoice — a simple settings screen that puts your business identity on every document you print or share with a client.</p>
+            <p class="lang-ar">أضف هاتفك وعنوانك ورقمك الضريبي إلى كل فاتورة تطبعها أو تشاركها.</p>
+            <p class="lang-en">Add your phone, address and tax ID to every invoice you print or share.</p>
         </div>
 
-        <div class="feature-card compact">
+        <div class="feature-card">
             <div class="feature-icon">🏭</div>
             <span class="feature-price-badge lang-ar">وصفات / BOM — 25$ · مع التصنيع — 50$</span>
             <span class="feature-price-badge lang-en">Recipes / BOM — $25 · with Manufacturing — $50</span>
             <h3 class="lang-ar">وصفات الإنتاج والتصنيع</h3>
             <h3 class="lang-en">Manufacturing & Product Recipes</h3>
-            <p class="lang-ar">عرّف وصفة لكل منتج مصنّع بتحديد مكوناته وكمياته — يخصم النظام المواد الأولية تلقائياً عند تسجيل أي دفعة إنتاج، مع عكس التكلفة الفعلية في تقارير الربحية. أوامر التصنيع تتطلب تفعيل الوصفات (BOM) أولاً.</p>
-            <p class="lang-en">Define a recipe for each manufactured product with its ingredients and quantities — the system auto-deducts raw materials on each production run and reflects true cost in profit reports. Manufacturing Orders require Recipes/BOM to be enabled first.</p>
+            <p class="lang-ar">عرّف وصفة إنتاج لكل منتج — يخصم المواد الأولية تلقائياً ويعكس التكلفة الحقيقية.</p>
+            <p class="lang-en">Define a recipe per product — auto-deducts materials, reflects true cost.</p>
         </div>
 
-        <div class="feature-card compact">
+        <div class="feature-card">
             <div class="feature-icon">📝</div>
             <span class="feature-price-badge lang-ar">إضافة — 15$</span>
             <span class="feature-price-badge lang-en">Add-on — $15</span>
             <h3 class="lang-ar">عروض الأسعار</h3>
             <h3 class="lang-en">Quotations</h3>
-            <p class="lang-ar">أنشئ عرض سعر للعميل قبل تأكيد البيع، وحوّله إلى فاتورة فعلية بنقرة واحدة عند الموافقة — دون إعادة إدخال الأصناف.</p>
-            <p class="lang-en">Create a price quote for a client before confirming the sale, then convert it to a real invoice in one click once approved — no re-entering items.</p>
+            <p class="lang-ar">أنشئ عرض سعر وحوّله لفاتورة بنقرة واحدة عند موافقة العميل.</p>
+            <p class="lang-en">Create a quote, convert it to an invoice in one click once approved.</p>
         </div>
 
-        <div class="feature-card compact">
+        <div class="feature-card">
             <div class="feature-icon">📊</div>
             <span class="feature-price-badge lang-ar">إضافة — 25$</span>
             <span class="feature-price-badge lang-en">Add-on — $25</span>
             <h3 class="lang-ar">وحدة المحاسبة الكاملة</h3>
             <h3 class="lang-en">Full Accounting Module</h3>
-            <p class="lang-ar">دفتر أستاذ عام وقيود يومية تُنشأ تلقائياً لكل عملية بيع وشراء ودفعة، مع ميزان مراجعة وقوائم مالية جاهزة — محاسبة حقيقية دون إدخال يدوي.</p>
-            <p class="lang-en">A general ledger with automatic journal entries for every sale, purchase and payment, plus a trial balance and ready financial statements — real bookkeeping without manual entry.</p>
+            <p class="lang-ar">دفتر أستاذ وقيود تلقائية لكل عملية، مع ميزان مراجعة وقوائم مالية جاهزة.</p>
+            <p class="lang-en">A general ledger with automatic entries, trial balance and ready statements.</p>
         </div>
 
-        <div class="feature-card compact">
+        <div class="feature-card">
             <div class="feature-icon">🖥️</div>
             <span class="feature-price-badge lang-ar">إضافة — 100$ / 75$ لفترة محدودة</span>
             <span class="feature-price-badge lang-en">Add-on — $100 / $75 limited-time</span>
             <h3 class="lang-ar">تعدد نقاط البيع</h3>
             <h3 class="lang-en">Multi-Terminal POS</h3>
-            <p class="lang-ar">شغّل النظام على أكثر من كاشير واحد في نفس المتجر — أوامر البيع والمخزون تبقى متزامنة بين الأجهزة، لكل جهاز كاشير إضافي.</p>
-            <p class="lang-en">Run the system on more than one cash register in the same store — sales and inventory stay in sync across terminals, per additional cash register.</p>
-        </div>
-    </div>
-</section>
-
-<section class="why-section">
-    <h2 class="section-title lang-ar">لماذا ضمان؟</h2>
-    <h2 class="section-title lang-en">Why Daman?</h2>
-    <div class="why-grid">
-        <div class="why-card">
-            <strong class="lang-ar">مصمَّم للسوق السوري والعربي</strong>
-            <strong class="lang-en">Built for Syrian & Arab Retail</strong>
-            <span class="lang-ar">ليرة جديدة وقديمة، RTL أصيل، ومصطلحات محلية يفهمها الكاشير من أول يوم.</span>
-            <span class="lang-en">New & old SYP, native RTL, and local terminology your cashier understands from day one.</span>
-        </div>
-        <div class="why-card">
-            <strong class="lang-ar">بدون إنترنت — بدون اشتراك</strong>
-            <strong class="lang-en">No Internet — No Subscription</strong>
-            <span class="lang-ar">دفعة واحدة، رخصة مقفلة على جهازك، وبياناتك محلية — لا فواتير سحابية شهرية.</span>
-            <span class="lang-en">One-time payment, hardware-locked license, local data — no monthly cloud bills.</span>
-        </div>
-        <div class="why-card">
-            <strong class="lang-ar">دقة مالية حقيقية</strong>
-            <strong class="lang-en">Real Financial Accuracy</strong>
-            <span class="lang-ar">سعر صرف لحظة كل عملية، سجل تدقيق للمخزون، وتسوية وردية شفافة.</span>
-            <span class="lang-en">FX rate snapshotted per transaction, stock audit trail, transparent shift reconciliation.</span>
-        </div>
-        <div class="why-card">
-            <strong class="lang-ar">قابل للتوسع حسب نشاطك</strong>
-            <strong class="lang-en">Grows With Your Business</strong>
-            <span class="lang-ar">ابدأ بالأساسيات وارتقِ لاحقاً — مع الاحتفاظ بكامل بياناتك دون إعادة إدخال.</span>
-            <span class="lang-en">Start with essentials and upgrade later — keeping all your data, zero re-entry.</span>
+            <p class="lang-ar">شغّل النظام على أكثر من كاشير في نفس المتجر — مبيعات ومخزون متزامنة.</p>
+            <p class="lang-en">Run more than one cash register in the same store — synced sales & inventory.</p>
         </div>
     </div>
 </section>
@@ -1383,8 +1131,8 @@
                 <li class="lang-en">Client & supplier credit ledgers (on-account / payments)</li>
                 <li class="lang-ar">كشف حساب عميل/مورد وسجل حركة الصنف</li>
                 <li class="lang-en">Client/supplier account statements & per-product item ledger</li>
-                <li class="lang-ar">تعدد العملات (USD / SYP / SYP_OLD) مع التحويل المباشر</li>
-                <li class="lang-en">Multi-currency (USD / SYP / SYP_OLD) with live switching</li>
+                <li class="lang-ar">تعدد العملات (USD / SYP) مع التحويل المباشر</li>
+                <li class="lang-en">Multi-currency (USD / SYP) with live switching</li>
                 <li class="lang-ar">تسعير ثابت بعملة محلية (بطاقات اتصالات)</li>
                 <li class="lang-en">Fixed local-currency product pricing (telecom cards)</li>
                 <li class="lang-ar">عبوات متعددة للمنتج بأسعار مستقلة (قطعة / كرتون)</li>
@@ -1433,22 +1181,6 @@
     </div>
 </section>
 
-<section class="developer-section">
-    <h2 class="section-title lang-ar">عن مهندس النظام</h2>
-    <h2 class="section-title lang-en">About the Architect</h2>
-
-    <div class="dev-card">
-        <div class="lang-ar">
-            <p>تم بناء "ضمان" انطلاقاً من فهم عميق لمتطلبات البرمجيات على مستوى الشركات الكبرى والواقع العملي للأسواق المحلية. مطور النظام هو مهندس برمجيات أول (Senior Software Engineer) يمتلك خبرة تتجاوز 8 سنوات في بناء حلول برمجية قوية وقابلة للتوسع. يمتلك المطور أساساً متيناً في معمارية النظم المعقدة، والذي تطور لإتقان أحدث التقنيات – وتحديداً ربط الواجهات الخلفية الآمنة مع الواجهات الأمامية التفاعلية وتجميعها في تطبيقات سطح مكتب فائقة السرعة وعالية الأداء.</p>
-            <p>يعمل المطور حالياً مع عملاء عبر عدة دول، ليجمع بين احتياجات الأسواق المختلفة وأعلى المعايير الهندسية العالمية. كل سطر برمجي في "ضمان" يعكس الالتزام بتقديم برنامج ليس فقط فعالاً، بل موثوقاً وآمناً بشكل صارم ومقفل على مستوى الأجهزة (Hardware-locked).</p>
-        </div>
-        <div class="lang-en">
-            <p>Daman was forged from a deep understanding of enterprise-level software requirements and the practical realities of local businesses. The architect behind the system is a Senior Software Engineer with over 8 years of dedicated experience in building robust, highly scalable software solutions. This background translates into a mastery of the modern tech stack—specifically bridging secure backends with dynamic frontends and compiling them into lightning-fast, high-performance desktop applications.</p>
-            <p>Currently operating across multiple countries, the developer combines international market insights with world-class engineering standards. Every line of code in Daman reflects a commitment to delivering software that is not just functional, but genuinely reliable and strictly secure at the hardware level.</p>
-        </div>
-    </div>
-</section>
-
 <section class="contact-section">
     <h2 class="lang-ar">أرقام التواصل</h2>
     <h2 class="lang-en">Contact Numbers</h2>
@@ -1457,8 +1189,8 @@
     <p class="lang-en">Ready to secure your business operations? Reach out to get your customized, hardware-locked license today.</p>
 
     <div class="contact-numbers">
-        <a class="number-card" dir="ltr" href="https://wa.me/971551962296" target="_blank" rel="noopener">📞 +971 55 196 2296</a>
-        <a class="number-card" dir="ltr" href="https://wa.me/963994065899" target="_blank" rel="noopener">📞 +963 994 065 899</a>
+        <a class="number-card" dir="ltr" href="tel:+971551962296">📞 +971 55 196 2296</a>
+        <a class="number-card" dir="ltr" href="tel:+963994065899">📞 +963 994 065 899</a>
     </div>
 </section>
 
