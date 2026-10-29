@@ -1,0 +1,117 @@
+/* Shared styling for the legal pages (privacy.html, terms.html).
+   Mirrors index.html's palette and bilingual lang-ar/lang-en toggle. */
+:root {
+    --primary-blue: #0A4D68;
+    --secondary-blue: #088395;
+    --light-blue: #EBF8FF;
+    --dark-text: #2D3748;
+    --white: #FFFFFF;
+    --radius-card: 18px;
+    --shadow-sm: 0 1px 3px rgba(10, 77, 104, 0.06), 0 6px 16px rgba(10, 77, 104, 0.05);
+}
+
+html[lang="ar"] .lang-en { display: none !important; }
+html[lang="en"] .lang-ar { display: none !important; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Tajawal', 'Segoe UI', Tahoma, sans-serif;
+    color: var(--dark-text);
+    background-color: var(--light-blue);
+    line-height: 1.85;
+}
+
+.legal-header {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 5% 2.5rem;
+}
+
+.legal-header .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.75rem;
+}
+
+.legal-header img { height: 42px; width: auto; }
+
+.lang-toggle {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    padding: 0.45rem 1.2rem;
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.lang-toggle:hover { background: rgba(255, 255, 255, 0.28); }
+
+.legal-header h1 { font-size: 2rem; line-height: 1.4; }
+
+.legal-header .updated {
+    margin-top: 0.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+}
+
+main {
+    max-width: 860px;
+    margin: -1.25rem auto 3rem;
+    padding: 2.5rem clamp(1.25rem, 5vw, 3rem);
+    background: var(--white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-sm);
+}
+
+main h2 {
+    color: var(--primary-blue);
+    font-size: 1.35rem;
+    margin: 2.25rem 0 0.75rem;
+}
+
+main h2:first-child { margin-top: 0; }
+
+main p, main li { margin-bottom: 0.85rem; }
+
+main ul, main ol { padding-inline-start: 1.6rem; }
+
+main a { color: var(--secondary-blue); }
+
+/* Long URLs and file paths must not widen the page on a phone. */
+main code, main .path {
+    background: var(--light-blue);
+    border-radius: 6px;
+    padding: 0.1rem 0.35rem;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 0.9em;
+    overflow-wrap: anywhere;
+}
+
+main a { overflow-wrap: anywhere; }
+
+.callout {
+    background: var(--light-blue);
+    border-inline-start: 4px solid var(--secondary-blue);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+}
+
+.callout p:last-child { margin-bottom: 0; }
+
+footer {
+    background-color: #052a3a;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    padding: 1.75rem 5%;
+    font-size: 0.95rem;
+}
+
+footer a { color: rgba(255, 255, 255, 0.85); }

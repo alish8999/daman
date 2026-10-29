@@ -702,6 +702,24 @@
             transform: translateY(-3px); /* Floats up slightly on hover */
         }
 
+        /* Privacy / Terms links — Google's OAuth consent screen requires both to be
+           publicly reachable, and a reviewer looks for them from the home page. */
+        .footer-legal {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-legal a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
             .pricing-card.popular {
@@ -1294,6 +1312,15 @@
 
     <span class="lang-ar">&copy; 2026 ضمان لإدارة المبيعات. جميع الحقوق محفوظة.</span>
     <span class="lang-en">&copy; 2026 Daman Sales Management. All rights reserved.</span>
+
+    <div class="footer-legal">
+        <span class="lang-ar">
+            <a href="./privacy.html">سياسة الخصوصية</a> · <a href="./terms.html">شروط الاستخدام</a>
+        </span>
+        <span class="lang-en">
+            <a href="./privacy.html">Privacy Policy</a> · <a href="./terms.html">Terms of Service</a>
+        </span>
+    </div>
 </footer>
 
 <script>
