@@ -66,6 +66,11 @@
             gap: 20px;
         }
 
+        .header-tagline {
+            font-weight: 700;
+            color: var(--secondary-blue);
+        }
+
         .logo-container {
             display: flex;
             align-items: center;
@@ -745,7 +750,23 @@
             .hero-text h1 { font-size: 2.2rem; }
             .hero-text .slogan { font-size: 1.4rem; }
             .contact-numbers { flex-direction: column; gap: 1rem; }
-            .header-right { flex-direction: column-reverse; gap: 10px; align-items: flex-end; }
+
+            /* The header used to stack its right-hand side into a column, which on a phone
+               turned four small things — logo, tagline, version button, language button — into
+               a two-by-two block taller than the content it sits above. One row again, and the
+               tagline goes: the hero says the same words in a larger type two inches below it. */
+            header { padding: 0.7rem 4%; }
+            .header-right { gap: 8px; }
+            .header-tagline { display: none; }
+            .brand-logo { height: 34px; }
+            .btn-latest-version,
+            .lang-btn { font-size: 0.8rem; padding: 0.4rem 0.7rem; }
+        }
+
+        @media (max-width: 380px) {
+            .btn-latest-version,
+            .lang-btn { font-size: 0.74rem; padding: 0.35rem 0.55rem; }
+            .brand-logo { height: 28px; }
         }
 
         /* Download Demo CTA */
@@ -753,12 +774,6 @@
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero-cta-buttons {
-                gap: 1.25rem;
-            }
         }
 
         .btn-download-demo {
@@ -866,11 +881,55 @@
             opacity: 0.7;
         }
 
-        .hero-cta-note {
+        /* .hero-text p sets 1.15rem and outranks a lone .hero-cta-note, which is why the note
+           rendered at 18.4px however small this said. Qualified so it actually wins. */
+        .hero-text .hero-cta-note {
             margin-top: 0.55rem;
             font-size: 0.85rem;
+            line-height: 1.6;
             opacity: 0.75;
             color: inherit;
+            /* A line of running text past about 70 characters is hard to come back to on the
+               next line; without this the note ran the full width of the hero. */
+            max-width: 62ch;
+        }
+
+        /* On a phone every button goes full width and stacks, so the desktop's generous
+           padding and 1.05rem type made three blocks that filled the screen on their own and
+           pushed the explanation below the fold. */
+        @media (max-width: 768px) {
+            .hero-cta-buttons {
+                gap: 0.6rem;
+            }
+            /* Stacked and full width, with the label allowed to wrap. An inline-flex button
+               cannot shrink below its own text, and "حمّل النسخة التجريبية مجاناً (64 بت)" is
+               wider than a phone — which is what pushed the whole page sideways and left the
+               headline clipped at the edge. */
+            .hero-cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-download-demo {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+                white-space: normal;
+                padding: 0.7rem 1rem;
+                font-size: 0.95rem;
+                border-radius: 10px;
+            }
+            .btn-download-demo--secondary {
+                padding: 0.55rem 1rem;
+                font-size: 0.86rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text .hero-cta-note {
+                font-size: 0.78rem;
+                line-height: 1.55;
+                max-width: none;
+            }
         }
     </style>
 </head>
@@ -883,8 +942,8 @@
     </a>
 
     <div class="header-right">
-        <div style="font-weight: 700; color: var(--secondary-blue);" class="lang-ar">نظام إدارة المبيعات</div>
-        <div style="font-weight: 700; color: var(--secondary-blue);" class="lang-en">Sales Management System</div>
+        <div class="header-tagline lang-ar">نظام إدارة المبيعات</div>
+        <div class="header-tagline lang-en">Sales Management System</div>
         <details class="latest-version-menu">
             <summary class="btn-latest-version">
                 <span class="lang-ar">⬇ آخر إصدار <span class="dl-version">1.6.2</span></span>
@@ -900,9 +959,9 @@
                     <span class="lang-ar">32 بت <small>(الأجهزة القديمة)</small></span>
                     <span class="lang-en">32-bit <small>(older PCs)</small></span>
                 </a>
-                <a href="https://dl.damansoft.com/Daman_1.6.2_generic.apk">
-                    <span class="lang-ar">أندرويد <small>(طرفية موبايل <span class="dl-apk-version">1.6.2</span>)</small></span>
-                    <span class="lang-en">Android <small>(phone till <span class="dl-apk-version">1.6.2</span>)</small></span>
+                <a href="https://dl.damansoft.com/Daman_1.6.3_generic.apk">
+                    <span class="lang-ar">أندرويد <small>(طرفية موبايل <span class="dl-apk-version">1.6.3</span>)</small></span>
+                    <span class="lang-en">Android <small>(phone till <span class="dl-apk-version">1.6.3</span>)</small></span>
                 </a>
             </div>
         </details>
@@ -954,13 +1013,13 @@
                        class="btn-download-demo btn-download-demo--secondary lang-ar">⬇ نسخة 32 بت</a>
                     <a href="https://dl.damansoft.com/32-Daman_1.6.2_generic.exe"
                        class="btn-download-demo btn-download-demo--secondary lang-en">⬇ 32-bit Version</a>
-                    <a href="https://dl.damansoft.com/Daman_1.6.2_generic.apk"
+                    <a href="https://dl.damansoft.com/Daman_1.6.3_generic.apk"
                        class="btn-download-demo btn-download-demo--secondary lang-ar">⬇ تطبيق الموبايل (أندرويد)</a>
-                    <a href="https://dl.damansoft.com/Daman_1.6.2_generic.apk"
+                    <a href="https://dl.damansoft.com/Daman_1.6.3_generic.apk"
                        class="btn-download-demo btn-download-demo--secondary lang-en">⬇ Phone App (Android)</a>
                 </div>
-                <p class="hero-cta-note lang-ar">تتطلب مفتاح تفعيل — تواصل معنا للحصول على مفتاحك الخاص. اختر 32 بت فقط إذا كان جهازك قديماً ويعمل بنظام ويندوز 32 بت. تطبيق الأندرويد طرفية بيع إضافية: بيشتغل مع ضمان على كمبيوتر المحل وعنفس الواي فاي، مو لحالو.</p>
-                <p class="hero-cta-note lang-en">Requires an activation key — contact us to get your personal license. Only pick the 32-bit version if your PC is older and runs 32-bit Windows. The Android app is an extra till: it works with Daman running on the shop PC over the same wifi, not on its own.</p>
+                <p class="hero-cta-note lang-ar">نزّلو وافتحو — التجربة بتبلّش لحالها من أول تشغيل، بلا ما تتواصل مع حدا. اختر 32 بت فقط إذا كان جهازك قديماً ويعمل بنظام ويندوز 32 بت. تطبيق الأندرويد طرفية بيع إضافية: بيشتغل مع ضمان على كمبيوتر المحل وعنفس الواي فاي، مو لحالو.</p>
+                <p class="hero-cta-note lang-en">Download it and open it — the trial starts itself on first run, with nobody to contact. Only pick the 32-bit version if your PC is older and runs 32-bit Windows. The Android app is an extra till: it works with Daman running on the shop PC over the same wifi, not on its own.</p>
             </div>
         </div>
 
@@ -1128,8 +1187,8 @@
         </div>
         <div class="feature-card">
             <div class="feature-icon">☁️</div>
-            <span data-prices="cloudHosting" class="feature-price-badge lang-ar">اشتراك — 100$</span>
-            <span data-prices="cloudHosting" class="feature-price-badge lang-en">Subscription — $100</span>
+            <span data-prices="cloudHosting" class="feature-price-badge lang-ar">اشتراك سنوي — 100$</span>
+            <span data-prices="cloudHosting" class="feature-price-badge lang-en">Subscription — $100 / year</span>
             <h3 class="lang-ar">الاستضافة السحابية</h3>
             <h3 class="lang-en">Cloud Hosting</h3>
             <p class="lang-ar">نستضيف ضمان تبعك عنا بدل ما يكون على جهاز واحد بالمحل — توصلو من أي نقطة بدك ياها، ومن عدد غير محدود من الأجهزة، بنفس البيانات.</p>
