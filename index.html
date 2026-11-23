@@ -492,6 +492,11 @@ h3{font-size:1.125rem;font-weight:600}
     <g id="i-chev"><path d="m6 9 6 6 6-6"/></g>
     <g id="i-menu"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></g>
     <g id="i-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></g>
+    <!-- The one FILLED glyph in this sprite: it is WhatsApp's own mark, and an
+         outlined redraw of it stops being recognisable, which is the only reason
+         a brand mark is here at all. Its two use sites override the fill="none"
+         stroke="currentColor" pair every other icon relies on. -->
+    <g id="i-whatsapp"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24Zm-3.2 4.03c-.15 0-.4.06-.6.29-.21.22-.8.78-.8 1.9s.82 2.2.93 2.36c.12.15 1.6 2.44 3.87 3.42.54.23.96.37 1.29.48.54.17 1.04.15 1.43.09.44-.07 1.34-.55 1.53-1.08.19-.53.19-.98.13-1.08-.06-.1-.21-.15-.44-.27-.23-.11-1.34-.66-1.55-.74-.21-.07-.36-.11-.51.12-.15.22-.58.73-.71.88-.13.15-.26.17-.49.06-.23-.12-.96-.36-1.84-1.14-.68-.6-1.14-1.35-1.27-1.58-.13-.22-.02-.34.1-.46.1-.1.23-.26.34-.4.11-.13.15-.22.23-.37.07-.15.04-.29-.02-.4-.06-.12-.5-1.23-.69-1.68-.18-.44-.37-.38-.5-.39-.13 0-.28-.01-.43-.01Z"/></g>
     <g id="i-table"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></g>
     <g id="i-wrench"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></g>
     <g id="i-cloud"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></g>
@@ -1031,23 +1036,28 @@ h3{font-size:1.125rem;font-weight:600}
     <div class="section-head center reveal">
       <h2 class="ar">تواصل معنا</h2>
       <h2 class="en">Talk to us</h2>
-      <p class="lead ar">لأي سؤال عن الرخصة أو الإضافات أو أجهزة الباركود والطابعات — اتصل أو راسلنا واتساب.</p>
-      <p class="lead en">Any question about the licence, the add-ons, or barcode scanners and printers — call us or message on WhatsApp.</p>
+      <p class="lead ar">لأي سؤال عن الرخصة أو الإضافات أو أجهزة الباركود والطابعات — راسلنا واتساب.</p>
+      <p class="lead en">Any question about the licence, the add-ons, or barcode scanners and printers — message us on WhatsApp.</p>
     </div>
 
     <div class="contact-grid reveal">
-      <a class="num" href="tel:+971541629979">
-        <span class="num__ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg></span>
+      <!-- WhatsApp, not tel:. Both of these are WhatsApp-only lines — the POS app
+           marks them `whatsappOnly: true` in ProUpgradeService and shows no call
+           button for either, so a `tel:` here was sending people to a call the
+           other half of the product does not offer. `wa.me` needs the number with
+           no `+` and no spaces. -->
+      <a class="num" href="https://wa.me/971541629979" target="_blank" rel="noopener">
+        <span class="num__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><use href="#i-whatsapp"/></svg></span>
         <span>
           <b>+971 54 162 9979</b>
-          <span class="ar">الإمارات</span><span class="en">United Arab Emirates</span>
+          <span class="ar">الإمارات · واتساب</span><span class="en">United Arab Emirates · WhatsApp</span>
         </span>
       </a>
-      <a class="num" href="tel:+963994065899">
-        <span class="num__ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg></span>
+      <a class="num" href="https://wa.me/963994065899" target="_blank" rel="noopener">
+        <span class="num__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><use href="#i-whatsapp"/></svg></span>
         <span>
           <b>+963 994 065 899</b>
-          <span class="ar">سوريا</span><span class="en">Syria</span>
+          <span class="ar">سوريا · واتساب</span><span class="en">Syria · WhatsApp</span>
         </span>
       </a>
     </div>
