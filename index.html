@@ -1,1518 +1,1094 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ضمان لإدارة المبيعات | Daman Sales Management</title>
-    <meta name="description" content="ضمان — نظام نقاط بيع سطح مكتب للمحلات العربية. يعمل بدون إنترنت، دعم تعدد العملات، ورديات، حسابات عملاء وموردين، مشتريات، تقارير PDF، وباركود.">
-    <meta name="description" lang="en" content="Daman — offline-first desktop POS for Arab retail. Multi-currency, shifts, client & supplier ledgers, purchases, PDF reports, barcodes, and hardware-locked licensing.">
-    <meta property="og:title" content="ضمان لإدارة المبيعات | Daman Sales Management">
-    <meta property="og:description" content="ضمان... دقة وأمان — نقطة بيع سطح مكتب متكاملة للسوق العربي والسوري.">
-    <!-- Favicon Icon -->
-    <link rel="icon" type="image/png" href="./icon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-blue: #0A4D68;
-            --secondary-blue: #088395;
-            --light-blue: #EBF8FF;
-            --dark-text: #2D3748;
-            --white: #FFFFFF;
-            --transition: all 0.3s ease;
-            --accent-gold: #F59E0B;
-            /* Shared card/section language - one consistent shadow+radius+rhythm
-               scale instead of every card picking its own numbers. */
-            --shadow-sm: 0 1px 3px rgba(10,77,104,0.06), 0 6px 16px rgba(10,77,104,0.05);
-            --shadow-md: 0 10px 24px rgba(10,77,104,0.10);
-            --shadow-lg: 0 20px 45px rgba(10,77,104,0.14);
-            --radius-card: 18px;
-            --section-padding: 5.5rem 5%;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        body {
-            background-color: var(--light-blue);
-            color: var(--dark-text);
-            line-height: 1.8;
-            transition: var(--transition);
-        }
-
-        /* Language Toggle Logic */
-        html[lang="ar"] .lang-en { display: none !important; }
-        html[lang="en"] .lang-ar { display: none !important; }
-
-        /* Navbar */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .header-tagline {
-            font-weight: 700;
-            color: var(--secondary-blue);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        /* Fancy Header Logo Styling */
-        .brand-link {
-            text-decoration: none;
-            /* Creates a smooth, slightly "bouncy" animation on hover */
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .brand-link:hover {
-            transform: scale(1.05);
-        }
-
-        .brand-logo {
-            height: 50px;
-            width: auto;
-            object-fit: contain;
-            /* Adds a very subtle, premium shadow so the logo pops */
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.06));
-        }
-
-        .lang-btn {
-            background-color: var(--light-blue);
-            color: var(--primary-blue);
-            border: 1px solid var(--secondary-blue);
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .lang-btn:hover {
-            background-color: var(--primary-blue);
-            color: var(--white);
-        }
-
-        /* Hero Section with Integrated Slider */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: var(--white);
-            padding: 5rem 5% 8rem 5%;
-            clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .hero-text {
-            flex: 1;
-            text-align: start;
-        }
-
-        .hero-text h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero-text .slogan {
-            font-size: 1.6rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-            color: #E2F1E7;
-        }
-
-        .hero-text p {
-            font-size: 1.15rem;
-            max-width: 600px;
-            opacity: 0.9;
-        }
-
-        .hero-slider-wrapper {
-            flex: 1;
-            max-width: 550px;
-            width: 100%;
-            position: relative;
-        }
-
-        /* Floating "live dashboard" widget - a real preview of the app's own
-           dashboard feature (profit counting up, a growing bar chart), not an
-           invented company stat. Overlaps the screenshot slider's corner. */
-        .hero-dashboard-widget {
-            position: absolute;
-            bottom: -28px;
-            inset-inline-start: -22px;
-            width: 200px;
-            z-index: 5;
-            background: rgba(255,255,255,.14);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255,255,255,.28);
-            border-radius: 18px;
-            padding: 18px;
-            box-shadow: 0 20px 45px rgba(0,0,0,.28);
-        }
-
-        .hero-dashboard-widget .widget-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-        }
-
-        .hero-dashboard-widget .live-dot {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #7CFFB2;
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        .hero-dashboard-widget .live-dot::before {
-            content: '';
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #22C55E;
-            animation: pulse-dot 1.6s infinite;
-        }
-
-        @keyframes pulse-dot {
-            0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.6); }
-            70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
-            100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
-        }
-
-        .hero-dashboard-widget .widget-label {
-            color: rgba(255,255,255,.65);
-            font-size: 10.5px;
-        }
-
-        .hero-dashboard-widget .widget-num {
-            color: #fff;
-            font-size: 22px;
-            font-weight: 800;
-            line-height: 1.2;
-        }
-
-        .hero-dashboard-widget .widget-sub {
-            color: rgba(255,255,255,.7);
-            font-size: 11px;
-            margin-top: 2px;
-        }
-
-        .hero-dashboard-widget .widget-bars {
-            display: flex;
-            align-items: flex-end;
-            gap: 5px;
-            height: 42px;
-            margin-top: 14px;
-        }
-
-        .hero-dashboard-widget .widget-bars span {
-            flex: 1;
-            background: linear-gradient(180deg, #F59E0B, #fbbf24);
-            border-radius: 4px 4px 0 0;
-            height: 8%;
-            animation: grow-bar 1.2s ease-out forwards;
-        }
-
-        @keyframes grow-bar {
-            to { height: var(--h); }
-        }
-
-        @media (max-width: 576px) {
-            .hero-dashboard-widget {
-                position: static;
-                width: 100%;
-                margin-top: 1rem;
-            }
-        }
-
-        /* Integrated Slider Controls */
-        .slider-container {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            border: 4px solid rgba(255, 255, 255, 0.2);
-            background-color: var(--white);
-        }
-
-        .slide {
-            display: none;
-            position: relative;
-        }
-
-        .slide img {
-            width: 100%;
-            display: block;
-            object-fit: cover;
-            aspect-ratio: 16/9;
-        }
-
-        .slide-caption {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background: rgba(10, 77, 104, 0.9);
-            color: var(--white);
-            padding: 10px 15px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: auto;
-            padding: 12px;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            transition: 0.3s ease;
-            user-select: none;
-            background-color: rgba(0,0,0,0.5);
-            text-decoration: none;
-        }
-
-        .prev:hover, .next:hover {
-            background-color: var(--accent-gold);
-        }
-
-        html[dir="ltr"] .prev { left: 0; border-radius: 0 5px 5px 0; }
-        html[dir="ltr"] .next { right: 0; border-radius: 5px 0 0 5px; }
-        html[dir="rtl"] .prev { right: 0; border-radius: 5px 0 0 5px; }
-        html[dir="rtl"] .next { left: 0; border-radius: 0 5px 5px 0; }
-
-        .dot-container {
-            text-align: center;
-            padding-top: 15px;
-        }
-
-        .dot {
-            cursor: pointer;
-            height: 12px;
-            width: 12px;
-            margin: 0 5px;
-            background-color: rgba(255,255,255,0.4);
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-        }
-
-        .dot.active, .dot:hover {
-            background-color: var(--accent-gold);
-        }
-
-        .fade {
-            animation-name: fadeAnim;
-            animation-duration: 1.5s;
-        }
-        @keyframes fadeAnim {
-            from {opacity: .4}
-            to {opacity: 1}
-        }
-
-        /* Shared Section Title */
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        /* Merged Features Section */
-        .features-section {
-            padding: var(--section-padding);
-            background-color: var(--white);
-            text-align: center;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background-color: var(--light-blue);
-            padding: 1.75rem 1.5rem;
-            border-radius: var(--radius-card);
-            box-shadow: var(--shadow-sm);
-            border-bottom: 3px solid var(--secondary-blue);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .feature-card h3 {
-            color: var(--primary-blue);
-            font-size: 1.05rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-card p {
-            font-size: 0.88rem;
-            color: var(--dark-text);
-            line-height: 1.55;
-        }
-
-        .feature-icon {
-            width: 52px;
-            height: 52px;
-            background: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 0.85rem;
-            border: 2px solid rgba(8, 131, 149, 0.2);
-            box-shadow: inset 0 4px 6px rgba(0,0,0,0.04);
-        }
-
-        .feature-price-badge {
-            display: inline-block;
-            background: var(--accent-gold);
-            color: var(--white);
-            font-size: 0.78rem;
-            font-weight: 700;
-            padding: 3px 12px;
-            border-radius: 999px;
-            margin-bottom: 0.75rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.15rem;
-            color: #64748B;
-            max-width: 780px;
-            margin: -2rem auto 3rem;
-            line-height: 1.7;
-        }
-
-        .hero-bullets {
-            list-style: none;
-            margin-top: 1.75rem;
-            text-align: start;
-            max-width: 620px;
-        }
-
-        .hero-bullets li {
-            position: relative;
-            padding-inline-start: 1.75rem;
-            margin-bottom: 0.65rem;
-            font-size: 1.05rem;
-            opacity: 0.95;
-        }
-
-        .hero-bullets li::before {
-            content: '✓';
-            position: absolute;
-            inset-inline-start: 0;
-            color: var(--accent-gold);
-            font-weight: 800;
-        }
-
-        .hero-text .hero-bullets {
-            margin-inline: 0;
-        }
-
-        html[dir="ltr"] .hero-text .hero-bullets,
-        html[dir="rtl"] .hero-text .hero-bullets {
-            margin-inline: 0;
-        }
-
-        @media (max-width: 992px) {
-            .hero-text .hero-bullets {
-                margin-inline: auto;
-                text-align: start;
-                display: inline-block;
-            }
-        }
-
-
-        /* 3-Tier Pricing Section */
-        .pricing-section {
-            padding: var(--section-padding);
-            background-color: var(--light-blue);
-            text-align: center;
-        }
-
-        .upgrade-banner {
-            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
-            color: var(--white);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            display: inline-block;
-            margin-bottom: 3rem;
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .pricing-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            align-items: stretch;
-        }
-
-        .pricing-card {
-            background-color: var(--white);
-            padding: 3rem 2rem;
-            border-radius: var(--radius-card);
-            box-shadow: var(--shadow-md);
-            border-top: 5px solid var(--secondary-blue);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            min-width: 300px;
-            max-width: 380px;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .pricing-card.popular {
-            border-top: 5px solid var(--accent-gold);
-            transform: scale(1.05);
-            box-shadow: var(--shadow-lg);
-            z-index: 10;
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--accent-gold);
-            color: var(--white);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .pricing-card h3 {
-            font-size: 1.8rem;
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-        }
-
-        .price-container {
-            margin: 1.5rem 0;
-        }
-
-        .old-price {
-            text-decoration: line-through;
-            color: #A0AEC0;
-            font-size: 1.2rem;
-            margin: 0 10px;
-        }
-
-        .new-price {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary-blue);
-        }
-
-        .price-note {
-            display: block;
-            color: #E53E3E;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-top: 5px;
-        }
-
-        .features-list {
-            list-style: none;
-            padding: 0;
-            margin: 2rem 0;
-            text-align: start;
-            flex-grow: 1;
-        }
-
-        .features-list li {
-            margin-bottom: 1rem;
-            position: relative;
-            padding-inline-start: 2rem;
-            color: var(--dark-text);
-        }
-
-        .features-list li::before {
-            content: '✔';
-            color: var(--secondary-blue);
-            position: absolute;
-            inset-inline-start: 0;
-            font-weight: bold;
-        }
-
-        .pricing-card.popular .features-list li::before {
-            color: var(--accent-gold);
-        }
-
-        /* Single all-inclusive plan (replaces the old 3-tier grid) */
-        .pricing-card--single {
-            max-width: 680px;
-            width: 100%;
-            border-top: 5px solid var(--accent-gold);
-            padding: 3rem 2.5rem;
-        }
-
-        .pricing-card--single .features-list {
-            columns: 2;
-            column-gap: 2.5rem;
-        }
-
-        .pricing-card--single .features-list li {
-            break-inside: avoid;
-        }
-
-        @media (max-width: 640px) {
-            .pricing-card--single .features-list { columns: 1; }
-        }
-
-        .renewal-note {
-            display: block;
-            color: #64748B;
-            font-size: 0.85rem;
-            margin-top: 8px;
-        }
-
-        .addons-container {
-            margin-top: 4rem;
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: var(--radius-card);
-            box-shadow: var(--shadow-sm);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            border: 1px dashed var(--secondary-blue);
-        }
-
-        .addons-container h4 {
-            color: var(--primary-blue);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: var(--section-padding);
-            background-color: var(--primary-blue);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .contact-numbers {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .number-card {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: rgba(255,255,255,0.1);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: var(--transition);
-            color: inherit;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .number-card:hover {
-            transform: translateY(-5px);
-            background-color: rgba(255,255,255,0.2);
-        }
-
-        /* Footer */
-        footer {
-            background-color: #052a3a;
-            color: rgba(255,255,255,0.6);
-            text-align: center;
-            padding: 1.5rem;
-            font-size: 1rem;
-        }
-
-        /* Fancy Footer Logo Styling */
-        .footer-brand {
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-brand img {
-            height: 45px;
-            width: auto;
-            opacity: 0.7;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .footer-brand img:hover {
-            opacity: 1;
-            transform: translateY(-3px); /* Floats up slightly on hover */
-        }
-
-        /* Privacy / Terms links — Google's OAuth consent screen requires both to be
-           publicly reachable, and a reviewer looks for them from the home page. */
-        .footer-legal {
-            margin-top: 0.75rem;
-            font-size: 0.9rem;
-        }
-
-        .footer-legal a {
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-legal a:hover {
-            color: var(--white);
-            text-decoration: underline;
-        }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 1024px) {
-            .pricing-card.popular {
-                transform: scale(1); /* Prevent layout break on tablets from scale effect */
-            }
-        }
-
-        @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-            }
-            .hero-text {
-                text-align: center;
-            }
-            .hero-text p {
-                margin: 0 auto;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-text h1 { font-size: 2.2rem; }
-            .hero-text .slogan { font-size: 1.4rem; }
-            .contact-numbers { flex-direction: column; gap: 1rem; }
-
-            /* The header used to stack its right-hand side into a column, which on a phone
-               turned four small things — logo, tagline, version button, language button — into
-               a two-by-two block taller than the content it sits above. One row again, and the
-               tagline goes: the hero says the same words in a larger type two inches below it. */
-            header { padding: 0.7rem 4%; }
-            .header-right { gap: 8px; }
-            .header-tagline { display: none; }
-            .brand-logo { height: 34px; }
-            .btn-latest-version,
-            .lang-btn { font-size: 0.8rem; padding: 0.4rem 0.7rem; }
-        }
-
-        @media (max-width: 380px) {
-            .btn-latest-version,
-            .lang-btn { font-size: 0.74rem; padding: 0.35rem 0.55rem; }
-            .brand-logo { height: 28px; }
-        }
-
-        /* Download Demo CTA */
-        .hero-cta-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .btn-download-demo {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: linear-gradient(135deg, #F59E0B 0%, #d97706 100%);
-            color: var(--white);
-            padding: 0.85rem 2rem;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1.05rem;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 14px rgba(245,158,11,0.4);
-            border: 2px solid rgba(255,255,255,0.2);
-        }
-
-        .btn-download-demo:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 22px rgba(245,158,11,0.55);
-            color: var(--white);
-        }
-
-        /* Secondary (32-bit) download button — same shape, lighter/outline
-           treatment so the primary (64-bit, recommended for most PCs)
-           download stays the visual default. Declared after the base hover
-           rule so its overrides (same specificity) win the cascade. */
-        .btn-download-demo--secondary {
-            background: transparent;
-            color: #d97706;
-            border: 2px solid #d97706;
-            box-shadow: none;
-        }
-        .btn-download-demo--secondary:hover {
-            background: rgba(217,119,6,0.08);
-            box-shadow: none;
-            color: #d97706;
-        }
-
-        /* Latest-version download for existing (licensed) clients — same
-           installer as the hero trial buttons, shown in the header with the
-           version number so an active client doesn't read the download as
-           "trial only". The release script rewrites .dl-version. */
-        .btn-latest-version {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background-color: var(--primary-blue);
-            color: var(--white);
-            border: 1px solid var(--primary-blue);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1rem;
-            text-decoration: none;
-            white-space: nowrap;
-            transition: var(--transition);
-        }
-        .btn-latest-version:hover {
-            background-color: var(--secondary-blue);
-            border-color: var(--secondary-blue);
-            color: var(--white);
-        }
-        /* 64/32-bit chooser — a <details> so it opens without JS; the
-           script after <header> only closes it on an outside click. */
-        .latest-version-menu {
-            position: relative;
-        }
-        .latest-version-menu > summary {
-            cursor: pointer;
-            list-style: none;
-            user-select: none;
-        }
-        .latest-version-menu > summary::-webkit-details-marker { display: none; }
-        .latest-version-caret {
-            font-size: 0.8em;
-            transition: transform 0.2s ease;
-        }
-        .latest-version-menu[open] .latest-version-caret { transform: rotate(180deg); }
-        .latest-version-options {
-            position: absolute;
-            top: calc(100% + 6px);
-            inset-inline-end: 0;
-            min-width: 100%;
-            background: var(--white);
-            border: 1px solid rgba(10,77,104,0.15);
-            border-radius: 8px;
-            box-shadow: var(--shadow-md);
-            overflow: hidden;
-            z-index: 1100;
-        }
-        .latest-version-options a {
-            display: block;
-            padding: 10px 16px;
-            color: var(--primary-blue);
-            font-weight: 700;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-        .latest-version-options a + a { border-top: 1px solid rgba(10,77,104,0.1); }
-        .latest-version-options a:hover { background: var(--light-blue); }
-        .latest-version-options small {
-            font-weight: 400;
-            opacity: 0.7;
-        }
-
-        /* .hero-text p sets 1.15rem and outranks a lone .hero-cta-note, which is why the note
-           rendered at 18.4px however small this said. Qualified so it actually wins. */
-        .hero-text .hero-cta-note {
-            margin-top: 0.55rem;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            opacity: 0.75;
-            color: inherit;
-            /* A line of running text past about 70 characters is hard to come back to on the
-               next line; without this the note ran the full width of the hero. */
-            max-width: 62ch;
-        }
-
-        /* On a phone every button goes full width and stacks, so the desktop's generous
-           padding and 1.05rem type made three blocks that filled the screen on their own and
-           pushed the explanation below the fold. */
-        @media (max-width: 768px) {
-            .hero-cta-buttons {
-                gap: 0.6rem;
-            }
-            /* Stacked and full width, with the label allowed to wrap. An inline-flex button
-               cannot shrink below its own text, and "حمّل النسخة التجريبية مجاناً (64 بت)" is
-               wider than a phone — which is what pushed the whole page sideways and left the
-               headline clipped at the edge. */
-            .hero-cta-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .btn-download-demo {
-                width: 100%;
-                justify-content: center;
-                text-align: center;
-                white-space: normal;
-                padding: 0.7rem 1rem;
-                font-size: 0.95rem;
-                border-radius: 10px;
-            }
-            .btn-download-demo--secondary {
-                padding: 0.55rem 1rem;
-                font-size: 0.86rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-text .hero-cta-note {
-                font-size: 0.78rem;
-                line-height: 1.55;
-                max-width: none;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ضمان لإدارة المبيعات | Daman Sales Management</title>
+<meta name="description" content="ضمان — نظام نقاط بيع سطح مكتب للمحلات العربية. يعمل بدون إنترنت، دعم تعدد العملات، ورديات، حسابات عملاء وموردين، مشتريات، تقارير PDF، وباركود.">
+<meta property="og:title" content="ضمان لإدارة المبيعات | Daman Sales Management">
+<meta property="og:description" content="ضمان... دقة وأمان — نقطة بيع سطح مكتب متكاملة للسوق العربي والسوري.">
+<meta property="og:image" content="https://damansoft.com/dashboard.png">
+<meta name="theme-color" content="#0E5A72">
+<link rel="icon" type="image/x-icon" href="./icon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ──────────────────────────────────────────────────────────────
+   Design tokens — one place for colour, type scale, spacing.
+   Palette is taken straight from the logo: deep petrol teal +
+   warm sand gold, on a warm off-white (not a cold grey).
+   ────────────────────────────────────────────────────────────── */
+:root{
+  --teal-900:#06313f;
+  --teal-800:#0a475c;
+  --teal-700:#0e5a72;
+  --teal-600:#157b97;
+  --teal-100:#dbeef4;
+  --teal-50:#f0f8fb;
+  --sand-600:#b89355;
+  --sand-500:#d3b882;
+  --sand-100:#f7efdf;
+  --ink:#0b1a20;
+  --ink-70:#3d5159;
+  --ink-45:#6f838a;
+  --line:#e4e9ea;
+  --line-soft:#eff2f2;
+  --bg:#fbfaf8;
+  --surface:#ffffff;
+
+  --radius-sm:10px;
+  --radius:16px;
+  --radius-lg:24px;
+
+  --shadow-sm:0 1px 2px rgba(11,26,32,.05);
+  --shadow:0 4px 16px -4px rgba(11,26,32,.08), 0 1px 3px rgba(11,26,32,.04);
+  --shadow-lg:0 32px 64px -24px rgba(6,49,63,.28), 0 8px 24px -8px rgba(6,49,63,.12);
+
+  --maxw:1160px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
+
+body{
+  font-family:'IBM Plex Sans Arabic',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  font-size:16px;
+  font-weight:400;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+svg{flex:none}
+
+/* Language switching: both languages live in the DOM, one is hidden.
+   No JS needed to read the page, and both are indexable. */
+html[lang="ar"] .en{display:none !important}
+html[lang="en"] .ar{display:none !important}
+
+::selection{background:var(--teal-100);color:var(--teal-900)}
+
+:focus-visible{outline:2px solid var(--teal-600);outline-offset:3px;border-radius:6px}
+
+/* ── Layout primitives ─────────────────────────────────────── */
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:24px}
+.section{padding-block:104px}
+.section--tight{padding-block:72px}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.8125rem;font-weight:600;letter-spacing:.04em;
+  color:var(--teal-600);
+  background:var(--teal-50);
+  border:1px solid var(--teal-100);
+  border-radius:100px;
+  padding:5px 14px;
+  margin-bottom:20px;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--teal-600)}
+
+h1,h2,h3,h4{line-height:1.25;font-weight:600;letter-spacing:-.01em}
+h2{font-size:clamp(1.75rem,3.4vw,2.5rem)}
+h3{font-size:1.125rem;font-weight:600}
+
+.section-head{max-width:620px;margin-bottom:56px}
+.section-head.center{margin-inline:auto;text-align:center}
+.lead{color:var(--ink-70);font-size:1.0625rem;margin-top:14px}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:inherit;font-size:.9375rem;font-weight:600;line-height:1;
+  padding:14px 22px;border-radius:var(--radius-sm);border:1px solid transparent;
+  cursor:pointer;white-space:nowrap;
+  transition:background .18s var(--ease),border-color .18s var(--ease),
+             color .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease);
+}
+.btn:active{transform:translateY(1px)}
+.btn--primary{background:var(--teal-700);color:#fff;box-shadow:0 6px 18px -6px rgba(14,90,114,.5)}
+.btn--primary:hover{background:var(--teal-800);box-shadow:0 10px 24px -8px rgba(14,90,114,.55)}
+.btn--ghost{background:var(--surface);color:var(--ink);border-color:var(--line)}
+.btn--ghost:hover{border-color:var(--teal-600);color:var(--teal-700)}
+.btn--onDark{background:#fff;color:var(--teal-900)}
+.btn--onDark:hover{background:var(--sand-100)}
+.btn--sm{padding:10px 16px;font-size:.875rem}
+
+/* ── Nav ───────────────────────────────────────────────────── */
+.nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(251,250,248,.82);
+  backdrop-filter:saturate(180%) blur(16px);
+  -webkit-backdrop-filter:saturate(180%) blur(16px);
+  border-bottom:1px solid transparent;
+  transition:border-color .25s var(--ease),box-shadow .25s var(--ease);
+}
+.nav.is-stuck{border-bottom-color:var(--line);box-shadow:0 1px 16px rgba(11,26,32,.04)}
+.nav__inner{display:flex;align-items:center;gap:28px;height:72px}
+.nav__logo img{height:30px;width:auto}
+.nav__links{display:flex;align-items:center;gap:4px;margin-inline-start:auto}
+.nav__links a{
+  font-size:.9375rem;font-weight:500;color:var(--ink-70);
+  padding:8px 13px;border-radius:8px;transition:color .18s,background .18s;
+}
+.nav__links a:hover{color:var(--teal-700);background:var(--teal-50)}
+.nav__actions{display:flex;align-items:center;gap:10px}
+
+.lang-toggle{
+  font-family:inherit;font-size:.8125rem;font-weight:600;
+  background:none;border:1px solid var(--line);color:var(--ink-70);
+  padding:8px 13px;border-radius:8px;cursor:pointer;
+  transition:border-color .18s,color .18s;
+}
+.lang-toggle:hover{border-color:var(--teal-600);color:var(--teal-700)}
+
+/* Download dropdown — plain <details>, works without JS */
+.dl{position:relative}
+.dl > summary{list-style:none;cursor:pointer}
+.dl > summary::-webkit-details-marker{display:none}
+.dl__menu{
+  position:absolute;inset-inline-end:0;top:calc(100% + 10px);
+  width:max-content;min-width:272px;max-width:min(340px,calc(100vw - 36px));
+  padding:7px;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow-lg);
+  z-index:70;
+}
+.dl__menu a{
+  display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;
+  padding:11px 13px;border-radius:9px;
+  font-size:.9375rem;font-weight:500;
+  transition:background .15s;
+}
+.dl__menu a:hover{background:var(--teal-50);color:var(--teal-800)}
+.dl__menu small{color:var(--ink-45);font-weight:400;font-size:.8125rem}
+.dl__caret{transition:transform .2s var(--ease)}
+.dl[open] .dl__caret{transform:rotate(180deg)}
+
+/* Phone menu — same <details> pattern, shown only where the inline links are not */
+.menu{display:none;position:relative}
+.menu > summary{
+  list-style:none;cursor:pointer;
+  display:grid;place-items:center;width:38px;height:38px;
+  border:1px solid var(--line);border-radius:9px;color:var(--ink-70);
+}
+.menu > summary::-webkit-details-marker{display:none}
+.menu > summary:hover{border-color:var(--teal-600);color:var(--teal-700)}
+.menu__panel{
+  position:fixed;inset-inline-end:18px;top:72px;
+  width:min(280px,calc(100vw - 36px));
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow-lg);
+  padding:7px;z-index:70;
+}
+.menu__panel a{display:block;padding:12px 14px;border-radius:9px;font-size:.9375rem;font-weight:500}
+.menu__panel a:hover{background:var(--teal-50);color:var(--teal-800)}
+
+/* ── Hero ──────────────────────────────────────────────────── */
+.hero{position:relative;overflow:hidden;padding-block:72px 96px}
+.hero::before{
+  /* soft brand glow behind the headline, no hard edges */
+  content:'';position:absolute;z-index:0;
+  inset-inline-start:-10%;top:-34%;
+  width:780px;height:780px;border-radius:50%;
+  background:radial-gradient(circle,rgba(21,123,151,.12) 0%,rgba(21,123,151,0) 68%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;z-index:0;
+  inset-inline-end:-14%;bottom:-24%;
+  width:620px;height:620px;border-radius:50%;
+  background:radial-gradient(circle,rgba(211,184,130,.20) 0%,rgba(211,184,130,0) 68%);
+  pointer-events:none;
+}
+.hero .wrap{position:relative;z-index:1}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:64px;align-items:center}
+.hero h1{font-size:clamp(2.1rem,4.6vw,3.3rem);font-weight:700;letter-spacing:-.025em}
+.hero h1 em{font-style:normal;color:var(--teal-700)}
+.hero__sub{color:var(--ink-70);font-size:1.0625rem;margin-top:18px;max-width:34em}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero__note{font-size:.875rem;color:var(--ink-45);margin-top:16px;max-width:38em}
+
+.hero__trust{
+  display:flex;flex-wrap:wrap;gap:8px 22px;
+  margin-top:34px;padding-top:26px;border-top:1px solid var(--line);
+}
+.hero__trust li{
+  display:flex;align-items:center;gap:7px;
+  font-size:.875rem;font-weight:500;color:var(--ink-70);
+}
+.hero__trust svg{color:var(--teal-600)}
+
+/* App-window frame around the screenshot */
+.shot{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lg);
+  overflow:hidden;
+}
+.shot__bar{
+  display:flex;align-items:center;gap:7px;
+  padding:12px 16px;
+  background:linear-gradient(180deg,#fff,#f7f8f8);
+  border-bottom:1px solid var(--line-soft);
+}
+.shot__bar i{width:10px;height:10px;border-radius:50%;background:#dfe4e5;display:block}
+.shot__bar span{
+  margin-inline-start:auto;font-size:.75rem;color:var(--ink-45);
+  letter-spacing:.02em;direction:ltr;
+}
+.shot img{width:100%;height:auto}
+
+/* ── Fact strip ────────────────────────────────────────────── */
+.facts{border-block:1px solid var(--line);background:var(--surface)}
+.facts__grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.facts__item{padding:34px 28px;border-inline-start:1px solid var(--line-soft)}
+.facts__item:first-child{border-inline-start:0}
+.facts__item strong{display:block;font-size:1.3125rem;font-weight:600;letter-spacing:-.01em}
+.facts__item span{display:block;font-size:.875rem;color:var(--ink-45);margin-top:2px}
+
+/* ── Feature cards ─────────────────────────────────────────── */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+  position:relative;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:30px 28px 32px;
+  box-shadow:var(--shadow-sm);
+  transition:border-color .22s var(--ease),transform .22s var(--ease),box-shadow .22s var(--ease);
+}
+.card:hover{transform:translateY(-3px);border-color:var(--teal-100);box-shadow:var(--shadow)}
+.card__icon{
+  display:grid;place-items:center;
+  width:46px;height:46px;border-radius:13px;
+  background:var(--teal-50);color:var(--teal-700);
+  border:1px solid var(--teal-100);
+  margin-bottom:20px;
+}
+.card h3{margin-bottom:8px}
+.card p{color:var(--ink-70);font-size:.9375rem}
+
+/* ── Screenshot tabs ───────────────────────────────────────── */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:34px}
+.tab{
+  font-family:inherit;font-size:.9375rem;font-weight:500;
+  padding:10px 18px;border-radius:100px;cursor:pointer;
+  background:var(--surface);border:1px solid var(--line);color:var(--ink-70);
+  transition:all .18s var(--ease);
+}
+.tab:hover{border-color:var(--teal-600);color:var(--teal-700)}
+.tab[aria-selected="true"]{background:var(--teal-700);border-color:var(--teal-700);color:#fff}
+.panel{display:none}
+.panel[data-active]{display:block;animation:fade .4s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.panel__cap{text-align:center;color:var(--ink-45);font-size:.875rem;margin-top:18px}
+
+/* ── Add-ons ───────────────────────────────────────────────── */
+.addons{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.addon{
+  display:flex;align-items:flex-start;gap:14px;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:20px;
+  transition:border-color .2s var(--ease)}
+.addon:hover{border-color:var(--teal-100)}
+.addon__ic{
+  display:grid;place-items:center;flex:none;
+  width:38px;height:38px;border-radius:10px;
+  background:var(--sand-100);color:var(--sand-600);
+}
+.addon h4{font-size:.9375rem;font-weight:600;margin-bottom:3px}
+.addon p{font-size:.875rem;color:var(--ink-45);line-height:1.6}
+.addon .tagp{
+  display:inline-block;margin-top:8px;
+  font-size:.75rem;font-weight:600;color:var(--sand-600);
+  background:var(--sand-100);border-radius:6px;padding:2px 9px;
+  /* "+$29" must not be flipped to "$29+" by the RTL bidi algorithm. */
+  direction:ltr;
+}
+.addon .tagp--word{direction:inherit}
+
+/* ── Full list (collapsed) ─────────────────────────────────── */
+.all{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;
+}
+.all > summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:center;gap:12px;
+  padding:22px 26px;font-weight:600;
+  transition:background .18s;
+}
+.all > summary::-webkit-details-marker{display:none}
+.all > summary:hover{background:var(--teal-50)}
+.all > summary .chev{margin-inline-start:auto;color:var(--ink-45);transition:transform .22s var(--ease)}
+.all[open] > summary .chev{transform:rotate(180deg)}
+.all[open] > summary{border-bottom:1px solid var(--line-soft)}
+.all__body{padding:26px;columns:2;column-gap:40px}
+.all__body li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:.9375rem;color:var(--ink-70);
+  padding-block:6px;break-inside:avoid;
+}
+.all__body svg{color:var(--teal-600);margin-top:6px}
+
+/* ── Pricing (dark band) ───────────────────────────────────── */
+.price-band{
+  background:var(--teal-900);
+  background-image:
+    radial-gradient(900px 420px at 15% -10%,rgba(21,123,151,.5),transparent 62%),
+    radial-gradient(700px 380px at 95% 110%,rgba(211,184,130,.22),transparent 60%);
+  color:#fff;
+}
+.price-band h2{color:#fff}
+.price-band .lead{color:rgba(255,255,255,.72)}
+.price-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:20px;
+  max-width:880px;margin-inline:auto;align-items:start;
+}
+.price-card{
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--radius-lg);
+  padding:40px;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  text-align:center;
+}
+.price-card--main{border-color:rgba(211,184,130,.45);background:rgba(255,255,255,.08)}
+.price-card .badge{
+  display:inline-block;
+  font-size:.75rem;font-weight:600;letter-spacing:.04em;
+  color:var(--teal-900);background:var(--sand-500);
+  border-radius:100px;padding:5px 14px;margin-bottom:22px;
+}
+.price-card .badge--plain{
+  color:rgba(255,255,255,.82);background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.18);
+}
+.price-card h3{font-size:1.25rem;color:#fff;font-weight:600}
+.price-row{
+  display:flex;align-items:baseline;justify-content:center;gap:14px;
+  margin:18px 0 8px;direction:ltr;
+}
+.price-row .was{font-size:1.375rem;color:rgba(255,255,255,.4);text-decoration:line-through}
+.price-row .now{font-size:3.25rem;font-weight:700;letter-spacing:-.03em;line-height:1}
+.price-row .per{font-size:1rem;color:rgba(255,255,255,.6);font-weight:500}
+.price-card .once{color:rgba(255,255,255,.72);font-size:.9375rem}
+.price-band .fine{
+  color:rgba(255,255,255,.5);font-size:.8125rem;
+  margin-top:34px;line-height:1.8;
+}
+.price-card .btn{margin-top:26px}
+
+.price-points{
+  display:grid;gap:4px;
+  text-align:start;margin-top:26px;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.14);
+}
+.price-points li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:.9375rem;color:rgba(255,255,255,.86);padding-block:5px;
+}
+.price-points svg{color:var(--sand-500);margin-top:6px}
+
+/* ── Contact ───────────────────────────────────────────────── */
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:680px;margin-inline:auto}
+.num{
+  display:flex;align-items:center;gap:14px;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:20px 22px;
+  transition:border-color .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease);
+}
+.num:hover{border-color:var(--teal-600);transform:translateY(-2px);box-shadow:var(--shadow)}
+.num__ic{
+  display:grid;place-items:center;flex:none;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--teal-50);color:var(--teal-700);
+}
+.num b{display:block;font-size:1.0625rem;font-weight:600;direction:ltr;letter-spacing:.01em}
+.num span{display:block;font-size:.8125rem;color:var(--ink-45)}
+
+/* ── Footer ────────────────────────────────────────────────── */
+.foot{border-top:1px solid var(--line);background:var(--surface);padding-block:52px 40px}
+.foot__top{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;justify-content:space-between}
+.foot__brand img{height:26px}
+.foot__brand p{font-size:.875rem;color:var(--ink-45);margin-top:12px;max-width:26em}
+.foot__links{display:flex;flex-wrap:wrap;gap:10px 28px}
+.foot__links a{font-size:.9375rem;color:var(--ink-70);transition:color .18s}
+.foot__links a:hover{color:var(--teal-700)}
+.foot__bar{
+  margin-top:36px;padding-top:22px;border-top:1px solid var(--line-soft);
+  display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;
+  font-size:.8125rem;color:var(--ink-45);
+}
+
+/* ── Scroll reveal ─────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width:1000px){
+  .hero__grid{grid-template-columns:1fr;gap:48px}
+  .cards,.addons{grid-template-columns:repeat(2,1fr)}
+  .price-grid{max-width:620px;grid-template-columns:1fr}
+  .facts__grid{grid-template-columns:repeat(2,1fr)}
+  .facts__item:nth-child(3){border-inline-start:0}
+  .facts__item:nth-child(n+3){border-top:1px solid var(--line-soft)}
+  .nav__links{display:none}
+  .menu{display:block}
+}
+@media (max-width:760px){
+  .section{padding-block:72px}
+  .wrap{padding-inline:18px}
+  .hero{padding-block:48px 72px}
+  .cards,.addons,.contact-grid,.price-grid{grid-template-columns:1fr}
+  .all__body{columns:1;padding:20px}
+  .dl > summary .dlv{display:none}
+  .price-card{padding:30px 22px}
+  .price-row .now{font-size:3rem}
+  .nav__inner{height:64px;gap:14px}
+  .nav__logo img{height:26px}
+  .hero__cta .btn{flex:1 1 100%}
+  .dl__menu{position:fixed;inset-inline-end:18px;top:72px;min-width:0;width:min(320px,calc(100vw - 36px))}
+  .foot__top{flex-direction:column}
+}
+</style>
 </head>
 <body>
 
-<header>
-    <!-- Dark Logo for Light Header -->
-    <a href="#" class="logo-container brand-link">
-        <img src="./logo-dark.png" alt="Daman Logo" class="brand-logo">
+<!-- Icon sprite: Lucide outline icons, inlined once and referenced with <use>. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="i-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></g>
+    <g id="i-box"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></g>
+    <g id="i-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></g>
+    <g id="i-chart"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></g>
+    <g id="i-offline"><path d="M12 20h.01"/><path d="M8.5 16.43a5 5 0 0 1 7 0"/><path d="M5 12.86a10 10 0 0 1 5.17-2.69"/><path d="M19 12.86a10 10 0 0 0-2.01-1.52"/><path d="M2 8.82a15 15 0 0 1 4.18-2.64"/><path d="M22 8.82a15 15 0 0 0-11.29-3.76"/><path d="m2 2 20 20"/></g>
+    <g id="i-coins"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></g>
+    <g id="i-check"><path d="m20 6-11 11-5-5"/></g>
+    <g id="i-down"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></g>
+    <g id="i-chev"><path d="m6 9 6 6 6-6"/></g>
+    <g id="i-menu"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></g>
+    <g id="i-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></g>
+    <g id="i-table"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></g>
+    <g id="i-wrench"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></g>
+    <g id="i-cloud"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></g>
+    <g id="i-phone-app"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></g>
+    <g id="i-calc"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M8 6h8"/><path d="M16 14v4"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></g>
+    <g id="i-quote"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></g>
+    <g id="i-monitor"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></g>
+    <g id="i-factory"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></g>
+    <g id="i-backup"><path d="m16 6-4-4-4 4"/><path d="M12 2v8"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 18h.01"/></g>
+    <g id="i-clock"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g>
+    <g id="i-shield"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></g>
+    <g id="i-barcode"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M8 7v10"/><path d="M12 7v10"/><path d="M17 7v10"/></g>
+  </defs>
+</svg>
+
+<!-- ══ NAV ══════════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a href="#top" class="nav__logo" aria-label="Daman">
+      <img src="./logo-dark.png" alt="Daman" width="140" height="30">
     </a>
 
-    <div class="header-right">
-        <div class="header-tagline lang-ar">نظام إدارة المبيعات</div>
-        <div class="header-tagline lang-en">Sales Management System</div>
-        <details class="latest-version-menu">
-            <summary class="btn-latest-version">
-                <span class="lang-ar">⬇ آخر إصدار <span class="dl-version">1.6.8</span></span>
-                <span class="lang-en">⬇ Latest Version <span class="dl-version">1.6.8</span></span>
-                <span class="latest-version-caret">▾</span>
-            </summary>
-            <div class="latest-version-options">
-                <a href="https://dl.damansoft.com/Daman_1.6.8_generic.exe">
-                    <span class="lang-ar">64 بت <small>(معظم الأجهزة)</small></span>
-                    <span class="lang-en">64-bit <small>(most PCs)</small></span>
-                </a>
-                <a href="https://dl.damansoft.com/32-Daman_1.6.8_generic.exe">
-                    <span class="lang-ar">32 بت <small>(الأجهزة القديمة)</small></span>
-                    <span class="lang-en">32-bit <small>(older PCs)</small></span>
-                </a>
-                <a href="https://dl.damansoft.com/Daman_1.6.8_generic.apk">
-                    <span class="lang-ar">أندرويد <small>(طرفية موبايل <span class="dl-apk-version">1.6.8</span>)</small></span>
-                    <span class="lang-en">Android <small>(phone till <span class="dl-apk-version">1.6.8</span>)</small></span>
-                </a>
-            </div>
-        </details>
-        <button class="lang-btn" onclick="toggleLanguage()">
-            <span class="lang-ar">English</span>
-            <span class="lang-en">العربية</span>
-        </button>
+    <div class="nav__links">
+      <a href="#features"><span class="ar">المزايا</span><span class="en">Features</span></a>
+      <a href="#screens"><span class="ar">لقطات</span><span class="en">Screens</span></a>
+      <a href="#addons"><span class="ar">الإضافات</span><span class="en">Add-ons</span></a>
+      <a href="#pricing"><span class="ar">السعر</span><span class="en">Pricing</span></a>
+      <a href="./tutorials/index.html"><span class="ar">شروحات</span><span class="en">Guides</span></a>
+      <a href="#contact"><span class="ar">تواصل</span><span class="en">Contact</span></a>
     </div>
+
+    <div class="nav__actions">
+      <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Switch language">
+        <span class="ar">English</span><span class="en">العربية</span>
+      </button>
+
+      <details class="dl" id="dlMenu">
+        <summary class="btn btn--primary btn--sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-down"/></svg>
+          <span class="ar">تحميل <span class="dlv"><span class="dl-version">1.6.8</span></span></span>
+          <span class="en">Download <span class="dlv"><span class="dl-version">1.6.8</span></span></span>
+          <svg class="dl__caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chev"/></svg>
+        </summary>
+        <div class="dl__menu">
+          <a href="https://dl.damansoft.com/Daman_1.6.8_generic.exe">
+            <span class="ar">ويندوز 64 بت</span><span class="en">Windows 64-bit</span>
+            <small class="ar">معظم الأجهزة</small><small class="en">most PCs</small>
+          </a>
+          <a href="https://dl.damansoft.com/32-Daman_1.6.8_generic.exe">
+            <span class="ar">ويندوز 32 بت</span><span class="en">Windows 32-bit</span>
+            <small class="ar">الأجهزة القديمة</small><small class="en">older PCs</small>
+          </a>
+          <a href="https://dl.damansoft.com/Daman_1.6.8_generic.apk">
+            <span class="ar">أندرويد</span><span class="en">Android</span>
+            <small class="ar">طرفية موبايل <span class="dl-apk-version">1.6.8</span></small>
+            <small class="en">phone till <span class="dl-apk-version">1.6.8</span></small>
+          </a>
+        </div>
+      </details>
+
+      <details class="menu" id="navMenu">
+        <summary aria-label="Menu">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-menu"/></svg>
+        </summary>
+        <div class="menu__panel">
+          <a href="#features"><span class="ar">المزايا</span><span class="en">Features</span></a>
+          <a href="#screens"><span class="ar">لقطات من البرنامج</span><span class="en">Screens</span></a>
+          <a href="#addons"><span class="ar">الإضافات</span><span class="en">Add-ons</span></a>
+          <a href="#pricing"><span class="ar">السعر</span><span class="en">Pricing</span></a>
+          <a href="./tutorials/index.html"><span class="ar">شروحات الاستخدام</span><span class="en">Guides</span></a>
+          <a href="#contact"><span class="ar">تواصل معنا</span><span class="en">Contact</span></a>
+        </div>
+      </details>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ═════════════════════════════════════════════════ -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div>
+        <span class="eyebrow">
+          <span class="dot"></span>
+          <span class="ar">برنامج سطح مكتب — إصدار <span class="dl-version">1.6.8</span></span>
+          <span class="en">Desktop app — version <span class="dl-version">1.6.8</span></span>
+        </span>
+
+        <h1 class="ar">محلّك كله<br><em>بجهاز واحد</em></h1>
+        <h1 class="en">Your whole shop<br><em>on one machine</em></h1>
+
+        <p class="hero__sub ar">
+          ضمان برنامج نقطة بيع ومحاسبة لسطح المكتب. بيع، شراء، مخزون، ديون عملاء وموردين،
+          ورديات وتقارير أرباح — كله بالعربي، وكله شغّال بدون إنترنت على كمبيوتر المحل.
+        </p>
+        <p class="hero__sub en">
+          Daman is a desktop POS and accounting app. Sales, purchases, inventory, client and
+          supplier credit, shifts and profit reports — Arabic-first, and fully working offline
+          on the shop's own PC.
+        </p>
+
+        <div class="hero__cta">
+          <a href="https://dl.damansoft.com/Daman_1.6.8_generic.exe" class="btn btn--primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-down"/></svg>
+            <span class="ar">جرّبه مجاناً</span><span class="en">Try it free</span>
+          </a>
+          <a href="#screens" class="btn btn--ghost">
+            <span class="ar">شوف الشاشات</span><span class="en">See the screens</span>
+          </a>
+        </div>
+
+        <p class="hero__note ar">
+          نزّلو وافتحو — التجربة بتبلّش لحالها من أول تشغيل، بلا ما تتواصل مع حدا.
+        </p>
+        <p class="hero__note en">
+          Download it and open it — the trial starts itself on first run, with nobody to contact.
+        </p>
+
+        <ul class="hero__trust">
+          <li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+            <span class="ar">دفعة واحدة، أو اشتراك سنوي</span><span class="en">One payment, or a yearly plan</span>
+          </li>
+          <li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+            <span class="ar">يشتغل بدون إنترنت</span><span class="en">Works offline</span>
+          </li>
+          <li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>
+            <span class="ar">سنة دعم فني</span><span class="en">One year of support</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="shot">
+        <div class="shot__bar"><i></i><i></i><i></i><span>Daman</span></div>
+        <img src="./dashboard.png" alt="لوحة تحكم ضمان" width="1182" height="688" fetchpriority="high">
+      </div>
+    </div>
+  </div>
 </header>
-<script>
-    document.addEventListener('click', function (e) {
-        var menu = document.querySelector('.latest-version-menu');
-        if (menu && menu.open && (!menu.contains(e.target) || e.target.closest('.latest-version-options a'))) {
-            menu.open = false;
-        }
-    });
-</script>
 
-<section class="hero">
-    <div class="hero-content">
-        <div class="hero-text">
-            <h1 class="lang-ar">ضمان لإدارة المبيعات</h1>
-            <h1 class="lang-en">Daman Sales Management</h1>
-
-            <div class="slogan lang-ar">ضمان... دقة وأمان</div>
-            <div class="slogan lang-en">Daman... Safety and Accuracy</div>
-
-            <p class="lang-ar">تطبيق سطح مكتب متكامل لنقاط البيع وإدارة الأعمال — مصمَّم للمحلات والمولات ومنافذ الخدمة في السوق العربي. واجهة عربية أصيلة، دعم لتعدد العملات، مشتريات وحركة مخزون، حسابات عملاء وموردين، ورديات وتسوية صندوق — ويعمل بسلاسة على جهاز الكاشير دون الحاجة للاتصال بالإنترنت.</p>
-            <p class="lang-en">A complete desktop POS and business-management suite — built for retail shops, mini-markets and service counters across the Arab market. Arabic-first interface, multi-currency support, purchases and inventory, client & supplier ledgers, shifts and cash reconciliation — all running smoothly on the cashier's PC with no internet required.</p>
-
-            <ul class="hero-bullets lang-ar">
-                <li>بيع وشراء ومرتجعات — مع عبوات متعددة وباركود</li>
-                <li>دولار / ليرة سورية — بدون تشويه التقارير</li>
-                <li>رخصة مقفلة على الجهاز — بدون اشتراك شهري</li>
-            </ul>
-            <ul class="hero-bullets lang-en">
-                <li>Sales, purchases & returns — multi-packaging & barcodes</li>
-                <li>USD / SYP — reports stay accurate</li>
-                <li>Hardware-locked license — no monthly subscription</li>
-            </ul>
-
-            <div style="margin-top: 1.75rem;">
-                <div class="hero-cta-buttons">
-                    <a href="https://dl.damansoft.com/Daman_1.6.8_generic.exe"
-                       class="btn-download-demo lang-ar">⬇ حمّل النسخة التجريبية مجاناً (64 بت)</a>
-                    <a href="https://dl.damansoft.com/Daman_1.6.8_generic.exe"
-                       class="btn-download-demo lang-en">⬇ Download Free Trial (64-bit)</a>
-                    <a href="https://dl.damansoft.com/32-Daman_1.6.8_generic.exe"
-                       class="btn-download-demo btn-download-demo--secondary lang-ar">⬇ نسخة 32 بت</a>
-                    <a href="https://dl.damansoft.com/32-Daman_1.6.8_generic.exe"
-                       class="btn-download-demo btn-download-demo--secondary lang-en">⬇ 32-bit Version</a>
-                    <a href="https://dl.damansoft.com/Daman_1.6.8_generic.apk"
-                       class="btn-download-demo btn-download-demo--secondary lang-ar">⬇ تطبيق الموبايل (أندرويد)</a>
-                    <a href="https://dl.damansoft.com/Daman_1.6.8_generic.apk"
-                       class="btn-download-demo btn-download-demo--secondary lang-en">⬇ Phone App (Android)</a>
-                </div>
-                <p class="hero-cta-note lang-ar">نزّلو وافتحو — التجربة بتبلّش لحالها من أول تشغيل، بلا ما تتواصل مع حدا. اختر 32 بت فقط إذا كان جهازك قديماً ويعمل بنظام ويندوز 32 بت. تطبيق الأندرويد طرفية بيع إضافية: بيشتغل مع ضمان على كمبيوتر المحل وعنفس الواي فاي، مو لحالو.</p>
-                <p class="hero-cta-note lang-en">Download it and open it — the trial starts itself on first run, with nobody to contact. Only pick the 32-bit version if your PC is older and runs 32-bit Windows. The Android app is an extra till: it works with Daman running on the shop PC over the same wifi, not on its own.</p>
-            </div>
-        </div>
-
-        <div class="hero-slider-wrapper">
-            <div class="slider-container">
-                <div class="slide fade">
-                    <img src="./login.png?text=Login+Screen" alt="Login Screen" onerror="this.src='https://via.placeholder.com/600x338/0A4D68/FFFFFF?text=Login+Screen'">
-                    <div class="slide-caption lang-ar">شاشة تسجيل الدخول الآمنة</div>
-                    <div class="slide-caption lang-en">Secure Login Screen</div>
-                </div>
-
-                <div class="slide fade">
-                    <img src="./dashboard.png?text=Dashboard+Overview" alt="Dashboard" onerror="this.src='https://via.placeholder.com/600x338/088395/FFFFFF?text=Live+Dashboard'">
-                    <div class="slide-caption lang-ar">لوحة التحكم والإحصائيات</div>
-                    <div class="slide-caption lang-en">Live Dashboard & Stats</div>
-                </div>
-
-                <div class="slide fade">
-                    <img src="./sales.png?text=Invoice+Management" alt="Invoice" onerror="this.src='https://via.placeholder.com/600x338/F59E0B/FFFFFF?text=Sales+Interface'">
-                    <div class="slide-caption lang-ar">إدارة المبيعات والفواتير</div>
-                    <div class="slide-caption lang-en">Sales & Invoicing</div>
-                </div>
-
-                <div class="slide fade">
-                    <img src="./barcode.png?text=Barcode+Scanner+Integration" alt="Barcode" onerror="this.src='https://via.placeholder.com/600x338/2D3748/FFFFFF?text=Barcode+Scanning'">
-                    <div class="slide-caption lang-ar">مسح ضوئي متكامل للباركود</div>
-                    <div class="slide-caption lang-en">Barcode Scanning System</div>
-                </div>
-
-                <div class="slide fade">
-                    <img src="./reports.png?text=Advanced+Reports+Preview" alt="Reports Screen" onerror="this.src='https://via.placeholder.com/600x338/F59E0B/FFFFFF?text=Advanced+Reports+Preview'">
-                    <div class="slide-caption lang-ar">الجديد: تقارير مالية وتصدير البيانات</div>
-                    <div class="slide-caption lang-en">New: Financial Reports & Data Export</div>
-                </div>
-
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-
-            <div class="dot-container">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-                <span class="dot" onclick="currentSlide(4)"></span>
-                <span class="dot" onclick="currentSlide(5)"></span>
-            </div>
-
-            <!-- Preview of the app's own real dashboard feature (see Features
-                 section below) - not an invented company statistic. -->
-            <div class="hero-dashboard-widget">
-                <div class="widget-top">
-                    <span class="live-dot lang-ar">مباشر</span>
-                    <span class="live-dot lang-en">Live</span>
-                    <span class="widget-label lang-ar">لوحة التحكم</span>
-                    <span class="widget-label lang-en">Dashboard</span>
-                </div>
-                <div class="widget-num lang-ar" data-count="842500" data-suffix=" ل.س">0</div>
-                <div class="widget-num lang-en" data-count="842500" data-suffix=" SYP">0</div>
-                <div class="widget-sub lang-ar">أرباح اليوم</div>
-                <div class="widget-sub lang-en">Today's profit</div>
-                <div class="widget-bars">
-                    <span style="--h:35%; animation-delay:.05s"></span>
-                    <span style="--h:55%; animation-delay:.15s"></span>
-                    <span style="--h:40%; animation-delay:.25s"></span>
-                    <span style="--h:75%; animation-delay:.35s"></span>
-                    <span style="--h:60%; animation-delay:.45s"></span>
-                    <span style="--h:90%; animation-delay:.55s"></span>
-                    <span style="--h:100%; animation-delay:.65s"></span>
-                </div>
-            </div>
-        </div>
+<!-- ══ FACTS ════════════════════════════════════════════════ -->
+<section class="facts">
+  <div class="wrap">
+    <div class="facts__grid">
+      <div class="facts__item">
+        <strong class="ar"><bdi dir="ltr">$125</bdi> أو <bdi dir="ltr">$75</bdi></strong><strong class="en">$125 or $75</strong>
+        <span class="ar">دفعة واحدة، أو اشتراك بالسنة</span><span class="en">one-time, or a yearly subscription</span>
+      </div>
+      <div class="facts__item">
+        <strong class="ar">USD / SYP</strong><strong class="en">USD / SYP</strong>
+        <span class="ar">عملتان بنفس التقارير</span><span class="en">two currencies, one report</span>
+      </div>
+      <div class="facts__item">
+        <strong class="ar">عربي / English</strong><strong class="en">Arabic / English</strong>
+        <span class="ar">واجهة وفواتير باللغتين</span><span class="en">interface and invoices in both</span>
+      </div>
+      <div class="facts__item">
+        <strong class="ar">نسخة يومية</strong><strong class="en">Daily backup</strong>
+        <span class="ar">احتياطي تلقائي على جهازك</span><span class="en">automatic, on your own PC</span>
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="features-section">
-    <h2 class="section-title lang-ar">كل ما تحتاجه لإدارة أعمالك بنجاح</h2>
-    <h2 class="section-title lang-en">Everything You Need to Manage Your Business</h2>
-    <p class="section-subtitle lang-ar">الأساسيات مضمّنة بالكامل — العناصر المعلَّم عليها «إضافة» اختيارية.</p>
-    <p class="section-subtitle lang-en">Core features are fully included — items marked "Add-on" are optional.</p>
+<!-- ══ FEATURES ═════════════════════════════════════════════ -->
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <h2 class="ar">ست حاجات بيشتغل عليهن محلك كل يوم</h2>
+      <h2 class="en">Six things your shop runs on every day</h2>
+      <p class="lead ar">هاي الأساسيات — كلها مضمّنة بالسعر، بدون باقات ولا ترقيات.</p>
+      <p class="lead en">These are the basics — all included in the price, no tiers, no upgrades.</p>
+    </div>
 
-    <div class="features-grid">
-        <div class="feature-card">
-            <div class="feature-icon">🍽️</div>
-            <span class="feature-price-badge lang-ar" data-prices="tableOrders">إضافة — 29$</span>
-            <span class="feature-price-badge lang-en" data-prices="tableOrders">Add-on — $29</span>
-            <h3 class="lang-ar">الطاولات وطلبات الصالة</h3>
-            <h3 class="lang-en">Tables & Dine-In Orders</h3>
-            <p class="lang-ar">خريطة طاولات مباشرة، طلب مفتوح لكل طاولة، وإرسال إلى المطبخ ثم الدفع عند الإغلاق.</p>
-            <p class="lang-en">A live table map, an open order per table, kitchen tickets, and payment on close.</p>
-        </div>
+    <div class="cards">
+      <article class="card reveal">
+        <div class="card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cart"/></svg></div>
+        <h3 class="ar">بيع سريع بالباركود</h3>
+        <h3 class="en">Fast barcode selling</h3>
+        <p class="ar">امسح الباركود، اقبض، واطبع الإيصال. عبوات متعددة للمنتج (قطعة / كرتون) بأسعار مستقلة، ومرتجعات بضغطة.</p>
+        <p class="en">Scan, take the money, print the receipt. Multi-packaging products (unit / carton) with their own prices, and returns in one click.</p>
+      </article>
 
-        <div class="feature-card">
-            <div class="feature-icon">🛠️</div>
-            <span data-prices="deviceRepair" class="feature-price-badge lang-ar">إضافة — 20$</span>
-            <span data-prices="deviceRepair" class="feature-price-badge lang-en">Add-on — $20</span>
-            <h3 class="lang-ar">صيانة الأجهزة</h3>
-            <h3 class="lang-en">Device Repair</h3>
-            <p class="lang-ar">بطاقات صيانة بحالات متابعة، قطع غيار وأجور عمل على الفاتورة، وسجل لكل جهاز وعميل.</p>
-            <p class="lang-en">Repair tickets with tracked statuses, parts and labour on the invoice, and a history per device and customer.</p>
-        </div>
+      <article class="card reveal">
+        <div class="card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-box"/></svg></div>
+        <h3 class="ar">مخزون بيعرف كل حبة</h3>
+        <h3 class="en">Inventory that tracks every unit</h3>
+        <p class="ar">سجل حركة لكل صنف، تسوية جرد مجمّعة، تسجيل إتلاف وتوالف، وتنبيه لما يقرب يخلص.</p>
+        <p class="en">A movement ledger per product, batch stocktake, spoilage recording, and a warning before you run out.</p>
+      </article>
 
-        <div class="feature-card">
-            <div class="feature-icon">☁️</div>
-            <span class="feature-price-badge lang-ar" data-prices="googleDriveBackup">إضافة — 10$</span>
-            <span class="feature-price-badge lang-en" data-prices="googleDriveBackup">Add-on — $10</span>
-            <h3 class="lang-ar">نسخ احتياطي على Google Drive</h3>
-            <h3 class="lang-en">Google Drive Backup</h3>
-            <p class="lang-ar">نسخة احتياطية يومية تلقائية إلى حسابك على Drive، فتبقى بياناتك سليمة حتى لو تعطّل الجهاز.</p>
-            <p class="lang-en">Automatic daily backups to your own Drive account, so your data survives the machine it sits on.</p>
-        </div>
+      <article class="card reveal">
+        <div class="card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-users"/></svg></div>
+        <h3 class="ar">ديون العملاء والموردين</h3>
+        <h3 class="en">Client &amp; supplier credit</h3>
+        <p class="ar">بيع آجل ودفعات، كشف حساب كامل لكل عميل ومورد، ورصيد واضح ما بيختلف عليه اتنين.</p>
+        <p class="en">Sell on account, record payments, print a full statement per party, and keep one balance nobody argues with.</p>
+      </article>
 
-        <div class="feature-card">
-            <div class="feature-icon">💰</div>
-            <span data-prices="shifts" class="feature-price-badge lang-ar">إضافة — 25$</span>
-            <span data-prices="shifts" class="feature-price-badge lang-en">Add-on — $25</span>
-            <h3 class="lang-ar">إدارة الورديات وحركة الصندوق</h3>
-            <h3 class="lang-en">Shifts & Cash Drawer Control</h3>
-            <p class="lang-ar">فتح وإغلاق ورديات مع تسوية صندوق واضحة وحماية بكود مشرف (PIN).</p>
-            <p class="lang-en">Open/close shifts with clear cash reconciliation and Supervisor PIN protection.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">👥</div>
-            <span data-prices="userManagement" class="feature-price-badge lang-ar">إضافة — 20$</span>
-            <span data-prices="userManagement" class="feature-price-badge lang-en">Add-on — $20</span>
-            <h3 class="lang-ar">إدارة المستخدمين والصلاحيات</h3>
-            <h3 class="lang-en">User & Permission Management</h3>
-            <p class="lang-ar">تحكّم بما يراه كل موظف — صلاحيات مستقلة لكل حساب، قابلة للتعديل دائماً.</p>
-            <p class="lang-en">Control what each employee sees — independent, editable permissions per user.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🏭</div>
-            <span class="feature-price-badge lang-ar" data-prices="productRecipes,productRecipes+manufacturing">وصفات / BOM — 25$ · مع التصنيع — 50$</span>
-            <span class="feature-price-badge lang-en" data-prices="productRecipes,productRecipes+manufacturing">Recipes / BOM — $25 · with Manufacturing — $50</span>
-            <h3 class="lang-ar">وصفات الإنتاج والتصنيع</h3>
-            <h3 class="lang-en">Manufacturing & Product Recipes</h3>
-            <p class="lang-ar">عرّف وصفة إنتاج لكل منتج — يخصم المواد الأولية تلقائياً ويعكس التكلفة الحقيقية.</p>
-            <p class="lang-en">Define a recipe per product — auto-deducts materials, reflects true cost.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">📝</div>
-            <span class="feature-price-badge lang-ar" data-prices="quotation">إضافة — 15$</span>
-            <span class="feature-price-badge lang-en" data-prices="quotation">Add-on — $15</span>
-            <h3 class="lang-ar">عروض الأسعار</h3>
-            <h3 class="lang-en">Quotations</h3>
-            <p class="lang-ar">أنشئ عرض سعر وحوّله لفاتورة بنقرة واحدة عند موافقة العميل.</p>
-            <p class="lang-en">Create a quote, convert it to an invoice in one click once approved.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">📊</div>
-            <span data-prices="accounting" class="feature-price-badge lang-ar">إضافة — 25$</span>
-            <span data-prices="accounting" class="feature-price-badge lang-en">Add-on — $25</span>
-            <h3 class="lang-ar">وحدة المحاسبة الكاملة</h3>
-            <h3 class="lang-en">Full Accounting Module</h3>
-            <p class="lang-ar">دفتر أستاذ وقيود تلقائية لكل عملية، مع ميزان مراجعة وقوائم مالية جاهزة.</p>
-            <p class="lang-en">A general ledger with automatic entries, trial balance and ready statements.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">📱</div>
-            <span data-prices="mobilePos" class="feature-price-badge lang-ar">إضافة — 25$</span>
-            <span data-prices="mobilePos" class="feature-price-badge lang-en">Add-on — $25</span>
-            <h3 class="lang-ar">تطبيق الموبايل</h3>
-            <h3 class="lang-en">Mobile App</h3>
-            <p class="lang-ar">نزّل تطبيق ضمان على موبايلك واربطو مع البرنامج اللي بالمحل — بيع مباشرة وشوف سعر أي غرض وإنت واقف بين الرفوف، بلا ما ترجع عالكمبيوتر.</p>
-            <p class="lang-en">Install Daman on your phone and pair it with the PC in your shop — sell straight from it and check any item's price while you're standing at the shelves, without walking back to the computer.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">☁️</div>
-            <span data-prices="cloudHosting" class="feature-price-badge lang-ar">اشتراك سنوي — 100$</span>
-            <span data-prices="cloudHosting" class="feature-price-badge lang-en">Subscription — $100 / year</span>
-            <h3 class="lang-ar">الاستضافة السحابية</h3>
-            <h3 class="lang-en">Cloud Hosting</h3>
-            <p class="lang-ar">نستضيف ضمان تبعك عنا بدل ما يكون على جهاز واحد بالمحل — توصلو من أي نقطة بدك ياها، ومن عدد غير محدود من الأجهزة، بنفس البيانات.</p>
-            <p class="lang-en">We host your Daman for you instead of it living on one PC in the shop — reach it from anywhere you like, from an unlimited number of devices, on the same data.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🖥️</div>
-            <span data-prices="posTerminals" class="feature-price-badge lang-ar">إضافة — 75$</span>
-            <span data-prices="posTerminals" class="feature-price-badge lang-en">Add-on — $75</span>
-            <h3 class="lang-ar">تعدد نقاط البيع</h3>
-            <h3 class="lang-en">Multi-Terminal POS</h3>
-            <p class="lang-ar">شغّل النظام على أكثر من كاشير في نفس المتجر — مبيعات ومخزون متزامنة.</p>
-            <p class="lang-en">Run more than one cash register in the same store — synced sales & inventory.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">💳</div>
-            <h3 class="lang-ar">نقطة بيع شاملة وذكية</h3>
-            <h3 class="lang-en">Smart, Comprehensive POS</h3>
-            <p class="lang-ar">سلة سريعة بالباركود، عبوات متعددة، إدخال عكسي بالقيمة، وبيع آجل بنقرة واحدة.</p>
-            <p class="lang-en">Fast barcode cart, multi-packaging, reverse-math entry, and one-tap on-account sales.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🔌</div>
-            <h3 class="lang-ar">يعمل دائماً — حتى بدون إنترنت</h3>
-            <h3 class="lang-en">Truly Offline — Always On</h3>
-            <p class="lang-ar">يعمل بالكامل على جهازك — ما بيوقف لما ينقطع الإنترنت، وما بيلزمو اشتراك شهري ليشتغل.</p>
-            <p class="lang-en">Runs entirely on your PC — it never stops when the internet drops, and needs no subscription to work.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">📈</div>
-            <h3 class="lang-ar">لوحة تحكم وتقارير ربحية</h3>
-            <h3 class="lang-en">Profit Dashboard & Reports</h3>
-            <p class="lang-ar">أرباح يومية وأسبوعية، أكثر المنتجات مبيعاً، وتصدير تقارير PDF بنقرة واحدة.</p>
-            <p class="lang-en">Daily/weekly profit, top-selling products, and one-click PDF reports.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🏷️</div>
-            <h3 class="lang-ar">المخزون والباركود وسجل التدقيق</h3>
-            <h3 class="lang-en">Inventory, Barcodes & Audit Trail</h3>
-            <p class="lang-ar">تتبّع مخزون دقيق، تنبيهات نفاد الكمية، وسجل تدقيق دائم لكل تغيير.</p>
-            <p class="lang-en">Accurate stock tracking, low-stock alerts, and a permanent audit trail for every change.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">💱</div>
-            <h3 class="lang-ar">تعدد العملات بدون اضطراب الأرقام</h3>
-            <h3 class="lang-en">Multi-Currency Without the Drift</h3>
-            <p class="lang-ar">بِع بالدولار أو الليرة، وبدّل العملة في أي وقت — تقاريرك تبقى دقيقة دائماً.</p>
-            <p class="lang-en">Sell in USD or SYP, switch anytime — reports always stay accurate.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🛒</div>
-            <h3 class="lang-ar">المشتريات وسجل الموردين</h3>
-            <h3 class="lang-en">Purchases & Supplier Ledger</h3>
-            <p class="lang-ar">سجّل فواتير الشراء، حدّث الكلفة والأسعار، وتابع رصيد كل مورد بدقة.</p>
-            <p class="lang-en">Record purchases, update cost & prices, and track each supplier's balance.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">👤</div>
-            <h3 class="lang-ar">حسابات العملاء وكشف الحساب</h3>
-            <h3 class="lang-en">Client Ledger & Account Statement</h3>
-            <p class="lang-ar">بيع آجل بنقرة واحدة، ودفعات وكشف حساب شامل جاهز للطباعة.</p>
-            <p class="lang-en">One-tap credit sales, payments, and a full account statement ready to print.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">📋</div>
-            <h3 class="lang-ar">سجل حركة الصنف (Item Ledger)</h3>
-            <h3 class="lang-en">Per-Product Item Ledger</h3>
-            <p class="lang-ar">تتبّع كل حركة لمادة واحدة مع الكمية قبل وبعد — مثالي للتدقيق.</p>
-            <p class="lang-en">Track every movement for one product, before/after quantities — ideal for audits.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">📦</div>
-            <h3 class="lang-ar">تسوية الجرد المجمّعة</h3>
-            <h3 class="lang-en">Batch Stocktake & Reconciliation</h3>
-            <p class="lang-ar">أدخل الكميات الفعلية دفعة واحدة — النظام يحسب الفروقات تلقائياً.</p>
-            <p class="lang-en">Enter actual counts at once — the system posts the differences automatically.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">💲</div>
-            <h3 class="lang-ar">تعديل أسعار قسم بالكامل</h3>
-            <h3 class="lang-en">Bulk Category Price Update</h3>
-            <p class="lang-ar">ارفع أو خفّض أسعار قسم كامل دفعة واحدة — بنسبة أو مبلغ ثابت.</p>
-            <p class="lang-en">Raise or lower an entire category's prices at once — by percentage or amount.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">📱</div>
-            <h3 class="lang-ar">تسعير ثابت بعملة محلية</h3>
-            <h3 class="lang-en">Fixed Local-Currency Pricing</h3>
-            <p class="lang-ar">مثالي لبطاقات الاتصالات: سعر ثابت بالليرة بينما متجرك يعمل بالدولار.</p>
-            <p class="lang-en">Perfect for telecom cards: a fixed SYP price while your store runs in USD.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🗑️</div>
-            <h3 class="lang-ar">تسجيل الإتلاف والتوالف</h3>
-            <h3 class="lang-en">Spoilage & Wastage Recording</h3>
-            <p class="lang-ar">شطب كميات تالفة مع سبب واضح — يُخصم من الربح دون مصروف نقدي.</p>
-            <p class="lang-en">Write off damaged stock with a reason — reduces profit, no cash expense.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🎨</div>
-            <h3 class="lang-ar">هوية متجرك (White-Label)</h3>
-            <h3 class="lang-en">Your Brand (White-Label)</h3>
-            <p class="lang-ar">شعارك وألوانك واسم متجرك على الدخول والفواتير — مجاناً لكل عميل.</p>
-            <p class="lang-en">Your logo, colors and store name on login and invoices — included free.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🧾</div>
-            <h3 class="lang-ar">تخصيص بيانات الفاتورة</h3>
-            <h3 class="lang-en">Invoice Customization</h3>
-            <p class="lang-ar">أضف هاتفك وعنوانك ورقمك الضريبي إلى كل فاتورة تطبعها أو تشاركها.</p>
-            <p class="lang-en">Add your phone, address and tax ID to every invoice you print or share.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <h3 class="lang-ar">البيع السريع</h3>
-            <h3 class="lang-en">Quick Sale</h3>
-            <p class="lang-ar">شاشة بيع باللمس ببطاقات المنتجات مرتّبة حسب الفئة، مع صور ومستويات تعبئة لكل صنف.</p>
-            <p class="lang-en">A tap-to-sell screen of product cards grouped by category, with pictures and a card per packaging level.</p>
-        </div>
-</div>
+      <article class="card reveal">
+        <div class="card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chart"/></svg></div>
+        <h3 class="ar">أرباحك بالأرقام</h3>
+        <h3 class="en">Your profit, in numbers</h3>
+        <p class="ar">لوحة تحكم بتقلك ربح اليوم وهامش الربح، وتقارير مالية بتصدّرها PDF وقت ما بدك.</p>
+        <p class="en">A dashboard with today's profit and your margin, plus financial reports you can export to PDF any time.</p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-coins"/></svg></div>
+        <h3 class="ar">دولار وليرة بلا وجع راس</h3>
+        <h3 class="en">Dollar and lira, no headache</h3>
+        <p class="ar">اشتري بعملة وبيع بعملة تانية — التقارير بتبقى مظبوطة، وفي تسعير ثابت بالليرة لبطاقات الاتصالات.</p>
+        <p class="en">Buy in one currency, sell in another — reports stay accurate, with fixed local-currency pricing for telecom cards.</p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-offline"/></svg></div>
+        <h3 class="ar">النت قطع؟ ما بيوقف</h3>
+        <h3 class="en">Internet down? It keeps selling</h3>
+        <p class="ar">البيانات على جهازك، مو على سيرفر. الكهربا رجعت والنت لسا مقطوع — البرنامج شغّال متل ما هو.</p>
+        <p class="en">Your data lives on your PC, not on a server. Power back but still no internet — it just keeps working.</p>
+      </article>
+    </div>
+  </div>
 </section>
 
-<section class="pricing-section">
-    <h2 class="section-title lang-ar">السعر</h2>
-    <h2 class="section-title lang-en">Pricing</h2>
-    <p class="section-subtitle lang-ar">تطبيق واحد متكامل، بدون باقات ولا تعقيد.</p>
-    <p class="section-subtitle lang-en">One complete app. No tiers, no confusion.</p>
+<!-- ══ SCREENS ══════════════════════════════════════════════ -->
+<section class="section section--tight" id="screens" style="background:var(--surface);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <h2 class="ar">شوفه قبل ما تنزّله</h2>
+      <h2 class="en">See it before you download it</h2>
+      <p class="lead ar">لقطات حقيقية من البرنامج، مو رسومات.</p>
+      <p class="lead en">Real screenshots from the app, not illustrations.</p>
+    </div>
 
-    <div class="pricing-grid">
-        <div class="pricing-card pricing-card--single">
-            <div class="popular-badge lang-ar">عرض لفترة محدودة</div>
-            <div class="popular-badge lang-en">Limited-Time Offer</div>
-            <h3 class="lang-ar">ضمان — دفعة واحدة، ملكية دائمة</h3>
-            <h3 class="lang-en">Daman — One-Time Payment, Yours for Life</h3>
-            <div class="price-container">
-                <span class="old-price">$150</span>
-                <span class="new-price">$125</span>
-                <span class="price-note lang-ar">دفعة واحدة فقط — ملكية دائمة، بدون أي رسوم متكررة</span>
-                <span class="price-note lang-en">One-time payment only — lifetime access, no recurring fees</span>
-                <span class="renewal-note lang-ar">سعر لفترة محدودة. دفعة واحدة تشمل كل ما يلزم لتشغيل نقطة البيع بالكامل، إلى الأبد.</span>
-                <span class="renewal-note lang-en">Limited-time price. One payment covers everything you need to run the POS — forever.</span>
-            </div>
-            <ul class="features-list">
-                <li class="lang-ar">إدارة المنتجات، العملاء، والموردين</li>
-                <li class="lang-en">Products, clients & suppliers management</li>
-                <li class="lang-ar">مبيعات، مرتجعات، وفواتير PDF</li>
-                <li class="lang-en">Sales, returns & PDF invoices</li>
-                <li class="lang-ar">لوحة تحكم وتقارير مالية ورسوم بيانية لهامش الربح</li>
-                <li class="lang-en">Dashboard, financial reports & profit-margin charts</li>
-                <li class="lang-ar">المشتريات وتحديث كلفة وأسعار العبوات</li>
-                <li class="lang-en">Purchases with cost & per-packaging price updates</li>
-                <li class="lang-ar">حسابات ديون العملاء والموردين (آجل / دفعات)</li>
-                <li class="lang-en">Client & supplier credit ledgers (on-account / payments)</li>
-                <li class="lang-ar">كشف حساب عميل/مورد وسجل حركة الصنف</li>
-                <li class="lang-en">Client/supplier account statements & per-product item ledger</li>
-                <li class="lang-ar">تعدد العملات (USD / SYP) مع التحويل المباشر</li>
-                <li class="lang-en">Multi-currency (USD / SYP) with live switching</li>
-                <li class="lang-ar">تسعير ثابت بعملة محلية (بطاقات اتصالات)</li>
-                <li class="lang-en">Fixed local-currency product pricing (telecom cards)</li>
-                <li class="lang-ar">عبوات متعددة للمنتج بأسعار مستقلة (قطعة / كرتون)</li>
-                <li class="lang-en">Multi-packaging SKUs with separate prices</li>
-                <li class="lang-ar">تسوية جرد مجمّعة وتعديل أسعار قسم بالكامل</li>
-                <li class="lang-en">Batch stocktake & bulk category price update</li>
-                <li class="lang-ar">تسجيل الإتلاف وسجل تدقيق دائم للمخزون</li>
-                <li class="lang-en">Spoilage recording & permanent stock audit trail</li>
-                <li class="lang-ar">دعم أجهزة قارئ الباركود وطباعة الملصقات</li>
-                <li class="lang-en">Barcode scanner & label-printer support</li>
-                <li class="lang-ar">تصدير التقارير والفواتير بصيغة PDF</li>
-                <li class="lang-en">Export reports & invoices to PDF</li>
-                <li class="lang-ar">تخصيص بيانات الفاتورة (هاتف، عنوان، رقم ضريبي)</li>
-                <li class="lang-en">Invoice customization (phone, address & tax ID)</li>
-                <li class="lang-ar">هويتك الخاصة (شعارك وألوانك واسم متجرك)</li>
-                <li class="lang-en">Your own branding (logo, colours & store name)</li>
-                <li class="lang-ar">العمل بسلاسة بدون اتصال بالإنترنت</li>
-                <li class="lang-en">Full offline operation</li>
-                <li class="lang-ar">نسخ احتياطي تلقائي يومي لبياناتك على جهازك</li>
-                <li class="lang-en">Automatic daily local backup of your data</li>
-                <li class="lang-ar">حماية العمليات الحساسة برمز المشرف (PIN)</li>
-                <li class="lang-en">Supervisor PIN on sensitive actions</li>
-                <li class="lang-ar">دعم اللغتين (العربية / الإنجليزية)</li>
-                <li class="lang-en">Dual language (Arabic / English)</li>
-                <li class="lang-ar"><strong>سنة كاملة</strong> دعم فني مجاني</li>
-                <li class="lang-en"><strong>1 full year</strong> of free technical support</li>
-            </ul>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-tab="dashboard">
+        <span class="ar">لوحة التحكم</span><span class="en">Dashboard</span>
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="sales">
+        <span class="ar">المبيعات</span><span class="en">Sales</span>
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="reports">
+        <span class="ar">التقارير</span><span class="en">Reports</span>
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="barcode">
+        <span class="ar">الباركود</span><span class="en">Barcode</span>
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="login">
+        <span class="ar">الدخول والصلاحيات</span><span class="en">Login &amp; roles</span>
+      </button>
+    </div>
+
+    <div class="panel" data-panel="dashboard" data-active>
+      <div class="shot"><div class="shot__bar"><i></i><i></i><i></i><span>Dashboard</span></div>
+        <img src="./dashboard.png" alt="لوحة التحكم" loading="lazy"></div>
+      <p class="panel__cap ar">ربح اليوم، هامش الربح، تنبيهات المخزون، وآخر الحركات — بشاشة وحدة.</p>
+      <p class="panel__cap en">Today's profit, your margin, stock alerts and the latest activity — on one screen.</p>
+    </div>
+    <div class="panel" data-panel="sales">
+      <div class="shot"><div class="shot__bar"><i></i><i></i><i></i><span>Sales</span></div>
+        <img src="./sales.png" alt="شاشة المبيعات" loading="lazy"></div>
+      <p class="panel__cap ar">بيع جديد، مرتجع، وفاتورة PDF باسم محلك وشعارك.</p>
+      <p class="panel__cap en">New sale, return, and a PDF invoice carrying your own shop name and logo.</p>
+    </div>
+    <div class="panel" data-panel="reports">
+      <div class="shot"><div class="shot__bar"><i></i><i></i><i></i><span>Reports</span></div>
+        <img src="./reports.png" alt="التقارير المالية" loading="lazy"></div>
+      <p class="panel__cap ar">تقارير مالية بتصدّرها PDF، وكشف حساب لكل عميل ومورد.</p>
+      <p class="panel__cap en">Financial reports you can export to PDF, plus a statement for every client and supplier.</p>
+    </div>
+    <div class="panel" data-panel="barcode">
+      <div class="shot"><div class="shot__bar"><i></i><i></i><i></i><span>Barcode</span></div>
+        <img src="./barcode.png" alt="الباركود وطباعة الملصقات" loading="lazy"></div>
+      <p class="panel__cap ar">أي قارئ باركود USB بيشتغل، وفي طباعة ملصقات لمنتجاتك الخاصة.</p>
+      <p class="panel__cap en">Any USB barcode scanner works, and you can print labels for your own products.</p>
+    </div>
+    <div class="panel" data-panel="login">
+      <div class="shot"><div class="shot__bar"><i></i><i></i><i></i><span>Login</span></div>
+        <img src="./login.png" alt="تسجيل الدخول" loading="lazy"></div>
+      <p class="panel__cap ar">مستخدم لكل موظف، صلاحيات مفصّلة، ورمز مشرف على العمليات الحساسة.</p>
+      <p class="panel__cap en">A user per employee, detailed permissions, and a supervisor PIN on sensitive actions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ADD-ONS ══════════════════════════════════════════════ -->
+<section class="section" id="addons">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <h2 class="ar">إضافات حسب شغلك</h2>
+      <h2 class="en">Add-ons for your line of work</h2>
+      <p class="lead ar">اختيارية بالكامل — خدها إذا بتلزمك، وتجاهلها إذا لأ.</p>
+      <p class="lead en">Entirely optional — take what you need, ignore the rest.</p>
+    </div>
+
+    <div class="addons">
+      <div class="addon reveal">
+        <div class="addon__ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-table"/></svg></div>
+        <div>
+          <h4 class="ar">الطاولات وطلبات الصالة</h4><h4 class="en">Tables &amp; dine-in</h4>
+          <p class="ar">خريطة طاولات، طلب مفتوح لكل طاولة، وإرسال للمطبخ ثم الدفع عند الإغلاق.</p>
+          <p class="en">A live table map, an open order per table, send to kitchen, then pay on close.</p>
+          <span class="tagp">+$29</span>
         </div>
+      </div>
+      <div class="addon reveal">
+        <div class="addon__ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-calc"/></svg></div>
+        <div>
+          <h4 class="ar">وحدة المحاسبة الكاملة</h4><h4 class="en">Full accounting</h4>
+          <p class="ar">قيود يومية مزدوجة، دليل حسابات، وميزانية وقائمة دخل حقيقية.</p>
+          <p class="en">Double-entry journals, a chart of accounts, and real balance-sheet and P&amp;L reports.</p>
+          <span class="tagp">+$49</span>
+        </div>
+      </div>
+      <div class="addon reveal">
+        <div class="addon__ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone-app"/></svg></div>
+        <div>
+          <h4 class="ar">تطبيق الموبايل</h4><h4 class="en">Phone app</h4>
+          <p class="ar">طرفية بيع إضافية على الأندرويد، بتشتغل مع كمبيوتر المحل على نفس الواي فاي. مجاني مع الاشتراك السنوي.</p>
+          <p class="en">An extra Android till that works with the shop PC over the same wifi. Free with the yearly subscription.</p>
+          <span class="tagp">+$25</span>
+        </div>
+      </div>
+      <div class="addon reveal">
+        <div class="addon__ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-monitor"/></svg></div>
+        <div>
+          <h4 class="ar">تعدد نقاط البيع</h4><h4 class="en">Multi-terminal POS</h4>
+          <p class="ar">أكتر من كاشير على نفس البيانات بنفس اللحظة، داخل المحل.</p>
+          <p class="en">More than one till on the same data at the same moment, inside the shop.</p>
+          <span class="tagp">+$39</span>
+        </div>
+      </div>
+      <div class="addon reveal">
+        <div class="addon__ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-factory"/></svg></div>
+        <div>
+          <h4 class="ar">وصفات الإنتاج والتصنيع</h4><h4 class="en">Manufacturing &amp; recipes</h4>
+          <p class="ar">وصفة لكل منتج مصنّع — بينزل المواد الأولية وبيحسب كلفتها لحالو.</p>
+          <p class="en">A recipe per manufactured product — raw materials come off stock and the cost is worked out for you.</p>
+          <span class="tagp">+$39</span>
+        </div>
+      </div>
+      <div class="addon reveal">
+        <div class="addon__ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wrench"/></svg></div>
+        <div>
+          <h4 class="ar">صيانة الأجهزة</h4><h4 class="en">Device repair</h4>
+          <p class="ar">استلام جهاز، متابعة حالة التصليح، وقطع الغيار المستخدمة والفاتورة.</p>
+          <p class="en">Take a device in, follow its repair status, and bill the parts you used.</p>
+          <span class="tagp">+$29</span>
+        </div>
+      </div>
+      <div class="addon reveal">
+        <div class="addon__ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-quote"/></svg></div>
+        <div>
+          <h4 class="ar">عروض الأسعار</h4><h4 class="en">Quotations</h4>
+          <p class="ar">عرض سعر PDF للزبون، وبيتحوّل لفاتورة بيع بضغطة لما يوافق.</p>
+          <p class="en">A PDF quote for the customer that turns into a sale in one click when they agree.</p>
+          <span class="tagp">+$19</span>
+        </div>
+      </div>
+      <div class="addon reveal">
+        <div class="addon__ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-backup"/></svg></div>
+        <div>
+          <h4 class="ar">نسخ احتياطي على Google Drive</h4><h4 class="en">Google Drive backup</h4>
+          <p class="ar">نسخة من بياناتك برّا المحل — إذا راح الجهاز ما بتروح معه.</p>
+          <p class="en">A copy of your data off-site — if the PC goes, your data does not go with it.</p>
+          <span class="tagp">+$19</span>
+        </div>
+      </div>
+      <div class="addon reveal">
+        <div class="addon__ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cloud"/></svg></div>
+        <div>
+          <h4 class="ar">الاستضافة السحابية</h4><h4 class="en">Cloud hosting</h4>
+          <p class="ar">نسخة من محلك على الإنترنت، بتفتحها من أي مكان بالمتصفح — هي الاشتراك السنوي.</p>
+          <p class="en">Your shop hosted online, reachable from anywhere in a browser — this is the yearly subscription.</p>
+          <a class="tagp tagp--word" href="#pricing"><span class="ar"><bdi dir="ltr">$75</bdi> بالسنة ←</span><span class="en">$75 a year →</span></a>
+        </div>
+      </div>
     </div>
 
-    <div class="addons-container">
-        <h4 class="lang-ar">الإضافات وملحقات الأجهزة (اختياري)</h4>
-        <h4 class="lang-en">Add-ons & Hardware (Optional)</h4>
-        <p class="lang-ar">
-            أي جهاز قارئ باركود USB متوافق للعمل مع النظام.<br>
-            نوفر أيضاً <strong>أجهزة قارئ الباركود وطابعات الإيصالات</strong> بأسعار جيدة لمن يحتاجها — تواصل معنا للاستفسار عن السعر.<br>
-            كما يمكننا توفير <strong>طابعة باركود</strong> مخصصة لمنتجاتك الخاصة حسب الطلب.
-        </p>
-        <p class="lang-en">
-            Any standard USB barcode scanner works with the system.<br>
-            We also supply <strong>barcode scanners and receipt printers</strong> at good prices — contact us for pricing.<br>
-            A dedicated <strong>barcode label printer</strong> for your products is also available on request.
-        </p>
-        <p class="lang-ar" style="margin-top: 1.5rem;">أسعار الوحدات الاختيارية (إضافة) مذكورة على بطاقة كل وحدة بالأعلى.</p>
-        <p class="lang-en" style="margin-top: 1.5rem;">Optional (add-on) module pricing is shown on each module's own card above.</p>
-    </div>
+    <!-- Everything else: available, but not shouting. -->
+    <details class="all reveal" style="margin-top:34px">
+      <summary>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal-600)"><use href="#i-shield"/></svg>
+        <span class="ar">القائمة الكاملة لكل شي مضمّن بالدفعة الواحدة</span>
+        <span class="en">The full list of everything included in the one payment</span>
+        <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chev"/></svg>
+      </summary>
+      <ul class="all__body">
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">إدارة المنتجات والأقسام والعملاء والموردين</span><span class="en">Products, categories, clients &amp; suppliers</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">مبيعات ومرتجعات وفواتير PDF</span><span class="en">Sales, returns &amp; PDF invoices</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">البيع السريع بشاشة مختصرة</span><span class="en">Quick Sale on a stripped-down screen</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">المشتريات وتحديث الكلفة وأسعار العبوات</span><span class="en">Purchases with cost &amp; per-packaging price updates</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">حسابات ديون العملاء والموردين (آجل / دفعات)</span><span class="en">Client &amp; supplier credit ledgers</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">كشف حساب عميل ومورد وسجل حركة الصنف</span><span class="en">Account statements &amp; per-product item ledger</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">لوحة تحكم وتقارير مالية ورسوم هامش الربح</span><span class="en">Dashboard, financial reports &amp; margin charts</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">إدارة الورديات وحركة الصندوق وتسويته</span><span class="en">Shifts, cash drawer &amp; reconciliation</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">إدارة المستخدمين والصلاحيات المفصّلة</span><span class="en">Users &amp; detailed permissions</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">حماية العمليات الحساسة برمز المشرف</span><span class="en">Supervisor PIN on sensitive actions</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">تعدد العملات (USD / SYP) مع التحويل المباشر</span><span class="en">Multi-currency (USD / SYP) with live switching</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">تسعير ثابت بعملة محلية (بطاقات الاتصالات)</span><span class="en">Fixed local-currency pricing (telecom cards)</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">عبوات متعددة للمنتج بأسعار مستقلة</span><span class="en">Multi-packaging SKUs with separate prices</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">تسوية جرد مجمّعة</span><span class="en">Batch stocktake &amp; reconciliation</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">تعديل أسعار قسم بالكامل دفعة واحدة</span><span class="en">Bulk category price update</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">تسجيل الإتلاف والتوالف</span><span class="en">Spoilage &amp; wastage recording</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">سجل تدقيق دائم للمخزون</span><span class="en">Permanent stock audit trail</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">دعم قارئ الباركود وطباعة الملصقات</span><span class="en">Barcode scanner &amp; label-printer support</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">تخصيص بيانات الفاتورة (هاتف، عنوان، رقم ضريبي)</span><span class="en">Invoice customization (phone, address, tax ID)</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">هويتك الخاصة: شعارك وألوانك واسم متجرك</span><span class="en">Your own branding: logo, colours &amp; store name</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">العمل الكامل بدون اتصال بالإنترنت</span><span class="en">Full offline operation</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">نسخ احتياطي تلقائي يومي على جهازك</span><span class="en">Automatic daily local backup</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">تصدير التقارير والفواتير PDF</span><span class="en">Export reports &amp; invoices to PDF</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">دعم اللغتين العربية والإنجليزية</span><span class="en">Dual language, Arabic &amp; English</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar"><strong>سنة كاملة</strong> دعم فني مجاني</span><span class="en"><strong>One full year</strong> of free technical support</span></li>
+      </ul>
+    </details>
+  </div>
 </section>
 
-<section class="contact-section">
-    <h2 class="lang-ar">أرقام التواصل</h2>
-    <h2 class="lang-en">Contact Numbers</h2>
-
-    <p class="lang-ar">هل أنت مستعد لتأمين عمليات مؤسستك؟ تواصل معنا اليوم للحصول على رخصتك المخصصة والمحمية.</p>
-    <p class="lang-en">Ready to secure your business operations? Reach out to get your customized, hardware-locked license today.</p>
-
-    <div class="contact-numbers">
-        <a class="number-card" dir="ltr" href="tel:+971541629979">📞 +971 54 162 9979</a>
-        <a class="number-card" dir="ltr" href="tel:+963994065899">📞 +963 994 065 899</a>
+<!-- ══ PRICING ══════════════════════════════════════════════ -->
+<section class="section price-band" id="pricing">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <h2 class="ar">خيارين، وبس.</h2>
+      <h2 class="en">Two options. That's it.</h2>
+      <p class="lead ar">يا بتدفع مرة وحدة ويصير البرنامج إلك على جهازك، يا بتشترك بالسنة وتشتغل من أي مكان.</p>
+      <p class="lead en">Either pay once and own it on your own machine, or subscribe yearly and work from anywhere.</p>
     </div>
+
+    <div class="price-grid">
+      <!-- Plan 1 — the offline desktop licence -->
+      <div class="price-card price-card--main reveal">
+        <span class="badge"><span class="ar">عرض لفترة محدودة</span><span class="en">Limited-time offer</span></span>
+
+        <h3 class="ar">أوفلاين — دفعة واحدة</h3>
+        <h3 class="en">Offline — one payment</h3>
+
+        <div class="price-row">
+          <span class="was">$150</span>
+          <span class="now">$125</span>
+        </div>
+        <p class="once ar">دفعة واحدة · ملكية دائمة · بدون رسوم متكررة</p>
+        <p class="once en">One payment · yours for life · no recurring fees</p>
+
+        <ul class="price-points">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">كل المزايا الأساسية، بدون استثناء</span><span class="en">Every core feature, with nothing held back</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">بيشتغل بدون إنترنت، على كمبيوتر المحل</span><span class="en">Runs offline, on the shop's own PC</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">رخصة مقفلة على جهازك</span><span class="en">A licence locked to your own machine</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">سنة كاملة دعم فني مجاني</span><span class="en">One full year of free technical support</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">تطبيق الموبايل مقابل <bdi dir="ltr">$25</bdi> إضافية</span><span class="en">The phone app for $25 more</span></li>
+        </ul>
+
+        <a href="#contact" class="btn btn--onDark">
+          <span class="ar">احجز رخصتك</span><span class="en">Get your licence</span>
+        </a>
+      </div>
+
+      <!-- Plan 2 — the hosted yearly subscription -->
+      <div class="price-card reveal">
+        <span class="badge badge--plain"><span class="ar">اشتراك سنوي</span><span class="en">Yearly subscription</span></span>
+
+        <h3 class="ar">سحابي — من أي مكان</h3>
+        <h3 class="en">Cloud — from anywhere</h3>
+
+        <div class="price-row">
+          <span class="now">$75</span>
+          <span class="per"><span class="ar">سنوياً</span><span class="en">/ year</span></span>
+        </div>
+        <p class="once ar">اشتراك سنوي · بيتجدد كل سنة</p>
+        <p class="once en">A yearly subscription · renewed each year</p>
+
+        <ul class="price-points">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">افتح محلك من أي مكان، مو بس من المحل</span><span class="en">Open your shop from anywhere, not just from the shop</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">أكتر من جهاز على نفس البيانات</span><span class="en">More than one device on the same data</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">تطبيق الموبايل مجاناً، بلا أي زيادة</span><span class="en">The phone app free, at no extra cost</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg><span class="ar">نفس مزايا البرنامج، بنفس الواجهة</span><span class="en">The same features, in the same interface</span></li>
+          <li style="color:rgba(255,255,255,.6)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:rgba(255,255,255,.45)"><use href="#i-offline"/></svg><span class="ar">بدّو إنترنت دائم — ما بيشتغل أوفلاين</span><span class="en">Needs a permanent internet connection — it does not run offline</span></li>
+        </ul>
+
+        <a href="#contact" class="btn btn--onDark">
+          <span class="ar">اشترك</span><span class="en">Subscribe</span>
+        </a>
+      </div>
+    </div>
+
+    <p class="fine reveal" style="text-align:center;max-width:620px;margin-inline:auto">
+      <span class="ar">جرّب البرنامج مجاناً قبل ما تدفع — التجربة بتبلّش لحالها من أول تشغيل. أسعار الإضافات الاختيارية مكتوبة على بطاقة كل إضافة فوق.</span>
+      <span class="en">Try it free before you pay — the trial starts itself on first run. Optional add-on prices are written on each add-on's own card above.</span>
+    </p>
+  </div>
 </section>
 
-<footer>
-    <!-- Light Logo for Dark Footer -->
-    <div class="footer-brand">
-        <img src="./logo-light.png" alt="Daman Logo Light">
+<!-- ══ CONTACT ══════════════════════════════════════════════ -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <h2 class="ar">تواصل معنا</h2>
+      <h2 class="en">Talk to us</h2>
+      <p class="lead ar">لأي سؤال عن الرخصة أو الإضافات أو أجهزة الباركود والطابعات — اتصل أو راسلنا واتساب.</p>
+      <p class="lead en">Any question about the licence, the add-ons, or barcode scanners and printers — call us or message on WhatsApp.</p>
     </div>
 
-    <span class="lang-ar">&copy; 2026 ضمان لإدارة المبيعات. جميع الحقوق محفوظة.</span>
-    <span class="lang-en">&copy; 2026 Daman Sales Management. All rights reserved.</span>
-
-    <div class="footer-legal">
-        <span class="lang-ar">
-            <a href="./privacy.html">سياسة الخصوصية</a> · <a href="./terms.html">شروط الاستخدام</a>
+    <div class="contact-grid reveal">
+      <a class="num" href="tel:+971541629979">
+        <span class="num__ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg></span>
+        <span>
+          <b>+971 54 162 9979</b>
+          <span class="ar">الإمارات</span><span class="en">United Arab Emirates</span>
         </span>
-        <span class="lang-en">
-            <a href="./privacy.html">Privacy Policy</a> · <a href="./terms.html">Terms of Service</a>
+      </a>
+      <a class="num" href="tel:+963994065899">
+        <span class="num__ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg></span>
+        <span>
+          <b>+963 994 065 899</b>
+          <span class="ar">سوريا</span><span class="en">Syria</span>
         </span>
+      </a>
     </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═══════════════════════════════════════════════ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <img src="./logo-dark.png" alt="Daman" width="121" height="26">
+        <p class="ar">ضمان... دقة وأمان — نقطة بيع ومحاسبة لسطح المكتب، للسوق العربي والسوري.</p>
+        <p class="en">Daman... safety and accuracy — desktop POS and accounting for the Arab and Syrian market.</p>
+      </div>
+      <nav class="foot__links">
+        <a href="#features"><span class="ar">المزايا</span><span class="en">Features</span></a>
+        <a href="#pricing"><span class="ar">السعر</span><span class="en">Pricing</span></a>
+        <a href="./tutorials/index.html"><span class="ar">شروحات الاستخدام</span><span class="en">Guides</span></a>
+        <a href="./privacy.html"><span class="ar">سياسة الخصوصية</span><span class="en">Privacy policy</span></a>
+        <a href="./terms.html"><span class="ar">شروط الاستخدام</span><span class="en">Terms of service</span></a>
+      </nav>
+    </div>
+    <div class="foot__bar">
+      <span class="ar">&copy; 2026 ضمان لإدارة المبيعات. جميع الحقوق محفوظة.</span>
+      <span class="en">&copy; 2026 Daman Sales Management. All rights reserved.</span>
+      <span dir="ltr">damansoft.com</span>
+    </div>
+  </div>
 </footer>
 
 <script>
-    // Language Toggle Logic
-    function toggleLanguage() {
-        const htmlElement = document.documentElement;
-        const currentLang = htmlElement.getAttribute('lang');
+/* Language toggle — remembers the choice, and keeps dir/lang in step. */
+function applyLanguage(lang){
+  var el=document.documentElement;
+  el.setAttribute('lang',lang);
+  el.setAttribute('dir',lang==='ar'?'rtl':'ltr');
+  try{localStorage.setItem('daman-lang',lang)}catch(e){}
+}
+function toggleLanguage(){
+  applyLanguage(document.documentElement.getAttribute('lang')==='ar'?'en':'ar');
+}
+try{
+  var saved=localStorage.getItem('daman-lang');
+  if(saved==='ar'||saved==='en') applyLanguage(saved);
+}catch(e){}
 
-        if (currentLang === 'ar') {
-            htmlElement.setAttribute('lang', 'en');
-            htmlElement.setAttribute('dir', 'ltr');
-        } else {
-            htmlElement.setAttribute('lang', 'ar');
-            htmlElement.setAttribute('dir', 'rtl');
-        }
-    }
+/* Nav gets its hairline only once the page has scrolled. */
+var nav=document.getElementById('nav');
+function onScroll(){nav.classList.toggle('is-stuck',window.scrollY>8)}
+onScroll();
+addEventListener('scroll',onScroll,{passive:true});
 
-    // Auto-playing Image Slider Logic
-    let slideIndex = 1;
-    let slideTimer;
+/* Close either dropdown on an outside click, or after picking something in it. */
+document.addEventListener('click',function(e){
+  [['dlMenu','.dl__menu a'],['navMenu','.menu__panel a']].forEach(function(pair){
+    var m=document.getElementById(pair[0]);
+    if(m&&m.open&&(!m.contains(e.target)||e.target.closest(pair[1]))) m.open=false;
+  });
+});
 
-    function initSlider() {
-        showSlides(slideIndex);
-        startTimer();
-    }
+/* Screenshot tabs. */
+document.querySelectorAll('.tab').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(b){b.setAttribute('aria-selected','false')});
+    btn.setAttribute('aria-selected','true');
+    document.querySelectorAll('.panel').forEach(function(p){
+      if(p.dataset.panel===btn.dataset.tab) p.setAttribute('data-active','');
+      else p.removeAttribute('data-active');
+    });
+  });
+});
 
-    function startTimer() {
-        slideTimer = setInterval(function() {
-            plusSlides(1);
-        }, 3000);
-    }
-
-    function resetTimer() {
-        clearInterval(slideTimer);
-        startTimer();
-    }
-
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-        resetTimer();
-    }
-
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-        resetTimer();
-    }
-
-    function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("slide");
-        let dots = document.getElementsByClassName("dot");
-
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-
-        slides[slideIndex-1].style.display = "block";
-        dots[slideIndex-1].className += " active";
-    }
-
-    // Animates the hero dashboard widget's profit figure from 0 up to its
-    // real target once on page load - a preview of the app's own live
-    // dashboard feature, not a repeating/looping gimmick.
-    function animateHeroCounters() {
-        document.querySelectorAll('.hero-dashboard-widget [data-count]').forEach((el) => {
-            const target = parseInt(el.dataset.count, 10);
-            const suffix = el.dataset.suffix || '';
-            const duration = 1400;
-            const start = performance.now();
-            function tick(now) {
-                const progress = Math.min((now - start) / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3);
-                el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
-                if (progress < 1) requestAnimationFrame(tick);
-            }
-            requestAnimationFrame(tick);
-        });
-    }
-
-    window.onload = function () {
-        initSlider();
-        animateHeroCounters();
-    };
+/* Fade sections in as they arrive. Everything is visible without JS. */
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  document.querySelectorAll('.reveal').forEach(function(el,i){
+    el.style.transitionDelay=(i%3)*70+'ms';
+    io.observe(el);
+  });
+}else{
+  document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')});
+}
 </script>
 </body>
 </html>
