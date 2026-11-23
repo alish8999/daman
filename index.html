@@ -245,7 +245,15 @@ h3{font-size:1.125rem;font-weight:600}
   margin-inline-start:auto;font-size:.75rem;color:var(--ink-45);
   letter-spacing:.02em;direction:ltr;
 }
-.shot img{width:100%;height:auto}
+.shot img{width:100%;height:auto;display:block}
+/* A printed document sits as a paper sheet on a tinted ground, not stretched */
+.shot--doc{background:var(--teal-50)}
+.shot--doc img{
+  width:auto;max-width:min(640px,100%);
+  margin:30px auto;
+  border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 14px 34px -14px rgba(6,49,63,.26);
+}
 
 /* ── Fact strip ────────────────────────────────────────────── */
 .facts{border-block:1px solid var(--line);background:var(--surface)}
@@ -620,7 +628,10 @@ h3{font-size:1.125rem;font-weight:600}
 
       <div class="shot">
         <div class="shot__bar"><i></i><i></i><i></i><span>Daman</span></div>
-        <img src="./dashboard.png" alt="لوحة تحكم ضمان" width="1182" height="688" fetchpriority="high">
+        <picture>
+          <source srcset="./dashboard.webp" type="image/webp">
+          <img src="./dashboard.png" alt="لوحة تحكم ضمان" width="1600" height="787" fetchpriority="high">
+        </picture>
       </div>
     </div>
   </div>
@@ -726,11 +737,20 @@ h3{font-size:1.125rem;font-weight:600}
       <button class="tab" role="tab" aria-selected="true" data-tab="dashboard">
         <span class="ar">لوحة التحكم</span><span class="en">Dashboard</span>
       </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="quick-sale">
+        <span class="ar">البيع السريع</span><span class="en">Quick sale</span>
+      </button>
       <button class="tab" role="tab" aria-selected="false" data-tab="sales">
         <span class="ar">المبيعات</span><span class="en">Sales</span>
       </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="clients">
+        <span class="ar">العملاء والذمم</span><span class="en">Clients &amp; debts</span>
+      </button>
       <button class="tab" role="tab" aria-selected="false" data-tab="reports">
         <span class="ar">التقارير</span><span class="en">Reports</span>
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="statement">
+        <span class="ar">كشف الحساب</span><span class="en">Account statement</span>
       </button>
       <button class="tab" role="tab" aria-selected="false" data-tab="barcode">
         <span class="ar">الباركود</span><span class="en">Barcode</span>
@@ -742,31 +762,57 @@ h3{font-size:1.125rem;font-weight:600}
 
     <div class="panel" data-panel="dashboard" data-active>
       <div class="shot"><div class="shot__bar"><i></i><i></i><i></i><span>Dashboard</span></div>
-        <img src="./dashboard.png" alt="لوحة التحكم" loading="lazy"></div>
+        <picture><source srcset="./dashboard.webp" type="image/webp">
+        <img src="./dashboard.png" alt="لوحة التحكم" width="1600" height="787" loading="lazy"></picture></div>
       <p class="panel__cap ar">ربح اليوم، هامش الربح، تنبيهات المخزون، وآخر الحركات — بشاشة وحدة.</p>
       <p class="panel__cap en">Today's profit, your margin, stock alerts and the latest activity — on one screen.</p>
     </div>
+    <div class="panel" data-panel="quick-sale">
+      <div class="shot"><div class="shot__bar"><i></i><i></i><i></i><span>Quick sale</span></div>
+        <picture><source srcset="./quick-sale.webp" type="image/webp">
+        <img src="./quick-sale.png" alt="شاشة البيع السريع" width="1600" height="788" loading="lazy"></picture></div>
+      <p class="panel__cap ar">شاشة لمس بصور المواد وأسعارها — اضغط على المادة وبتنضاف عالفاتورة فوراً.</p>
+      <p class="panel__cap en">A touch screen of your items and their prices — tap one and it lands on the bill.</p>
+    </div>
     <div class="panel" data-panel="sales">
       <div class="shot"><div class="shot__bar"><i></i><i></i><i></i><span>Sales</span></div>
-        <img src="./sales.png" alt="شاشة المبيعات" loading="lazy"></div>
-      <p class="panel__cap ar">بيع جديد، مرتجع، وفاتورة PDF باسم محلك وشعارك.</p>
-      <p class="panel__cap en">New sale, return, and a PDF invoice carrying your own shop name and logo.</p>
+        <picture><source srcset="./sales.webp" type="image/webp">
+        <img src="./sales.png" alt="شاشة المبيعات" width="1600" height="827" loading="lazy"></picture></div>
+      <p class="panel__cap ar">كل مبيعاتك بمكان واحد، مع الربح والتكلفة لكل فاتورة — وفاتورة PDF باسم محلك وشعارك.</p>
+      <p class="panel__cap en">Every sale in one place, with the profit and cost of each — plus a PDF invoice carrying your own shop name and logo.</p>
+    </div>
+    <div class="panel" data-panel="clients">
+      <div class="shot"><div class="shot__bar"><i></i><i></i><i></i><span>Clients</span></div>
+        <picture><source srcset="./clients.webp" type="image/webp">
+        <img src="./clients.png" alt="العملاء والذمم" width="1600" height="691" loading="lazy"></picture></div>
+      <p class="panel__cap ar">ذمم كل عميل بالدولار أو بالليرة، وتصدير واستيراد Excel.</p>
+      <p class="panel__cap en">What every client owes you, in dollars or lira, with Excel import and export.</p>
     </div>
     <div class="panel" data-panel="reports">
       <div class="shot"><div class="shot__bar"><i></i><i></i><i></i><span>Reports</span></div>
-        <img src="./reports.png" alt="التقارير المالية" loading="lazy"></div>
-      <p class="panel__cap ar">تقارير مالية بتصدّرها PDF، وكشف حساب لكل عميل ومورد.</p>
-      <p class="panel__cap en">Financial reports you can export to PDF, plus a statement for every client and supplier.</p>
+        <picture><source srcset="./reports.webp" type="image/webp">
+        <img src="./reports.png" alt="التقارير المالية" width="1600" height="800" loading="lazy"></picture></div>
+      <p class="panel__cap ar">إيرادات، تكلفة بضاعة، مصروفات، وصافي ربح — لأي فترة بتختارها، وبتصدّرها PDF.</p>
+      <p class="panel__cap en">Revenue, cost of goods, expenses and net profit — for any period you pick, exportable to PDF.</p>
+    </div>
+    <div class="panel" data-panel="statement">
+      <div class="shot shot--doc"><div class="shot__bar"><i></i><i></i><i></i><span>Statement</span></div>
+        <picture><source srcset="./statement.webp" type="image/webp">
+        <img src="./statement.png" alt="كشف حساب عميل" width="777" height="730" loading="lazy"></picture></div>
+      <p class="panel__cap ar">كشف حساب لكل عميل ومورد، باسم محلك — للطباعة أو PDF.</p>
+      <p class="panel__cap en">A statement for every client and supplier, under your own shop name — print it or save it as PDF.</p>
     </div>
     <div class="panel" data-panel="barcode">
       <div class="shot"><div class="shot__bar"><i></i><i></i><i></i><span>Barcode</span></div>
-        <img src="./barcode.png" alt="الباركود وطباعة الملصقات" loading="lazy"></div>
+        <picture><source srcset="./barcode.webp" type="image/webp">
+        <img src="./barcode.png" alt="الباركود وطباعة الملصقات" width="1600" height="679" loading="lazy"></picture></div>
       <p class="panel__cap ar">أي قارئ باركود USB بيشتغل، وفي طباعة ملصقات لمنتجاتك الخاصة.</p>
       <p class="panel__cap en">Any USB barcode scanner works, and you can print labels for your own products.</p>
     </div>
     <div class="panel" data-panel="login">
       <div class="shot"><div class="shot__bar"><i></i><i></i><i></i><span>Login</span></div>
-        <img src="./login.png" alt="تسجيل الدخول" loading="lazy"></div>
+        <picture><source srcset="./login.webp" type="image/webp">
+        <img src="./login.png" alt="تسجيل الدخول" width="1586" height="790" loading="lazy"></picture></div>
       <p class="panel__cap ar">مستخدم لكل موظف، صلاحيات مفصّلة، ورمز مشرف على العمليات الحساسة.</p>
       <p class="panel__cap en">A user per employee, detailed permissions, and a supervisor PIN on sensitive actions.</p>
     </div>
